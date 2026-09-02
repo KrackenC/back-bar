@@ -464,6 +464,7 @@
     {id:'stout_beer', name:'Stout Beer', category:'Beer', group:'Juice & Mixers'},
     {id:'hot_sauce', name:'Hot Sauce', category:'Seasoning', group:'Juice & Mixers'},
     {id:'worcestershire', name:'Worcestershire', category:'Seasoning', group:'Juice & Mixers'},
+    {id:'olive_juice', name:'Olive Juice', category:'Brine', group:'Juice & Mixers'},
     {id:'lime_wedges', name:'Fresh Lime Wedges', category:'Fresh Fruit', group:'Juice & Mixers'},
     {id:'garnish_cherries', name:'Cocktail Cherries', category:'Garnish', group:'Juice & Mixers'},
     {id:'fresh_raspberries', name:'Fresh Raspberries', category:'Fresh Fruit', group:'Juice & Mixers'},
@@ -487,6 +488,7 @@
     {id:'grenadine', name:'Grenadine', category:'Syrup', group:'Syrups'},
     {id:'orange_syrup', name:'Orange Syrup', category:'Syrup', group:'Syrups'},
     {id:'agave_syrup', name:'Agave Syrup', category:'Syrup', group:'Syrups'},
+    {id:'coconut_syrup', name:'Coconut Syrup', category:'Syrup', group:'Syrups'},
     {id:'peach_puree', name:'Peach Purée', category:'Fruit Purée', group:'Juice & Mixers'}
   ];
 
@@ -522,7 +524,8 @@
     "pimm's":'pimms',"pimm's no 1":'pimms','pimms no 1':'pimms','fruit cup':'pimms',
     'st germain':'elderflower_liqueur',"st. germain":'elderflower_liqueur','elderflower':'elderflower_liqueur',
     'peach nectar':'peach_puree',
-    'ginger':'fresh_ginger','ginger root':'fresh_ginger','gentian liqueur':'suze'
+    'ginger':'fresh_ginger','ginger root':'fresh_ginger','gentian liqueur':'suze',
+    'olive brine':'olive_juice','coconut cream syrup':'coconut_syrup'
   };
 
   // Known brand names. Each is its own real ingredient — its own shelf chip,
@@ -1248,7 +1251,30 @@
       garnish:'Grapefruit twist', note:'Equal parts, stirred with ice and strained over fresh ice — a Negroni built on gentian liqueur and Lillet Blanc instead of Campari and sweet vermouth.'},
     {name:'Brown Derby', base:'Whiskey', glass:'Coupe', method:'Shaken',
       items:[{id:'bourbon', amt:'2 oz', familyOk:true},{id:'grapefruit_juice', amt:'.75 oz'},{id:'honey_syrup', amt:'.5 oz'}],
-      garnish:'Grapefruit twist', note:'Shake with ice; strain into a chilled coupe — created in the 1930s at the Vendome Café in Hollywood, near the Brown Derby restaurant it was named for.'}
+      garnish:'Grapefruit twist', note:'Shake with ice; strain into a chilled coupe — created in the 1930s at the Vendome Café in Hollywood, near the Brown Derby restaurant it was named for.'},
+
+    // ---------- Vodka: Smirnoff, Grey Goose, Absolut ----------
+    {name:'Dirty Martini', base:'Vodka', glass:'Coupe', method:'Shaken',
+      items:[{id:'vodka', amt:'1.5 oz'},{id:'dry_vermouth', amt:'.25 oz'},{id:'olive_juice', amt:'splash'}],
+      garnish:'Olives', note:"Shake with ice; strain into a chilled glass — Smirnoff's house recipe."},
+    {name:'Pineapple Martini', base:'Vodka', glass:'Coupe', method:'Shaken',
+      items:[{id:'vodka', amt:'1.5 oz'},{id:'pineapple_juice', amt:'1.5 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'simple_syrup', amt:'.25 oz'}],
+      garnish:'Lime wheel', note:'Shake with ice; strain into a chilled glass — traditionally made with pineapple-flavored vodka.'},
+    {name:'G-Mentini', base:'Vodka', glass:'Coupe', method:'Stirred',
+      items:[{id:'vodka', amt:'1 oz'},{id:'sweet_vermouth', amt:'1 oz'},{id:'angostura_bitters', amt:'2 dashes'}],
+      garnish:'Cherry', note:"Stir with ice; strain into a chilled glass — Smirnoff's vodka spin on a stirred, bitters-forward classic."},
+    {name:'Rampede', base:'Vodka', glass:'Highball', method:'Built',
+      items:[{id:'vodka', amt:'1.25 oz'},{id:'coconut_syrup', amt:'.5 oz'},{id:'pineapple_juice', amt:'3 oz'},{id:'blue_curacao', amt:'.5 oz'}],
+      garnish:'—', note:'Build the vodka, coconut syrup, and pineapple juice over ice and stir; top with the blue curaçao.'},
+    {name:'Honey Deuce', base:'Vodka', glass:'Highball', method:'Built',
+      items:[{id:'vodka', amt:'1.25 oz'},{id:'lemonade', amt:'3 oz'},{id:'creme_de_framboise', amt:'.5 oz'}],
+      garnish:'Honeydew melon balls', note:"Build over ice, topping with lemonade then raspberry liqueur — the official cocktail of the US Open since 2006."},
+    {name:'Gibson', base:'Vodka', glass:'Coupe', method:'Shaken',
+      items:[{id:'vodka', amt:'2.5 oz'},{id:'dry_vermouth', amt:'.5 oz'}],
+      garnish:'Pickled cocktail onion', note:'Shake with ice; strain into a chilled glass — a Martini in all but garnish, swapping the olive or twist for a pickled onion.'},
+    {name:'Vodka Basil Smash', base:'Vodka', glass:'Rocks', method:'Shaken',
+      items:[{id:'vodka', amt:'2 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'basil', amt:'6 leaves'}],
+      garnish:'Basil sprig', note:'Muddle basil with lemon and syrup; shake with vodka and ice, strain over fresh ice — the Whiskey Smash with vodka standing in for whiskey and basil for mint.'}
   ];
 
   var STARTER = ['gin','vodka','dry_vermouth','sweet_vermouth','campari','triple_sec','lime_juice','lemon_juice','simple_syrup','soda_water','angostura_bitters','bourbon'];
