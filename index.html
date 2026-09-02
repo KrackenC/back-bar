@@ -414,6 +414,7 @@
     {id:'drambuie', name:'Drambuie', category:'Honeyed Scotch Liqueur', group:'Liqueurs & Fortified Wine'},
     {id:'campari', name:'Campari', category:'Bitter Aperitivo', group:'Liqueurs & Fortified Wine'},
     {id:'aperol', name:'Aperol', category:'Bitter Aperitivo', group:'Liqueurs & Fortified Wine'},
+    {id:'suze', name:'Suze', category:'Gentian Liqueur', group:'Liqueurs & Fortified Wine'},
     {id:'dry_vermouth', name:'Dry Vermouth', category:'Fortified Wine', group:'Liqueurs & Fortified Wine'},
     {id:'sweet_vermouth', name:'Sweet Vermouth', category:'Fortified Wine', group:'Liqueurs & Fortified Wine'},
     {id:'lillet_blanc', name:'Lillet Blanc', category:'Fortified Wine', group:'Liqueurs & Fortified Wine'},
@@ -472,6 +473,7 @@
     {id:'basil', name:'Fresh Basil', category:'Fresh Herb', group:'Juice & Mixers'},
     {id:'cilantro', name:'Fresh Cilantro', category:'Fresh Herb', group:'Juice & Mixers'},
     {id:'jalapeno', name:'Jalapeño', category:'Fresh Produce', group:'Juice & Mixers'},
+    {id:'fresh_ginger', name:'Fresh Ginger', category:'Fresh Produce', group:'Juice & Mixers'},
     {id:'egg_white', name:'Egg White', category:'Egg', group:'Juice & Mixers'},
 
     {id:'simple_syrup', name:'Simple Syrup', category:'Syrup', group:'Syrups'},
@@ -519,7 +521,8 @@
     'rose':'rose_wine','rosé':'rose_wine','rose wine':'rose_wine','rosé wine':'rose_wine',
     "pimm's":'pimms',"pimm's no 1":'pimms','pimms no 1':'pimms','fruit cup':'pimms',
     'st germain':'elderflower_liqueur',"st. germain":'elderflower_liqueur','elderflower':'elderflower_liqueur',
-    'peach nectar':'peach_puree'
+    'peach nectar':'peach_puree',
+    'ginger':'fresh_ginger','ginger root':'fresh_ginger','gentian liqueur':'suze'
   };
 
   // Known brand names. Each is its own real ingredient — its own shelf chip,
@@ -1222,7 +1225,30 @@
       garnish:'Lime wedge, mint sprig', note:'Add mint to a chilled glass, fill with ice, add the remaining ingredients, and stir briefly.'},
     {name:'Blood Orange Margarita', base:'Tequila', glass:'Rocks', method:'Shaken',
       items:[{id:'tequila', amt:'1 oz'},{id:'triple_sec', amt:'.5 oz', familyOk:true},{id:'campari', amt:'.17 oz'},{id:'blood_orange_juice', amt:'.5 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'simple_syrup', amt:'.17 oz'}],
-      garnish:'Salt rim, blood orange slice', note:'Shake with ice; strain into a salt-rimmed rocks glass over fresh ice.'}
+      garnish:'Salt rim, blood orange slice', note:'Shake with ice; strain into a salt-rimmed rocks glass over fresh ice.'},
+
+    // ---------- Modern classics ----------
+    {name:'Naked and Famous', base:'Mezcal', glass:'Coupe', method:'Shaken',
+      items:[{id:'mezcal', amt:'.75 oz'},{id:'yellow_chartreuse', amt:'.75 oz'},{id:'aperol', amt:'.75 oz'},{id:'lime_juice', amt:'.75 oz'}],
+      garnish:'—', note:'Equal parts, shaken with ice and strained into a chilled coupe — devised in 2011 by Joaquín Simó at Death & Co in New York.'},
+    {name:'Kingston Negroni', base:'Rum', glass:'Rocks', method:'Stirred',
+      items:[{id:'dark_rum', amt:'1 oz'},{id:'sweet_vermouth', amt:'1 oz'},{id:'campari', amt:'1 oz'}],
+      garnish:'Orange wheel', note:'Equal parts, stirred with ice and strained over fresh ice — a Negroni with overproof Jamaican rum standing in for the gin.'},
+    {name:'Gin Gin Mule', base:'Gin', glass:'Highball', method:'Muddled, built',
+      items:[{id:'gin', amt:'2 oz'},{id:'fresh_ginger', amt:'2 slices'},{id:'lime_juice', amt:'.5 oz'},{id:'simple_syrup', amt:'.25 oz'},{id:'mint_leaves', amt:'12 leaves'},{id:'ginger_beer', amt:'2.75 oz'}],
+      garnish:'Mint sprig', note:"Muddle ginger with the syrup and lime juice, add gin and mint, shake with ice, strain over fresh ice, and top with ginger beer — Audrey Saunders' 2000 original from Manhattan's Beacon."},
+    {name:'Piña Verde', base:'Liqueur', glass:'Collins', method:'Blended',
+      items:[{id:'green_chartreuse', amt:'1.5 oz'},{id:'pineapple_juice', amt:'1.5 oz'},{id:'coconut_cream', amt:'.75 oz'},{id:'lime_juice', amt:'.5 oz'}],
+      garnish:'Mint sprig', note:'Blend with crushed ice; pour into a chilled glass — a Piña Colada riff that swaps the rum for green Chartreuse.'},
+    {name:'Division Bell', base:'Mezcal', glass:'Coupe', method:'Shaken',
+      items:[{id:'mezcal', amt:'1 oz'},{id:'aperol', amt:'.75 oz'},{id:'maraschino_liqueur', amt:'.5 oz'},{id:'lime_juice', amt:'.75 oz'}],
+      garnish:'Grapefruit twist', note:'Shake with ice; strain into a chilled coupe — created in 2009 by Phil Ward at Mayahuel in New York.'},
+    {name:'White Negroni', base:'Gin', glass:'Rocks', method:'Stirred',
+      items:[{id:'gin', amt:'1 oz'},{id:'suze', amt:'1 oz'},{id:'lillet_blanc', amt:'1 oz'}],
+      garnish:'Grapefruit twist', note:'Equal parts, stirred with ice and strained over fresh ice — a Negroni built on gentian liqueur and Lillet Blanc instead of Campari and sweet vermouth.'},
+    {name:'Brown Derby', base:'Whiskey', glass:'Coupe', method:'Shaken',
+      items:[{id:'bourbon', amt:'2 oz', familyOk:true},{id:'grapefruit_juice', amt:'.75 oz'},{id:'honey_syrup', amt:'.5 oz'}],
+      garnish:'Grapefruit twist', note:'Shake with ice; strain into a chilled coupe — created in the 1930s at the Vendome Café in Hollywood, near the Brown Derby restaurant it was named for.'}
   ];
 
   var STARTER = ['gin','vodka','dry_vermouth','sweet_vermouth','campari','triple_sec','lime_juice','lemon_juice','simple_syrup','soda_water','angostura_bitters','bourbon'];
