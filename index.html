@@ -293,6 +293,26 @@
     @keyframes pop{ from{ transform:scale(.9); opacity:0; } to{ transform:scale(1); opacity:1; } }
   }
 </style>
+
+<script>
+(function(){
+  var CURRENT_VERSION = "2026-09-02T01:30:02Z";
+  try {
+    fetch('./version.json?_=' + Date.now(), {cache:'no-store'})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(data){
+        if(!data || !data.v || data.v === CURRENT_VERSION) return;
+        var guardKey = 'backbar_reload_guard';
+        var seen = null;
+        try { seen = sessionStorage.getItem(guardKey); } catch(e) {}
+        if(seen === data.v) return; // already tried this version this session — avoid a reload loop
+        try { sessionStorage.setItem(guardKey, data.v); } catch(e) {}
+        location.href = location.pathname + '?v=' + encodeURIComponent(data.v);
+      })
+      .catch(function(){});
+  } catch(e) {}
+})();
+</script>
 </head>
 <body>
 <div class="wrap">
