@@ -296,18 +296,61 @@
 
 <script>
 (function(){
-  var CURRENT_VERSION = "2026-09-02T01:36:38Z";
+  var CURRENT_VERSION = "2026-09-02T01:40:45Z";
+  function showUpdateBanner(newVersion){
+    var bar = document.createElement('div');
+    bar.setAttribute('style',
+      'position:fixed;left:0;right:0;bottom:0;z-index:9999;' +
+      'background:#1A2420;color:#E9EAE1;font:14px -apple-system,system-ui,sans-serif;' +
+      'padding:.75rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem;' +
+      'box-shadow:0 -2px 10px rgba(0,0,0,.3);');
+    var label = document.createElement('span');
+    label.textContent = 'A new version of Back Bar is ready.';
+    var actions = document.createElement('span');
+    actions.setAttribute('style', 'display:flex;gap:.5rem;flex-shrink:0;');
+    var updateBtn = document.createElement('button');
+    updateBtn.textContent = 'Update';
+    updateBtn.setAttribute('style',
+      'background:#B3123B;color:#fff;border:none;border-radius:6px;padding:.45rem .9rem;' +
+      'font-weight:600;font-size:.85rem;cursor:pointer;');
+    var dismissBtn = document.createElement('button');
+    dismissBtn.textContent = 'Later';
+    dismissBtn.setAttribute('style',
+      'background:none;color:#E9EAE1;border:none;padding:.45rem .5rem;font-size:.85rem;cursor:pointer;opacity:.75;');
+    updateBtn.addEventListener('click', function(){
+      updateBtn.textContent = 'Updating…';
+      updateBtn.disabled = true;
+      fetch('./?_=' + Date.now(), {cache:'no-store'})
+        .then(function(r){ return r.ok ? r.text() : null; })
+        .then(function(html){
+          if(!html){ updateBtn.textContent = 'Update'; updateBtn.disabled = false; return; }
+          document.open();
+          document.write(html);
+          document.close();
+        })
+        .catch(function(){ updateBtn.textContent = 'Update'; updateBtn.disabled = false; });
+    });
+    dismissBtn.addEventListener('click', function(){
+      try { sessionStorage.setItem('backbar_update_dismissed', newVersion); } catch(e) {}
+      bar.remove();
+    });
+    actions.appendChild(updateBtn);
+    actions.appendChild(dismissBtn);
+    bar.appendChild(label);
+    bar.appendChild(actions);
+    document.body.appendChild(bar);
+  }
   try {
     fetch('./version.json?_=' + Date.now(), {cache:'no-store'})
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(data){
         if(!data || !data.v || data.v === CURRENT_VERSION) return;
-        var guardKey = 'backbar_reload_guard';
-        var seen = null;
-        try { seen = sessionStorage.getItem(guardKey); } catch(e) {}
-        if(seen === data.v) return; // already tried this version this session — avoid a reload loop
-        try { sessionStorage.setItem(guardKey, data.v); } catch(e) {}
-        location.href = location.pathname + '?v=' + encodeURIComponent(data.v);
+        var dismissedKey = 'backbar_update_dismissed';
+        var dismissed = null;
+        try { dismissed = sessionStorage.getItem(dismissedKey); } catch(e) {}
+        if(dismissed === data.v) return; // user already said "Later" for this version this session
+        if(document.body) showUpdateBanner(data.v);
+        else document.addEventListener('DOMContentLoaded', function(){ showUpdateBanner(data.v); });
       })
       .catch(function(){});
   } catch(e) {}
