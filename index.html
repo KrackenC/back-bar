@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Back Bar</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,600&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
+<style>
+  :root{
+    --paper:#E9EAE1;
+    --paper-raised:#F5F6EF;
+    --paper-sunken:#DEE0D3;
+    --ink:#1A2420;
+    --ink-soft:#57604F;
+    --line:#C9CBBC;
+    --accent:#B3123B;
+    --accent-hover:#8E0F30;
+    --accent-soft-bg:#F1D6DC;
+    --good-bg:#DCEFE2; --good-fg:#215939;
+    --warn-bg:#F5E6C2; --warn-fg:#7A5A05;
+    --muted-bg:#E3E4D8; --muted-fg:#5B6358;
+    --shadow: 0 1px 0 rgba(26,36,32,0.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#141C17;
+      --paper-raised:#1B2620;
+      --paper-sunken:#0F1611;
+      --ink:#ECEFE4;
+      --ink-soft:#A7B1A2;
+      --line:#2E3A32;
+      --accent:#FF6B85;
+      --accent-hover:#FF8CA0;
+      --accent-soft-bg:#3A1B24;
+      --good-bg:#1E3B2C; --good-fg:#8FE2B4;
+      --warn-bg:#3A2F12; --warn-fg:#EFC968;
+      --muted-bg:#263028; --muted-fg:#9CA79A;
+      --shadow: 0 1px 0 rgba(0,0,0,0.3);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#141C17;
+    --paper-raised:#1B2620;
+    --paper-sunken:#0F1611;
+    --ink:#ECEFE4;
+    --ink-soft:#A7B1A2;
+    --line:#2E3A32;
+    --accent:#FF6B85;
+    --accent-hover:#FF8CA0;
+    --accent-soft-bg:#3A1B24;
+    --good-bg:#1E3B2C; --good-fg:#8FE2B4;
+    --warn-bg:#3A2F12; --warn-fg:#EFC968;
+    --muted-bg:#263028; --muted-fg:#9CA79A;
+    --shadow: 0 1px 0 rgba(0,0,0,0.3);
+  }
+
+  *{ box-sizing:border-box; }
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Archivo', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{ font-family:'Fraunces', Georgia, serif; text-wrap:balance; margin:0; }
+  a{ color:var(--accent); }
+  ::selection{ background:var(--accent-soft-bg); }
+  :focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+
+  .wrap{ max-width:1180px; margin:0 auto; padding:2.25rem 1.5rem 5rem; }
+
+  /* ---------- Masthead ---------- */
+  header.masthead{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:2rem;
+    flex-wrap:wrap;
+    padding-bottom:1.25rem;
+    border-bottom:2px solid var(--ink);
+    margin-bottom:.85rem;
+  }
+  .brand h1{ font-size:2.35rem; font-weight:900; letter-spacing:-0.01em; line-height:.95; }
+  .brand p{ margin:.4rem 0 0; color:var(--ink-soft); font-size:.95rem; font-style:italic; font-family:'Fraunces', serif; }
+  .masthead-right{ display:flex; flex-direction:column; align-items:flex-end; gap:.55rem; }
+  .stats{
+    display:flex; gap:1.1rem; font-family:'Space Mono', monospace; font-variant-numeric:tabular-nums;
+  }
+  .stat{ text-align:right; padding-left:1.1rem; border-left:1px solid var(--line); }
+  .stat:first-child{ padding-left:0; border-left:none; }
+  .stat .n{ display:block; font-size:1.5rem; font-weight:700; line-height:1; }
+  .stat .l{ display:block; font-size:.62rem; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-soft); margin-top:.3rem; }
+  .reset-all-btn{
+    background:none; border:none; color:var(--ink-soft); font-size:.72rem; letter-spacing:.03em;
+    cursor:pointer; padding:.2rem 0; text-decoration:underline; text-underline-offset:2px;
+  }
+  .reset-all-btn:hover{ color:var(--accent); }
+  .reset-all-btn.armed{ color:var(--accent); font-weight:600; }
+
+  .subhead{ font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); font-weight:600; }
+
+  /* ---------- Layout ---------- */
+  .app{ display:grid; grid-template-columns:340px 1fr 250px; gap:0; margin-top:1.75rem; align-items:start; }
+  .panel-shelf{ padding-right:2rem; border-right:1px solid var(--line); }
+  .panel-recipes{ padding:0 2rem; }
+  .panel-queue{ padding-left:2rem; border-left:1px solid var(--line); position:sticky; top:1.75rem; }
+  @media (max-width:1180px){
+    .app{ grid-template-columns:340px 1fr; }
+    .panel-queue{ grid-column:1 / -1; border-left:none; border-top:1px solid var(--line); padding:2rem 0 0; margin-top:1rem; position:static; }
+  }
+  @media (max-width:860px){
+    .app{ grid-template-columns:1fr; }
+    .panel-shelf{ border-right:none; border-bottom:1px solid var(--line); padding-right:0; padding-bottom:2rem; margin-bottom:2rem; }
+    .panel-recipes{ padding:0; }
+  }
+
+  /* ---------- Shelf panel ---------- */
+  .add-form{ display:flex; gap:.5rem; margin-top:.9rem; }
+  .add-form input[type="text"]{
+    flex:1; min-width:0; padding:.6rem .7rem; border-radius:6px; border:1px solid var(--line);
+    background:var(--paper-sunken); color:var(--ink); font:inherit; font-size:.92rem;
+  }
+  .add-form button{
+    border:none; border-radius:6px; padding:.6rem 1rem; background:var(--ink); color:var(--paper);
+    font-weight:600; font-size:.85rem; cursor:pointer;
+  }
+  .add-form button:hover{ background:var(--accent); }
+  .tip{ font-size:.78rem; color:var(--ink-soft); margin:.55rem 0 0; line-height:1.45; }
+  .tip b{ color:var(--ink); font-weight:600; }
+
+  .shelf-row{ display:flex; align-items:center; justify-content:space-between; margin-top:1.6rem; }
+  .shelf-row-actions{ display:inline-flex; align-items:center; }
+  /* real padding, no negative-margin trick: keeps the clickable box and the
+     visible text in exactly the same place */
+  .starter-btn{
+    display:inline-flex; align-items:center;
+    background:none; border:none; color:var(--accent); font-size:.78rem; font-weight:600; cursor:pointer;
+    padding:.45rem;
+    text-decoration:underline; text-underline-offset:2px;
+  }
+  .clear-btn{
+    display:inline-flex; align-items:center;
+    background:none; border:none; color:var(--ink-soft); font-size:.78rem; cursor:pointer; padding:.45rem;
+  }
+  .clear-btn:hover{ color:var(--accent); }
+
+  .shelf{ display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.75rem; min-height:2.2rem; }
+  .shelf-empty{ color:var(--ink-soft); font-size:.85rem; font-style:italic; padding:.3rem 0; }
+
+  .chip{
+    display:inline-flex; align-items:center; gap:.4rem;
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:999px;
+    padding:.3rem .35rem .3rem .7rem; font-size:.82rem;
+  }
+  .chip.unclassified{ border-style:dashed; }
+  .chip .cname{ font-weight:600; }
+  .chip .ctag{
+    font-family:'Space Mono', monospace; font-size:.6rem; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--accent); white-space:nowrap;
+  }
+  .chip.unclassified .ctag{ color:var(--ink-soft); }
+  .chip button{
+    border:none; background:var(--muted-bg); color:var(--ink-soft); border-radius:50%;
+    width:1.15rem; height:1.15rem; line-height:1; cursor:pointer; font-size:.75rem; display:flex; align-items:center; justify-content:center;
+  }
+  .chip button:hover{ background:var(--accent); color:var(--paper); }
+
+  .quick-add{ margin-top:1.75rem; }
+  .quick-add details{ border-top:1px solid var(--line); padding:.65rem 0; }
+  .quick-add details:last-child{ border-bottom:1px solid var(--line); }
+  .quick-add summary{
+    cursor:pointer; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600;
+    color:var(--ink-soft); list-style:none; display:flex; justify-content:space-between; align-items:center;
+  }
+  .quick-add summary::-webkit-details-marker{ display:none; }
+  .quick-add summary::after{ content:"+"; font-family:'Space Mono', monospace; font-size:1rem; color:var(--ink-soft); }
+  .quick-add details[open] summary::after{ content:"–"; }
+  .qa-grid{ display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.7rem; }
+  .qa-btn{
+    border:1px solid var(--line); background:var(--paper-raised); color:var(--ink);
+    border-radius:6px; padding:.32rem .55rem; font-size:.78rem; cursor:pointer; font-family:'Archivo', sans-serif;
+  }
+  .qa-btn:hover{ border-color:var(--accent); }
+  .qa-btn.active{ background:var(--accent); border-color:var(--accent); color:#fff; font-weight:600; }
+  /* brand names (e.g. Cointreau, sitting next to the generic Triple Sec):
+     dashed border marks them as a specific style, picked independently */
+  .qa-btn.brand{ color:var(--ink-soft); border-style:dashed; }
+  .qa-btn.brand.active{ color:#fff; border-style:solid; }
+
+  /* ---------- Recipes panel ---------- */
+  .recipes-head{ display:flex; flex-wrap:wrap; gap:.9rem; align-items:center; justify-content:space-between; }
+  .search input{
+    padding:.55rem .7rem; border-radius:6px; border:1px solid var(--line); background:var(--paper-sunken);
+    color:var(--ink); font:inherit; font-size:.88rem; width:220px; max-width:100%;
+  }
+  .segmented{ display:inline-flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; }
+  .segmented button{
+    border:none; background:var(--paper-raised); color:var(--ink-soft); padding:.45rem .9rem; font-size:.78rem;
+    font-weight:600; cursor:pointer; font-family:'Archivo', sans-serif;
+  }
+  .segmented button + button{ border-left:1px solid var(--line); }
+  .segmented button.active{ background:var(--ink); color:var(--paper); }
+
+  .count-row{ display:flex; align-items:baseline; justify-content:space-between; gap:1rem; margin:1rem 0 1.1rem; }
+  .count-line{
+    font-family:'Space Mono', monospace; font-size:.78rem; color:var(--ink-soft); margin:0;
+    font-variant-numeric:tabular-nums;
+  }
+  .count-line b{ color:var(--ink); font-weight:700; }
+
+  .closest{
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:10px;
+    padding:.9rem 1.05rem; margin-bottom:1.1rem;
+  }
+  .closest-label{
+    font-family:'Space Mono', monospace; font-size:.66rem; letter-spacing:.09em; text-transform:uppercase;
+    color:var(--ink-soft); margin:0 0 .5rem;
+  }
+  .closest-row{
+    display:flex; justify-content:space-between; align-items:baseline; gap:1rem;
+    padding:.42rem 0; border-top:1px solid var(--line);
+  }
+  .closest-row:first-of-type{ border-top:none; padding-top:0; }
+  .closest-name{ font-family:'Fraunces', serif; font-weight:600; font-size:.95rem; flex-shrink:0; }
+  .closest-need{ font-size:.78rem; color:var(--ink-soft); text-align:right; }
+
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(310px, 1fr)); gap:1rem; }
+
+  .card{
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:10px;
+    padding:1.05rem 1.15rem 1.15rem; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:.65rem;
+    cursor:grab;
+  }
+  .card.dragging{ opacity:.35; }
+  .card-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:.6rem; }
+  .card-head h3{ font-size:1.22rem; font-weight:700; line-height:1.15; }
+  .card-meta{ margin:.25rem 0 0; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-soft); }
+  .card-head-actions{ display:flex; align-items:center; gap:.5rem; flex-shrink:0; }
+  .fav-btn{
+    background:none; border:none; cursor:pointer; padding:0 .1rem; line-height:1;
+    font-size:1.2rem; color:var(--line);
+  }
+  .fav-btn:hover{ color:var(--warn-fg); }
+  .fav-btn.active{ color:var(--warn-fg); }
+
+  .pill{
+    flex-shrink:0; font-family:'Space Mono', monospace; font-size:.66rem; letter-spacing:.03em;
+    padding:.28rem .55rem; border-radius:999px; white-space:nowrap; font-weight:700;
+  }
+  .pill-ready{ background:var(--good-bg); color:var(--good-fg); }
+  .pill-almost{ background:var(--warn-bg); color:var(--warn-fg); }
+  .pill-more{ background:var(--muted-bg); color:var(--muted-fg); }
+
+  .items{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.32rem; border-top:1px solid var(--line); padding-top:.6rem; }
+  .items li{ display:flex; gap:.55rem; font-size:.86rem; align-items:baseline; }
+  .items .amt{ font-family:'Space Mono', monospace; font-size:.78rem; color:var(--ink-soft); min-width:3.6rem; flex-shrink:0; font-variant-numeric:tabular-nums; }
+  .items li.have{ color:var(--ink); }
+  .items li.need{ color:var(--ink-soft); }
+  .items .mark{ display:inline-block; width:1rem; text-align:center; font-weight:700; }
+  .items li.have .mark{ color:var(--good-fg); }
+  .items li.need .mark{ color:var(--line); }
+  .items .opt{ font-size:.72rem; font-style:italic; color:var(--ink-soft); }
+
+  .garnish{ font-size:.78rem; color:var(--ink-soft); font-style:italic; margin:0; }
+  .note{ font-size:.82rem; color:var(--ink-soft); margin:0; border-top:1px solid var(--line); padding-top:.6rem; line-height:1.5; }
+
+  .empty-state{ padding:3rem 1rem; text-align:center; color:var(--ink-soft); font-size:.92rem; }
+
+  /* ---------- Up-next queue ---------- */
+  .queue-tag{ color:var(--ink-soft); font-size:.82rem; line-height:1.5; margin:.5rem 0 1.1rem; }
+  .queue-row{ display:flex; align-items:center; justify-content:space-between; margin-top:1.6rem; }
+  .queue-slot{
+    border:1px dashed var(--line); border-radius:10px; padding:.85rem .95rem; margin-bottom:.7rem; min-height:4.6rem;
+    display:flex; flex-direction:column; justify-content:center; transition:border-color .12s, background .12s;
+  }
+  .queue-slot.drag-over{ border-color:var(--accent); border-style:solid; background:var(--accent-soft-bg); }
+  .queue-slot.filled{ border-style:solid; background:var(--paper-raised); justify-content:flex-start; }
+  .queue-num{ font-family:'Space Mono', monospace; font-size:.62rem; letter-spacing:.09em; color:var(--ink-soft); text-transform:uppercase; }
+  .queue-empty{ color:var(--ink-soft); font-size:.78rem; text-align:center; font-style:italic; }
+  .queue-card-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:.5rem; margin-top:.2rem; }
+  .queue-name{ font-family:'Fraunces', serif; font-weight:700; font-size:1rem; line-height:1.2; }
+  .queue-remove{ background:none; border:none; color:var(--ink-soft); cursor:pointer; font-size:.95rem; line-height:1; padding:0; flex-shrink:0; }
+  .queue-remove:hover{ color:var(--accent); }
+  .queue-meta{ font-size:.68rem; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-soft); margin-top:.2rem; }
+  .queue-slot .pill{ margin-top:.5rem; }
+
+  footer{ margin-top:3rem; padding-top:1.2rem; border-top:1px solid var(--line); font-size:.75rem; color:var(--ink-soft); }
+
+  @media (prefers-reduced-motion: no-preference){
+    .chip.fresh{ animation:pop .3s ease; }
+    @keyframes pop{ from{ transform:scale(.9); opacity:0; } to{ transform:scale(1); opacity:1; } }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="brand">
+      <h1>Back Bar</h1>
+      <p>What's behind your bottles, and what it pours</p>
+    </div>
+    <div class="masthead-right">
+      <div class="stats" id="stats">
+        <div class="stat"><span class="n" id="statReady">0</span><span class="l">Ready</span></div>
+        <div class="stat"><span class="n" id="statAlmost">0</span><span class="l">Almost</span></div>
+        <div class="stat"><span class="n" id="statTotal">0</span><span class="l">In the book</span></div>
+      </div>
+      <button class="reset-all-btn" id="resetAllBtn" type="button">Reset everything</button>
+    </div>
+  </header>
+
+  <main class="app">
+
+    <section class="panel-shelf" aria-label="Your back bar">
+      <p class="subhead">Your Back Bar</p>
+      <form class="add-form" id="addForm">
+        <input type="text" id="addInput" placeholder="Type a bottle or mixer…" autocomplete="off" spellcheck="false">
+        <button type="submit">Add</button>
+      </form>
+      <p class="tip">Try <b>rye whiskey</b>, <b>triple sec</b>, <b>lime juice</b> — separate a list with commas. Brand names work too, like <b>Cointreau</b> or <b>Jameson</b> — the chip keeps the bottle's name and still counts under its general type. Not sure which style you've got? Type just <b>“rum”</b> or <b>“whiskey”</b> and it'll count toward any recipe in that family.</p>
+
+      <div class="shelf-row">
+        <span class="subhead" style="font-size:.66rem;">On the shelf</span>
+        <span class="shelf-row-actions">
+          <button class="starter-btn" id="starterBtn" type="button">Load a starter shelf</button>
+          <span style="color:var(--line); margin:0 .05rem;">·</span>
+          <button class="clear-btn" id="clearBtn" type="button">Clear</button>
+        </span>
+      </div>
+      <div class="shelf" id="shelf"></div>
+
+      <div class="quick-add" id="quickAdd"></div>
+    </section>
+
+    <section class="panel-recipes" aria-label="Cocktails">
+      <div class="recipes-head">
+        <p class="subhead" style="margin:0;">What You Can Make</p>
+        <div style="display:flex; gap:.7rem; flex-wrap:wrap;">
+          <div class="search"><input type="text" id="searchInput" placeholder="Search the book…"></div>
+          <div class="segmented" id="filterSeg">
+            <button data-filter="all" class="active" type="button">All</button>
+            <button data-filter="almost" type="button">Almost</button>
+            <button data-filter="ready" type="button">Ready</button>
+            <button data-filter="favorites" type="button">Favorites</button>
+          </div>
+        </div>
+      </div>
+      <div class="count-row">
+        <p class="count-line" id="countLine"></p>
+        <button class="clear-btn" id="favClearBtn" type="button" hidden>Clear favorites</button>
+      </div>
+      <div class="closest" id="closest" hidden></div>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <aside class="panel-queue" aria-label="Next three to make">
+      <div class="queue-row">
+        <p class="subhead" style="margin:0;">Up Next</p>
+        <button class="clear-btn" id="queueClearBtn" type="button">Clear</button>
+      </div>
+      <p class="queue-tag">Drag a recipe card here — or tap its <b>+</b> — to line up what to pour next.</p>
+      <div id="queueSlots"></div>
+    </aside>
+
+  </main>
+
+  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 170 recipes, drawn from the IBA official list, the standard classics, and distillers' and bar guides' own recipe books.</footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var INGREDIENTS = [
+    {id:'gin', name:'Gin', category:'Gin', group:'Spirits'},
+    {id:'vodka', name:'Vodka', category:'Vodka', group:'Spirits'},
+    {id:'white_rum', name:'White Rum', category:'Rum', group:'Spirits', family:'rum'},
+    {id:'dark_rum', name:'Dark Rum', category:'Rum', group:'Spirits', family:'rum'},
+    {id:'rum_any', name:'Rum (unspecified)', category:'Rum', group:'Spirits', family:'rum'},
+    {id:'cachaca', name:'Cachaça', category:'Cachaça', group:'Spirits'},
+    {id:'tequila', name:'Tequila', category:'Tequila', group:'Spirits'},
+    {id:'bourbon', name:'Bourbon', category:'Whiskey', group:'Spirits', family:'whiskey'},
+    {id:'rye_whiskey', name:'Rye Whiskey', category:'Whiskey', group:'Spirits', family:'whiskey'},
+    {id:'scotch_whisky', name:'Scotch Whisky', category:'Whiskey', group:'Spirits', family:'whiskey'},
+    {id:'whiskey_any', name:'Whiskey (unspecified)', category:'Whiskey', group:'Spirits', family:'whiskey'},
+    {id:'brandy', name:'Brandy / Cognac', category:'Brandy', group:'Spirits'},
+    {id:'mezcal', name:'Mezcal', category:'Mezcal', group:'Spirits'},
+    {id:'pisco', name:'Pisco', category:'Pisco', group:'Spirits'},
+    {id:'absinthe', name:'Absinthe', category:'Herbal Spirit', group:'Spirits'},
+
+    {id:'triple_sec', name:'Triple Sec', category:'Orange Liqueur', group:'Liqueurs & Fortified Wine', family:'orange_liqueur'},
+    {id:'orange_curacao', name:'Orange Curaçao', category:'Orange Liqueur', group:'Liqueurs & Fortified Wine', family:'orange_liqueur'},
+    {id:'blue_curacao', name:'Blue Curaçao', category:'Orange Liqueur', group:'Liqueurs & Fortified Wine', family:'orange_liqueur'},
+    {id:'maraschino_liqueur', name:'Maraschino Liqueur', category:'Cherry Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'creme_de_violette', name:'Crème de Violette', category:'Floral Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'green_chartreuse', name:'Green Chartreuse', category:'Herbal Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'yellow_chartreuse', name:'Yellow Chartreuse', category:'Herbal Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'cynar', name:'Cynar', category:'Amaro', group:'Liqueurs & Fortified Wine'},
+    {id:'licor_43', name:'Licor 43', category:'Vanilla Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'benedictine', name:'Bénédictine', category:'Herbal Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'creme_de_mure', name:'Crème de Mûre', category:'Blackberry Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'creme_de_menthe', name:'Crème de Menthe', category:'Mint Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'creme_de_cacao', name:'Crème de Cacao', category:'Cacao Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'creme_de_cassis', name:'Crème de Cassis', category:'Blackcurrant Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'coffee_liqueur', name:'Coffee Liqueur', category:'Coffee Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'amaretto', name:'Amaretto', category:'Almond Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'sloe_gin', name:'Sloe Gin', category:'Sloe Gin', group:'Liqueurs & Fortified Wine'},
+    {id:'irish_cream', name:'Irish Cream', category:'Cream Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'peach_schnapps', name:'Peach Schnapps', category:'Peach Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'drambuie', name:'Drambuie', category:'Honeyed Scotch Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'campari', name:'Campari', category:'Bitter Aperitivo', group:'Liqueurs & Fortified Wine'},
+    {id:'aperol', name:'Aperol', category:'Bitter Aperitivo', group:'Liqueurs & Fortified Wine'},
+    {id:'dry_vermouth', name:'Dry Vermouth', category:'Fortified Wine', group:'Liqueurs & Fortified Wine'},
+    {id:'sweet_vermouth', name:'Sweet Vermouth', category:'Fortified Wine', group:'Liqueurs & Fortified Wine'},
+    {id:'lillet_blanc', name:'Lillet Blanc', category:'Fortified Wine', group:'Liqueurs & Fortified Wine'},
+    {id:'sherry', name:'Sherry', category:'Fortified Wine', group:'Liqueurs & Fortified Wine'},
+    {id:'port_wine', name:'Port Wine', category:'Fortified Wine', group:'Liqueurs & Fortified Wine'},
+    {id:'falernum', name:'Falernum', category:'Spiced Lime Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'madeira', name:'Madeira', category:'Fortified Wine', group:'Liqueurs & Fortified Wine'},
+    {id:'creme_de_framboise', name:'Crème de Framboise', category:'Raspberry Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'cherry_brandy', name:'Cherry Brandy', category:'Cherry Brandy', group:'Liqueurs & Fortified Wine'},
+    {id:'frangelico', name:'Frangelico', category:'Hazelnut Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'fernet_branca', name:'Fernet Branca', category:'Amaro', group:'Liqueurs & Fortified Wine'},
+    {id:'amaro_nonino', name:'Amaro Nonino', category:'Amaro', group:'Liqueurs & Fortified Wine'},
+    {id:'southern_comfort', name:'Southern Comfort', category:'Whiskey Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'limoncello', name:'Limoncello', category:'Lemon Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'sparkling_wine', name:'Sparkling Wine', category:'Wine', group:'Liqueurs & Fortified Wine'},
+    {id:'red_wine', name:'Red Wine', category:'Wine', group:'Liqueurs & Fortified Wine'},
+    {id:'white_wine', name:'White Wine', category:'Wine', group:'Liqueurs & Fortified Wine'},
+    {id:'rose_wine', name:'Rosé Wine', category:'Wine', group:'Liqueurs & Fortified Wine'},
+    {id:'pimms', name:"Pimm's No. 1", category:'Fruit Cup Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'elderflower_liqueur', name:'Elderflower Liqueur', category:'Elderflower Liqueur', group:'Liqueurs & Fortified Wine'},
+
+    {id:'angostura_bitters', name:'Angostura Bitters', category:'Aromatic Bitters', group:'Bitters'},
+    {id:'peychauds_bitters', name:"Peychaud's Bitters", category:'Aromatic Bitters', group:'Bitters'},
+    {id:'peach_bitters', name:'Peach Bitters', category:'Fruit Bitters', group:'Bitters'},
+    {id:'orange_bitters', name:'Orange Bitters', category:'Citrus Bitters', group:'Bitters'},
+    {id:'cherry_bitters', name:'Cherry Bitters', category:'Fruit Bitters', group:'Bitters'},
+
+    {id:'lime_juice', name:'Lime Juice', category:'Citrus Juice', group:'Juice & Mixers'},
+    {id:'lemon_juice', name:'Lemon Juice', category:'Citrus Juice', group:'Juice & Mixers'},
+    {id:'orange_juice', name:'Orange Juice', category:'Citrus Juice', group:'Juice & Mixers'},
+    {id:'blood_orange_juice', name:'Blood Orange Juice', category:'Citrus Juice', group:'Juice & Mixers'},
+    {id:'grapefruit_juice', name:'Grapefruit Juice', category:'Citrus Juice', group:'Juice & Mixers'},
+    {id:'pineapple_juice', name:'Pineapple Juice', category:'Juice', group:'Juice & Mixers'},
+    {id:'cranberry_juice', name:'Cranberry Juice', category:'Juice', group:'Juice & Mixers'},
+    {id:'tomato_juice', name:'Tomato Juice', category:'Juice', group:'Juice & Mixers'},
+    {id:'grapefruit_soda', name:'Grapefruit Soda', category:'Soda', group:'Juice & Mixers'},
+    {id:'lemonade', name:'Lemonade', category:'Juice', group:'Juice & Mixers'},
+    {id:'ginger_beer', name:'Ginger Beer', category:'Soda', group:'Juice & Mixers'},
+    {id:'ginger_ale', name:'Ginger Ale', category:'Soda', group:'Juice & Mixers'},
+    {id:'soda_water', name:'Soda Water', category:'Soda', group:'Juice & Mixers'},
+    {id:'tonic_water', name:'Tonic Water', category:'Soda', group:'Juice & Mixers'},
+    {id:'cola', name:'Cola', category:'Soda', group:'Juice & Mixers'},
+    {id:'lemon_lime_soda', name:'Lemon-Lime Soda', category:'Soda', group:'Juice & Mixers'},
+    {id:'coconut_cream', name:'Coconut Cream', category:'Cream / Dairy', group:'Juice & Mixers'},
+    {id:'cream', name:'Heavy Cream', category:'Cream / Dairy', group:'Juice & Mixers'},
+    {id:'espresso', name:'Espresso', category:'Coffee', group:'Juice & Mixers'},
+    {id:'stout_beer', name:'Stout Beer', category:'Beer', group:'Juice & Mixers'},
+    {id:'hot_sauce', name:'Hot Sauce', category:'Seasoning', group:'Juice & Mixers'},
+    {id:'worcestershire', name:'Worcestershire', category:'Seasoning', group:'Juice & Mixers'},
+    {id:'lime_wedges', name:'Fresh Lime Wedges', category:'Fresh Fruit', group:'Juice & Mixers'},
+    {id:'garnish_cherries', name:'Cocktail Cherries', category:'Garnish', group:'Juice & Mixers'},
+    {id:'fresh_raspberries', name:'Fresh Raspberries', category:'Fresh Fruit', group:'Juice & Mixers'},
+    {id:'black_tea', name:'Black Tea', category:'Tea', group:'Juice & Mixers'},
+    {id:'orange_peel', name:'Orange Peel', category:'Garnish', group:'Juice & Mixers'},
+    {id:'mint_leaves', name:'Fresh Mint', category:'Fresh Herb', group:'Juice & Mixers'},
+    {id:'basil', name:'Fresh Basil', category:'Fresh Herb', group:'Juice & Mixers'},
+    {id:'cilantro', name:'Fresh Cilantro', category:'Fresh Herb', group:'Juice & Mixers'},
+    {id:'jalapeno', name:'Jalapeño', category:'Fresh Produce', group:'Juice & Mixers'},
+    {id:'egg_white', name:'Egg White', category:'Egg', group:'Juice & Mixers'},
+
+    {id:'simple_syrup', name:'Simple Syrup', category:'Syrup', group:'Syrups'},
+    {id:'honey_syrup', name:'Honey Syrup', category:'Syrup', group:'Syrups'},
+    {id:'ginger_honey_syrup', name:'Ginger-Honey Syrup', category:'Syrup', group:'Syrups'},
+    {id:'orgeat_syrup', name:'Orgeat Syrup', category:'Syrup', group:'Syrups'},
+    {id:'milk', name:'Milk', category:'Cream / Dairy', group:'Juice & Mixers'},
+    {id:'raspberry_syrup', name:'Raspberry Syrup', category:'Syrup', group:'Syrups'},
+    {id:'cherry_syrup', name:'Cherry Syrup', category:'Syrup', group:'Syrups'},
+    {id:'passion_fruit_syrup', name:'Passion Fruit Syrup', category:'Syrup', group:'Syrups'},
+    {id:'grenadine', name:'Grenadine', category:'Syrup', group:'Syrups'},
+    {id:'orange_syrup', name:'Orange Syrup', category:'Syrup', group:'Syrups'},
+    {id:'agave_syrup', name:'Agave Syrup', category:'Syrup', group:'Syrups'},
+    {id:'peach_puree', name:'Peach Purée', category:'Fruit Purée', group:'Juice & Mixers'}
+  ];
+
+  var GROUP_ORDER = ['Spirits','Liqueurs & Fortified Wine','Bitters','Juice & Mixers','Syrups'];
+
+  var ALIASES = {
+    'whisky':'whiskey_any','whiskey':'whiskey_any','irish whiskey':'whiskey_any',
+    'canadian whisky':'whiskey_any','blended whiskey':'whiskey_any',
+    'bourbon whiskey':'bourbon','rye':'rye_whiskey',
+    'scotch':'scotch_whisky','single malt':'scotch_whisky','single malt scotch':'scotch_whisky','blended scotch':'scotch_whisky',
+    'rum':'rum_any','light rum':'white_rum','silver rum':'white_rum','white rum':'white_rum',
+    'dark rum':'dark_rum','aged rum':'dark_rum','black rum':'dark_rum','spiced rum':'dark_rum',
+    'cognac':'brandy','vs cognac':'brandy','vsop':'brandy','armagnac':'brandy',
+    'curacao':'orange_curacao','orange liqueur':'triple_sec',
+    'sweet vermouth':'sweet_vermouth','rosso vermouth':'sweet_vermouth','red vermouth':'sweet_vermouth','italian vermouth':'sweet_vermouth',
+    'dry vermouth':'dry_vermouth','white vermouth':'dry_vermouth','extra dry vermouth':'dry_vermouth','french vermouth':'dry_vermouth',
+    'chartreuse':'green_chartreuse',
+    'club soda':'soda_water','seltzer':'soda_water','sparkling water':'soda_water',
+    'sugar syrup':'simple_syrup','gomme syrup':'simple_syrup',
+    'prosecco':'sparkling_wine','champagne':'sparkling_wine','cava':'sparkling_wine',
+    'half and half':'cream','heavy cream':'cream','whipping cream':'cream',
+    'coconut milk':'coconut_cream','tabasco':'hot_sauce','worcestershire sauce':'worcestershire',
+    'lime':'lime_juice','fresh lime juice':'lime_juice','lemon':'lemon_juice','fresh lemon juice':'lemon_juice',
+    'mint':'mint_leaves','fresh mint':'mint_leaves','coffee':'espresso','oj':'orange_juice',
+    'angostura':'angostura_bitters','peychauds':'peychauds_bitters',
+    'cherry':'garnish_cherries','cherries':'garnish_cherries','maraschino cherries':'garnish_cherries','brandied cherries':'garnish_cherries',
+    'orgeat cordial syrup':'orgeat_syrup','orgeat cordial':'orgeat_syrup','orgeat':'orgeat_syrup',
+    'stout':'stout_beer','guinness':'stout_beer',
+    'sprite':'lemon_lime_soda','7up':'lemon_lime_soda','7-up':'lemon_lime_soda','seven up':'lemon_lime_soda','lemon lime soda':'lemon_lime_soda',
+    'agave':'agave_syrup','agave nectar':'agave_syrup',
+    'fernet':'fernet_branca','jalapeno pepper':'jalapeno','jalapeño':'jalapeno',
+    'rose':'rose_wine','rosé':'rose_wine','rose wine':'rose_wine','rosé wine':'rose_wine',
+    "pimm's":'pimms',"pimm's no 1":'pimms','pimms no 1':'pimms','fruit cup':'pimms',
+    'st germain':'elderflower_liqueur',"st. germain":'elderflower_liqueur','elderflower':'elderflower_liqueur',
+    'peach nectar':'peach_puree'
+  };
+
+  // Known brand names. Each is its own real ingredient — its own shelf chip,
+  // its own quick-add button, addable and removable independently of the
+  // generic ingredient it's a style of. `substitutesFor` is only used at
+  // match time: having the brand also satisfies a recipe that calls for the
+  // generic (Cointreau counts as triple sec), but the two stay separate
+  // entries so a bar with both a labeled Cointreau bottle and an unbranded
+  // orange liqueur can log them as two different things.
+  var BRAND_INGREDIENTS = [
+    {id:'tanqueray', name:'Tanqueray', category:'Gin', group:'Spirits', substitutesFor:'gin'},
+    {id:'bombay_sapphire', name:'Bombay Sapphire', category:'Gin', group:'Spirits', substitutesFor:'gin'},
+    {id:'hendricks', name:"Hendrick's", category:'Gin', group:'Spirits', substitutesFor:'gin'},
+    {id:'beefeater', name:'Beefeater', category:'Gin', group:'Spirits', substitutesFor:'gin'},
+    {id:'gordons', name:"Gordon's", category:'Gin', group:'Spirits', substitutesFor:'gin'},
+    {id:'new_amsterdam', name:'New Amsterdam', category:'Gin', group:'Spirits', substitutesFor:'gin'},
+    {id:'grey_goose', name:'Grey Goose', category:'Vodka', group:'Spirits', substitutesFor:'vodka'},
+    {id:'titos', name:"Tito's", category:'Vodka', group:'Spirits', substitutesFor:'vodka'},
+    {id:'absolut', name:'Absolut', category:'Vodka', group:'Spirits', substitutesFor:'vodka'},
+    {id:'ketel_one', name:'Ketel One', category:'Vodka', group:'Spirits', substitutesFor:'vodka'},
+    {id:'smirnoff', name:'Smirnoff', category:'Vodka', group:'Spirits', substitutesFor:'vodka'},
+    {id:'stolichnaya', name:'Stolichnaya', category:'Vodka', group:'Spirits', substitutesFor:'vodka'},
+    {id:'belvedere', name:'Belvedere', category:'Vodka', group:'Spirits', substitutesFor:'vodka'},
+    {id:'ciroc', name:'Cîroc', category:'Vodka', group:'Spirits', substitutesFor:'vodka'},
+    {id:'bacardi', name:'Bacardi', category:'Rum', group:'Spirits', substitutesFor:'white_rum'},
+    {id:'havana_club', name:'Havana Club', category:'Rum', group:'Spirits', substitutesFor:'white_rum'},
+    {id:'captain_morgan', name:'Captain Morgan', category:'Rum', group:'Spirits', substitutesFor:'dark_rum'},
+    {id:'mount_gay', name:'Mount Gay', category:'Rum', group:'Spirits', substitutesFor:'dark_rum'},
+    {id:'goslings', name:"Gosling's", category:'Rum', group:'Spirits', substitutesFor:'dark_rum'},
+    {id:'appleton_estate', name:'Appleton Estate', category:'Rum', group:'Spirits', substitutesFor:'dark_rum'},
+    {id:'diplomatico', name:'Diplomático', category:'Rum', group:'Spirits', substitutesFor:'dark_rum'},
+    {id:'plantation', name:'Plantation', category:'Rum', group:'Spirits', substitutesFor:'dark_rum'},
+    {id:'patron', name:'Patrón', category:'Tequila', group:'Spirits', substitutesFor:'tequila'},
+    {id:'don_julio', name:'Don Julio', category:'Tequila', group:'Spirits', substitutesFor:'tequila'},
+    {id:'jose_cuervo', name:'Jose Cuervo', category:'Tequila', group:'Spirits', substitutesFor:'tequila'},
+    {id:'casamigos', name:'Casamigos', category:'Tequila', group:'Spirits', substitutesFor:'tequila'},
+    {id:'herradura', name:'Herradura', category:'Tequila', group:'Spirits', substitutesFor:'tequila'},
+    {id:'espolon', name:'Espolòn', category:'Tequila', group:'Spirits', substitutesFor:'tequila'},
+    {id:'jack_daniels', name:"Jack Daniel's", category:'Whiskey', group:'Spirits', substitutesFor:'bourbon'},
+    {id:'jim_beam', name:'Jim Beam', category:'Whiskey', group:'Spirits', substitutesFor:'bourbon'},
+    {id:'makers_mark', name:"Maker's Mark", category:'Whiskey', group:'Spirits', substitutesFor:'bourbon'},
+    {id:'woodford_reserve', name:'Woodford Reserve', category:'Whiskey', group:'Spirits', substitutesFor:'bourbon'},
+    {id:'buffalo_trace', name:'Buffalo Trace', category:'Whiskey', group:'Spirits', substitutesFor:'bourbon'},
+    {id:'wild_turkey', name:'Wild Turkey', category:'Whiskey', group:'Spirits', substitutesFor:'bourbon'},
+    {id:'four_roses', name:'Four Roses', category:'Whiskey', group:'Spirits', substitutesFor:'bourbon'},
+    {id:'elijah_craig', name:'Elijah Craig', category:'Whiskey', group:'Spirits', substitutesFor:'bourbon'},
+    {id:'bulleit_rye', name:'Bulleit Rye', category:'Whiskey', group:'Spirits', substitutesFor:'rye_whiskey'},
+    {id:'rittenhouse', name:'Rittenhouse', category:'Whiskey', group:'Spirits', substitutesFor:'rye_whiskey'},
+    {id:'johnnie_walker', name:'Johnnie Walker', category:'Whiskey', group:'Spirits', substitutesFor:'scotch_whisky'},
+    {id:'glenlivet', name:'Glenlivet', category:'Whiskey', group:'Spirits', substitutesFor:'scotch_whisky'},
+    {id:'glenfiddich', name:'Glenfiddich', category:'Whiskey', group:'Spirits', substitutesFor:'scotch_whisky'},
+    {id:'macallan', name:'Macallan', category:'Whiskey', group:'Spirits', substitutesFor:'scotch_whisky'},
+    {id:'laphroaig', name:'Laphroaig', category:'Whiskey', group:'Spirits', substitutesFor:'scotch_whisky'},
+    {id:'chivas_regal', name:'Chivas Regal', category:'Whiskey', group:'Spirits', substitutesFor:'scotch_whisky'},
+    {id:'dewars', name:"Dewar's", category:'Whiskey', group:'Spirits', substitutesFor:'scotch_whisky'},
+    {id:'ballantines', name:"Ballantine's", category:'Whiskey', group:'Spirits', substitutesFor:'scotch_whisky'},
+    {id:'ardbeg', name:'Ardbeg', category:'Whiskey', group:'Spirits', substitutesFor:'scotch_whisky'},
+    {id:'jameson', name:'Jameson', category:'Whiskey', group:'Spirits', substitutesFor:'whiskey_any'},
+    {id:'bushmills', name:'Bushmills', category:'Whiskey', group:'Spirits', substitutesFor:'whiskey_any'},
+    {id:'crown_royal', name:'Crown Royal', category:'Whiskey', group:'Spirits', substitutesFor:'whiskey_any'},
+    {id:'hennessy', name:'Hennessy', category:'Brandy', group:'Spirits', substitutesFor:'brandy'},
+    {id:'remy_martin', name:'Rémy Martin', category:'Brandy', group:'Spirits', substitutesFor:'brandy'},
+    {id:'courvoisier', name:'Courvoisier', category:'Brandy', group:'Spirits', substitutesFor:'brandy'},
+    {id:'cointreau', name:'Cointreau', category:'Orange Liqueur', group:'Liqueurs & Fortified Wine', substitutesFor:'triple_sec'},
+    {id:'grand_marnier', name:'Grand Marnier', category:'Orange Liqueur', group:'Liqueurs & Fortified Wine', substitutesFor:'triple_sec'},
+    {id:'kahlua', name:'Kahlúa', category:'Coffee Liqueur', group:'Liqueurs & Fortified Wine', substitutesFor:'coffee_liqueur'},
+    {id:'tia_maria', name:'Tia Maria', category:'Coffee Liqueur', group:'Liqueurs & Fortified Wine', substitutesFor:'coffee_liqueur'},
+    {id:'disaronno', name:'Disaronno', category:'Almond Liqueur', group:'Liqueurs & Fortified Wine', substitutesFor:'amaretto'},
+    {id:'baileys', name:"Baileys", category:'Cream Liqueur', group:'Liqueurs & Fortified Wine', substitutesFor:'irish_cream'},
+    {id:'luxardo', name:'Luxardo', category:'Cherry Liqueur', group:'Liqueurs & Fortified Wine', substitutesFor:'maraschino_liqueur'},
+    {id:'chambord', name:'Chambord', category:'Raspberry Liqueur', group:'Liqueurs & Fortified Wine', substitutesFor:'creme_de_framboise'},
+    {id:'fabrizia', name:'Fabrizia', category:'Lemon Liqueur', group:'Liqueurs & Fortified Wine', substitutesFor:'limoncello'},
+    {id:'noilly_prat', name:'Noilly Prat', category:'Fortified Wine', group:'Liqueurs & Fortified Wine', substitutesFor:'dry_vermouth'},
+    {id:'martini_extra_dry', name:'Martini Extra Dry', category:'Fortified Wine', group:'Liqueurs & Fortified Wine', substitutesFor:'dry_vermouth'},
+    {id:'carpano_antica', name:'Carpano Antica', category:'Fortified Wine', group:'Liqueurs & Fortified Wine', substitutesFor:'sweet_vermouth'},
+    {id:'martini_rosso', name:'Martini Rosso', category:'Fortified Wine', group:'Liqueurs & Fortified Wine', substitutesFor:'sweet_vermouth'},
+    {id:'roses_grenadine', name:"Rose's Grenadine", category:'Syrup', group:'Syrups', substitutesFor:'grenadine'},
+    {id:'roses_lime_juice', name:"Rose's Lime Juice", category:'Citrus Juice', group:'Juice & Mixers', substitutesFor:'lime_juice'}
+  ];
+
+  // Alternate typed forms that don't reduce to the same text as the brand's
+  // display name once accents are stripped (normalize() drops non-ASCII
+  // letters rather than transliterating them) — e.g. "Patrón" normalizes to
+  // "patrn", not "patron", so the ascii form needs an explicit alias.
+  var BRAND_ALIASES = {
+    'patron':'patron', 'remy martin':'remy_martin', 'kahlua':'kahlua', 'stoli':'stolichnaya'
+  };
+
+  var RECIPES = [
+    {name:'Old Fashioned', base:'Whiskey', glass:'Rocks', method:'Stirred',
+      items:[{id:'bourbon', amt:'2 oz', familyOk:true},{id:'simple_syrup', amt:'1 tsp'},{id:'angostura_bitters', amt:'2 dashes'}],
+      garnish:'Orange peel', note:'Stir whiskey, syrup, and bitters with ice; strain over a large cube.'},
+    {name:'Manhattan', base:'Whiskey', glass:'Coupe', method:'Stirred',
+      items:[{id:'rye_whiskey', amt:'2 oz', familyOk:true},{id:'sweet_vermouth', amt:'1 oz'},{id:'angostura_bitters', amt:'2 dashes'}],
+      garnish:'Brandied cherry', note:'Stir with ice; strain into a chilled coupe.'},
+    {name:'Whiskey Sour', base:'Whiskey', glass:'Rocks', method:'Shaken',
+      items:[{id:'bourbon', amt:'2 oz', familyOk:true},{id:'lemon_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.75 oz'},{id:'egg_white', amt:'1', optional:true}],
+      garnish:'Cherry', note:'Shake hard with ice — dry-shake first if using egg white — then strain over ice.'},
+    {name:'Boulevardier', base:'Whiskey', glass:'Rocks', method:'Stirred',
+      items:[{id:'bourbon', amt:'1 oz', familyOk:true},{id:'campari', amt:'1 oz'},{id:'sweet_vermouth', amt:'1 oz'}],
+      garnish:'Orange peel', note:'Stir with ice; strain over a large cube.'},
+    {name:'Sazerac', base:'Whiskey', glass:'Rocks', method:'Stirred',
+      items:[{id:'rye_whiskey', amt:'2 oz'},{id:'simple_syrup', amt:'.25 oz'},{id:'peychauds_bitters', amt:'3 dashes'},{id:'absinthe', amt:'rinse'}],
+      garnish:'Lemon peel, expressed and discarded', note:'Rinse a chilled glass with absinthe; stir the rest with ice and strain in.'},
+    {name:'Mint Julep', base:'Whiskey', glass:'Julep tin', method:'Built',
+      items:[{id:'bourbon', amt:'2.5 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'mint_leaves', amt:'8 leaves'}],
+      garnish:'Mint sprig', note:'Muddle mint gently with syrup; pack with crushed ice, add bourbon, and swizzle.'},
+    {name:'Rusty Nail', base:'Whiskey', glass:'Rocks', method:'Built',
+      items:[{id:'scotch_whisky', amt:'1.5 oz'},{id:'drambuie', amt:'.75 oz'}],
+      garnish:'Lemon peel', note:'Build over ice in a rocks glass and stir briefly.'},
+    {name:'Vieux Carré', base:'Whiskey', glass:'Rocks', method:'Stirred',
+      items:[{id:'rye_whiskey', amt:'1 oz'},{id:'brandy', amt:'1 oz'},{id:'sweet_vermouth', amt:'1 oz'},{id:'benedictine', amt:'bar spoon'},{id:'angostura_bitters', amt:'2 dashes'},{id:'peychauds_bitters', amt:'2 dashes'}],
+      garnish:'Lemon peel', note:'Stir with ice; strain over one large cube.'},
+    {name:'Penicillin', base:'Whiskey', glass:'Rocks', method:'Shaken',
+      items:[{id:'scotch_whisky', amt:'2 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'ginger_honey_syrup', amt:'.75 oz'}],
+      garnish:'Candied ginger', note:'Shake with ice; strain over fresh ice.'},
+    {name:'Martini', base:'Gin', glass:'Coupe', method:'Stirred',
+      items:[{id:'gin', amt:'2.5 oz'},{id:'dry_vermouth', amt:'.5 oz'}],
+      garnish:'Olive or lemon twist', note:'Stir with ice; strain into a chilled glass.'},
+    {name:'Vodka Martini', base:'Vodka', glass:'Coupe', method:'Stirred',
+      items:[{id:'vodka', amt:'2.5 oz'},{id:'dry_vermouth', amt:'.5 oz'}],
+      garnish:'Olive', note:'Stir — or shake for a bruised, ice-cold finish — and strain into a chilled glass.'},
+    {name:'Negroni', base:'Gin', glass:'Rocks', method:'Stirred',
+      items:[{id:'gin', amt:'1 oz'},{id:'campari', amt:'1 oz'},{id:'sweet_vermouth', amt:'1 oz'}],
+      garnish:'Orange peel', note:'Stir with ice; strain over a large cube.'},
+    {name:'Gimlet', base:'Gin', glass:'Coupe', method:'Shaken',
+      items:[{id:'gin', amt:'2 oz'},{id:'lime_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.5 oz'}],
+      garnish:'Lime wheel', note:'Shake with ice; strain into a chilled glass.'},
+    {name:'Aviation', base:'Gin', glass:'Coupe', method:'Shaken',
+      items:[{id:'gin', amt:'2 oz'},{id:'maraschino_liqueur', amt:'.5 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'creme_de_violette', amt:'.25 oz'}],
+      garnish:'Brandied cherry', note:'Shake with ice; strain into a chilled glass.'},
+    {name:'Last Word', base:'Gin', glass:'Coupe', method:'Shaken',
+      items:[{id:'gin', amt:'.75 oz'},{id:'green_chartreuse', amt:'.75 oz'},{id:'maraschino_liqueur', amt:'.75 oz'},{id:'lime_juice', amt:'.75 oz'}],
+      garnish:'—', note:'Shake equal parts hard with ice; strain into a chilled glass.'},
+    {name:"Bee's Knees", base:'Gin', glass:'Coupe', method:'Shaken',
+      items:[{id:'gin', amt:'2 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'honey_syrup', amt:'.75 oz'}],
+      garnish:'Lemon twist', note:'Shake with ice; strain into a chilled glass.'},
+    {name:'Tom Collins', base:'Gin', glass:'Collins', method:'Shaken, topped',
+      items:[{id:'gin', amt:'2 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'soda_water', amt:'top'}],
+      garnish:'Lemon wheel, cherry', note:'Shake gin, juice, and syrup with ice; strain over ice and top with soda.'},
+    {name:'Bramble', base:'Gin', glass:'Rocks', method:'Built',
+      items:[{id:'gin', amt:'2 oz'},{id:'lemon_juice', amt:'.5 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'creme_de_mure', amt:'.5 oz'}],
+      garnish:'Blackberry, lemon', note:'Shake gin, lemon, and syrup with ice; strain over crushed ice and drizzle the blackberry liqueur on top.'},
+    {name:'Clover Club', base:'Gin', glass:'Coupe', method:'Shaken',
+      items:[{id:'gin', amt:'1.5 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'raspberry_syrup', amt:'.5 oz'},{id:'egg_white', amt:'1', optional:true}],
+      garnish:'Raspberries', note:'Shake hard with ice; strain into a chilled coupe.'},
+    {name:'French 75', base:'Gin', glass:'Flute', method:'Shaken, topped',
+      items:[{id:'gin', amt:'1 oz'},{id:'lemon_juice', amt:'.5 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'sparkling_wine', amt:'top'}],
+      garnish:'Lemon twist', note:'Shake gin, lemon, and syrup with ice; strain into a flute and top with sparkling wine.'},
+    {name:'Corpse Reviver No. 2', base:'Gin', glass:'Coupe', method:'Shaken',
+      items:[{id:'gin', amt:'.75 oz'},{id:'triple_sec', amt:'.75 oz', familyOk:true},{id:'lillet_blanc', amt:'.75 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'absinthe', amt:'rinse'}],
+      garnish:'—', note:'Rinse the glass with absinthe; shake the rest with ice and strain in.'},
+    {name:'Daiquiri', base:'Rum', glass:'Coupe', method:'Shaken',
+      items:[{id:'white_rum', amt:'2 oz'},{id:'lime_juice', amt:'1 oz'},{id:'simple_syrup', amt:'.75 oz'}],
+      garnish:'Lime wheel', note:'Shake with ice; strain into a chilled coupe.'},
+    {name:'Mojito', base:'Rum', glass:'Highball', method:'Built',
+      items:[{id:'white_rum', amt:'2 oz'},{id:'lime_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'mint_leaves', amt:'8 leaves'},{id:'soda_water', amt:'top'}],
+      garnish:'Mint sprig', note:'Muddle mint with lime and syrup; add rum and ice, then top with soda.'},
+    {name:"Dark 'n' Stormy", base:'Rum', glass:'Highball', method:'Built',
+      items:[{id:'dark_rum', amt:'2 oz'},{id:'ginger_beer', amt:'top'},{id:'lime_juice', amt:'.25 oz'}],
+      garnish:'Lime wheel', note:'Build over ice, floating the dark rum on top of the ginger beer.'},
+    {name:'Mai Tai', base:'Rum', glass:'Rocks', method:'Shaken',
+      items:[{id:'dark_rum', amt:'1 oz'},{id:'white_rum', amt:'1 oz'},{id:'triple_sec', amt:'.5 oz', familyOk:true},{id:'lime_juice', amt:'.75 oz'},{id:'orgeat_syrup', amt:'.5 oz'}],
+      garnish:'Mint, lime shell', note:'Shake with crushed ice and pour unstrained.'},
+    {name:'Piña Colada', base:'Rum', glass:'Hurricane', method:'Blended',
+      items:[{id:'white_rum', amt:'2 oz'},{id:'coconut_cream', amt:'1 oz'},{id:'pineapple_juice', amt:'1 oz'}],
+      garnish:'Pineapple wedge, cherry', note:'Blend or shake hard with ice until smooth.'},
+    {name:'Rum Punch', base:'Rum', glass:'Hurricane', method:'Shaken',
+      items:[{id:'dark_rum', amt:'2 oz', familyOk:true},{id:'orange_juice', amt:'1 oz'},{id:'pineapple_juice', amt:'1 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'grenadine', amt:'splash'}],
+      garnish:'Orange wheel, cherry', note:'Shake with ice; strain over fresh ice and top with a splash of grenadine.'},
+    {name:'Caipirinha', base:'Cachaça', glass:'Rocks', method:'Muddled',
+      items:[{id:'cachaca', amt:'2 oz'},{id:'lime_wedges', amt:'1 lime'},{id:'simple_syrup', amt:'.5 oz'}],
+      garnish:'—', note:'Muddle lime wedges with syrup; add cachaça and crushed ice, then stir.'},
+    {name:'Margarita', base:'Tequila', glass:'Rocks', method:'Shaken',
+      items:[{id:'tequila', amt:'2 oz'},{id:'triple_sec', amt:'1 oz', familyOk:true},{id:'lime_juice', amt:'1 oz'}],
+      garnish:'Salt rim, lime wheel', note:'Shake with ice; strain over ice in a salt-rimmed glass.'},
+    {name:'Paloma', base:'Tequila', glass:'Highball', method:'Built',
+      items:[{id:'tequila', amt:'2 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'grapefruit_soda', amt:'top'}],
+      garnish:'Lime wheel, salt rim', note:'Build over ice and top with grapefruit soda.'},
+    {name:'Tequila Sunrise', base:'Tequila', glass:'Highball', method:'Built',
+      items:[{id:'tequila', amt:'2 oz'},{id:'orange_juice', amt:'top'},{id:'grenadine', amt:'.5 oz'}],
+      garnish:'Orange wheel, cherry', note:'Build tequila and orange juice over ice; sink the grenadine so it settles at the bottom.'},
+    {name:'Sidecar', base:'Brandy', glass:'Coupe', method:'Shaken',
+      items:[{id:'brandy', amt:'2 oz'},{id:'triple_sec', amt:'.75 oz', familyOk:true},{id:'lemon_juice', amt:'.75 oz'}],
+      garnish:'Sugar rim, lemon twist', note:'Shake with ice; strain into a sugar-rimmed coupe.'},
+    {name:'Moscow Mule', base:'Vodka', glass:'Copper mug', method:'Built',
+      items:[{id:'vodka', amt:'2 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'ginger_beer', amt:'top'}],
+      garnish:'Lime wheel', note:'Build over ice in a copper mug and top with ginger beer.'},
+    {name:'Cosmopolitan', base:'Vodka', glass:'Coupe', method:'Shaken',
+      items:[{id:'vodka', amt:'1.5 oz'},{id:'triple_sec', amt:'.5 oz', familyOk:true},{id:'lime_juice', amt:'.5 oz'},{id:'cranberry_juice', amt:'.5 oz'}],
+      garnish:'Orange twist', note:'Shake with ice; strain into a chilled coupe.'},
+    {name:'White Russian', base:'Vodka', glass:'Rocks', method:'Built',
+      items:[{id:'vodka', amt:'2 oz'},{id:'coffee_liqueur', amt:'1 oz'},{id:'cream', amt:'.75 oz'}],
+      garnish:'—', note:'Build over ice, floating the cream on top.'},
+    {name:'Espresso Martini', base:'Vodka', glass:'Coupe', method:'Shaken',
+      items:[{id:'vodka', amt:'1.5 oz'},{id:'coffee_liqueur', amt:'.5 oz'},{id:'espresso', amt:'1 oz'},{id:'simple_syrup', amt:'.25 oz'}],
+      garnish:'Coffee beans', note:'Shake hard with ice until frothy; strain into a chilled coupe.'},
+    {name:'Screwdriver', base:'Vodka', glass:'Highball', method:'Built',
+      items:[{id:'vodka', amt:'2 oz'},{id:'orange_juice', amt:'top'}],
+      garnish:'Orange wheel', note:'Build over ice and stir.'},
+    {name:'Bloody Mary', base:'Vodka', glass:'Highball', method:'Built',
+      items:[{id:'vodka', amt:'1.5 oz'},{id:'tomato_juice', amt:'3 oz'},{id:'lemon_juice', amt:'.25 oz'},{id:'hot_sauce', amt:'dash'},{id:'worcestershire', amt:'dash'}],
+      garnish:'Celery stalk, lime', note:'Roll with ice, season to taste, and garnish generously.'},
+    {name:'Amaretto Sour', base:'Liqueur', glass:'Rocks', method:'Shaken',
+      items:[{id:'amaretto', amt:'2 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.25 oz'},{id:'egg_white', amt:'1', optional:true}],
+      garnish:'Cherry', note:'Shake hard with ice; strain over ice.'},
+    {name:'Grasshopper', base:'Liqueur', glass:'Coupe', method:'Shaken',
+      items:[{id:'creme_de_menthe', amt:'1 oz'},{id:'creme_de_cacao', amt:'1 oz'},{id:'cream', amt:'1 oz'}],
+      garnish:'—', note:'Shake with ice; strain into a chilled coupe.'},
+    {name:'Godfather', base:'Whiskey', glass:'Rocks', method:'Built',
+      items:[{id:'scotch_whisky', amt:'1.5 oz'},{id:'amaretto', amt:'.75 oz'}],
+      garnish:'—', note:'Build over ice and stir.'},
+    {name:'Aperol Spritz', base:'Sparkling', glass:'Wine glass', method:'Built',
+      items:[{id:'sparkling_wine', amt:'3 oz'},{id:'aperol', amt:'2 oz'},{id:'soda_water', amt:'1 oz'}],
+      garnish:'Orange wheel', note:'Build in a wine glass over ice: sparkling wine, then Aperol, then a splash of soda.'},
+    {name:'Kir Royale', base:'Sparkling', glass:'Flute', method:'Built',
+      items:[{id:'sparkling_wine', amt:'top'},{id:'creme_de_cassis', amt:'.5 oz'}],
+      garnish:'—', note:'Pour the cassis into a flute and top with chilled sparkling wine.'},
+    {name:'Gin and Tonic', base:'Gin', glass:'Highball', method:'Built',
+      items:[{id:'gin', amt:'2 oz'},{id:'tonic_water', amt:'top'}],
+      garnish:'Lime wheel', note:'Build over ice and top with tonic.'},
+    {name:'Vodka Tonic', base:'Vodka', glass:'Highball', method:'Built',
+      items:[{id:'vodka', amt:'2 oz'},{id:'tonic_water', amt:'top'}],
+      garnish:'Lime wheel', note:'Build over ice and top with tonic.'},
+    {name:'Vesper', base:'Gin', glass:'Coupe', method:'Shaken',
+      items:[{id:'gin', amt:'3 oz'},{id:'vodka', amt:'1 oz'},{id:'lillet_blanc', amt:'.5 oz'}],
+      garnish:'Lemon twist', note:'Shake hard with ice until ice-cold; strain into a chilled glass.'},
+    {name:'Jungle Bird', base:'Rum', glass:'Rocks', method:'Shaken',
+      items:[{id:'dark_rum', amt:'1.5 oz'},{id:'campari', amt:'.75 oz'},{id:'pineapple_juice', amt:'1.5 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'simple_syrup', amt:'.25 oz'}],
+      garnish:'Pineapple wedge', note:'Shake with ice; strain over ice.'},
+    {name:'El Diablo', base:'Tequila', glass:'Highball', method:'Built',
+      items:[{id:'tequila', amt:'1.5 oz'},{id:'creme_de_cassis', amt:'.5 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'ginger_beer', amt:'top'}],
+      garnish:'Lime wheel', note:'Build over ice and top with ginger beer.'},
+    {name:'Ward Eight', base:'Whiskey', glass:'Coupe', method:'Shaken',
+      items:[{id:'rye_whiskey', amt:'2 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'orange_juice', amt:'.25 oz'},{id:'grenadine', amt:'.25 oz'}],
+      garnish:'Cherry', note:'Shake with ice; strain into a chilled coupe.'},
+    {name:'Whiskey Smash', base:'Whiskey', glass:'Rocks', method:'Shaken',
+      items:[{id:'bourbon', amt:'2 oz', familyOk:true},{id:'lemon_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'mint_leaves', amt:'6 leaves'}],
+      garnish:'Mint sprig', note:'Muddle mint with lemon and syrup; shake with whiskey and ice, strain over fresh ice.'},
+    {name:'Southside', base:'Gin', glass:'Coupe', method:'Shaken',
+      items:[{id:'gin', amt:'2 oz'},{id:'lime_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.75 oz'},{id:'mint_leaves', amt:'8 leaves'}],
+      garnish:'Mint sprig', note:'Shake hard with ice; fine-strain into a chilled glass.'},
+    {name:'Americano', base:'Sparkling', glass:'Highball', method:'Built',
+      items:[{id:'campari', amt:'1 oz'},{id:'sweet_vermouth', amt:'1 oz'},{id:'soda_water', amt:'top'}],
+      garnish:'Orange slice', note:'Build over ice and top with soda.'},
+    {name:'Negroni Sbagliato', base:'Sparkling', glass:'Rocks', method:'Built',
+      items:[{id:'campari', amt:'1 oz'},{id:'sweet_vermouth', amt:'1 oz'},{id:'sparkling_wine', amt:'2 oz'}],
+      garnish:'Orange peel', note:'Build over ice — sparkling wine in for the gin.'},
+    {name:'Irish Coffee', base:'Whiskey', glass:'Mug', method:'Built',
+      items:[{id:'whiskey_any', amt:'1.5 oz', familyOk:true},{id:'espresso', amt:'4 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'cream', amt:'float'}],
+      garnish:'—', note:'Stir whiskey, hot coffee, and syrup; float lightly whipped cream on top.'},
+    {name:'Hot Toddy', base:'Whiskey', glass:'Mug', method:'Built',
+      items:[{id:'bourbon', amt:'2 oz', familyOk:true},{id:'honey_syrup', amt:'.75 oz'},{id:'lemon_juice', amt:'.5 oz'}],
+      garnish:'Lemon wheel, clove', note:'Stir with hot water; serve steaming.'},
+    {name:'Mudslide', base:'Vodka', glass:'Rocks', method:'Shaken',
+      items:[{id:'vodka', amt:'1 oz'},{id:'coffee_liqueur', amt:'1 oz'},{id:'irish_cream', amt:'1 oz'}],
+      garnish:'Chocolate shavings', note:'Shake with ice; strain over ice.'},
+    {name:'B-52', base:'Liqueur', glass:'Shot', method:'Layered',
+      items:[{id:'coffee_liqueur', amt:'.5 oz'},{id:'irish_cream', amt:'.5 oz'},{id:'triple_sec', amt:'.5 oz', familyOk:true}],
+      garnish:'—', note:'Layer carefully over the back of a spoon, heaviest first.'},
+    {name:'Sex on the Beach', base:'Vodka', glass:'Highball', method:'Built',
+      items:[{id:'vodka', amt:'1.5 oz'},{id:'peach_schnapps', amt:'.5 oz'},{id:'orange_juice', amt:'2 oz'},{id:'cranberry_juice', amt:'2 oz'}],
+      garnish:'Orange slice', note:'Build over ice and stir.'},
+    {name:'Fuzzy Navel', base:'Liqueur', glass:'Highball', method:'Built',
+      items:[{id:'peach_schnapps', amt:'1.5 oz'},{id:'orange_juice', amt:'top'}],
+      garnish:'Orange slice', note:'Build over ice and stir.'},
+    {name:'Salty Dog', base:'Vodka', glass:'Highball', method:'Built',
+      items:[{id:'vodka', amt:'2 oz'},{id:'grapefruit_juice', amt:'4 oz'}],
+      garnish:'Salt rim', note:'Build over ice in a salt-rimmed glass.'},
+    {name:'Greyhound', base:'Vodka', glass:'Highball', method:'Built',
+      items:[{id:'vodka', amt:'2 oz'},{id:'grapefruit_juice', amt:'4 oz'}],
+      garnish:'—', note:'Build over ice and stir — a Salty Dog without the salt.'},
+    {name:'Sea Breeze', base:'Vodka', glass:'Highball', method:'Built',
+      items:[{id:'vodka', amt:'1.5 oz'},{id:'cranberry_juice', amt:'3 oz'},{id:'grapefruit_juice', amt:'1 oz'}],
+      garnish:'Lime wedge', note:'Build over ice and stir.'},
+    {name:'Bay Breeze', base:'Vodka', glass:'Highball', method:'Built',
+      items:[{id:'vodka', amt:'1.5 oz'},{id:'cranberry_juice', amt:'3 oz'},{id:'pineapple_juice', amt:'1 oz'}],
+      garnish:'Lime wedge', note:'Build over ice and stir.'},
+    {name:'Cuba Libre', base:'Rum', glass:'Highball', method:'Built',
+      items:[{id:'white_rum', amt:'2 oz'},{id:'cola', amt:'top'},{id:'lime_juice', amt:'.25 oz'}],
+      garnish:'Lime wedge', note:'Build over ice and top with cola.'},
+    {name:'Long Island Iced Tea', base:'Vodka', glass:'Highball', method:'Shaken',
+      items:[{id:'vodka', amt:'.5 oz'},{id:'gin', amt:'.5 oz'},{id:'white_rum', amt:'.5 oz'},{id:'tequila', amt:'.5 oz'},{id:'triple_sec', amt:'.5 oz', familyOk:true},{id:'lemon_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'cola', amt:'splash'}],
+      garnish:'Lemon wedge', note:'Shake everything but the cola with ice; strain over ice and top with a splash of cola.'},
+    {name:'Oaxaca Old Fashioned', base:'Mezcal', glass:'Rocks', method:'Stirred',
+      items:[{id:'mezcal', amt:'2 oz'},{id:'simple_syrup', amt:'.25 oz'},{id:'angostura_bitters', amt:'2 dashes'}],
+      garnish:'Orange peel', note:'Stir with ice; strain over a large cube.'},
+    {name:'Hemingway Daiquiri', base:'Rum', glass:'Coupe', method:'Shaken',
+      items:[{id:'white_rum', amt:'2 oz'},{id:'lime_juice', amt:'.75 oz'},{id:'grapefruit_juice', amt:'.5 oz'},{id:'maraschino_liqueur', amt:'.5 oz'}],
+      garnish:'Lime wheel', note:'Shake with ice; strain into a chilled coupe.'},
+    {name:'Rob Roy', base:'Whiskey', glass:'Coupe', method:'Stirred',
+      items:[{id:'scotch_whisky', amt:'2 oz'},{id:'sweet_vermouth', amt:'1 oz'},{id:'angostura_bitters', amt:'2 dashes'}],
+      garnish:'Cherry', note:'Stir with ice; strain into a chilled coupe — a Manhattan in a kilt.'},
+    {name:'Death in the Afternoon', base:'Sparkling', glass:'Flute', method:'Built',
+      items:[{id:'absinthe', amt:'1 oz'},{id:'sparkling_wine', amt:'top'}],
+      garnish:'—', note:'Pour absinthe into a flute and top slowly with chilled champagne.'},
+    {name:'Kamikaze', base:'Vodka', glass:'Coupe', method:'Shaken',
+      items:[{id:'vodka', amt:'1 oz'},{id:'triple_sec', amt:'1 oz', familyOk:true},{id:'lime_juice', amt:'1 oz'}],
+      garnish:'Lime wheel', note:'Shake with ice; strain into a chilled glass.'},
+    {name:'Between the Sheets', base:'Rum', glass:'Coupe', method:'Shaken',
+      items:[{id:'white_rum', amt:'.75 oz'},{id:'brandy', amt:'.75 oz'},{id:'triple_sec', amt:'.75 oz', familyOk:true},{id:'lemon_juice', amt:'.75 oz'}],
+      garnish:'Lemon twist', note:'Shake with ice; strain into a chilled coupe.'},
+    {name:'Alexander', base:'Brandy', glass:'Coupe', method:'Shaken',
+      items:[{id:'brandy', amt:'1.5 oz'},{id:'creme_de_cacao', amt:'1 oz'},{id:'cream', amt:'1 oz'}],
+      garnish:'Grated nutmeg', note:'Shake with ice; strain into a chilled coupe.'},
+    {name:'Brandy Crusta', base:'Brandy', glass:'Coupe', method:'Shaken',
+      items:[{id:'brandy', amt:'2 oz'},{id:'triple_sec', amt:'.5 oz', familyOk:true},{id:'lemon_juice', amt:'.25 oz'},{id:'angostura_bitters', amt:'2 dashes'}],
+      garnish:'Sugar rim, lemon peel', note:'Shake with ice; strain into a sugar-rimmed glass.'},
+    {name:'Casino', base:'Gin', glass:'Coupe', method:'Shaken',
+      items:[{id:'gin', amt:'2 oz'},{id:'maraschino_liqueur', amt:'.25 oz'},{id:'lemon_juice', amt:'.25 oz'},{id:'angostura_bitters', amt:'2 dashes'}],
+      garnish:'Cherry', note:'Shake with ice; strain into a chilled coupe.'},
+    {name:'Gin Fizz', base:'Gin', glass:'Highball', method:'Shaken, topped',
+      items:[{id:'gin', amt:'2 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.75 oz'},{id:'soda_water', amt:'top'}],
+      garnish:'—', note:'Shake gin, lemon, and syrup hard with ice; strain over ice and top with soda.'},
+    {name:'Hanky Panky', base:'Gin', glass:'Coupe', method:'Stirred',
+      items:[{id:'gin', amt:'1.5 oz'},{id:'sweet_vermouth', amt:'1.5 oz'},{id:'fernet_branca', amt:'.25 oz'}],
+      garnish:'Orange peel', note:'Stir with ice; strain into a chilled coupe.'},
+    {name:'John Collins', base:'Whiskey', glass:'Collins', method:'Shaken, topped',
+      items:[{id:'bourbon', amt:'2 oz', familyOk:true},{id:'lemon_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'soda_water', amt:'top'}],
+      garnish:'Lemon wheel, cherry', note:'Shake whiskey, lemon, and syrup with ice; strain over ice and top with soda.'},
+    {name:'Martinez', base:'Gin', glass:'Coupe', method:'Stirred',
+      items:[{id:'gin', amt:'1.5 oz'},{id:'sweet_vermouth', amt:'1.5 oz'},{id:'maraschino_liqueur', amt:'.25 oz'},{id:'angostura_bitters', amt:'2 dashes'}],
+      garnish:'Lemon twist', note:'Stir with ice; strain into a chilled coupe — the Martini’s ancestor.'},
+    {name:'Mary Pickford', base:'Rum', glass:'Coupe', method:'Shaken',
+      items:[{id:'white_rum', amt:'2 oz'},{id:'pineapple_juice', amt:'1.5 oz'},{id:'grenadine', amt:'.25 oz'},{id:'maraschino_liqueur', amt:'.25 oz'}],
+      garnish:'Cherry', note:'Shake with ice; strain into a chilled coupe.'},
+    {name:'Monkey Gland', base:'Gin', glass:'Coupe', method:'Shaken',
+      items:[{id:'gin', amt:'2 oz'},{id:'orange_juice', amt:'1 oz'},{id:'grenadine', amt:'.25 oz'},{id:'absinthe', amt:'2 dashes'}],
+      garnish:'—', note:'Shake with ice; strain into a chilled coupe.'},
+    {name:"Planter's Punch", base:'Rum', glass:'Hurricane', method:'Shaken',
+      items:[{id:'dark_rum', amt:'2 oz'},{id:'orange_juice', amt:'1 oz'},{id:'pineapple_juice', amt:'1 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'grenadine', amt:'.25 oz'}],
+      garnish:'Orange wheel, cherry', note:'Shake with ice; strain over fresh ice.'},
+    {name:'Remember the Maine', base:'Whiskey', glass:'Coupe', method:'Stirred',
+      items:[{id:'rye_whiskey', amt:'2 oz'},{id:'sweet_vermouth', amt:'.75 oz'},{id:'cherry_brandy', amt:'.25 oz'},{id:'absinthe', amt:'1 dash'}],
+      garnish:'Cherry', note:'Stir with ice; strain into a chilled coupe.'},
+    {name:'Stinger', base:'Brandy', glass:'Coupe', method:'Shaken',
+      items:[{id:'brandy', amt:'2 oz'},{id:'creme_de_menthe', amt:'1 oz'}],
+      garnish:'Mint sprig', note:'Shake with ice; strain into a chilled glass.'},
+    {name:'Tuxedo', base:'Gin', glass:'Coupe', method:'Stirred',
+      items:[{id:'gin', amt:'1.5 oz'},{id:'dry_vermouth', amt:'1.5 oz'},{id:'maraschino_liqueur', amt:'.25 oz'},{id:'absinthe', amt:'1 dash'},{id:'orange_bitters', amt:'1 dash'}],
+      garnish:'Lemon twist, cherry', note:'Stir with ice; strain into a chilled coupe.'},
+    {name:'White Lady', base:'Gin', glass:'Coupe', method:'Shaken',
+      items:[{id:'gin', amt:'2 oz'},{id:'triple_sec', amt:'.75 oz', familyOk:true},{id:'lemon_juice', amt:'.75 oz'},{id:'egg_white', amt:'1', optional:true}],
+      garnish:'—', note:'Shake hard with ice; strain into a chilled coupe.'},
+    {name:'Black Russian', base:'Vodka', glass:'Rocks', method:'Built',
+      items:[{id:'vodka', amt:'2 oz'},{id:'coffee_liqueur', amt:'1 oz'}],
+      garnish:'—', note:'Build over ice and stir.'},
+    {name:'Cardinale', base:'Gin', glass:'Rocks', method:'Stirred',
+      items:[{id:'gin', amt:'1.5 oz'},{id:'campari', amt:'1 oz'},{id:'dry_vermouth', amt:'.5 oz'}],
+      garnish:'Lemon twist', note:'Stir with ice; strain over ice — a drier Negroni.'},
+    {name:'Champagne Cocktail', base:'Sparkling', glass:'Flute', method:'Built',
+      items:[{id:'sparkling_wine', amt:'5 oz'},{id:'angostura_bitters', amt:'2 dashes'},{id:'simple_syrup', amt:'.25 oz'}],
+      garnish:'Lemon twist', note:'Soak the sugar with bitters in the glass, then top slowly with chilled sparkling wine.'},
+    {name:'Garibaldi', base:'Sparkling', glass:'Rocks', method:'Built',
+      items:[{id:'campari', amt:'1.5 oz'},{id:'orange_juice', amt:'top'}],
+      garnish:'Orange wheel', note:'Build over ice; top with fresh orange juice and stir.'},
+    {name:'Lemon Drop Martini', base:'Vodka', glass:'Coupe', method:'Shaken',
+      items:[{id:'vodka', amt:'2 oz'},{id:'triple_sec', amt:'.5 oz', familyOk:true},{id:'lemon_juice', amt:'.75 oz'}],
+      garnish:'Sugar rim', note:'Shake with ice; strain into a sugar-rimmed glass.'},
+    {name:'Singapore Sling', base:'Gin', glass:'Hurricane', method:'Shaken, topped',
+      items:[{id:'gin', amt:'1 oz'},{id:'cherry_brandy', amt:'.5 oz'},{id:'benedictine', amt:'.25 oz'},{id:'triple_sec', amt:'.25 oz', familyOk:true},{id:'pineapple_juice', amt:'2 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'grenadine', amt:'.25 oz'},{id:'angostura_bitters', amt:'1 dash'},{id:'soda_water', amt:'top'}],
+      garnish:'Pineapple wedge, cherry', note:'Shake everything but the soda with ice; strain over ice and top with soda.'},
+    {name:'Zombie', base:'Rum', glass:'Hurricane', method:'Shaken',
+      items:[{id:'dark_rum', amt:'1.5 oz'},{id:'white_rum', amt:'1 oz'},{id:'lime_juice', amt:'.75 oz'},{id:'pineapple_juice', amt:'1 oz'},{id:'orange_juice', amt:'1 oz'},{id:'grenadine', amt:'.5 oz'},{id:'simple_syrup', amt:'.5 oz'}],
+      garnish:'Mint sprig', note:'Shake hard with ice; pour into a tiki mug or hurricane glass.'},
+    {name:'Pisco Sour', base:'Pisco', glass:'Coupe', method:'Shaken',
+      items:[{id:'pisco', amt:'2 oz'},{id:'lime_juice', amt:'1 oz'},{id:'simple_syrup', amt:'.75 oz'},{id:'egg_white', amt:'1'},{id:'angostura_bitters', amt:'2 dashes'}],
+      garnish:'Bitters dashed on the foam', note:'Dry-shake, then shake again hard with ice; strain into a chilled coupe.'},
+    {name:'French Martini', base:'Vodka', glass:'Coupe', method:'Shaken',
+      items:[{id:'vodka', amt:'1.5 oz'},{id:'creme_de_framboise', amt:'.5 oz'},{id:'pineapple_juice', amt:'1.5 oz'}],
+      garnish:'—', note:'Shake hard with ice; strain into a chilled coupe.'},
+    {name:'Gin Basil Smash', base:'Gin', glass:'Rocks', method:'Shaken',
+      items:[{id:'gin', amt:'2 oz'},{id:'basil', amt:'10 leaves'},{id:'lemon_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.5 oz'}],
+      garnish:'Basil sprig', note:'Muddle basil with lemon and syrup; add gin and shake hard, then fine-strain over fresh ice.'},
+    {name:'New York Sour', base:'Whiskey', glass:'Rocks', method:'Shaken, floated',
+      items:[{id:'bourbon', amt:'2 oz', familyOk:true},{id:'lemon_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.75 oz'},{id:'red_wine', amt:'.5 oz'}],
+      garnish:'—', note:'Shake whiskey, lemon, and syrup with ice; strain over ice and float the red wine on top.'},
+    {name:'Old Cuban', base:'Rum', glass:'Coupe', method:'Shaken, topped',
+      items:[{id:'white_rum', amt:'1.5 oz'},{id:'lime_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.75 oz'},{id:'mint_leaves', amt:'6 leaves'},{id:'angostura_bitters', amt:'2 dashes'},{id:'sparkling_wine', amt:'top'}],
+      garnish:'Mint sprig', note:'Shake rum, lime, syrup, mint, and bitters with ice; strain into a chilled coupe and top with sparkling wine.'},
+    {name:'Paper Plane', base:'Whiskey', glass:'Coupe', method:'Shaken',
+      items:[{id:'bourbon', amt:'.75 oz'},{id:'aperol', amt:'.75 oz'},{id:'amaro_nonino', amt:'.75 oz'},{id:'lemon_juice', amt:'.75 oz'}],
+      garnish:'—', note:'Shake equal parts hard with ice; strain into a chilled coupe.'},
+    {name:'Russian Spring Punch', base:'Vodka', glass:'Highball', method:'Shaken, topped',
+      items:[{id:'vodka', amt:'1.5 oz'},{id:'creme_de_cassis', amt:'.5 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'sparkling_wine', amt:'top'}],
+      garnish:'Berries', note:'Shake vodka, cassis, lemon, and syrup with ice; strain over ice and top with sparkling wine.'},
+    {name:'Sherry Cobbler', base:'Sherry', glass:'Goblet', method:'Shaken',
+      items:[{id:'sherry', amt:'3 oz'},{id:'simple_syrup', amt:'.5 oz'}],
+      garnish:'Seasonal fruit, mint', note:'Shake with ice; pour unstrained into a goblet packed with crushed ice.'},
+    {name:'Suffering Bastard', base:'Gin', glass:'Highball', method:'Built',
+      items:[{id:'gin', amt:'1 oz'},{id:'brandy', amt:'1 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'angostura_bitters', amt:'2 dashes'},{id:'ginger_beer', amt:'top'}],
+      garnish:'Mint, cucumber', note:'Build over ice and top with ginger beer.'},
+    {name:'Tipperary', base:'Whiskey', glass:'Coupe', method:'Stirred',
+      items:[{id:'whiskey_any', amt:'1.5 oz', familyOk:true},{id:'sweet_vermouth', amt:'1 oz'},{id:'green_chartreuse', amt:'.5 oz'}],
+      garnish:'—', note:'Stir with ice; strain into a chilled coupe.'},
+    {name:"Tommy's Margarita", base:'Tequila', glass:'Rocks', method:'Shaken',
+      items:[{id:'tequila', amt:'2 oz'},{id:'lime_juice', amt:'1 oz'},{id:'simple_syrup', amt:'.5 oz'}],
+      garnish:'Lime wheel', note:'Shake with ice; strain over ice — traditionally sweetened with agave nectar instead of triple sec.'},
+    {name:'Trinidad Sour', base:'Whiskey', glass:'Coupe', method:'Shaken',
+      items:[{id:'rye_whiskey', amt:'.5 oz'},{id:'angostura_bitters', amt:'1.5 oz'},{id:'orgeat_syrup', amt:'1 oz'},{id:'lemon_juice', amt:'.75 oz'}],
+      garnish:'Lemon twist', note:'Shake hard with ice; strain into a chilled coupe — yes, that much bitters is correct.'},
+    {name:'Godmother', base:'Vodka', glass:'Rocks', method:'Built',
+      items:[{id:'vodka', amt:'2 oz'},{id:'amaretto', amt:'1 oz'}],
+      garnish:'—', note:'Build over ice and stir.'},
+    {name:'French Connection', base:'Brandy', glass:'Rocks', method:'Built',
+      items:[{id:'brandy', amt:'1.5 oz'},{id:'amaretto', amt:'1 oz'}],
+      garnish:'—', note:'Build over ice and stir.'},
+    {name:'Nutty Irishman', base:'Liqueur', glass:'Rocks', method:'Built',
+      items:[{id:'irish_cream', amt:'1 oz'},{id:'frangelico', amt:'1 oz'}],
+      garnish:'—', note:'Build over ice and stir — or blend with ice for a frozen version.'},
+    {name:'Blue Hawaiian', base:'Rum', glass:'Hurricane', method:'Blended',
+      items:[{id:'white_rum', amt:'2 oz'},{id:'blue_curacao', amt:'1 oz'},{id:'coconut_cream', amt:'1 oz'},{id:'pineapple_juice', amt:'2 oz'}],
+      garnish:'Pineapple wedge, cherry', note:'Blend or shake hard with ice until smooth.'},
+    {name:"Scarlett O'Hara", base:'Liqueur', glass:'Coupe', method:'Shaken',
+      items:[{id:'southern_comfort', amt:'2 oz'},{id:'cranberry_juice', amt:'1.5 oz'},{id:'lime_juice', amt:'.5 oz'}],
+      garnish:'Lime wheel', note:'Shake with ice; strain into a chilled glass.'},
+    {name:'Airmail', base:'Rum', glass:'Flute', method:'Shaken, topped',
+      items:[{id:'white_rum', amt:'1.5 oz'},{id:'honey_syrup', amt:'.5 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'sparkling_wine', amt:'top'}],
+      garnish:'—', note:"Shake rum, honey syrup, and lemon hard with ice; strain into a chilled flute and top with sparkling wine — Mount Gay's spin on the French 75."},
+    {name:'Jamaican Mule', base:'Rum', glass:'Highball', method:'Built',
+      items:[{id:'dark_rum', amt:'2 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'angostura_bitters', amt:'2 dashes'},{id:'ginger_beer', amt:'top'}],
+      garnish:'Lime wedge', note:"Muddle lime in the glass, add ice and the rest, and top with ginger beer — Appleton Estate's rum take on the Moscow Mule."},
+    {name:'Ti Punch', base:'Rum', glass:'Rocks', method:'Built',
+      items:[{id:'white_rum', amt:'2 oz'},{id:'lime_juice', amt:'.25 oz'},{id:'simple_syrup', amt:'.25 oz'}],
+      garnish:'Lime peel', note:"Martinique's national drink — stir right in the glass over one ice cube, sweetness adjusted to taste."},
+    {name:'Havana Special', base:'Rum', glass:'Coupe', method:'Shaken',
+      items:[{id:'white_rum', amt:'2 oz'},{id:'pineapple_juice', amt:'1 oz'},{id:'maraschino_liqueur', amt:'.25 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'lime_juice', amt:'.5 oz'}],
+      garnish:'—', note:"Shake with ice; strain into a chilled coupe — Havana Club's own pineapple-and-maraschino Daiquiri variation."},
+    {name:'Ensemble', base:'Rum', glass:'Rocks', method:'Shaken',
+      items:[{id:'dark_rum', amt:'2 oz'},{id:'campari', amt:'.75 oz'},{id:'orange_juice', amt:'.5 oz'},{id:'lemon_juice', amt:'.5 oz'},{id:'simple_syrup', amt:'.25 oz'}],
+      garnish:'Orange peel', note:"Shake hard with ice; strain over fresh ice — Diplomático's rum-Campari answer to the Negroni."},
+    {name:'El Presidente', base:'Rum', glass:'Coupe', method:'Stirred',
+      items:[{id:'white_rum', amt:'1.5 oz'},{id:'dry_vermouth', amt:'.75 oz'},{id:'triple_sec', amt:'.5 oz', familyOk:true},{id:'grenadine', amt:'.25 oz'}],
+      garnish:'Orange peel', note:'Stir with ice; strain into a chilled coupe — Havana’s pre-Prohibition rival to the Martini.'},
+    {name:"Queen's Park Swizzle", base:'Rum', glass:'Highball', method:'Built',
+      items:[{id:'dark_rum', amt:'2 oz'},{id:'lime_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'mint_leaves', amt:'10 leaves'},{id:'angostura_bitters', amt:'4 dashes'}],
+      garnish:'Mint sprig', note:'Muddle mint with lime and syrup; pack with crushed ice, add rum, and swizzle — float the bitters on top, Trinidad style.'},
+    {name:'Gold Rush', base:'Whiskey', glass:'Rocks', method:'Shaken',
+      items:[{id:'bourbon', amt:'2 oz'},{id:'honey_syrup', amt:'.75 oz'},{id:'lemon_juice', amt:'.75 oz'}],
+      garnish:'Lemon wedge', note:"Shake hard with ice; strain over ice — Maker's Mark's honeyed take on the Whiskey Sour."},
+    {name:'Woodford Spire', base:'Whiskey', glass:'Rocks', method:'Stirred',
+      items:[{id:'bourbon', amt:'1.5 oz'},{id:'lemonade', amt:'2 oz'},{id:'cranberry_juice', amt:'1 oz'}],
+      garnish:'Lemon twist', note:"Stir with ice; pour over crushed ice — Woodford Reserve's official Kentucky Derby cocktail."},
+    {name:'Kentucky Mule', base:'Whiskey', glass:'Highball', method:'Built',
+      items:[{id:'bourbon', amt:'2 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'ginger_beer', amt:'top'}],
+      garnish:'Lime wheel, mint sprig', note:"Build over ice and top with ginger beer — Wild Turkey's bourbon spin on the Moscow Mule."},
+    {name:'Kentucky Sunrise', base:'Whiskey', glass:'Highball', method:'Built',
+      items:[{id:'bourbon', amt:'2 oz'},{id:'orange_juice', amt:'top'},{id:'grenadine', amt:'.5 oz'}],
+      garnish:'Orange wheel, cherry', note:"Build bourbon and orange juice over ice; sink the grenadine so it settles at the bottom — Jim Beam's bourbon take on the Tequila Sunrise."},
+    {name:'Bourbon Highball', base:'Whiskey', glass:'Highball', method:'Built',
+      items:[{id:'bourbon', amt:'2 oz'},{id:'soda_water', amt:'top'}],
+      garnish:'Lemon wedge', note:'Build over ice and top with soda — a bartender staple for stretching a pour without losing the bourbon.'},
+    {name:'Disaronno Sour', base:'Liqueur', glass:'Rocks', method:'Shaken',
+      items:[{id:'amaretto', amt:'1.5 oz'},{id:'bourbon', amt:'.75 oz'},{id:'lemon_juice', amt:'1 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'egg_white', amt:'1', optional:true}],
+      garnish:'—', note:"Shake hard with ice; strain over ice — the cask-strength-bourbon update on the classic Amaretto Sour."},
+    {name:'Alabama Slammer', base:'Liqueur', glass:'Highball', method:'Shaken',
+      items:[{id:'vodka', amt:'1 oz'},{id:'southern_comfort', amt:'.75 oz'},{id:'amaretto', amt:'.5 oz'},{id:'sloe_gin', amt:'.5 oz'},{id:'orange_juice', amt:'2.5 oz'},{id:'lemon_juice', amt:'.5 oz'}],
+      garnish:'—', note:'Shake with ice; strain over fresh ice.'},
+    {name:'Amaretto Fizz', base:'Liqueur', glass:'Flute', method:'Built',
+      items:[{id:'amaretto', amt:'1.5 oz'},{id:'orange_juice', amt:'2 oz'},{id:'sparkling_wine', amt:'top'}],
+      garnish:'—', note:'Build over ice in a flute and top slowly with chilled sparkling wine.'},
+    {name:'Almond Old Fashioned', base:'Whiskey', glass:'Rocks', method:'Stirred',
+      items:[{id:'bourbon', amt:'2 oz'},{id:'amaretto', amt:'.25 oz'},{id:'simple_syrup', amt:'.25 oz'},{id:'angostura_bitters', amt:'2 dashes'}],
+      garnish:'Toasted almonds', note:'Stir with ice; strain over a large cube.'},
+    {name:'Italian Sunset', base:'Liqueur', glass:'Highball', method:'Built',
+      items:[{id:'amaretto', amt:'2 oz'},{id:'orange_juice', amt:'3 oz'},{id:'soda_water', amt:'3 oz'},{id:'grenadine', amt:'dash'}],
+      garnish:'Cherry', note:'Build over ice; finish with a dash of grenadine.'},
+    {name:'Amaretto Alexander', base:'Liqueur', glass:'Coupe', method:'Shaken',
+      items:[{id:'amaretto', amt:'1 oz'},{id:'creme_de_cacao', amt:'1 oz'},{id:'cream', amt:'1 oz'}],
+      garnish:'Grated nutmeg', note:"Shake with ice; strain into a chilled coupe — an almond-forward spin on the Alexander."},
+    {name:'Almond Margarita', base:'Tequila', glass:'Rocks', method:'Shaken',
+      items:[{id:'tequila', amt:'1.5 oz'},{id:'amaretto', amt:'.5 oz'},{id:'triple_sec', amt:'.25 oz', familyOk:true},{id:'lime_juice', amt:'1 oz'}],
+      garnish:'Lime wheel', note:'Shake with ice; strain over ice.'},
+    {name:'Amaretto and Coke', base:'Liqueur', glass:'Highball', method:'Built',
+      items:[{id:'amaretto', amt:'2 oz'},{id:'cola', amt:'4 oz'}],
+      garnish:'Cherry', note:'Build over ice and stir.'},
+    {name:'Amaretto Cranberry', base:'Liqueur', glass:'Rocks', method:'Built',
+      items:[{id:'amaretto', amt:'1 oz'},{id:'cranberry_juice', amt:'1 oz'},{id:'lime_juice', amt:'.25 oz'}],
+      garnish:'Lime wheel', note:'Build over ice and stir.'},
+    {name:"Gennaro's Sidecar", base:'Brandy', glass:'Coupe', method:'Shaken',
+      items:[{id:'brandy', amt:'1.5 oz'},{id:'triple_sec', amt:'.5 oz', familyOk:true},{id:'limoncello', amt:'.5 oz'},{id:'lemon_juice', amt:'.75 oz'}],
+      garnish:'Sugar rim', note:'Shake with ice; strain into a sugar-rimmed coupe — a Sidecar brightened with limoncello.'},
+    {name:'Navigator', base:'Gin', glass:'Rocks', method:'Shaken',
+      items:[{id:'gin', amt:'2 oz'},{id:'limoncello', amt:'1 oz'},{id:'grapefruit_juice', amt:'1 oz'}],
+      garnish:'Grapefruit twist', note:'Shake with ice; strain over ice.'},
+    {name:'Procrastination Cocktail', base:'Gin', glass:'Coupe', method:'Stirred',
+      items:[{id:'gin', amt:'1.5 oz'},{id:'dry_vermouth', amt:'.5 oz'},{id:'limoncello', amt:'.5 oz'},{id:'green_chartreuse', amt:'.25 oz'}],
+      garnish:'Lemon twist', note:'Stir with ice; strain into a chilled coupe.'},
+    {name:'Sanguinello Cocktail', base:'Liqueur', glass:'Rocks', method:'Shaken',
+      items:[{id:'campari', amt:'1 oz'},{id:'limoncello', amt:'1 oz'},{id:'blood_orange_juice', amt:'1 oz'}],
+      garnish:'Blood orange wheel', note:'Shake with ice; strain over ice — an Italian classic named for the Sanguinello blood orange.'},
+    {name:'Spiked Arnold Palmer', base:'Liqueur', glass:'Highball', method:'Built',
+      items:[{id:'limoncello', amt:'1.5 oz'},{id:'black_tea', amt:'3 oz'},{id:'lemon_juice', amt:'.5 oz'}],
+      garnish:'Lemon wheel', note:'Build over ice and stir.'},
+    {name:'Tratto Limoncello Cocktail', base:'Whiskey', glass:'Rocks', method:'Stirred',
+      items:[{id:'bourbon', amt:'1.5 oz'},{id:'limoncello', amt:'1.25 oz'},{id:'dry_vermouth', amt:'.75 oz'},{id:'orange_bitters', amt:'1 dash'},{id:'angostura_bitters', amt:'1 dash'}],
+      garnish:'Lemon twist', note:'Stir with ice; strain over ice — created by Cynthia Tran at Tratto, San Francisco, working her house limoncello into a Manhattan riff.'},
+    {name:'Renaissance', base:'Brandy', glass:'Coupe', method:'Stirred',
+      items:[{id:'brandy', amt:'1.5 oz'},{id:'sweet_vermouth', amt:'.5 oz'},{id:'limoncello', amt:'.25 oz'},{id:'peach_bitters', amt:'2 dashes'}],
+      garnish:'Orange twist', note:'Stir with ice; strain into a chilled coupe.'},
+    {name:'Salvatore Meets', base:'Rum', glass:'Coupe', method:'Shaken, topped',
+      items:[{id:'white_rum', amt:'2 oz'},{id:'limoncello', amt:'.75 oz'},{id:'lime_juice', amt:'1 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'sparkling_wine', amt:'.5 oz'}],
+      garnish:'—', note:'Shake the rum, limoncello, lime, and syrup with ice; strain into a chilled coupe and top with sparkling wine — created by Salvatore Calabrese at the Playboy Club, London.'},
+    {name:'Lemony', base:'Gin', glass:'Coupe', method:'Shaken',
+      items:[{id:'gin', amt:'1.5 oz'},{id:'yellow_chartreuse', amt:'.5 oz'},{id:'limoncello', amt:'.5 oz'},{id:'lemon_juice', amt:'.75 oz'}],
+      garnish:'Lemon twist', note:'Shake with ice; strain into a chilled coupe.'},
+    {name:'Italian Sun', base:'Liqueur', glass:'Rocks', method:'Built',
+      items:[{id:'white_wine', amt:'3 oz'},{id:'limoncello', amt:'1 oz'},{id:'frangelico', amt:'.5 oz'},{id:'lemon_juice', amt:'.5 oz'}],
+      garnish:'Lemon wheel', note:'Build over ice and stir.'},
+    {name:'Yellow Belly', base:'Vodka', glass:'Coupe', method:'Shaken',
+      items:[{id:'vodka', amt:'1.5 oz'},{id:'limoncello', amt:'.75 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.5 oz'}],
+      garnish:'Lemon twist', note:'Shake with ice; strain into a chilled coupe.'},
+    {name:'Cuban Heal', base:'Rum', glass:'Coupe', method:'Stirred',
+      items:[{id:'white_rum', amt:'2.5 oz'},{id:'cynar', amt:'.25 oz'},{id:'limoncello', amt:'.25 oz'},{id:'honey_syrup', amt:'.25 oz'},{id:'peychauds_bitters', amt:'2 dashes'}],
+      garnish:'Lemon twist', note:'Stir with ice; fine-strain into a chilled coupe — created by Matthew Keegan at Blanch House, Brighton, from ingredients once thought to be remedies.'},
+    {name:"Lemon Meringue Pie'tini", base:'Liqueur', glass:'Coupe', method:'Shaken',
+      items:[{id:'limoncello', amt:'1 oz'},{id:'simple_syrup', amt:'1 oz'},{id:'lemon_juice', amt:'1 oz'},{id:'cream', amt:'2 oz'},{id:'licor_43', amt:'.5 oz'}],
+      garnish:'Sugar rim', note:'Shake with ice; strain into a chilled, sugar-rimmed glass.'},
+    {name:'Red Earl', base:'Vodka', glass:'Rocks', method:'Shaken',
+      items:[{id:'fresh_raspberries', amt:'6'},{id:'vodka', amt:'1.5 oz'},{id:'limoncello', amt:'1 oz'},{id:'simple_syrup', amt:'.5 oz'}],
+      garnish:'Raspberry', note:'Muddle the raspberries, then shake everything hard with ice and strain over fresh ice.'},
+    {name:'Brazuca Remedy', base:'Rum', glass:'Coupe', method:'Shaken',
+      items:[{id:'cachaca', amt:'1.5 oz'},{id:'limoncello', amt:'.5 oz'},{id:'aperol', amt:'.25 oz'},{id:'lime_juice', amt:'.75 oz'},{id:'honey_syrup', amt:'.5 oz'},{id:'basil', amt:'6 leaves'},{id:'egg_white', amt:'1', optional:true}],
+      garnish:'Basil leaf', note:'Muddle basil gently, then shake hard with ice (dry-shake first if using egg white) and strain into a chilled coupe.'},
+    {name:'Tequila Almond Old Fashioned', base:'Tequila', glass:'Rocks', method:'Stirred',
+      items:[{id:'tequila', amt:'2 oz'},{id:'amaretto', amt:'.25 oz'},{id:'simple_syrup', amt:'.25 oz'},{id:'orange_bitters', amt:'2 dashes'}],
+      garnish:'Orange peel', note:'Stir with ice; strain over a large cube — the agave-and-almond answer to the bourbon original.'},
+    {name:'Almond Piña Colada', base:'Rum', glass:'Hurricane', method:'Blended',
+      items:[{id:'white_rum', amt:'1.5 oz'},{id:'amaretto', amt:'.5 oz'},{id:'pineapple_juice', amt:'2 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'orgeat_syrup', amt:'.5 oz'}],
+      garnish:'Pineapple wedge', note:'Blend or shake hard with ice until smooth.'},
+    {name:'Bakewell Tart Sour', base:'Brandy', glass:'Rocks', method:'Shaken',
+      items:[{id:'brandy', amt:'1.25 oz'},{id:'amaretto', amt:'1 oz'},{id:'cherry_syrup', amt:'.25 oz'},{id:'lemon_juice', amt:'.5 oz'},{id:'angostura_bitters', amt:'1 dash'}],
+      garnish:'Cherry, lemon twist', note:'Shake with ice; strain over ice — named for the British almond-and-cherry dessert.'},
+    {name:'Bella Donna Daiquiri', base:'Rum', glass:'Coupe', method:'Shaken',
+      items:[{id:'dark_rum', amt:'2 oz'},{id:'amaretto', amt:'.5 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.5 oz'}],
+      garnish:'Lemon twist', note:'Shake with ice; strain into a chilled coupe.'},
+    {name:'Brooklyn Godfather', base:'Whiskey', glass:'Rocks', method:'Stirred',
+      items:[{id:'bourbon', amt:'1.5 oz'},{id:'amaretto', amt:'.5 oz'},{id:'dry_vermouth', amt:'.25 oz'},{id:'sweet_vermouth', amt:'.25 oz'}],
+      garnish:'Orange peel', note:'Stir with ice; strain over a large cube.'},
+    {name:"Explorer 'Martini'", base:'Whiskey', glass:'Coupe', method:'Stirred',
+      items:[{id:'scotch_whisky', amt:'1 oz'},{id:'amaretto', amt:'1 oz'},{id:'sherry', amt:'1 oz'}],
+      garnish:'Cherry', note:'Stir with ice; strain into a chilled coupe.'},
+    {name:'Homely Smoke', base:'Brandy', glass:'Rocks', method:'Stirred',
+      items:[{id:'brandy', amt:'1 oz'},{id:'amaretto', amt:'.75 oz'},{id:'scotch_whisky', amt:'.5 oz'},{id:'honey_syrup', amt:'.25 oz'},{id:'angostura_bitters', amt:'2 dashes'}],
+      garnish:'Orange peel', note:'Stir with ice; strain over a large cube — a peated scotch gives it real smoke.'},
+    {name:'Killer Cocktail', base:'Gin', glass:'Rocks', method:'Shaken',
+      items:[{id:'amaretto', amt:'1.5 oz'},{id:'gin', amt:'1 oz'},{id:'lemon_juice', amt:'1 oz'},{id:'campari', amt:'.25 oz'},{id:'passion_fruit_syrup', amt:'.25 oz'}],
+      garnish:'Lemon zest', note:'Shake with ice; strain over fresh ice — created by Tess Posthumus, winner of the 2013 Disaronno Mixing Star finals.'},
+    {name:'Madurised Old Fashioned Godfather', base:'Whiskey', glass:'Rocks', method:'Stirred',
+      items:[{id:'bourbon', amt:'.75 oz'},{id:'rye_whiskey', amt:'.75 oz'},{id:'scotch_whisky', amt:'.5 oz'},{id:'amaretto', amt:'.5 oz'},{id:'madeira', amt:'.25 oz'}],
+      garnish:'Orange peel', note:'Stir with ice; strain over a large cube — three whiskeys and a splash of Madeira.'},
+    {name:'Orange Brûlée', base:'Liqueur', glass:'Coupe', method:'Shaken',
+      items:[{id:'amaretto', amt:'1 oz'},{id:'triple_sec', amt:'.5 oz', familyOk:true},{id:'brandy', amt:'1 oz'},{id:'cream', amt:'1 oz'}],
+      garnish:'Grated nutmeg', note:'Shake with ice; strain into a chilled coupe.'},
+    {name:'Petanque', base:'Liqueur', glass:'Coupe', method:'Stirred',
+      items:[{id:'sherry', amt:'2 oz'},{id:'amaretto', amt:'1 oz'},{id:'peychauds_bitters', amt:'2 dashes'},{id:'absinthe', amt:'2 dashes'}],
+      garnish:'Cherry', note:'Stir with ice; fine-strain into a chilled coupe — created by Andrew Bohrer at Mistral Kitchen, Seattle.'},
+    {name:'Toasted Old Fashioned Godfather', base:'Whiskey', glass:'Rocks', method:'Stirred',
+      items:[{id:'rye_whiskey', amt:'.75 oz'},{id:'bourbon', amt:'.75 oz'},{id:'scotch_whisky', amt:'.5 oz'},{id:'amaretto', amt:'.5 oz'},{id:'angostura_bitters', amt:'2 dashes'}],
+      garnish:'Orange peel', note:'Stir with ice; strain over a large cube.'},
+    {name:"Corn 'n' Oil", base:'Rum', glass:'Rocks', method:'Built',
+      items:[{id:'dark_rum', amt:'2 oz'},{id:'falernum', amt:'.5 oz'},{id:'lime_juice', amt:'.25 oz'},{id:'angostura_bitters', amt:'2 dashes'}],
+      garnish:'Lime wedge', note:'Build over crushed ice and stir — a Barbadian classic named for its oil-slick look.'},
+    {name:'Doctor Funk', base:'Rum', glass:'Highball', method:'Shaken, topped',
+      items:[{id:'dark_rum', amt:'2 oz'},{id:'absinthe', amt:'.25 oz'},{id:'lime_juice', amt:'.75 oz'},{id:'grenadine', amt:'.5 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'soda_water', amt:'top'}],
+      garnish:'Mint sprig', note:'Shake with ice; strain over ice and top with soda.'},
+    {name:'Ancient Mariner', base:'Rum', glass:'Rocks', method:'Shaken',
+      items:[{id:'dark_rum', amt:'2 oz'},{id:'falernum', amt:'.5 oz'},{id:'lime_juice', amt:'.75 oz'},{id:'angostura_bitters', amt:'2 dashes'}],
+      garnish:'Lime wheel', note:'Shake with ice; strain over fresh ice.'},
+    {name:'Chicago Fizz', base:'Rum', glass:'Highball', method:'Shaken, topped',
+      items:[{id:'dark_rum', amt:'1 oz'},{id:'port_wine', amt:'1 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'egg_white', amt:'1'},{id:'soda_water', amt:'top'}],
+      garnish:'—', note:'Shake hard with ice; strain over ice and top with soda.'},
+    {name:'Milk Punch', base:'Rum', glass:'Rocks', method:'Shaken',
+      items:[{id:'dark_rum', amt:'2 oz'},{id:'milk', amt:'3 oz'},{id:'simple_syrup', amt:'.5 oz'}],
+      garnish:'Grated nutmeg', note:'Shake with ice; strain over ice.'},
+    {name:'Alexandra', base:'Rum', glass:'Coupe', method:'Shaken',
+      items:[{id:'dark_rum', amt:'1 oz'},{id:'creme_de_cacao', amt:'1 oz'},{id:'cream', amt:'1 oz'}],
+      garnish:'Grated nutmeg', note:'Shake with ice; strain into a chilled coupe — the rum sibling of the Alexander.'},
+    {name:'Hurricane', base:'Rum', glass:'Hurricane', method:'Shaken',
+      items:[{id:'dark_rum', amt:'1 oz'},{id:'white_rum', amt:'1 oz'},{id:'passion_fruit_syrup', amt:'.5 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'simple_syrup', amt:'.5 oz'}],
+      garnish:'Orange wheel, cherry', note:'Shake with ice; strain over fresh ice.'},
+    {name:'Brass Monkey', base:'Rum', glass:'Highball', method:'Built',
+      items:[{id:'dark_rum', amt:'1 oz'},{id:'vodka', amt:'1 oz'},{id:'orange_juice', amt:'3 oz'}],
+      garnish:'—', note:'Build over ice and stir.'},
+    {name:'Black Strap', base:'Rum', glass:'Rocks', method:'Stirred',
+      items:[{id:'dark_rum', amt:'2 oz'},{id:'sweet_vermouth', amt:'.75 oz'},{id:'honey_syrup', amt:'.5 oz'},{id:'angostura_bitters', amt:'2 dashes'}],
+      garnish:'Orange peel', note:'Stir with ice; strain over a large cube.'},
+    {name:'Bermuda Rum Swizzle', base:'Rum', glass:'Highball', method:'Built',
+      items:[{id:'dark_rum', amt:'1 oz'},{id:'white_rum', amt:'1 oz'},{id:'orange_juice', amt:'1 oz'},{id:'pineapple_juice', amt:'1 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'grenadine', amt:'.25 oz'}],
+      garnish:'Mint sprig', note:"Build over crushed ice and swizzle — Bermuda's national drink."},
+    {name:'Baltimore Eggnog', base:'Rum', glass:'Rocks', method:'Shaken',
+      items:[{id:'dark_rum', amt:'1 oz'},{id:'brandy', amt:'1 oz'},{id:'milk', amt:'3 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'egg_white', amt:'1'}],
+      garnish:'Grated nutmeg', note:'Shake hard with ice; strain over ice.'},
+    {name:'Black Rumhattan', base:'Rum', glass:'Coupe', method:'Stirred',
+      items:[{id:'dark_rum', amt:'1.5 oz'},{id:'sweet_vermouth', amt:'.75 oz'},{id:'angostura_bitters', amt:'1 dash'}],
+      garnish:'Cherry', note:'Stir with ice; fine-strain into a chilled coupe — a Manhattan with dark rum standing in for the whiskey.'},
+    {name:'Stout Espresso Martini', base:'Rum', glass:'Coupe', method:'Shaken, topped',
+      items:[{id:'dark_rum', amt:'.75 oz'},{id:'creme_de_cacao', amt:'.5 oz'},{id:'vodka', amt:'.5 oz'},{id:'espresso', amt:'.5 oz'},{id:'stout_beer', amt:'2 oz'}],
+      garnish:'Coffee beans', note:'Shake the first four with ice; fine-strain into a chilled coupe and top with stout.'},
+
+    // ---------- Cointreau ----------
+    {name:'Cointreau Cocktail', base:'Liqueur', glass:'Coupe', method:'Stirred',
+      items:[{id:'cointreau', amt:'1.5 oz'},{id:'sweet_vermouth', amt:'1.5 oz'},{id:'angostura_bitters', amt:'4 dashes'}],
+      garnish:'Lemon twist', note:"Stir with ice; strain into a chilled coupe — created in the mid-1920s by Adolphe Torelli at Nice's Winter Palace Hotel."},
+    {name:'Cointreau Fizz', base:'Liqueur', glass:'Highball', method:'Built',
+      items:[{id:'cointreau', amt:'2 oz'},{id:'lime_juice', amt:'1 oz'},{id:'soda_water', amt:'3 oz'}],
+      garnish:'Lime wheel, orange twist', note:'Build over ice and stir.'},
+    {name:'Cointreau Royale', base:'Sparkling', glass:'Flute', method:'Built',
+      items:[{id:'cointreau', amt:'1 oz'},{id:'sparkling_wine', amt:'3 oz'}],
+      garnish:'Orange twist', note:'Pour Cointreau into a chilled flute and top with sparkling wine.'},
+    {name:'Cointreau Sour', base:'Liqueur', glass:'Coupe', method:'Shaken',
+      items:[{id:'cointreau', amt:'1.5 oz'},{id:'orange_juice', amt:'1 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'egg_white', amt:'.5 oz', optional:true}],
+      garnish:'Orange twist', note:'Shake with ice; strain into a chilled coupe.'},
+    {name:'Spicy Margarita', base:'Tequila', glass:'Rocks', method:'Shaken',
+      items:[{id:'tequila', amt:'2 oz'},{id:'cointreau', amt:'1 oz'},{id:'lime_juice', amt:'.75 oz'},{id:'jalapeno', amt:'2 slices'},{id:'cilantro', amt:'2 sprigs'}],
+      garnish:'Jalapeño slice', note:'Shake with ice; strain over fresh ice into a chilled rocks glass.'},
+
+    // ---------- Crown Royal ----------
+    {name:'Royal Whisky Sour', base:'Whiskey', glass:'Rocks', method:'Shaken, dry-shaken',
+      items:[{id:'crown_royal', amt:'1.5 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.75 oz'},{id:'angostura_bitters', amt:'3 dashes'},{id:'egg_white', amt:'1', optional:true}],
+      garnish:'Cherry, lemon peel', note:"Shake with ice, strain, then dry-shake without ice to emulsify; strain over fresh ice — Crown Royal's own house variation on the Whiskey Sour."},
+    {name:'Crown Royal Flush', base:'Whiskey', glass:'Rocks', method:'Shaken',
+      items:[{id:'whiskey_any', amt:'1.25 oz', familyOk:true},{id:'peach_schnapps', amt:'.25 oz'},{id:'cranberry_juice', amt:'3 oz'}],
+      garnish:'Orange peel', note:'Shake with ice; strain over fresh ice.'},
+    {name:'Crown Royal Gold Rush', base:'Whiskey', glass:'Rocks', method:'Shaken',
+      items:[{id:'whiskey_any', amt:'1.5 oz', familyOk:true},{id:'honey_syrup', amt:'.75 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'angostura_bitters', amt:'1 dash'}],
+      garnish:'Lemon twist', note:"Shake with ice; strain over a large cube — Crown Royal's version of the honey-sweetened Whiskey Sour riff."},
+
+    // ---------- Drambuie ----------
+    {name:'Drambuie Fresco', base:'Liqueur', glass:'Highball', method:'Built',
+      items:[{id:'drambuie', amt:'1 oz'},{id:'grapefruit_juice', amt:'2 oz'},{id:'soda_water', amt:'top'}],
+      garnish:'Grapefruit slice, mint sprig', note:'Build over ice and stir — best made with pink grapefruit juice.'},
+    {name:'Drambuie Collins', base:'Liqueur', glass:'Collins', method:'Built',
+      items:[{id:'drambuie', amt:'1.75 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'soda_water', amt:'3.5 oz'}],
+      garnish:'Mint sprig', note:'Build over ice and stir; works well scaled up in a pitcher.'},
+    {name:'The Underdog', base:'Liqueur', glass:'Rocks', method:'Stirred',
+      items:[{id:'drambuie', amt:'.75 oz'},{id:'amaro_nonino', amt:'.5 oz'},{id:'dry_vermouth', amt:'.75 oz'},{id:'gin', amt:'.5 oz'}],
+      garnish:'Lemon twist', note:'Stir with ice until well-chilled; strain over a large cube.'},
+    {name:'Drambuie Iced Coffee', base:'Liqueur', glass:'Rocks', method:'Built',
+      items:[{id:'drambuie', amt:'1.75 oz'},{id:'espresso', amt:'1.75 oz'},{id:'milk', amt:'1.75 oz'}],
+      garnish:'—', note:'Pour over plenty of ice and stir.'},
+
+    // ---------- Grand Marnier ----------
+    {name:'Grand Old Fashioned', base:'Whiskey', glass:'Rocks', method:'Stirred',
+      items:[{id:'bourbon', amt:'1 oz'},{id:'grand_marnier', amt:'1 oz'},{id:'angostura_bitters', amt:'3 dashes'}],
+      garnish:'Orange twist', note:'Dash the bitters into the glass, add Grand Marnier and bourbon, then stir over a large ice cube.'},
+    {name:'Grand Sidecar', base:'Brandy', glass:'Coupe', method:'Shaken',
+      items:[{id:'grand_marnier', amt:'1.5 oz'},{id:'brandy', amt:'1.5 oz'},{id:'lemon_juice', amt:'.5 oz'}],
+      garnish:'—', note:"Shake with ice; strain into a chilled coupe — Grand Marnier's own signature take on the Sidecar."},
+    {name:'Grand Frozen Margarita', base:'Tequila', glass:'Coupe', method:'Blended',
+      items:[{id:'tequila', amt:'1.5 oz'},{id:'grand_marnier', amt:'.75 oz'},{id:'lime_juice', amt:'.75 oz'},{id:'agave_syrup', amt:'.25 oz'}],
+      garnish:'—', note:'Blend with crushed ice until smooth; pour into a chilled glass.'},
+
+    // ---------- Curaçao ----------
+    {name:'Cable Car', base:'Rum', glass:'Coupe', method:'Shaken, dry-shaken',
+      items:[{id:'dark_rum', amt:'1.5 oz'},{id:'orange_curacao', amt:'.75 oz'},{id:'lemon_juice', amt:'1 oz'},{id:'simple_syrup', amt:'.33 oz'},{id:'egg_white', amt:'.33 oz', optional:true}],
+      garnish:'Cinnamon-sugar rim, orange twist', note:'Shake with ice, strain, then dry-shake without ice to emulsify; fine-strain into a cinnamon-sugar-rimmed coupe.'},
+    {name:'Blue Lagoon', base:'Vodka', glass:'Highball', method:'Built',
+      items:[{id:'vodka', amt:'1.5 oz'},{id:'blue_curacao', amt:'1 oz'},{id:'lime_juice', amt:'.75 oz'},{id:'lemon_lime_soda', amt:'2.5 oz'}],
+      garnish:'Orange slice, cherry', note:'Stir the first three over ice, then top with lemon-lime soda and stir briefly.'},
+    {name:'Blue Margarita', base:'Tequila', glass:'Coupe', method:'Blended',
+      items:[{id:'tequila', amt:'2 oz'},{id:'blue_curacao', amt:'1 oz'},{id:'lime_juice', amt:'1 oz'},{id:'simple_syrup', amt:'.5 oz'}],
+      garnish:'Lime slice', note:'Blend with crushed ice; pour into a chilled glass.'},
+
+    // ---------- Bourbon & Whiskey ----------
+    {name:"Maker's & Ginger", base:'Whiskey', glass:'Rocks', method:'Built',
+      items:[{id:'bourbon', amt:'1.5 oz'},{id:'ginger_ale', amt:'top'}],
+      garnish:'Lime wedge', note:'Build over ice and top with ginger ale.'},
+    {name:'Double Oaked Bourbon Orange Fizz', base:'Whiskey', glass:'Highball', method:'Shaken, topped',
+      items:[{id:'bourbon', amt:'1.5 oz'},{id:'orange_curacao', amt:'.5 oz'},{id:'fernet_branca', amt:'.25 oz'},{id:'blood_orange_juice', amt:'.5 oz'},{id:'lemon_juice', amt:'.25 oz'},{id:'simple_syrup', amt:'.25 oz'},{id:'egg_white', amt:'1', optional:true},{id:'soda_water', amt:'top'}],
+      garnish:'Dehydrated blood orange wheel', note:'Shake everything but the soda with ice, strain over ice, then top with soda until the egg-white foam reaches the rim.'},
+    {name:'Seelbach', base:'Whiskey', glass:'Flute', method:'Shaken, topped',
+      items:[{id:'bourbon', amt:'1 oz'},{id:'cointreau', amt:'.5 oz'},{id:'angostura_bitters', amt:'3 dashes'},{id:'peychauds_bitters', amt:'3 dashes'},{id:'sparkling_wine', amt:'3 oz'}],
+      garnish:'Orange twist', note:'Shake the first four with ice, strain into a chilled flute, and top with sparkling wine — devised in the mid-1990s by Adam Seger to honor the Seelbach Hotel in Louisville.'},
+    {name:'Blood and Sand', base:'Whiskey', glass:'Coupe', method:'Shaken',
+      items:[{id:'scotch_whisky', amt:'.75 oz'},{id:'cherry_brandy', amt:'.75 oz'},{id:'sweet_vermouth', amt:'.75 oz'},{id:'orange_juice', amt:'.75 oz'}],
+      garnish:'Orange twist', note:'Shake with ice; strain into a chilled coupe — created in 1922 and named for the Rudolph Valentino bullfighting film released that year.'},
+
+    // ---------- Summer / spring roundups ----------
+    {name:'Ranch Water', base:'Tequila', glass:'Highball', method:'Built',
+      items:[{id:'tequila', amt:'3 oz'},{id:'lime_juice', amt:'1.5 oz'},{id:'soda_water', amt:'4 oz'}],
+      garnish:'Lime wedge', note:'Stir tequila and lime juice, fill with ice, and top with sparkling mineral water — a Texas-style tequila highball.'},
+    {name:'Gin Rickey', base:'Gin', glass:'Highball', method:'Built',
+      items:[{id:'gin', amt:'3 oz'},{id:'lime_juice', amt:'1.5 oz'},{id:'soda_water', amt:'4 oz'}],
+      garnish:'Lime wedge', note:'Stir gin and lime juice, fill with ice, and top with soda water.'},
+    {name:'Rosé Spritzer', base:'Sparkling', glass:'Wine', method:'Built',
+      items:[{id:'rose_wine', amt:'3 oz'},{id:'soda_water', amt:'1 oz'}],
+      garnish:'—', note:'Pour rosé over ice and top with soda water.'},
+    {name:'Mimosa', base:'Sparkling', glass:'Flute', method:'Built',
+      items:[{id:'sparkling_wine', amt:'1.5 oz'},{id:'orange_juice', amt:'3 oz'}],
+      garnish:'Orange twist', note:'Pour half the sparkling wine and the orange juice into a chilled flute, stir briefly, then top with the rest of the sparkling wine.'},
+    {name:'Bellini', base:'Sparkling', glass:'Flute', method:'Built',
+      items:[{id:'sparkling_wine', amt:'3 oz'},{id:'peach_puree', amt:'2 oz'}],
+      garnish:'Peach slice', note:'Pour peach purée into a chilled flute, then top slowly with sparkling wine, tilting the glass to keep the foam down, and stir gently.'},
+    {name:"Pimm's Cup", base:'Liqueur', glass:'Highball', method:'Built',
+      items:[{id:'pimms', amt:'1.5 oz'},{id:'lemonade', amt:'2 oz'},{id:'ginger_ale', amt:'2.5 oz'}],
+      garnish:'Cucumber, orange and strawberry slices, mint sprig', note:'Build over ice with the fruit; top with lemonade and ginger ale and stir briefly.'},
+    {name:'Hugo Spritz', base:'Sparkling', glass:'Wine', method:'Built',
+      items:[{id:'elderflower_liqueur', amt:'1.33 oz'},{id:'sparkling_wine', amt:'2 oz'},{id:'soda_water', amt:'2 oz'},{id:'mint_leaves', amt:'8 leaves'}],
+      garnish:'Lime wedge, mint sprig', note:'Add mint to a chilled glass, fill with ice, add the remaining ingredients, and stir briefly.'},
+    {name:'Blood Orange Margarita', base:'Tequila', glass:'Rocks', method:'Shaken',
+      items:[{id:'tequila', amt:'1 oz'},{id:'triple_sec', amt:'.5 oz', familyOk:true},{id:'campari', amt:'.17 oz'},{id:'blood_orange_juice', amt:'.5 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'simple_syrup', amt:'.17 oz'}],
+      garnish:'Salt rim, blood orange slice', note:'Shake with ice; strain into a salt-rimmed rocks glass over fresh ice.'}
+  ];
+
+  var STARTER = ['gin','vodka','dry_vermouth','sweet_vermouth','campari','triple_sec','lime_juice','lemon_juice','simple_syrup','soda_water','angostura_bitters','bourbon'];
+
+  // ---------- state ----------
+  var byId = {};
+  INGREDIENTS.forEach(function(i){ byId[i.id] = i; });
+  // Each brand inherits its base ingredient's family (so e.g. Jack Daniel's
+  // counts toward a "any whiskey" recipe the same way Bourbon does), then
+  // joins byId under its own id — separate from what it substitutes for.
+  BRAND_INGREDIENTS.forEach(function(b){
+    var base = byId[b.substitutesFor];
+    if(base && base.family){ b.family = base.family; }
+    byId[b.id] = b;
+  });
+  var ALL_INGREDIENTS = INGREDIENTS.concat(BRAND_INGREDIENTS);
+
+  var have = new Map();       // id -> ingredient-like object
+  var filter = 'all';
+  var query = '';
+  var lastAdded = null;
+  var openGroups = new Set(); // quick-add category panels the user has expanded
+  var favorites = new Set(); // recipe names starred as favorites
+  var queue = [null, null, null]; // recipe names lined up as "next to make", by slot
+
+  function normalize(s){
+    // fold accented characters to their plain form first (Curaçao -> curacao,
+    // Bénédictine -> benedictine) so a plain-ASCII search or typed bottle name
+    // still matches the accented ingredient name, instead of the accent mark
+    // just vanishing and breaking the match.
+    return s.normalize('NFD').replace(/[̀-ͯ]/g,'')
+      .toLowerCase().trim().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ');
+  }
+
+  function classify(raw){
+    var norm = normalize(raw);
+    if(!norm) return null;
+    var i;
+    for(i=0;i<ALL_INGREDIENTS.length;i++){
+      var ing = ALL_INGREDIENTS[i];
+      if(ing.id.replace(/_/g,' ') === norm || normalize(ing.name) === norm) return ing;
+    }
+    if(BRAND_ALIASES[norm]) return byId[BRAND_ALIASES[norm]];
+    if(ALIASES[norm]) return byId[ALIASES[norm]];
+    var brandAliasKeys = Object.keys(BRAND_ALIASES).sort(function(a,b){ return b.length - a.length; });
+    for(i=0;i<brandAliasKeys.length;i++){ if(norm.indexOf(brandAliasKeys[i]) !== -1) return byId[BRAND_ALIASES[brandAliasKeys[i]]]; }
+    var keys = Object.keys(ALIASES).sort(function(a,b){ return b.length - a.length; });
+    for(i=0;i<keys.length;i++){ if(norm.indexOf(keys[i]) !== -1) return byId[ALIASES[keys[i]]]; }
+    // Brand names win over generic names in the substring fallback, checked
+    // as their own pass first — otherwise something like "Fabrizia
+    // Limoncello" would match the longer generic "Limoncello" before ever
+    // considering the shorter, more specific "Fabrizia".
+    var brandsByLen = BRAND_INGREDIENTS.slice().sort(function(a,b){ return b.name.length - a.name.length; });
+    for(i=0;i<brandsByLen.length;i++){ if(norm.indexOf(normalize(brandsByLen[i].name)) !== -1) return brandsByLen[i]; }
+    var byLen = INGREDIENTS.slice().sort(function(a,b){ return b.name.length - a.name.length; });
+    for(i=0;i<byLen.length;i++){ if(norm.indexOf(normalize(byLen[i].name)) !== -1) return byLen[i]; }
+    return null;
+  }
+
+  function titleCase(s){
+    return s.replace(/\w\S*/g, function(t){ return t.charAt(0).toUpperCase() + t.slice(1).toLowerCase(); });
+  }
+
+  function addRaw(raw){
+    raw = raw.trim();
+    if(!raw) return;
+    var hit = classify(raw);
+    if(hit){
+      have.set(hit.id, hit);
+      lastAdded = hit.id;
+    } else {
+      var norm = normalize(raw);
+      var id = 'custom:' + norm;
+      var custom = {id:id, name:titleCase(raw), category:'Unclassified', group:'Unclassified', unclassified:true};
+      have.set(id, custom);
+      lastAdded = id;
+    }
+  }
+
+  function toggle(id){
+    if(have.has(id)){ have.delete(id); }
+    else { have.set(id, byId[id]); lastAdded = id; }
+  }
+
+  function persist(){
+    try{
+      var arr = Array.from(have.values()).map(function(v){
+        return {id:v.id, name:v.name, category:v.category, group:v.group, unclassified:!!v.unclassified};
+      });
+      localStorage.setItem('backbar.shelf.v1', JSON.stringify(arr));
+    }catch(e){}
+  }
+
+  function load(){
+    try{
+      var raw = localStorage.getItem('backbar.shelf.v1');
+      if(!raw) return;
+      var arr = JSON.parse(raw);
+      arr.forEach(function(v){
+        if(v.unclassified){ have.set(v.id, v); }
+        else if(byId[v.id]){ have.set(v.id, byId[v.id]); }
+      });
+    }catch(e){}
+  }
+
+  function persistFavorites(){
+    try{ localStorage.setItem('backbar.favorites.v1', JSON.stringify(Array.from(favorites))); }catch(e){}
+  }
+
+  function loadFavorites(){
+    try{
+      var raw = localStorage.getItem('backbar.favorites.v1');
+      if(!raw) return;
+      JSON.parse(raw).forEach(function(name){ favorites.add(name); });
+    }catch(e){}
+  }
+
+  function persistQueue(){
+    try{ localStorage.setItem('backbar.queue.v1', JSON.stringify(queue)); }catch(e){}
+  }
+
+  function loadQueue(){
+    try{
+      var raw = localStorage.getItem('backbar.queue.v1');
+      if(!raw) return;
+      var arr = JSON.parse(raw);
+      if(Array.isArray(arr)){ for(var i=0;i<3;i++){ queue[i] = arr[i] || null; } }
+    }catch(e){}
+  }
+
+  // Adds a recipe to the first open slot; if the queue is already full, it
+  // takes the last slot rather than doing nothing. Re-adding a queued
+  // recipe removes it instead — the same toggle feel as favoriting.
+  function toggleQueue(name){
+    var idx = queue.indexOf(name);
+    if(idx !== -1){ queue[idx] = null; return; }
+    var empty = queue.indexOf(null);
+    queue[empty !== -1 ? empty : queue.length - 1] = name;
+  }
+
+  function requirementSatisfied(req){
+    if(have.has(req.id)) return true;
+    var reqIng = byId[req.id];
+    var it = have.values(), cur;
+    while(!(cur = it.next()).done){
+      var h = cur.value;
+      if(h.substitutesFor === req.id) return true;
+      if(req.familyOk && reqIng && reqIng.family && h.family === reqIng.family) return true;
+    }
+    return false;
+  }
+
+  function recipeStatus(recipe){
+    var required = recipe.items.filter(function(it){ return !it.optional; });
+    var missing = required.filter(function(it){ return !requirementSatisfied(it); });
+    if(missing.length === 0) return {key:'ready', missing:[]};
+    if(missing.length === 1) return {key:'almost', missing:missing};
+    return {key:'more', missing:missing};
+  }
+
+  // ---------- rendering ----------
+  // Shared by both the shelf panel and the build-a-drink history — one
+  // ingredient chip, removable either way.
+  function makeChip(v){
+    var chip = document.createElement('span');
+    chip.className = 'chip' + (v.unclassified ? ' unclassified' : '') + (v.id === lastAdded ? ' fresh' : '');
+    chip.innerHTML = '<span><span class="cname">' + v.name + '</span><br><span class="ctag">' + v.category + '</span></span>';
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.setAttribute('aria-label', 'Remove ' + v.name);
+    btn.textContent = '×';
+    btn.addEventListener('click', function(){
+      have.delete(v.id);
+      persist();
+      renderAll();
+    });
+    chip.appendChild(btn);
+    return chip;
+  }
+
+  function renderShelf(){
+    var el = document.getElementById('shelf');
+    el.innerHTML = '';
+    if(have.size === 0){
+      el.innerHTML = '<p class="shelf-empty">Nothing yet — add a bottle above or load the starter shelf.</p>';
+      return;
+    }
+    Array.from(have.values()).sort(function(a,b){ return a.name.localeCompare(b.name); }).forEach(function(v){
+      el.appendChild(makeChip(v));
+    });
+  }
+
+  // Clusters each brand button right after the generic ingredient it's a
+  // style of, instead of scattering ~40 brand names alphabetically through
+  // the group — so "Cointreau" sits beside "Triple Sec", both pickable on
+  // their own.
+  var INGREDIENT_ORDER = {};
+  INGREDIENTS.forEach(function(ing, idx){ INGREDIENT_ORDER[ing.id] = idx; });
+  function quickAddSortKey(ing){
+    var anchor = ing.substitutesFor || ing.id;
+    var pos = INGREDIENT_ORDER[anchor];
+    return (pos === undefined ? 999 : pos) + (ing.substitutesFor ? 0.5 : 0);
+  }
+
+  function renderQuickAdd(){
+    var el = document.getElementById('quickAdd');
+    el.innerHTML = '';
+    GROUP_ORDER.forEach(function(group){
+      var items = ALL_INGREDIENTS.filter(function(i){ return i.group === group; });
+      items.sort(function(a, b){
+        var ka = quickAddSortKey(a), kb = quickAddSortKey(b);
+        if(ka !== kb) return ka - kb;
+        return a.name.localeCompare(b.name);
+      });
+      var details = document.createElement('details');
+      details.open = openGroups.has(group);
+      details.addEventListener('toggle', function(){
+        if(details.open) openGroups.add(group); else openGroups.delete(group);
+      });
+      var summary = document.createElement('summary');
+      summary.textContent = group;
+      details.appendChild(summary);
+      var grid = document.createElement('div');
+      grid.className = 'qa-grid';
+      items.forEach(function(ing){
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'qa-btn' + (ing.substitutesFor ? ' brand' : '') + (have.has(ing.id) ? ' active' : '');
+        btn.textContent = ing.name;
+        btn.addEventListener('click', function(){
+          toggle(ing.id);
+          persist();
+          renderAll();
+        });
+        grid.appendChild(btn);
+      });
+      details.appendChild(grid);
+      el.appendChild(details);
+    });
+  }
+
+  // Surfaces the recipes nearest to ready — ranked by fewest ingredients
+  // still needed — so adding one bottle shows what it just brought closer,
+  // not just what it completed.
+  function renderClosest(statuses){
+    var el = document.getElementById('closest');
+    if(have.size === 0){ el.hidden = true; el.innerHTML = ''; return; }
+    var candidates = statuses.filter(function(s){ return s.status.key !== 'ready'; });
+    candidates.sort(function(a, b){
+      if(a.status.missing.length !== b.status.missing.length) return a.status.missing.length - b.status.missing.length;
+      return a.recipe.name.localeCompare(b.recipe.name);
+    });
+    var top = candidates.slice(0, 3);
+    if(top.length === 0){ el.hidden = true; el.innerHTML = ''; return; }
+    el.hidden = false;
+    el.innerHTML = '<p class="closest-label">Closest to ready</p>' + top.map(function(s){
+      var needs = s.status.missing.map(function(it){ return byId[it.id].name; }).join(', ');
+      return '<div class="closest-row"><span class="closest-name">' + s.recipe.name + '</span><span class="closest-need">Needs ' + needs + '</span></div>';
+    }).join('');
+  }
+
+  function computeStatuses(){
+    return RECIPES.map(function(r){ return {recipe:r, status:recipeStatus(r)}; });
+  }
+
+  function renderQueueSlots(statuses){
+    var el = document.getElementById('queueSlots');
+    el.innerHTML = '';
+    for(var i = 0; i < 3; i++){
+      var slot = document.createElement('div');
+      slot.className = 'queue-slot';
+      slot.setAttribute('data-slot', i);
+      var name = queue[i];
+      if(!name){
+        slot.innerHTML = '<span class="queue-num">' + (i + 1) + '</span><p class="queue-empty">Drop a recipe here</p>';
+      } else {
+        var match = statuses.find(function(s){ return s.recipe.name === name; });
+        slot.classList.add('filled');
+        if(match){
+          var st = match.status;
+          var pillClass = st.key === 'ready' ? 'pill-ready' : (st.key === 'almost' ? 'pill-almost' : 'pill-more');
+          var pillText = st.key === 'ready' ? 'Ready to pour' : (st.key === 'almost' ? 'Missing: ' + byId[st.missing[0].id].name : 'Missing ' + st.missing.length);
+          slot.innerHTML =
+            '<span class="queue-num">' + (i + 1) + '</span>' +
+            '<div class="queue-card-head">' +
+              '<div><p class="queue-name">' + match.recipe.name + '</p><p class="queue-meta">' + match.recipe.base + ' · ' + match.recipe.glass + '</p></div>' +
+              '<button class="queue-remove" type="button" data-slot="' + i + '" aria-label="Remove ' + name + ' from Up Next">×</button>' +
+            '</div>' +
+            '<span class="pill ' + pillClass + '">' + pillText + '</span>';
+        } else {
+          // recipe was removed from the book since it was queued
+          slot.innerHTML =
+            '<span class="queue-num">' + (i + 1) + '</span>' +
+            '<div class="queue-card-head"><p class="queue-name">' + name + '</p><button class="queue-remove" type="button" data-slot="' + i + '" aria-label="Remove from Up Next">×</button></div>';
+        }
+      }
+      el.appendChild(slot);
+    }
+  }
+
+  function renderRecipes(statuses){
+    renderClosest(statuses);
+
+    var ready = statuses.filter(function(s){ return s.status.key === 'ready'; }).length;
+    var almost = statuses.filter(function(s){ return s.status.key === 'almost'; }).length;
+    var total = RECIPES.length;
+
+    document.getElementById('statReady').textContent = ready;
+    document.getElementById('statAlmost').textContent = almost;
+    document.getElementById('statTotal').textContent = total;
+
+    var q = normalize(query);
+    // Search looks at the whole book, not just what's stocked: it matches the
+    // recipe name, its base spirit, and — so typing a specific bottle like
+    // "Cointreau" or "Curaçao" finds every recipe that calls for it — the
+    // name of each ingredient in the recipe, whether or not it's on the shelf.
+    var visible = statuses.filter(function(s){
+      if(filter === 'ready' && s.status.key !== 'ready') return false;
+      if(filter === 'almost' && s.status.key !== 'almost') return false;
+      if(filter === 'favorites' && !favorites.has(s.recipe.name)) return false;
+      if(q){
+        var nameMatch = normalize(s.recipe.name).indexOf(q) !== -1;
+        var baseMatch = normalize(s.recipe.base).indexOf(q) !== -1;
+        var ingredientMatch = s.recipe.items.some(function(it){
+          var ing = byId[it.id];
+          return ing && normalize(ing.name).indexOf(q) !== -1;
+        });
+        if(!nameMatch && !baseMatch && !ingredientMatch) return false;
+      }
+      return true;
+    });
+
+    var order = {ready:0, almost:1, more:2};
+    visible.sort(function(a,b){
+      var oa = order[a.status.key], ob = order[b.status.key];
+      if(oa !== ob) return oa - ob;
+      if(a.status.missing.length !== b.status.missing.length) return a.status.missing.length - b.status.missing.length;
+      return a.recipe.name.localeCompare(b.recipe.name);
+    });
+
+    document.getElementById('countLine').innerHTML =
+      '<b>' + ready + '</b> ready to pour · <b>' + almost + '</b> almost there · <b>' + (total - ready - almost) + '</b> still in the book';
+    document.getElementById('favClearBtn').hidden = !(filter === 'favorites' && favorites.size > 0);
+
+    var grid = document.getElementById('grid');
+    grid.innerHTML = '';
+
+    if(visible.length === 0){
+      var emptyMsg = filter === 'favorites'
+        ? 'No favorites yet — tap the star on a recipe to save it here.'
+        : 'Nothing matches. Try a different filter or search term.';
+      grid.innerHTML = '<p class="empty-state">' + emptyMsg + '</p>';
+      return;
+    }
+
+    visible.forEach(function(s){
+      var r = s.recipe, st = s.status;
+      var card = document.createElement('article');
+      card.className = 'card';
+
+      var pillClass = st.key === 'ready' ? 'pill-ready' : (st.key === 'almost' ? 'pill-almost' : 'pill-more');
+      var pillText;
+      if(st.key === 'ready') pillText = 'Ready to pour';
+      else if(st.key === 'almost') pillText = 'Missing: ' + byId[st.missing[0].id].name;
+      else pillText = 'Missing ' + st.missing.length;
+
+      var isFav = favorites.has(r.name);
+      var isQueued = queue.indexOf(r.name) !== -1;
+
+      card.draggable = true;
+      card.addEventListener('dragstart', function(e){
+        e.dataTransfer.setData('text/plain', r.name);
+        e.dataTransfer.effectAllowed = 'copy';
+        card.classList.add('dragging');
+      });
+      card.addEventListener('dragend', function(){ card.classList.remove('dragging'); });
+
+      var itemsHtml = r.items.map(function(it){
+        var ing = byId[it.id];
+        var ok = requirementSatisfied(it);
+        var cls = ok ? 'have' : 'need';
+        var mark = ok ? '✓' : '·';
+        var optTag = it.optional ? ' <span class="opt">(optional)</span>' : '';
+        return '<li class="' + cls + '"><span class="mark">' + mark + '</span><span class="amt">' + it.amt + '</span><span>' + ing.name + optTag + '</span></li>';
+      }).join('');
+
+      card.innerHTML =
+        '<div class="card-head">' +
+          '<div><h3>' + r.name + '</h3><p class="card-meta">' + r.base + ' · ' + r.glass + ' · ' + r.method + '</p></div>' +
+          '<div class="card-head-actions">' +
+            '<button class="fav-btn' + (isFav ? ' active' : '') + '" type="button" data-name="' + r.name + '" aria-label="' + (isFav ? 'Remove ' + r.name + ' from favorites' : 'Add ' + r.name + ' to favorites') + '" aria-pressed="' + isFav + '">' + (isFav ? '★' : '☆') + '</button>' +
+            '<button class="fav-btn queue-btn' + (isQueued ? ' active' : '') + '" type="button" data-name="' + r.name + '" aria-label="' + (isQueued ? 'Remove ' + r.name + ' from Up Next' : 'Add ' + r.name + ' to Up Next') + '" aria-pressed="' + isQueued + '" title="Drag to Up Next, or click to add">' + (isQueued ? '✓' : '+') + '</button>' +
+            '<span class="pill ' + pillClass + '">' + pillText + '</span>' +
+          '</div>' +
+        '</div>' +
+        '<ul class="items">' + itemsHtml + '</ul>' +
+        (r.garnish && r.garnish !== '—' ? '<p class="garnish">Garnish: ' + r.garnish + '</p>' : '') +
+        '<p class="note">' + r.note + '</p>';
+
+      grid.appendChild(card);
+    });
+  }
+
+  function renderAll(){
+    var statuses = computeStatuses();
+    renderShelf();
+    renderQuickAdd();
+    renderRecipes(statuses);
+    renderQueueSlots(statuses);
+    lastAdded = null;
+  }
+
+  // ---------- events ----------
+  document.getElementById('addForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var input = document.getElementById('addInput');
+    var raw = input.value;
+    if(!raw.trim()) return;
+    raw.split(/[,;\n]/).forEach(addRaw);
+    input.value = '';
+    persist();
+    renderAll();
+    input.focus();
+  });
+
+  document.getElementById('starterBtn').addEventListener('click', function(){
+    STARTER.forEach(function(id){ have.set(id, byId[id]); });
+    persist();
+    renderAll();
+  });
+
+  document.getElementById('clearBtn').addEventListener('click', function(){
+    have.clear();
+    persist();
+    renderAll();
+  });
+
+  document.getElementById('searchInput').addEventListener('input', function(e){
+    query = e.target.value;
+    renderRecipes(computeStatuses());
+  });
+
+  document.getElementById('filterSeg').addEventListener('click', function(e){
+    var btn = e.target.closest('button[data-filter]');
+    if(!btn) return;
+    filter = btn.getAttribute('data-filter');
+    Array.from(document.querySelectorAll('#filterSeg button')).forEach(function(b){ b.classList.toggle('active', b === btn); });
+    renderRecipes(computeStatuses());
+  });
+
+  document.getElementById('grid').addEventListener('click', function(e){
+    var qbtn = e.target.closest('button.queue-btn');
+    if(qbtn){
+      toggleQueue(qbtn.getAttribute('data-name'));
+      persistQueue();
+      renderAll();
+      return;
+    }
+    var btn = e.target.closest('button.fav-btn');
+    if(!btn) return;
+    var name = btn.getAttribute('data-name');
+    if(favorites.has(name)) favorites.delete(name); else favorites.add(name);
+    persistFavorites();
+    renderRecipes(computeStatuses());
+  });
+
+  document.getElementById('favClearBtn').addEventListener('click', function(){
+    favorites.clear();
+    persistFavorites();
+    renderRecipes(computeStatuses());
+  });
+
+  // ---------- Up Next: drag-and-drop + click fallback ----------
+  var queueSlotsEl = document.getElementById('queueSlots');
+  queueSlotsEl.addEventListener('dragover', function(e){
+    var slot = e.target.closest('.queue-slot');
+    if(!slot) return;
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'copy';
+    slot.classList.add('drag-over');
+  });
+  queueSlotsEl.addEventListener('dragleave', function(e){
+    var slot = e.target.closest('.queue-slot');
+    if(slot) slot.classList.remove('drag-over');
+  });
+  queueSlotsEl.addEventListener('drop', function(e){
+    var slot = e.target.closest('.queue-slot');
+    if(!slot) return;
+    e.preventDefault();
+    slot.classList.remove('drag-over');
+    var name = e.dataTransfer.getData('text/plain');
+    if(!name) return;
+    var idx = Number(slot.getAttribute('data-slot'));
+    // dropping a recipe already queued elsewhere moves it here instead of duplicating
+    var existing = queue.indexOf(name);
+    if(existing !== -1) queue[existing] = null;
+    queue[idx] = name;
+    persistQueue();
+    renderAll();
+  });
+  queueSlotsEl.addEventListener('click', function(e){
+    var btn = e.target.closest('button.queue-remove');
+    if(!btn) return;
+    queue[Number(btn.getAttribute('data-slot'))] = null;
+    persistQueue();
+    renderAll();
+  });
+
+  document.getElementById('queueClearBtn').addEventListener('click', function(){
+    queue = [null, null, null];
+    persistQueue();
+    renderAll();
+  });
+
+  // One button that clears the shelf, favorites, and Up Next queue together.
+  // Click-again-to-confirm rather than a blocking confirm() dialog, so it
+  // can't stall the page — a stray click just times out back to the label.
+  (function(){
+    var resetBtn = document.getElementById('resetAllBtn');
+    var armed = false, armTimer = null;
+    resetBtn.addEventListener('click', function(){
+      if(!armed){
+        armed = true;
+        resetBtn.textContent = 'Click again to confirm';
+        resetBtn.classList.add('armed');
+        armTimer = setTimeout(function(){
+          armed = false;
+          resetBtn.textContent = 'Reset everything';
+          resetBtn.classList.remove('armed');
+        }, 4000);
+        return;
+      }
+      clearTimeout(armTimer);
+      armed = false;
+      resetBtn.classList.remove('armed');
+      resetBtn.textContent = 'Reset everything';
+      have.clear();
+      favorites.clear();
+      queue = [null, null, null];
+      persist();
+      persistFavorites();
+      persistQueue();
+      renderAll();
+    });
+  })();
+
+  loadFavorites();
+  loadQueue();
+  load();
+  renderAll();
+})();
+</script>
+
+</body>
+</html>
