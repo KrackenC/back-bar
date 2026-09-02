@@ -296,7 +296,7 @@
 
 <script>
 (function(){
-  var CURRENT_VERSION = "2026-09-02T01:30:02Z";
+  var CURRENT_VERSION = "2026-09-02T01:36:38Z";
   try {
     fetch('./version.json?_=' + Date.now(), {cache:'no-store'})
       .then(function(r){ return r.ok ? r.json() : null; })
@@ -1317,7 +1317,18 @@
       garnish:'Chocolate syrup swirl', note:"Shake with ice; strain into a chocolate-syrup-swirled glass — the Bar's official recipe, lighter and coffee-free next to the classic Mudslide."},
     {name:"Baileys S'mores Martini", base:'Liqueur', glass:'Coupe', method:'Shaken',
       items:[{id:'irish_cream', amt:'1.5 oz'},{id:'vodka', amt:'.25 oz'},{id:'espresso', amt:'.25 oz'},{id:'chocolate_syrup', amt:'drizzle'}],
-      garnish:'Toasted marshmallows, graham cracker crumble', note:'Drizzle chocolate syrup inside a chilled glass; shake the liquid ingredients with ice and strain in. Top with toasted marshmallows.'}
+      garnish:'Toasted marshmallows, graham cracker crumble', note:'Drizzle chocolate syrup inside a chilled glass; shake the liquid ingredients with ice and strain in. Top with toasted marshmallows.'},
+
+    // ---------- Kahlúa ----------
+    {name:'Kahlua Sour', base:'Liqueur', glass:'Rocks', method:'Shaken, dry-shaken',
+      items:[{id:'coffee_liqueur', amt:'2 oz'},{id:'lemon_juice', amt:'1 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'egg_white', amt:'1', optional:true}],
+      garnish:'Lemon wedge', note:'Shake with ice, strain, then dry-shake without ice to emulsify; strain over fresh ice.'},
+    {name:'Kahlua Ginger Ale', base:'Liqueur', glass:'Highball', method:'Built',
+      items:[{id:'coffee_liqueur', amt:'1.5 oz'},{id:'ginger_ale', amt:'4.5 oz'}],
+      garnish:'Lime wedge', note:'Build over ice and stir.'},
+    {name:'Bushwacker', base:'Rum', glass:'Hurricane', method:'Blended',
+      items:[{id:'dark_rum', amt:'1 oz'},{id:'coffee_liqueur', amt:'1 oz'},{id:'creme_de_cacao', amt:'1 oz'},{id:'coconut_cream', amt:'2 oz'},{id:'milk', amt:'2 oz'}],
+      garnish:'Grated nutmeg', note:'Blend with ice until smooth; pour into a chilled hurricane glass — a frozen New Orleans classic.'}
   ];
 
   var STARTER = ['gin','vodka','dry_vermouth','sweet_vermouth','campari','triple_sec','lime_juice','lemon_juice','simple_syrup','soda_water','angostura_bitters','bourbon'];
