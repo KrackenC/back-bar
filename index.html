@@ -489,6 +489,7 @@
     {id:'orange_syrup', name:'Orange Syrup', category:'Syrup', group:'Syrups'},
     {id:'agave_syrup', name:'Agave Syrup', category:'Syrup', group:'Syrups'},
     {id:'coconut_syrup', name:'Coconut Syrup', category:'Syrup', group:'Syrups'},
+    {id:'chocolate_syrup', name:'Chocolate Syrup', category:'Syrup', group:'Syrups'},
     {id:'peach_puree', name:'Peach Purée', category:'Fruit Purée', group:'Juice & Mixers'}
   ];
 
@@ -1285,7 +1286,18 @@
       garnish:'—', note:'Shake with ice; strain over fresh ice.'},
     {name:'Hennessy Sour Pineapple', base:'Brandy', glass:'Rocks', method:'Built',
       items:[{id:'brandy', amt:'1.5 oz'},{id:'pineapple_juice', amt:'3.5 oz'},{id:'lime_juice', amt:'.25 oz'},{id:'angostura_bitters', amt:'1 dash'}],
-      garnish:'Lime wedge', note:'Build over ice and stir.'}
+      garnish:'Lime wedge', note:'Build over ice and stir.'},
+
+    // ---------- Baileys ----------
+    {name:'Baileys Flat White Martini', base:'Liqueur', glass:'Coupe', method:'Shaken',
+      items:[{id:'irish_cream', amt:'1.75 oz'},{id:'espresso', amt:'.75 oz'},{id:'vodka', amt:'.75 oz'}],
+      garnish:'Coffee beans', note:'Shake with ice; strain into a chilled coupe.'},
+    {name:'Baileys Mudslide', base:'Liqueur', glass:'Coupe', method:'Shaken',
+      items:[{id:'irish_cream', amt:'1.5 oz'},{id:'vodka', amt:'.75 oz'},{id:'simple_syrup', amt:'.25 oz'}],
+      garnish:'Chocolate syrup swirl', note:"Shake with ice; strain into a chocolate-syrup-swirled glass — the Bar's official recipe, lighter and coffee-free next to the classic Mudslide."},
+    {name:"Baileys S'mores Martini", base:'Liqueur', glass:'Coupe', method:'Shaken',
+      items:[{id:'irish_cream', amt:'1.5 oz'},{id:'vodka', amt:'.25 oz'},{id:'espresso', amt:'.25 oz'},{id:'chocolate_syrup', amt:'drizzle'}],
+      garnish:'Toasted marshmallows, graham cracker crumble', note:'Drizzle chocolate syrup inside a chilled glass; shake the liquid ingredients with ice and strain in. Top with toasted marshmallows.'}
   ];
 
   var STARTER = ['gin','vodka','dry_vermouth','sweet_vermouth','campari','triple_sec','lime_juice','lemon_juice','simple_syrup','soda_water','angostura_bitters','bourbon'];
