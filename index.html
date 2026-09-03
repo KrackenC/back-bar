@@ -304,7 +304,7 @@
 
 <script>
 (function(){
-  var CURRENT_VERSION = "2026-09-03T02:31:35Z";
+  var CURRENT_VERSION = "2026-09-03T02:35:59Z";
   function showUpdateBanner(newVersion){
     var bar = document.createElement('div');
     bar.setAttribute('style',
@@ -521,6 +521,7 @@
     {id:'grapefruit_juice', name:'Grapefruit Juice', category:'Citrus Juice', group:'Juice & Mixers'},
     {id:'pineapple_juice', name:'Pineapple Juice', category:'Juice', group:'Juice & Mixers'},
     {id:'cranberry_juice', name:'Cranberry Juice', category:'Juice', group:'Juice & Mixers'},
+    {id:'pomegranate_juice', name:'Pomegranate Juice', category:'Juice', group:'Juice & Mixers'},
     {id:'tomato_juice', name:'Tomato Juice', category:'Juice', group:'Juice & Mixers'},
     {id:'grapefruit_soda', name:'Grapefruit Soda', category:'Soda', group:'Juice & Mixers'},
     {id:'lemonade', name:'Lemonade', category:'Juice', group:'Juice & Mixers'},
@@ -1389,7 +1390,18 @@
       garnish:'Grapefruit peel', note:'Stir the gin and cordial with ice; strain into a chilled coupe and top with sparkling wine.'},
     {name:'Tanqueray Gin Spritz', base:'Gin', glass:'Wine', method:'Shaken, topped',
       items:[{id:'gin', amt:'1.5 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'elderflower_liqueur', amt:'.5 oz'},{id:'simple_syrup', amt:'.25 oz'},{id:'basil', amt:'6 leaves'},{id:'mint_leaves', amt:'6 leaves'},{id:'grapefruit_soda', amt:'1.5 oz'}],
-      garnish:'Cucumber slices', note:'Shake everything but the soda with ice; strain over fresh ice and top with grapefruit soda.'}
+      garnish:'Cucumber slices', note:'Shake everything but the soda with ice; strain over fresh ice and top with grapefruit soda.'},
+
+    // ---------- Chambord ----------
+    {name:'Chambord Royale', base:'Sparkling', glass:'Coupe', method:'Built',
+      items:[{id:'sparkling_wine', amt:'4 oz'},{id:'creme_de_framboise', amt:'.5 oz'}],
+      garnish:'Raspberry', note:'Pour the sparkling wine into a chilled coupe and add the raspberry liqueur.'},
+    {name:'Chambord Margarita', base:'Tequila', glass:'Rocks', method:'Shaken',
+      items:[{id:'tequila', amt:'1.5 oz'},{id:'creme_de_framboise', amt:'.75 oz'},{id:'pomegranate_juice', amt:'.75 oz'},{id:'lime_juice', amt:'.5 oz'}],
+      garnish:'Lime slice', note:'Shake with ice; strain into a chilled glass.'},
+    {name:'Gin Berry Spritz', base:'Gin', glass:'Wine', method:'Built',
+      items:[{id:'gin', amt:'.75 oz'},{id:'creme_de_framboise', amt:'.75 oz'},{id:'lemonade', amt:'3 oz'}],
+      garnish:'Raspberry, lemon wedge', note:'Build over ice and stir.'}
   ];
 
   var STARTER = ['gin','vodka','dry_vermouth','sweet_vermouth','campari','triple_sec','lime_juice','lemon_juice','simple_syrup','soda_water','angostura_bitters','bourbon'];
