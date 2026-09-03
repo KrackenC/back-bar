@@ -202,6 +202,8 @@
   }
   .segmented button + button{ border-left:1px solid var(--line); }
   .segmented button.active{ background:var(--ink); color:var(--paper); }
+  .shelf-switcher{ margin-top:.9rem; }
+  .shelf-switcher .count{ opacity:.7; font-variant-numeric:tabular-nums; }
 
   .count-row{ display:flex; align-items:baseline; justify-content:space-between; gap:1rem; margin:1rem 0 1.1rem; }
   .count-line{
@@ -296,7 +298,7 @@
 
 <script>
 (function(){
-  var CURRENT_VERSION = "2026-09-02T01:40:45Z";
+  var CURRENT_VERSION = "2026-09-03T02:12:36Z";
   function showUpdateBanner(newVersion){
     var bar = document.createElement('div');
     bar.setAttribute('style',
@@ -379,6 +381,7 @@
 
     <section class="panel-shelf" aria-label="Your back bar">
       <p class="subhead">Your Back Bar</p>
+      <div class="segmented shelf-switcher" id="shelfSwitcher"></div>
       <form class="add-form" id="addForm">
         <input type="text" id="addInput" placeholder="Type a bottle or mixer…" autocomplete="off" spellcheck="false">
         <button type="submit">Add</button>
@@ -1389,7 +1392,16 @@
   });
   var ALL_INGREDIENTS = INGREDIENTS.concat(BRAND_INGREDIENTS);
 
-  var have = new Map();       // id -> ingredient-like object
+  var have = new Map();       // id -> ingredient-like object, for whichever shelf is active
+  // Two independent shelves, each with its own storage key and label, so a
+  // user can keep e.g. a home bar and a second bar (a vacation place, a
+  // partner's collection) loaded side by side and flip between them without
+  // either one overwriting the other. `backbar.shelf.v1` is the original
+  // single-shelf key from before this existed — kept as shelf 0 so nobody's
+  // existing shelf goes missing when this ships.
+  var SHELF_KEYS = ['backbar.shelf.v1', 'backbar.shelf.2.v1'];
+  var SHELF_LABELS = ['Shelf 1', 'Shelf 2'];
+  var activeShelf = 0;
   var filter = 'all';
   var query = '';
   var lastAdded = null;
@@ -1461,13 +1473,16 @@
       var arr = Array.from(have.values()).map(function(v){
         return {id:v.id, name:v.name, category:v.category, group:v.group, unclassified:!!v.unclassified};
       });
-      localStorage.setItem('backbar.shelf.v1', JSON.stringify(arr));
+      localStorage.setItem(SHELF_KEYS[activeShelf], JSON.stringify(arr));
     }catch(e){}
   }
 
+  // Reads whichever shelf is currently active into `have`. Clears first so
+  // it's safe to call again after switching shelves, not just on startup.
   function load(){
+    have.clear();
     try{
-      var raw = localStorage.getItem('backbar.shelf.v1');
+      var raw = localStorage.getItem(SHELF_KEYS[activeShelf]);
       if(!raw) return;
       var arr = JSON.parse(raw);
       arr.forEach(function(v){
@@ -1475,6 +1490,39 @@
         else if(byId[v.id]){ have.set(v.id, byId[v.id]); }
       });
     }catch(e){}
+  }
+
+  function persistActiveShelf(){
+    try{ localStorage.setItem('backbar.activeShelf.v1', String(activeShelf)); }catch(e){}
+  }
+
+  function loadActiveShelf(){
+    try{
+      var raw = localStorage.getItem('backbar.activeShelf.v1');
+      var idx = Number(raw);
+      if(idx === 0 || idx === 1) activeShelf = idx;
+    }catch(e){}
+  }
+
+  // Bottle count for a shelf without disturbing the currently active one —
+  // used to show "(N)" on the inactive tab in the switcher. Reads straight
+  // from storage rather than an in-memory Map, since only one shelf is ever
+  // loaded into `have` at a time.
+  function shelfCount(idx){
+    try{
+      var raw = localStorage.getItem(SHELF_KEYS[idx]);
+      if(!raw) return 0;
+      var arr = JSON.parse(raw);
+      return Array.isArray(arr) ? arr.length : 0;
+    }catch(e){ return 0; }
+  }
+
+  function switchShelf(idx){
+    if(idx === activeShelf) return;
+    activeShelf = idx;
+    load();
+    persistActiveShelf();
+    renderAll();
   }
 
   function persistFavorites(){
@@ -1550,6 +1598,14 @@
     });
     chip.appendChild(btn);
     return chip;
+  }
+
+  function renderShelfSwitcher(){
+    var el = document.getElementById('shelfSwitcher');
+    el.innerHTML = SHELF_LABELS.map(function(label, i){
+      return '<button type="button" data-shelf="' + i + '" class="' + (i === activeShelf ? 'active' : '') + '">' +
+        label + ' <span class="count">(' + shelfCount(i) + ')</span></button>';
+    }).join('');
   }
 
   function renderShelf(){
@@ -1777,6 +1833,7 @@
 
   function renderAll(){
     var statuses = computeStatuses();
+    renderShelfSwitcher();
     renderShelf();
     renderQuickAdd();
     renderRecipes(statuses);
@@ -1795,6 +1852,12 @@
     persist();
     renderAll();
     input.focus();
+  });
+
+  document.getElementById('shelfSwitcher').addEventListener('click', function(e){
+    var btn = e.target.closest('button[data-shelf]');
+    if(!btn) return;
+    switchShelf(Number(btn.getAttribute('data-shelf')));
   });
 
   document.getElementById('starterBtn').addEventListener('click', function(){
@@ -1909,9 +1972,10 @@
       resetBtn.classList.remove('armed');
       resetBtn.textContent = 'Reset everything';
       have.clear();
+      persist();
+      SHELF_KEYS.forEach(function(key){ try{ localStorage.removeItem(key); }catch(e){} }); // both shelves, not just the active one
       favorites.clear();
       queue = [null, null, null];
-      persist();
       persistFavorites();
       persistQueue();
       renderAll();
@@ -1920,6 +1984,7 @@
 
   loadFavorites();
   loadQueue();
+  loadActiveShelf();
   load();
   renderAll();
 })();
