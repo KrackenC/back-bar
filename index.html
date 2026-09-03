@@ -204,6 +204,12 @@
   .segmented button.active{ background:var(--ink); color:var(--paper); }
   .shelf-switcher{ margin-top:.9rem; }
   .shelf-switcher .count{ opacity:.7; font-variant-numeric:tabular-nums; }
+  .shelf-switcher .rename-btn{ margin-left:.35rem; opacity:.55; font-size:.85rem; cursor:pointer; }
+  .shelf-switcher .rename-btn:hover{ opacity:1; }
+  .shelf-name-input{
+    border:none; background:var(--paper-raised); color:var(--ink); padding:.45rem .9rem; font-size:.78rem;
+    font-weight:600; font-family:'Archivo', sans-serif; width:8rem; outline:none;
+  }
 
   .count-row{ display:flex; align-items:baseline; justify-content:space-between; gap:1rem; margin:1rem 0 1.1rem; }
   .count-line{
@@ -298,7 +304,7 @@
 
 <script>
 (function(){
-  var CURRENT_VERSION = "2026-09-03T02:12:36Z";
+  var CURRENT_VERSION = "2026-09-03T02:18:27Z";
   function showUpdateBanner(newVersion){
     var bar = document.createElement('div');
     bar.setAttribute('style',
@@ -1400,8 +1406,10 @@
   // single-shelf key from before this existed — kept as shelf 0 so nobody's
   // existing shelf goes missing when this ships.
   var SHELF_KEYS = ['backbar.shelf.v1', 'backbar.shelf.2.v1'];
-  var SHELF_LABELS = ['Shelf 1', 'Shelf 2'];
+  var SHELF_LABELS = ['Shelf 1', 'Shelf 2']; // user-editable via the pencil icon; persisted separately from the bottles themselves
+  var SHELF_NAMES_KEY = 'backbar.shelfNames.v1';
   var activeShelf = 0;
+  var editingShelf = null; // index of the shelf whose name is being renamed right now, or null
   var filter = 'all';
   var query = '';
   var lastAdded = null;
@@ -1525,6 +1533,32 @@
     renderAll();
   }
 
+  function loadShelfNames(){
+    try{
+      var raw = localStorage.getItem(SHELF_NAMES_KEY);
+      if(!raw) return;
+      var arr = JSON.parse(raw);
+      if(Array.isArray(arr)){
+        if(arr[0]) SHELF_LABELS[0] = arr[0];
+        if(arr[1]) SHELF_LABELS[1] = arr[1];
+      }
+    }catch(e){}
+  }
+
+  function persistShelfNames(){
+    try{ localStorage.setItem(SHELF_NAMES_KEY, JSON.stringify(SHELF_LABELS)); }catch(e){}
+  }
+
+  function commitShelfRename(input){
+    var idx = Number(input.getAttribute('data-shelf-edit'));
+    if(editingShelf !== idx) return; // already committed once (e.g. Enter, then the resulting re-render's own blur) — don't double-fire
+    var val = input.value.trim();
+    SHELF_LABELS[idx] = val || ('Shelf ' + (idx + 1)); // an emptied name falls back to the default rather than sticking as blank
+    persistShelfNames();
+    editingShelf = null;
+    renderShelfSwitcher();
+  }
+
   function persistFavorites(){
     try{ localStorage.setItem('backbar.favorites.v1', JSON.stringify(Array.from(favorites))); }catch(e){}
   }
@@ -1603,9 +1637,19 @@
   function renderShelfSwitcher(){
     var el = document.getElementById('shelfSwitcher');
     el.innerHTML = SHELF_LABELS.map(function(label, i){
+      if(editingShelf === i){
+        return '<span class="shelf-edit-wrap"><input type="text" class="shelf-name-input" ' +
+          'data-shelf-edit="' + i + '" value="' + label.replace(/"/g, '&quot;') + '" maxlength="24" placeholder="Shelf ' + (i + 1) + '"></span>';
+      }
       return '<button type="button" data-shelf="' + i + '" class="' + (i === activeShelf ? 'active' : '') + '">' +
-        label + ' <span class="count">(' + shelfCount(i) + ')</span></button>';
+        label + ' <span class="count">(' + shelfCount(i) + ')</span>' +
+        '<span class="rename-btn" data-rename="' + i + '" title="Rename ' + label + '">✎</span>' +
+        '</button>';
     }).join('');
+    if(editingShelf !== null){
+      var input = el.querySelector('input[data-shelf-edit]');
+      if(input){ input.focus(); input.select(); }
+    }
   }
 
   function renderShelf(){
@@ -1855,9 +1899,30 @@
   });
 
   document.getElementById('shelfSwitcher').addEventListener('click', function(e){
+    var renameBtn = e.target.closest('[data-rename]');
+    if(renameBtn){
+      editingShelf = Number(renameBtn.getAttribute('data-rename'));
+      renderShelfSwitcher();
+      return;
+    }
     var btn = e.target.closest('button[data-shelf]');
     if(!btn) return;
     switchShelf(Number(btn.getAttribute('data-shelf')));
+  });
+
+  document.getElementById('shelfSwitcher').addEventListener('keydown', function(e){
+    var input = e.target.closest && e.target.closest('input[data-shelf-edit]');
+    if(!input) return;
+    if(e.key === 'Enter'){ e.preventDefault(); commitShelfRename(input); }
+    else if(e.key === 'Escape'){ e.preventDefault(); editingShelf = null; renderShelfSwitcher(); }
+  });
+
+  // 'focusout' (unlike 'blur') bubbles, so this delegated listener catches
+  // tapping away from the rename input without needing a listener rebound
+  // on every re-render.
+  document.getElementById('shelfSwitcher').addEventListener('focusout', function(e){
+    var input = e.target.closest && e.target.closest('input[data-shelf-edit]');
+    if(input) commitShelfRename(input);
   });
 
   document.getElementById('starterBtn').addEventListener('click', function(){
@@ -1985,6 +2050,7 @@
   loadFavorites();
   loadQueue();
   loadActiveShelf();
+  loadShelfNames();
   load();
   renderAll();
 })();
