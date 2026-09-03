@@ -304,7 +304,7 @@
 
 <script>
 (function(){
-  var CURRENT_VERSION = "2026-09-03T02:18:27Z";
+  var CURRENT_VERSION = "2026-09-03T02:25:21Z";
   function showUpdateBanner(newVersion){
     var bar = document.createElement('div');
     bar.setAttribute('style',
@@ -1406,7 +1406,8 @@
   // single-shelf key from before this existed — kept as shelf 0 so nobody's
   // existing shelf goes missing when this ships.
   var SHELF_KEYS = ['backbar.shelf.v1', 'backbar.shelf.2.v1'];
-  var SHELF_LABELS = ['Shelf 1', 'Shelf 2']; // user-editable via the pencil icon; persisted separately from the bottles themselves
+  var DEFAULT_SHELF_LABELS = ['Home Bar', 'Cabin Bar'];
+  var SHELF_LABELS = DEFAULT_SHELF_LABELS.slice(); // user-editable via the pencil icon; persisted separately from the bottles themselves
   var SHELF_NAMES_KEY = 'backbar.shelfNames.v1';
   var activeShelf = 0;
   var editingShelf = null; // index of the shelf whose name is being renamed right now, or null
@@ -1553,7 +1554,7 @@
     var idx = Number(input.getAttribute('data-shelf-edit'));
     if(editingShelf !== idx) return; // already committed once (e.g. Enter, then the resulting re-render's own blur) — don't double-fire
     var val = input.value.trim();
-    SHELF_LABELS[idx] = val || ('Shelf ' + (idx + 1)); // an emptied name falls back to the default rather than sticking as blank
+    SHELF_LABELS[idx] = val || DEFAULT_SHELF_LABELS[idx]; // an emptied name falls back to the default rather than sticking as blank
     persistShelfNames();
     editingShelf = null;
     renderShelfSwitcher();
@@ -1639,7 +1640,7 @@
     el.innerHTML = SHELF_LABELS.map(function(label, i){
       if(editingShelf === i){
         return '<span class="shelf-edit-wrap"><input type="text" class="shelf-name-input" ' +
-          'data-shelf-edit="' + i + '" value="' + label.replace(/"/g, '&quot;') + '" maxlength="24" placeholder="Shelf ' + (i + 1) + '"></span>';
+          'data-shelf-edit="' + i + '" value="' + label.replace(/"/g, '&quot;') + '" maxlength="24" placeholder="' + DEFAULT_SHELF_LABELS[i] + '"></span>';
       }
       return '<button type="button" data-shelf="' + i + '" class="' + (i === activeShelf ? 'active' : '') + '">' +
         label + ' <span class="count">(' + shelfCount(i) + ')</span>' +
