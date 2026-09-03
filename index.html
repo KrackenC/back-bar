@@ -304,7 +304,7 @@
 
 <script>
 (function(){
-  var CURRENT_VERSION = "2026-09-03T02:25:21Z";
+  var CURRENT_VERSION = "2026-09-03T02:31:35Z";
   function showUpdateBanner(newVersion){
     var bar = document.createElement('div');
     bar.setAttribute('style',
@@ -553,6 +553,7 @@
     {id:'honey_syrup', name:'Honey Syrup', category:'Syrup', group:'Syrups'},
     {id:'ginger_honey_syrup', name:'Ginger-Honey Syrup', category:'Syrup', group:'Syrups'},
     {id:'orgeat_syrup', name:'Orgeat Syrup', category:'Syrup', group:'Syrups'},
+    {id:'grapefruit_cordial', name:'Grapefruit Cordial', category:'Syrup', group:'Syrups'},
     {id:'milk', name:'Milk', category:'Cream / Dairy', group:'Juice & Mixers'},
     {id:'raspberry_syrup', name:'Raspberry Syrup', category:'Syrup', group:'Syrups'},
     {id:'cherry_syrup', name:'Cherry Syrup', category:'Syrup', group:'Syrups'},
@@ -1380,7 +1381,15 @@
       garnish:'Lime wedge', note:'Build over ice and stir.'},
     {name:'Bushwacker', base:'Rum', glass:'Hurricane', method:'Blended',
       items:[{id:'dark_rum', amt:'1 oz'},{id:'coffee_liqueur', amt:'1 oz'},{id:'creme_de_cacao', amt:'1 oz'},{id:'coconut_cream', amt:'2 oz'},{id:'milk', amt:'2 oz'}],
-      garnish:'Grated nutmeg', note:'Blend with ice until smooth; pour into a chilled hurricane glass — a frozen New Orleans classic.'}
+      garnish:'Grated nutmeg', note:'Blend with ice until smooth; pour into a chilled hurricane glass — a frozen New Orleans classic.'},
+
+    // ---------- Tanqueray ----------
+    {name:'Tanqueray Tiny Ten', base:'Gin', glass:'Coupe', method:'Stirred, topped',
+      items:[{id:'gin', amt:'1 oz'},{id:'grapefruit_cordial', amt:'.75 oz'},{id:'sparkling_wine', amt:'1.75 oz'}],
+      garnish:'Grapefruit peel', note:'Stir the gin and cordial with ice; strain into a chilled coupe and top with sparkling wine.'},
+    {name:'Tanqueray Gin Spritz', base:'Gin', glass:'Wine', method:'Shaken, topped',
+      items:[{id:'gin', amt:'1.5 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'elderflower_liqueur', amt:'.5 oz'},{id:'simple_syrup', amt:'.25 oz'},{id:'basil', amt:'6 leaves'},{id:'mint_leaves', amt:'6 leaves'},{id:'grapefruit_soda', amt:'1.5 oz'}],
+      garnish:'Cucumber slices', note:'Shake everything but the soda with ice; strain over fresh ice and top with grapefruit soda.'}
   ];
 
   var STARTER = ['gin','vodka','dry_vermouth','sweet_vermouth','campari','triple_sec','lime_juice','lemon_juice','simple_syrup','soda_water','angostura_bitters','bourbon'];
