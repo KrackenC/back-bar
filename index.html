@@ -234,6 +234,22 @@
   .closest-name{ font-family:'Fraunces', serif; font-weight:600; font-size:.95rem; flex-shrink:0; }
   .closest-need{ font-size:.78rem; color:var(--ink-soft); text-align:right; }
 
+  /* ---------- New This Week spotlight ---------- */
+  .new-week{ margin-bottom:1.5rem; }
+  .new-week-head{ display:flex; align-items:baseline; justify-content:space-between; gap:1rem; margin-bottom:.65rem; }
+  .new-week-head .subhead{ color:var(--accent); }
+  .new-week-tag{ font-size:.72rem; color:var(--ink-soft); font-family:'Space Mono', monospace; }
+  .new-week-strip{ display:flex; gap:.85rem; overflow-x:auto; padding-bottom:.4rem; margin:0 -.1rem; }
+  .new-card{
+    flex:0 0 230px; background:var(--paper-raised); border:1px solid var(--accent); border-radius:10px;
+    padding:.85rem .95rem; cursor:pointer; display:flex; flex-direction:column; gap:.5rem;
+  }
+  .new-card:hover, .new-card:focus-visible{ background:var(--accent-soft-bg); }
+  .new-card h4{ font-family:'Fraunces', serif; font-size:1.05rem; font-weight:700; margin:0; line-height:1.2; }
+  .new-card .new-meta{ font-size:.68rem; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-soft); margin:0; }
+  .new-card .new-note{ font-size:.78rem; color:var(--ink-soft); line-height:1.4; margin:0; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .new-card .pill{ align-self:flex-start; }
+
   .grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(310px, 1fr)); gap:1rem; }
 
   .card{
@@ -304,7 +320,7 @@
 
 <script>
 (function(){
-  var CURRENT_VERSION = "2026-09-05T18:05:03Z";
+  var CURRENT_VERSION = "2026-09-05T19:09:35Z";
   function showUpdateBanner(newVersion){
     var bar = document.createElement('div');
     bar.setAttribute('style',
@@ -408,6 +424,13 @@
     </section>
 
     <section class="panel-recipes" aria-label="Cocktails">
+      <section class="new-week" id="newWeek" hidden aria-label="New this week">
+        <div class="new-week-head">
+          <p class="subhead" style="margin:0;">New This Week</p>
+          <span class="new-week-tag" id="newWeekTag"></span>
+        </div>
+        <div class="new-week-strip" id="newWeekGrid"></div>
+      </section>
       <div class="recipes-head">
         <p class="subhead" style="margin:0;">What You Can Make</p>
         <div style="display:flex; gap:.7rem; flex-wrap:wrap;">
@@ -1407,13 +1430,13 @@
       garnish:'Raspberry, lemon wedge', note:'Build over ice and stir.'},
 
     // ---------- Johnnie Walker ----------
-    {name:'Johnnie & Ginger', base:'Whiskey', glass:'Highball', method:'Built',
+    {name:'Johnnie & Ginger', base:'Whiskey', glass:'Highball', method:'Built', added:'2026-09-05',
       items:[{id:'scotch_whisky', amt:'1.5 oz'},{id:'ginger_ale', amt:'5 oz'}],
       garnish:'Fresh ginger, star anise or lemon wheel', note:'Build over ice and stir — a fresh take on the classic Scotch highball.'},
-    {name:'Go Go Highball', base:'Whiskey', glass:'Highball', method:'Built',
+    {name:'Go Go Highball', base:'Whiskey', glass:'Highball', method:'Built', added:'2026-09-05',
       items:[{id:'scotch_whisky', amt:'1 oz'},{id:'ginger_ale', amt:'3 oz'},{id:'tart_cherry_juice', amt:'1 oz'}],
       garnish:'Black cherries', note:'Build the scotch and ginger ale over ice, then drizzle the cherry juice in slowly.'},
-    {name:'Black Cask Old Fashioned', base:'Whiskey', glass:'Rocks', method:'Stirred',
+    {name:'Black Cask Old Fashioned', base:'Whiskey', glass:'Rocks', method:'Stirred', added:'2026-09-05',
       items:[{id:'scotch_whisky', amt:'1.5 oz'},{id:'honey_syrup', amt:'.25 oz'},{id:'almond_bitters', amt:'1 dash'},{id:'orange_bitters', amt:'1 dash'}],
       garnish:'Orange peel', note:'Stir over ice in the glass; garnish with an orange peel — a modern riff on the classic Old Fashioned.'}
   ];
@@ -1773,6 +1796,52 @@
     return RECIPES.map(function(r){ return {recipe:r, status:recipeStatus(r)}; });
   }
 
+  // ---------- New This Week ----------
+  // Recipes are tagged added:'YYYY-MM-DD' when they're added in a batch (see
+  // the weekly recipe-adding routine). Whatever the most recent date present
+  // is, every recipe carrying that exact date is "this week's" batch — no
+  // date-range math, so it just works whether a week was skipped or not.
+  function newestBatch(){
+    var dated = RECIPES.filter(function(r){ return !!r.added; });
+    if(dated.length === 0) return {date:null, recipes:[]};
+    var maxDate = dated.reduce(function(m, r){ return r.added > m ? r.added : m; }, dated[0].added);
+    return {date:maxDate, recipes:dated.filter(function(r){ return r.added === maxDate; })};
+  }
+
+  function formatAddedDate(iso){
+    var parts = iso.split('-');
+    var d = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+    return d.toLocaleDateString(undefined, {month:'short', day:'numeric', year:'numeric'});
+  }
+
+  function renderNewWeek(statuses){
+    var section = document.getElementById('newWeek');
+    var batch = newestBatch();
+    if(batch.recipes.length === 0){ section.hidden = true; return; }
+    section.hidden = false;
+    document.getElementById('newWeekTag').textContent = 'Added ' + formatAddedDate(batch.date);
+    var grid = document.getElementById('newWeekGrid');
+    grid.innerHTML = '';
+    batch.recipes.forEach(function(r){
+      var match = statuses.find(function(s){ return s.recipe === r; });
+      var st = match ? match.status : recipeStatus(r);
+      var pillClass = st.key === 'ready' ? 'pill-ready' : (st.key === 'almost' ? 'pill-almost' : 'pill-more');
+      var pillText = st.key === 'ready' ? 'Ready to pour' : (st.key === 'almost' ? 'Missing: ' + byId[st.missing[0].id].name : 'Missing ' + st.missing.length);
+      var card = document.createElement('article');
+      card.className = 'new-card';
+      card.setAttribute('data-name', r.name);
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-label', 'Find ' + r.name + ' in the book below');
+      card.innerHTML =
+        '<h4>' + r.name + '</h4>' +
+        '<p class="new-meta">' + r.base + ' · ' + r.glass + '</p>' +
+        '<span class="pill ' + pillClass + '">' + pillText + '</span>' +
+        '<p class="new-note">' + r.note + '</p>';
+      grid.appendChild(card);
+    });
+  }
+
   function renderQueueSlots(statuses){
     var el = document.getElementById('queueSlots');
     el.innerHTML = '';
@@ -1810,6 +1879,7 @@
 
   function renderRecipes(statuses){
     renderClosest(statuses);
+    renderNewWeek(statuses);
 
     var ready = statuses.filter(function(s){ return s.status.key === 'ready'; }).length;
     var almost = statuses.filter(function(s){ return s.status.key === 'almost'; }).length;
@@ -2000,6 +2070,25 @@
     if(favorites.has(name)) favorites.delete(name); else favorites.add(name);
     persistFavorites();
     renderRecipes(computeStatuses());
+  });
+
+  // Clicking (or Enter/Space-ing) a New This Week card jumps the search box
+  // to that recipe so it's easy to find in the full book below.
+  document.getElementById('newWeekGrid').addEventListener('click', function(e){
+    var card = e.target.closest('.new-card');
+    if(!card) return;
+    var name = card.getAttribute('data-name');
+    query = name;
+    document.getElementById('searchInput').value = name;
+    renderRecipes(computeStatuses());
+    document.getElementById('grid').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+  document.getElementById('newWeekGrid').addEventListener('keydown', function(e){
+    if(e.key !== 'Enter' && e.key !== ' ') return;
+    var card = e.target.closest('.new-card');
+    if(!card) return;
+    e.preventDefault();
+    card.click();
   });
 
   document.getElementById('favClearBtn').addEventListener('click', function(){
