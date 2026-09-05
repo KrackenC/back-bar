@@ -304,7 +304,7 @@
 
 <script>
 (function(){
-  var CURRENT_VERSION = "2026-09-03T02:35:59Z";
+  var CURRENT_VERSION = "2026-09-05T18:05:03Z";
   function showUpdateBanner(newVersion){
     var bar = document.createElement('div');
     bar.setAttribute('style',
@@ -513,6 +513,7 @@
     {id:'peach_bitters', name:'Peach Bitters', category:'Fruit Bitters', group:'Bitters'},
     {id:'orange_bitters', name:'Orange Bitters', category:'Citrus Bitters', group:'Bitters'},
     {id:'cherry_bitters', name:'Cherry Bitters', category:'Fruit Bitters', group:'Bitters'},
+    {id:'almond_bitters', name:'Almond Bitters', category:'Nut Bitters', group:'Bitters'},
 
     {id:'lime_juice', name:'Lime Juice', category:'Citrus Juice', group:'Juice & Mixers'},
     {id:'lemon_juice', name:'Lemon Juice', category:'Citrus Juice', group:'Juice & Mixers'},
@@ -522,6 +523,7 @@
     {id:'pineapple_juice', name:'Pineapple Juice', category:'Juice', group:'Juice & Mixers'},
     {id:'cranberry_juice', name:'Cranberry Juice', category:'Juice', group:'Juice & Mixers'},
     {id:'pomegranate_juice', name:'Pomegranate Juice', category:'Juice', group:'Juice & Mixers'},
+    {id:'tart_cherry_juice', name:'Tart Cherry Juice', category:'Juice', group:'Juice & Mixers'},
     {id:'tomato_juice', name:'Tomato Juice', category:'Juice', group:'Juice & Mixers'},
     {id:'grapefruit_soda', name:'Grapefruit Soda', category:'Soda', group:'Juice & Mixers'},
     {id:'lemonade', name:'Lemonade', category:'Juice', group:'Juice & Mixers'},
@@ -600,7 +602,8 @@
     'st germain':'elderflower_liqueur',"st. germain":'elderflower_liqueur','elderflower':'elderflower_liqueur',
     'peach nectar':'peach_puree',
     'ginger':'fresh_ginger','ginger root':'fresh_ginger','gentian liqueur':'suze',
-    'olive brine':'olive_juice','coconut cream syrup':'coconut_syrup'
+    'olive brine':'olive_juice','coconut cream syrup':'coconut_syrup',
+    'sour cherry juice':'tart_cherry_juice','cherry juice':'tart_cherry_juice'
   };
 
   // Known brand names. Each is its own real ingredient — its own shelf chip,
@@ -1401,7 +1404,18 @@
       garnish:'Lime slice', note:'Shake with ice; strain into a chilled glass.'},
     {name:'Gin Berry Spritz', base:'Gin', glass:'Wine', method:'Built',
       items:[{id:'gin', amt:'.75 oz'},{id:'creme_de_framboise', amt:'.75 oz'},{id:'lemonade', amt:'3 oz'}],
-      garnish:'Raspberry, lemon wedge', note:'Build over ice and stir.'}
+      garnish:'Raspberry, lemon wedge', note:'Build over ice and stir.'},
+
+    // ---------- Johnnie Walker ----------
+    {name:'Johnnie & Ginger', base:'Whiskey', glass:'Highball', method:'Built',
+      items:[{id:'scotch_whisky', amt:'1.5 oz'},{id:'ginger_ale', amt:'5 oz'}],
+      garnish:'Fresh ginger, star anise or lemon wheel', note:'Build over ice and stir — a fresh take on the classic Scotch highball.'},
+    {name:'Go Go Highball', base:'Whiskey', glass:'Highball', method:'Built',
+      items:[{id:'scotch_whisky', amt:'1 oz'},{id:'ginger_ale', amt:'3 oz'},{id:'tart_cherry_juice', amt:'1 oz'}],
+      garnish:'Black cherries', note:'Build the scotch and ginger ale over ice, then drizzle the cherry juice in slowly.'},
+    {name:'Black Cask Old Fashioned', base:'Whiskey', glass:'Rocks', method:'Stirred',
+      items:[{id:'scotch_whisky', amt:'1.5 oz'},{id:'honey_syrup', amt:'.25 oz'},{id:'almond_bitters', amt:'1 dash'},{id:'orange_bitters', amt:'1 dash'}],
+      garnish:'Orange peel', note:'Stir over ice in the glass; garnish with an orange peel — a modern riff on the classic Old Fashioned.'}
   ];
 
   var STARTER = ['gin','vodka','dry_vermouth','sweet_vermouth','campari','triple_sec','lime_juice','lemon_juice','simple_syrup','soda_water','angostura_bitters','bourbon'];
