@@ -98,6 +98,29 @@
     .panel-recipes{ padding:0; }
   }
 
+  /* Collapsed shelf: the panel shrinks to a single toggle line spanning the
+     full width, and the recipes/queue panels reflow up into the row it
+     vacated — grid auto-placement does the reflow, we just widen the panel
+     and change the column count for what's left. */
+  .app.shelf-collapsed{ grid-template-columns:1fr 250px; }
+  .app.shelf-collapsed .panel-shelf{ grid-column:1 / -1; }
+  @media (max-width:1180px){
+    .app.shelf-collapsed{ grid-template-columns:1fr; }
+  }
+  .panel-shelf.collapsed{
+    border-right:none; border-bottom:1px solid var(--line);
+    padding-right:0; padding-bottom:1rem; margin-bottom:1.75rem;
+  }
+  .shelf-toggle{
+    display:flex; align-items:center; justify-content:space-between; gap:.75rem; width:100%;
+    background:none; border:none; padding:0; margin:0 0 .9rem; cursor:pointer; font:inherit; text-align:left;
+  }
+  .shelf-toggle:hover .subhead{ color:var(--accent-hover); }
+  .shelf-toggle-icon{
+    font-family:'Space Mono', monospace; font-size:1rem; line-height:1; color:var(--ink-soft); flex-shrink:0;
+  }
+  .panel-shelf.collapsed .shelf-toggle{ margin-bottom:0; }
+
   /* ---------- Shelf panel ---------- */
   .add-form{ display:flex; gap:.5rem; margin-top:.9rem; }
   .add-form input[type="text"]{
@@ -309,7 +332,7 @@
 
 <script>
 (function(){
-  var CURRENT_VERSION = "2026-09-11T02:30:36Z";
+  var CURRENT_VERSION = "2026-09-11T02:44:45Z";
   function showUpdateBanner(newVersion){
     var bar = document.createElement('div');
     bar.setAttribute('style',
@@ -388,28 +411,33 @@
     </div>
   </header>
 
-  <main class="app">
+  <main class="app" id="app">
 
-    <section class="panel-shelf" aria-label="Your back bar">
-      <p class="subhead">Your Back Bar</p>
-      <div class="segmented shelf-switcher" id="shelfSwitcher"></div>
-      <form class="add-form" id="addForm">
-        <input type="text" id="addInput" placeholder="Type a bottle or mixer…" autocomplete="off" spellcheck="false">
-        <button type="submit">Add</button>
-      </form>
-      <p class="tip">Try <b>rye whiskey</b>, <b>triple sec</b>, <b>lime juice</b> — separate a list with commas. Brand names work too, like <b>Cointreau</b> or <b>Jameson</b> — the chip keeps the bottle's name and still counts under its general type. Not sure which style you've got? Type just <b>“rum”</b> or <b>“whiskey”</b> and it'll count toward any recipe in that family.</p>
+    <section class="panel-shelf" id="panelShelf" aria-label="Your back bar">
+      <button class="shelf-toggle" id="shelfToggle" type="button" aria-expanded="true" aria-controls="shelfBody">
+        <span class="subhead">Your Back Bar</span>
+        <span class="shelf-toggle-icon" aria-hidden="true">–</span>
+      </button>
+      <div id="shelfBody">
+        <div class="segmented shelf-switcher" id="shelfSwitcher"></div>
+        <form class="add-form" id="addForm">
+          <input type="text" id="addInput" placeholder="Type a bottle or mixer…" autocomplete="off" spellcheck="false">
+          <button type="submit">Add</button>
+        </form>
+        <p class="tip">Try <b>rye whiskey</b>, <b>triple sec</b>, <b>lime juice</b> — separate a list with commas. Brand names work too, like <b>Cointreau</b> or <b>Jameson</b> — the chip keeps the bottle's name and still counts under its general type. Not sure which style you've got? Type just <b>“rum”</b> or <b>“whiskey”</b> and it'll count toward any recipe in that family.</p>
 
-      <div class="shelf-row">
-        <span class="subhead" style="font-size:.66rem;">On the shelf</span>
-        <span class="shelf-row-actions">
-          <button class="starter-btn" id="starterBtn" type="button">Load a starter shelf</button>
-          <span style="color:var(--line); margin:0 .05rem;">·</span>
-          <button class="clear-btn" id="clearBtn" type="button">Clear</button>
-        </span>
+        <div class="shelf-row">
+          <span class="subhead" style="font-size:.66rem;">On the shelf</span>
+          <span class="shelf-row-actions">
+            <button class="starter-btn" id="starterBtn" type="button">Load a starter shelf</button>
+            <span style="color:var(--line); margin:0 .05rem;">·</span>
+            <button class="clear-btn" id="clearBtn" type="button">Clear</button>
+          </span>
+        </div>
+        <div class="shelf" id="shelf"></div>
+
+        <div class="quick-add" id="quickAdd"></div>
       </div>
-      <div class="shelf" id="shelf"></div>
-
-      <div class="quick-add" id="quickAdd"></div>
     </section>
 
     <section class="panel-recipes" aria-label="Cocktails">
@@ -1577,6 +1605,27 @@
     }catch(e){}
   }
 
+  // ---------- Collapsible shelf panel ----------
+  // Collapsing hides the shelf-building tools behind a single toggle line so
+  // the recipe grid and Up Next queue can move up into the freed space.
+  var SHELF_COLLAPSED_KEY = 'backbar.shelfCollapsed.v1';
+
+  function persistShelfCollapsed(collapsed){
+    try{ localStorage.setItem(SHELF_COLLAPSED_KEY, collapsed ? '1' : '0'); }catch(e){}
+  }
+
+  function loadShelfCollapsed(){
+    try{ return localStorage.getItem(SHELF_COLLAPSED_KEY) === '1'; }catch(e){ return false; }
+  }
+
+  function applyShelfCollapsed(collapsed){
+    document.getElementById('app').classList.toggle('shelf-collapsed', collapsed);
+    document.getElementById('panelShelf').classList.toggle('collapsed', collapsed);
+    document.getElementById('shelfBody').hidden = collapsed;
+    document.getElementById('shelfToggle').setAttribute('aria-expanded', String(!collapsed));
+    document.getElementById('shelfToggle').querySelector('.shelf-toggle-icon').textContent = collapsed ? '+' : '–';
+  }
+
   // Bottle count for a shelf without disturbing the currently active one —
   // used to show "(N)" on the inactive tab in the switcher. Reads straight
   // from storage rather than an in-memory Map, since only one shelf is ever
@@ -2037,6 +2086,12 @@
     if(input) commitShelfRename(input);
   });
 
+  document.getElementById('shelfToggle').addEventListener('click', function(){
+    var collapsed = !document.getElementById('panelShelf').classList.contains('collapsed');
+    applyShelfCollapsed(collapsed);
+    persistShelfCollapsed(collapsed);
+  });
+
   document.getElementById('starterBtn').addEventListener('click', function(){
     STARTER.forEach(function(id){ have.set(id, byId[id]); });
     persist();
@@ -2183,6 +2238,7 @@
   loadActiveShelf();
   loadShelfNames();
   load();
+  applyShelfCollapsed(loadShelfCollapsed());
   renderAll();
 })();
 </script>
