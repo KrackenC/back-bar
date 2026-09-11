@@ -10,23 +10,23 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Back Bar">
-<meta name="theme-color" content="#16130F">
+<meta name="theme-color" content="#0D1420">
 <style>
-  /* Speakeasy: a deliberate single dark world (prohibition-era bar, brass on
-     near-black) — no light/dark auto-switch, this is the one look. */
+  /* Blue Hour: a deliberate single dark world (late-night bar, warm copper
+     on deep indigo-navy) — no light/dark auto-switch, this is the one look. */
   :root{
-    --paper:#16130F;
-    --paper-raised:#211B14;
-    --paper-sunken:#0C0A07;
-    --ink:#EFE3CC;
-    --ink-soft:#B9A67E;
-    --line:#3C3020;
-    --accent:#C9A227;
-    --accent-hover:#E2BC49;
-    --accent-soft-bg:#3A2E12;
-    --good-bg:#1E3320; --good-fg:#9BCB7F;
-    --warn-bg:#3A2712; --warn-fg:#D98A3D;
-    --muted-bg:#241E15; --muted-fg:#8A7F68;
+    --paper:#0D1420;
+    --paper-raised:#16202E;
+    --paper-sunken:#080D15;
+    --ink:#E7E9F0;
+    --ink-soft:#98A3BE;
+    --line:#26324A;
+    --accent:#C97A4A;
+    --accent-hover:#E09167;
+    --accent-soft-bg:#33241A;
+    --good-bg:#16332A; --good-fg:#8FCBB0;
+    --warn-bg:#332012; --warn-fg:#D9915A;
+    --muted-bg:#161C28; --muted-fg:#7C8598;
     --shadow: none;
     color-scheme: dark;
   }
@@ -34,16 +34,16 @@
   *{ box-sizing:border-box; }
   body{
     background:
-      radial-gradient(1100px 650px at 50% -8%, rgba(201,162,39,.16), transparent 60%),
-      radial-gradient(800px 600px at 4% 100%, rgba(201,162,39,.07), transparent 58%),
-      radial-gradient(800px 600px at 100% 92%, rgba(201,162,39,.06), transparent 58%),
+      radial-gradient(1100px 650px at 50% -8%, rgba(201,122,74,.16), transparent 60%),
+      radial-gradient(800px 600px at 4% 100%, rgba(201,122,74,.07), transparent 58%),
+      radial-gradient(800px 600px at 100% 92%, rgba(201,122,74,.06), transparent 58%),
       repeating-linear-gradient(120deg, rgba(255,255,255,.014) 0px, rgba(255,255,255,.014) 1px, transparent 1px, transparent 4px),
       var(--paper);
     color:var(--ink);
     font-family:'Archivo', ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing:antialiased;
   }
-  /* Warm brass spotlight glow fading into the near-black paper, plus a
+  /* Warm copper spotlight glow fading into the deep indigo-navy paper, plus a
      hair-fine diagonal texture for depth — pure gradients, no embedded
      photo, so there's nothing to crop wrong on a phone or fail to paint
      under any browser's background-image quirks. Replaced the drink-photo
@@ -262,7 +262,7 @@
     padding:1.05rem 1.15rem 1.15rem; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:.65rem;
     cursor:grab; position:relative;
   }
-  /* a small brass diamond astride the top edge — one recurring deco mark,
+  /* a small copper diamond astride the top edge — one recurring deco mark,
      shared with real speakeasy menu cards, repeated once per recipe rather
      than layered on every surface */
   .card::before{
@@ -341,7 +341,7 @@
 
 <script>
 (function(){
-  var CURRENT_VERSION = "2026-09-11T03:49:11Z";
+  var CURRENT_VERSION = "2026-09-11T12:16:32Z";
   function showUpdateBanner(newVersion){
     var bar = document.createElement('div');
     bar.setAttribute('style',
