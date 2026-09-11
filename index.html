@@ -341,7 +341,7 @@
 
 <script>
 (function(){
-  var CURRENT_VERSION = "2026-09-11T12:16:32Z";
+  var CURRENT_VERSION = "2026-09-11T13:05:39Z";
   function showUpdateBanner(newVersion){
     var bar = document.createElement('div');
     bar.setAttribute('style',
@@ -489,7 +489,7 @@
 
   </main>
 
-  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 236 recipes, drawn from the IBA official list, the standard classics, and distillers' and bar guides' own recipe books.</footer>
+  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 241 recipes, drawn from the IBA official list, the standard classics, and distillers' and bar guides' own recipe books.</footer>
 
 </div>
 
@@ -616,6 +616,7 @@
     {id:'agave_syrup', name:'Agave Syrup', category:'Syrup', group:'Syrups'},
     {id:'coconut_syrup', name:'Coconut Syrup', category:'Syrup', group:'Syrups'},
     {id:'chocolate_syrup', name:'Chocolate Syrup', category:'Syrup', group:'Syrups'},
+    {id:'pineapple_syrup', name:'Pineapple Syrup', category:'Syrup', group:'Syrups'},
     {id:'peach_puree', name:'Peach Purée', category:'Fruit Purée', group:'Juice & Mixers'}
   ];
 
@@ -1482,7 +1483,24 @@
       garnish:'Mint sprig, lime wedge', note:'Build over ice and stir gently — the Irish-whiskey answer to a Moscow Mule.'},
     {name:'Emerald', base:'Whiskey', glass:'Coupe', method:'Stirred', added:'2026-09-11',
       items:[{id:'whiskey_any', amt:'2 oz', familyOk:true},{id:'sweet_vermouth', amt:'1 oz'},{id:'orange_bitters', amt:'1 dash'}],
-      garnish:'Orange twist', note:'Stir with ice; strain into a chilled coupe — an Irish-whiskey Manhattan variant that swaps in orange bitters.'}
+      garnish:'Orange twist', note:'Stir with ice; strain into a chilled coupe — an Irish-whiskey Manhattan variant that swaps in orange bitters.'},
+
+    // ---------- Patrón ----------
+    {name:'Patrón Señor Sling', base:'Tequila', glass:'Highball', method:'Shaken, topped', added:'2026-09-11',
+      items:[{id:'patron', amt:'1.5 oz'},{id:'cherry_brandy', amt:'.5 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'pineapple_syrup', amt:'.25 oz'},{id:'angostura_bitters', amt:'2 dashes'},{id:'egg_white', amt:'1', optional:true},{id:'soda_water', amt:'1.5 oz'}],
+      garnish:'Pineapple and lime slices, cherry', note:'Shake everything but the soda water with ice, strain over fresh ice, then top with soda water — created for Patrón at London Cocktail Week 2016.'},
+    {name:'Patrósa', base:'Tequila', glass:'Goblet', method:'Built', added:'2026-09-11',
+      items:[{id:'patron', amt:'1 oz'},{id:'honey_syrup', amt:'.5 oz'},{id:'grapefruit_juice', amt:'1.5 oz'},{id:'sparkling_wine', amt:'2 oz'}],
+      garnish:'Grapefruit slice', note:'Stir the tequila, honey, and grapefruit juice over ice in a goblet, then top with sparkling wine.'},
+    {name:'Patrón Reposado Old Fashioned', base:'Tequila', glass:'Rocks', method:'Stirred', added:'2026-09-11',
+      items:[{id:'patron', amt:'2 oz'},{id:'simple_syrup', amt:'.25 oz'},{id:'angostura_bitters', amt:'2 dashes'}],
+      garnish:'Orange peel', note:'Stir with ice and strain over a large cube; express an orange peel over the top and drop it in.'},
+    {name:'Silver Breeze', base:'Tequila', glass:'Rocks', method:'Built', added:'2026-09-11',
+      items:[{id:'patron', amt:'1.5 oz'},{id:'grapefruit_juice', amt:'1.5 oz'},{id:'cranberry_juice', amt:'1.5 oz'},{id:'lemonade', amt:'1 oz'}],
+      garnish:'Lemon wedge', note:'Build over ice in a rocks glass and stir to combine.'},
+    {name:'Patrón & Grapefruit', base:'Tequila', glass:'Highball', method:'Shaken', added:'2026-09-11',
+      items:[{id:'patron', amt:'1.5 oz'},{id:'grapefruit_juice', amt:'3 oz'}],
+      garnish:'Grapefruit wedge', note:'Shake the tequila and grapefruit juice with ice, then strain over fresh ice in a highball.'}
   ];
 
   var STARTER = ['gin','vodka','dry_vermouth','sweet_vermouth','campari','triple_sec','lime_juice','lemon_juice','simple_syrup','soda_water','angostura_bitters','bourbon'];
