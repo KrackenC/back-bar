@@ -320,7 +320,7 @@
 
 <script>
 (function(){
-  var CURRENT_VERSION = "2026-09-05T19:09:35Z";
+  var CURRENT_VERSION = "2026-09-11T01:22:44Z";
   function showUpdateBanner(newVersion){
     var bar = document.createElement('div');
     bar.setAttribute('style',
@@ -462,7 +462,7 @@
 
   </main>
 
-  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 170 recipes, drawn from the IBA official list, the standard classics, and distillers' and bar guides' own recipe books.</footer>
+  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 236 recipes, drawn from the IBA official list, the standard classics, and distillers' and bar guides' own recipe books.</footer>
 
 </div>
 
@@ -1438,7 +1438,24 @@
       garnish:'Black cherries', note:'Build the scotch and ginger ale over ice, then drizzle the cherry juice in slowly.'},
     {name:'Black Cask Old Fashioned', base:'Whiskey', glass:'Rocks', method:'Stirred', added:'2026-09-05',
       items:[{id:'scotch_whisky', amt:'1.5 oz'},{id:'honey_syrup', amt:'.25 oz'},{id:'almond_bitters', amt:'1 dash'},{id:'orange_bitters', amt:'1 dash'}],
-      garnish:'Orange peel', note:'Stir over ice in the glass; garnish with an orange peel — a modern riff on the classic Old Fashioned.'}
+      garnish:'Orange peel', note:'Stir over ice in the glass; garnish with an orange peel — a modern riff on the classic Old Fashioned.'},
+
+    // ---------- Irish Whiskey ----------
+    {name:'Irish Boulevardier', base:'Whiskey', glass:'Rocks', method:'Stirred', added:'2026-09-11',
+      items:[{id:'whiskey_any', amt:'1.5 oz', familyOk:true},{id:'campari', amt:'.75 oz'},{id:'sweet_vermouth', amt:'1 oz'}],
+      garnish:'Orange twist', note:'Stir with ice; strain over a large cube — a mellower, Irish-whiskey take on the bourbon original.'},
+    {name:'Irish Whiskey Sour', base:'Whiskey', glass:'Rocks', method:'Shaken, dry-shaken', added:'2026-09-11',
+      items:[{id:'whiskey_any', amt:'2 oz', familyOk:true},{id:'lemon_juice', amt:'1 oz'},{id:'simple_syrup', amt:'.75 oz'},{id:'angostura_bitters', amt:'3 dashes'},{id:'egg_white', amt:'1', optional:true}],
+      garnish:'Lemon twist, maraschino cherry', note:'Shake with ice, strain, then dry-shake without ice to emulsify; strain over fresh ice.'},
+    {name:'Irish Old Fashioned', base:'Whiskey', glass:'Rocks', method:'Stirred', added:'2026-09-11',
+      items:[{id:'whiskey_any', amt:'2 oz', familyOk:true},{id:'simple_syrup', amt:'.25 oz'},{id:'orange_bitters', amt:'3 dashes'},{id:'angostura_bitters', amt:'2 dashes'}],
+      garnish:'Orange twist', note:'Stir with ice; strain over a large cube — drier and lighter than the bourbon version.'},
+    {name:'Irish Mule', base:'Whiskey', glass:'Rocks', method:'Built', added:'2026-09-11',
+      items:[{id:'whiskey_any', amt:'2 oz', familyOk:true},{id:'ginger_beer', amt:'5 oz'},{id:'lime_juice', amt:'1 oz'}],
+      garnish:'Mint sprig, lime wedge', note:'Build over ice and stir gently — the Irish-whiskey answer to a Moscow Mule.'},
+    {name:'Emerald', base:'Whiskey', glass:'Coupe', method:'Stirred', added:'2026-09-11',
+      items:[{id:'whiskey_any', amt:'2 oz', familyOk:true},{id:'sweet_vermouth', amt:'1 oz'},{id:'orange_bitters', amt:'1 dash'}],
+      garnish:'Orange twist', note:'Stir with ice; strain into a chilled coupe — an Irish-whiskey Manhattan variant that swaps in orange bitters.'}
   ];
 
   var STARTER = ['gin','vodka','dry_vermouth','sweet_vermouth','campari','triple_sec','lime_juice','lemon_juice','simple_syrup','soda_water','angostura_bitters','bourbon'];
