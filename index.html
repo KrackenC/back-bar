@@ -98,8 +98,13 @@
 
   /* ---------- Layout ---------- */
   .app{ display:grid; grid-template-columns:340px 1fr; gap:0; margin-top:1.75rem; align-items:start; }
-  .panel-shelf{ padding-right:2rem; border-right:1px solid var(--line); }
-  .panel-recipes{ padding:0 2rem; }
+  /* min-width:0 overrides the grid item's default auto min-width, which
+     otherwise sizes to the widest un-wrapping descendant (the New This Week
+     card strip's horizontal scroller) and forces the whole grid — both
+     columns share one track once it collapses to a single column on phones
+     — wider than the viewport, showing as extra empty space on one side. */
+  .panel-shelf{ padding-right:2rem; border-right:1px solid var(--line); min-width:0; }
+  .panel-recipes{ padding:0 2rem; min-width:0; }
   @media (max-width:860px){
     .app{ grid-template-columns:1fr; }
     .panel-shelf{ border-right:none; border-bottom:1px solid var(--line); padding-right:0; padding-bottom:2rem; margin-bottom:2rem; }
@@ -117,8 +122,9 @@
   .shelf-toggle{
     display:flex; align-items:center; justify-content:space-between; gap:.75rem; width:100%;
     background:var(--paper-raised); border:1px solid var(--line); border-radius:2px;
-    padding:.7rem .9rem; margin:0 0 .9rem; cursor:pointer; font:inherit; text-align:left;
+    padding:.4rem .7rem; margin:0 0 .9rem; cursor:pointer; font:inherit; text-align:left;
   }
+  .shelf-toggle .subhead{ font-size:.64rem; }
   .shelf-toggle:hover{ border-color:var(--accent); }
   .shelf-toggle:hover .subhead{ color:var(--accent-hover); }
   .shelf-toggle-icon{
@@ -345,7 +351,7 @@
 
 <script>
 (function(){
-  var CURRENT_VERSION = "2026-09-11T03:16:18Z";
+  var CURRENT_VERSION = "2026-09-11T03:35:37Z";
   function showUpdateBanner(newVersion){
     var bar = document.createElement('div');
     bar.setAttribute('style',
