@@ -250,6 +250,8 @@
     padding:.85rem .95rem; cursor:pointer; display:flex; flex-direction:column; gap:.5rem;
   }
   .new-card:hover, .new-card:focus-visible{ background:var(--accent-soft-bg); }
+  .new-card-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:.5rem; }
+  .new-card-head .queue-btn{ flex-shrink:0; }
   .new-card h4{ font-family:'Cormorant Garamond', serif; font-size:1.15rem; font-weight:700; margin:0; line-height:1.2; }
   .new-card .new-meta{ font-size:.68rem; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-soft); margin:0; }
   .new-card .new-note{ font-size:.78rem; color:var(--ink-soft); line-height:1.4; margin:0; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
@@ -1927,6 +1929,7 @@
       var st = match ? match.status : recipeStatus(r);
       var pillClass = st.key === 'ready' ? 'pill-ready' : (st.key === 'almost' ? 'pill-almost' : 'pill-more');
       var pillText = st.key === 'ready' ? 'Ready to pour' : (st.key === 'almost' ? 'Missing: ' + byId[st.missing[0].id].name : 'Missing ' + st.missing.length);
+      var isQueued = queue.indexOf(r.name) !== -1;
       var card = document.createElement('article');
       card.className = 'new-card';
       card.setAttribute('data-name', r.name);
@@ -1934,7 +1937,9 @@
       card.setAttribute('role', 'button');
       card.setAttribute('aria-label', 'Find ' + r.name + ' in the book below');
       card.innerHTML =
-        '<h4>' + r.name + '</h4>' +
+        '<div class="new-card-head"><h4>' + r.name + '</h4>' +
+          '<button class="fav-btn queue-btn' + (isQueued ? ' active' : '') + '" type="button" data-name="' + r.name + '" aria-label="' + (isQueued ? 'Remove ' + r.name + ' from Up Next' : 'Add ' + r.name + ' to Up Next') + '" aria-pressed="' + isQueued + '" title="Add to Up Next">' + (isQueued ? '✓' : '+') + '</button>' +
+        '</div>' +
         '<p class="new-meta">' + r.base + ' · ' + r.glass + '</p>' +
         '<span class="pill ' + pillClass + '">' + pillText + '</span>' +
         '<p class="new-note">' + r.note + '</p>';
@@ -2179,8 +2184,16 @@
   });
 
   // Clicking (or Enter/Space-ing) a New This Week card jumps the search box
-  // to that recipe so it's easy to find in the full book below.
+  // to that recipe so it's easy to find in the full book below — except its
+  // own "+" button, which queues the recipe directly instead.
   document.getElementById('newWeekGrid').addEventListener('click', function(e){
+    var qbtn = e.target.closest('button.queue-btn');
+    if(qbtn){
+      toggleQueue(qbtn.getAttribute('data-name'));
+      persistQueue();
+      renderAll();
+      return;
+    }
     var card = e.target.closest('.new-card');
     if(!card) return;
     var name = card.getAttribute('data-name');
@@ -2191,6 +2204,7 @@
   });
   document.getElementById('newWeekGrid').addEventListener('keydown', function(e){
     if(e.key !== 'Enter' && e.key !== ' ') return;
+    if(e.target.closest('button.queue-btn')) return;
     var card = e.target.closest('.new-card');
     if(!card) return;
     e.preventDefault();
