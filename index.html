@@ -27,7 +27,7 @@
     --good-bg:#16332A; --good-fg:#8FCBB0;
     --warn-bg:#332012; --warn-fg:#D9915A;
     --muted-bg:#161C28; --muted-fg:#7C8598;
-    --shadow: none;
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 22px -14px rgba(0,0,0,.55);
     color-scheme: dark;
   }
 
@@ -57,18 +57,32 @@
   .wrap{ max-width:1180px; margin:0 auto; padding:2.25rem 1.5rem 5rem; }
 
   /* ---------- Masthead ---------- */
+  /* Bigger and moodier than a plain title bar: extra vertical room, a
+     larger wordmark, and a slow-drifting ambient glow behind it — pure CSS
+     (background-position animation on a fixed gradient, no image), clipped
+     to the header box with no negative-margin breakout since a
+     horizontally-scrolling strip has bitten this layout's width before. */
   header.masthead{
+    position:relative; overflow:hidden;
     display:flex; justify-content:space-between; align-items:flex-end; gap:2rem;
     flex-wrap:wrap;
-    padding-bottom:1.25rem;
+    padding:2.4rem 0 1.85rem;
     border-bottom:3px double var(--accent);
     margin-bottom:.85rem;
   }
+  header.masthead::before{
+    content:""; position:absolute; inset:0; z-index:-1;
+    background-image: radial-gradient(560px 340px at center, rgba(201,122,74,.30), transparent 65%);
+    background-repeat:no-repeat;
+    background-size:160% 160%;
+    background-position:15% -25%;
+  }
   .brand h1{
-    font-family:'Cormorant Garamond', Georgia, serif; font-size:2.55rem; font-weight:600;
+    font-family:'Cormorant Garamond', Georgia, serif; font-weight:600;
+    font-size:clamp(2.6rem, 4.4vw, 3.75rem);
     letter-spacing:.09em; text-transform:uppercase; line-height:1.05;
   }
-  .brand p{ margin:.5rem 0 0; color:var(--ink-soft); font-size:.92rem; letter-spacing:.03em; font-family:'Archivo', sans-serif; }
+  .brand p{ margin:.6rem 0 0; color:var(--ink-soft); font-size:.96rem; letter-spacing:.03em; font-family:'Archivo', sans-serif; }
   .masthead-right{ display:flex; flex-direction:column; align-items:flex-end; gap:.55rem; }
   .stats{
     display:flex; gap:1.1rem; font-family:'Archivo', ui-sans-serif, system-ui, sans-serif; font-variant-numeric:tabular-nums;
@@ -80,6 +94,7 @@
   .reset-all-btn{
     background:none; border:none; color:var(--ink-soft); font-size:.72rem; letter-spacing:.03em;
     cursor:pointer; padding:.2rem 0; text-decoration:underline; text-underline-offset:2px;
+    transition: color .15s ease;
   }
   .reset-all-btn:hover{ color:var(--accent); }
   .reset-all-btn.armed{ color:var(--accent); font-weight:600; }
@@ -113,8 +128,9 @@
     display:flex; align-items:center; justify-content:space-between; gap:.75rem; width:100%;
     background:var(--paper-raised); border:1px solid var(--line); border-radius:2px;
     padding:.4rem .7rem; margin:0 0 .9rem; cursor:pointer; font:inherit; text-align:left;
+    transition: border-color .15s ease;
   }
-  .shelf-toggle .subhead{ font-size:.64rem; }
+  .shelf-toggle .subhead{ font-size:.64rem; transition: color .15s ease; }
   .shelf-toggle:hover{ border-color:var(--accent); }
   .shelf-toggle:hover .subhead{ color:var(--accent-hover); }
   .shelf-toggle-icon{
@@ -131,8 +147,10 @@
   .add-form button{
     border:none; border-radius:2px; padding:.6rem 1rem; background:var(--accent); color:var(--paper-sunken);
     font-weight:600; font-size:.85rem; cursor:pointer;
+    transition: background .15s ease, transform .1s ease;
   }
   .add-form button:hover{ background:var(--accent-hover); }
+  .add-form button:active{ transform:scale(.96); }
   .tip{ font-size:.78rem; color:var(--ink-soft); margin:.55rem 0 0; line-height:1.45; }
   .tip b{ color:var(--ink); font-weight:600; }
 
@@ -145,10 +163,13 @@
     background:none; border:none; color:var(--accent); font-size:.78rem; font-weight:600; cursor:pointer;
     padding:.45rem;
     text-decoration:underline; text-underline-offset:2px;
+    transition: opacity .15s ease;
   }
+  .starter-btn:hover{ opacity:.75; }
   .clear-btn{
     display:inline-flex; align-items:center;
     background:none; border:none; color:var(--ink-soft); font-size:.78rem; cursor:pointer; padding:.45rem;
+    transition: color .15s ease;
   }
   .clear-btn:hover{ color:var(--accent); }
 
@@ -159,7 +180,9 @@
     display:inline-flex; align-items:center; gap:.4rem;
     background:var(--paper-raised); border:1px solid var(--line); border-radius:2px;
     padding:.3rem .35rem .3rem .7rem; font-size:.82rem;
+    transition: border-color .15s ease, transform .15s ease;
   }
+  .chip:hover{ border-color:var(--accent); transform:translateY(-1px); }
   .chip.unclassified{ border-style:dashed; }
   .chip .cname{ font-weight:600; }
   .chip .ctag{
@@ -187,8 +210,10 @@
   .qa-btn{
     border:1px solid var(--line); background:var(--paper-raised); color:var(--ink);
     border-radius:2px; padding:.32rem .55rem; font-size:.78rem; cursor:pointer; font-family:'Archivo', sans-serif;
+    transition: background .15s ease, border-color .15s ease, transform .1s ease;
   }
   .qa-btn:hover{ border-color:var(--accent); }
+  .qa-btn:active{ transform:scale(.95); }
   .qa-btn.active{ background:var(--accent); border-color:var(--accent); color:var(--paper-sunken); font-weight:600; }
   /* brand names (e.g. Cointreau, sitting next to the generic Triple Sec):
      dashed border marks them as a specific style, picked independently */
@@ -205,6 +230,7 @@
   .segmented button{
     border:none; background:var(--paper-raised); color:var(--ink-soft); padding:.45rem .9rem; font-size:.78rem;
     font-weight:600; cursor:pointer; font-family:'Archivo', sans-serif;
+    transition: background .15s ease, color .15s ease;
   }
   .segmented button + button{ border-left:1px solid var(--line); }
   .segmented button.active{ background:var(--ink); color:var(--paper); }
@@ -225,8 +251,10 @@
   .count-line b{ color:var(--ink); font-weight:700; }
 
   .closest{
-    background:var(--paper-raised); border:1px solid var(--line); border-radius:2px;
+    background:rgba(22,32,46,.82); border:1px solid var(--line); border-radius:2px;
     padding:.9rem 1.05rem; margin-bottom:1.1rem;
+    backdrop-filter:blur(8px) saturate(140%); -webkit-backdrop-filter:blur(8px) saturate(140%);
+    box-shadow: 0 10px 24px -18px rgba(0,0,0,.6);
   }
   .closest-label{
     font-family:'Archivo', ui-sans-serif, system-ui, sans-serif; font-size:.66rem; letter-spacing:.09em; text-transform:uppercase;
@@ -246,10 +274,17 @@
   .new-week-tag{ font-size:.72rem; color:var(--ink-soft); font-family:'Archivo', ui-sans-serif, system-ui, sans-serif; }
   .new-week-strip{ display:flex; gap:.85rem; overflow-x:auto; padding-bottom:.4rem; margin:0 -.1rem; }
   .new-card{
-    flex:0 0 230px; background:var(--paper-raised); border:1px solid var(--accent); border-radius:2px;
+    flex:0 0 230px; background:rgba(22,32,46,.82); border:1px solid var(--accent); border-radius:2px;
     padding:.85rem .95rem; cursor:pointer; display:flex; flex-direction:column; gap:.5rem;
+    backdrop-filter:blur(8px) saturate(140%); -webkit-backdrop-filter:blur(8px) saturate(140%);
+    box-shadow: 0 8px 20px -14px rgba(0,0,0,.6);
+    transition: background .15s ease, transform .18s ease, box-shadow .18s ease;
   }
-  .new-card:hover, .new-card:focus-visible{ background:var(--accent-soft-bg); }
+  .new-card:hover, .new-card:focus-visible{
+    background:var(--accent-soft-bg);
+    transform:translateY(-3px);
+    box-shadow: 0 14px 28px -16px rgba(0,0,0,.7);
+  }
   .new-card-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:.5rem; }
   .new-card-head .queue-btn{ flex-shrink:0; }
   .new-card h4{ font-family:'Cormorant Garamond', serif; font-size:1.15rem; font-weight:700; margin:0; line-height:1.2; }
@@ -263,7 +298,14 @@
     background:var(--paper-raised); border:1px solid var(--line); border-radius:2px;
     padding:1.05rem 1.15rem 1.15rem; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:.65rem;
     cursor:grab; position:relative;
+    transition: opacity .4s ease, transform .35s ease, box-shadow .2s ease, border-color .2s ease;
   }
+  .card:hover, .card:focus-within{
+    transform:translateY(-4px);
+    border-color:var(--accent);
+    box-shadow: 0 3px 8px rgba(0,0,0,.4), 0 18px 34px -14px rgba(0,0,0,.65);
+  }
+  .card:active{ cursor:grabbing; }
   /* a small copper diamond astride the top edge — one recurring deco mark,
      shared with real speakeasy menu cards, repeated once per recipe rather
      than layered on every surface */
@@ -279,9 +321,11 @@
   .fav-btn{
     background:none; border:none; cursor:pointer; padding:0 .1rem; line-height:1;
     font-size:1.2rem; color:var(--line);
+    transition: color .15s ease, transform .12s ease;
   }
-  .fav-btn:hover{ color:var(--warn-fg); }
+  .fav-btn:hover{ color:var(--warn-fg); transform:scale(1.12); }
   .fav-btn.active{ color:var(--warn-fg); }
+  .fav-btn:active{ transform:scale(.9); }
 
   .pill{
     flex-shrink:0; font-family:'Archivo', ui-sans-serif, system-ui, sans-serif; font-size:.66rem; letter-spacing:.03em;
@@ -323,7 +367,7 @@
     display:flex; flex-direction:column; justify-content:center; transition:border-color .12s, background .12s;
   }
   .queue-slot.drag-over{ border-color:var(--accent); border-style:solid; background:var(--accent-soft-bg); }
-  .queue-slot.filled{ border-style:solid; background:var(--paper-raised); justify-content:flex-start; }
+  .queue-slot.filled{ border-style:solid; background:var(--paper-raised); justify-content:flex-start; box-shadow: 0 10px 22px -16px rgba(0,0,0,.6); }
   .queue-num{ font-family:'Archivo', ui-sans-serif, system-ui, sans-serif; font-size:.62rem; letter-spacing:.09em; color:var(--ink-soft); text-transform:uppercase; }
   .queue-empty{ color:var(--ink-soft); font-size:.78rem; text-align:center; font-style:italic; }
   .queue-card-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:.5rem; margin-top:.2rem; }
@@ -338,12 +382,18 @@
   @media (prefers-reduced-motion: no-preference){
     .chip.fresh{ animation:pop .3s ease; }
     @keyframes pop{ from{ transform:scale(.9); opacity:0; } to{ transform:scale(1); opacity:1; } }
+    .card.pending-reveal{ opacity:0; transform:translateY(18px); }
+    header.masthead::before{ animation: mastheadDrift 18s ease-in-out infinite alternate; }
+    @keyframes mastheadDrift{
+      from{ background-position: 5% -35%; }
+      to{ background-position: 95% 5%; }
+    }
   }
 </style>
 
 <script>
 (function(){
-  var CURRENT_VERSION = "2026-09-18T13:14:43Z";
+  var CURRENT_VERSION = "2026-09-21T03:50:26Z";
   function showUpdateBanner(newVersion){
     var bar = document.createElement('div');
     bar.setAttribute('style',
@@ -1982,6 +2032,38 @@
     }
   }
 
+  var revealObserver = null;
+  var reducedMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  function observeReveal(el){
+    if(reducedMotion || !('IntersectionObserver' in window)){ el.classList.remove('pending-reveal'); return; }
+    if(!revealObserver){
+      revealObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.remove('pending-reveal');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, {rootMargin:'0px 0px -40px 0px', threshold:.05});
+    }
+    revealObserver.observe(el);
+  }
+  function animateStat(el, to){
+    var from = parseInt(el.textContent, 10);
+    if(isNaN(from)) from = 0;
+    if(reducedMotion || from === to){ el.textContent = to; return; }
+    var start = null, duration = 450;
+    function step(ts){
+      if(start === null) start = ts;
+      var p = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(from + (to - from) * eased);
+      if(p < 1) requestAnimationFrame(step);
+      else el.textContent = to;
+    }
+    requestAnimationFrame(step);
+  }
+
   function renderRecipes(statuses){
     renderClosest(statuses);
     renderNewWeek(statuses);
@@ -1990,9 +2072,9 @@
     var almost = statuses.filter(function(s){ return s.status.key === 'almost'; }).length;
     var total = RECIPES.length;
 
-    document.getElementById('statReady').textContent = ready;
-    document.getElementById('statAlmost').textContent = almost;
-    document.getElementById('statTotal').textContent = total;
+    animateStat(document.getElementById('statReady'), ready);
+    animateStat(document.getElementById('statAlmost'), almost);
+    animateStat(document.getElementById('statTotal'), total);
 
     var q = normalize(query);
     // Search looks at the whole book, not just what's stocked: it matches the
@@ -2038,10 +2120,11 @@
       return;
     }
 
-    visible.forEach(function(s){
+    visible.forEach(function(s, idx){
       var r = s.recipe, st = s.status;
       var card = document.createElement('article');
-      card.className = 'card';
+      card.className = 'card pending-reveal';
+      card.style.transitionDelay = ((idx % 8) * 45) + 'ms';
 
       var pillClass = st.key === 'ready' ? 'pill-ready' : (st.key === 'almost' ? 'pill-almost' : 'pill-more');
       var pillText;
@@ -2083,6 +2166,25 @@
         '<p class="note">' + r.note + '</p>';
 
       grid.appendChild(card);
+      card.addEventListener('transitionend', function clearDelay(e){
+        if(e.propertyName === 'opacity'){
+          card.style.transitionDelay = '';
+          card.removeEventListener('transitionend', clearDelay);
+        }
+      });
+      // Cards already on screen at render time reveal on the next frame
+      // rather than waiting on IntersectionObserver — its initial callback
+      // timing isn't guaranteed to be prompt in every environment, and a
+      // wall of invisible above-the-fold cards would be worse than no
+      // animation at all. Only genuinely below-the-fold cards get the
+      // scroll-driven reveal via the observer.
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      var rect = card.getBoundingClientRect();
+      if(rect.top < vh && rect.bottom > 0){
+        requestAnimationFrame(function(){ card.classList.remove('pending-reveal'); });
+      } else {
+        observeReveal(card);
+      }
     });
   }
 
