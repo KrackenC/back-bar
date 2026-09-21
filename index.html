@@ -301,16 +301,18 @@
   .new-week-strip.at-start::before{ opacity:0; }
   .new-week-strip.at-end::after{ opacity:0; }
   .new-card{
+    --tilt-x:0deg; --tilt-y:0deg;
     scroll-snap-align:start;
     flex:0 0 230px; background:rgba(22,32,46,.82); border:1px solid var(--accent); border-radius:2px;
     padding:.85rem .95rem; cursor:pointer; display:flex; flex-direction:column; gap:.5rem;
     backdrop-filter:blur(8px) saturate(140%); -webkit-backdrop-filter:blur(8px) saturate(140%);
     box-shadow: 0 8px 20px -14px rgba(0,0,0,.6);
+    transform: perspective(600px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
     transition: background .15s ease, transform .18s ease, box-shadow .18s ease;
   }
   .new-card:hover, .new-card:focus-visible{
     background:var(--accent-soft-bg);
-    transform:translateY(-3px);
+    transform: translateY(-3px) perspective(600px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
     box-shadow: 0 14px 28px -16px rgba(0,0,0,.7);
   }
   .new-card-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:.5rem; }
@@ -323,13 +325,19 @@
   .grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(310px, 1fr)); gap:1rem; }
 
   .card{
+    --tilt-x:0deg; --tilt-y:0deg;
     background:var(--paper-raised); border:1px solid var(--line); border-radius:2px;
     padding:1.05rem 1.15rem 1.15rem; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:.65rem;
     cursor:grab; position:relative;
-    transition: opacity .4s ease, transform .35s ease, box-shadow .2s ease, border-color .2s ease;
+    transform: perspective(800px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+    transition: opacity .4s ease, transform .2s ease, box-shadow .2s ease, border-color .2s ease;
   }
+  /* --tilt-x/--tilt-y are set by attachTilt() in the script, tracking the
+     cursor position while it's over the card (mouse/trackpad only — gated
+     behind hover+fine-pointer so touch never gets a stuck tilt). They sit
+     on top of the same transform the hover lift already uses. */
   .card:hover, .card:focus-within{
-    transform:translateY(-4px);
+    transform: translateY(-4px) perspective(800px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
     border-color:var(--accent);
     box-shadow: 0 3px 8px rgba(0,0,0,.4), 0 18px 34px -14px rgba(0,0,0,.65);
   }
@@ -423,7 +431,7 @@
 
 <script>
 (function(){
-  var CURRENT_VERSION = "2026-09-21T04:03:14Z";
+  var CURRENT_VERSION = "2026-09-21T04:11:45Z";
   function showUpdateBanner(newVersion){
     var bar = document.createElement('div');
     bar.setAttribute('style',
@@ -2032,6 +2040,7 @@
         '<span class="pill ' + pillClass + '">' + pillText + '</span>' +
         '<p class="new-note">' + r.note + '</p>';
       grid.appendChild(card);
+      if(canTilt) attachTilt(card);
     });
     updateNewWeekEdges();
   }
@@ -2087,6 +2096,31 @@
     }
     revealObserver.observe(el);
   }
+  // Mouse/trackpad only (hover + fine pointer) and off entirely under
+  // prefers-reduced-motion — touch devices never get a stuck tilt since
+  // they never fire mousemove/mouseleave the way this expects.
+  var canTilt = !reducedMotion && !!(window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches);
+  function attachTilt(card){
+    var raf = null, tx = 0, ty = 0;
+    function apply(){
+      card.style.setProperty('--tilt-x', tx.toFixed(2) + 'deg');
+      card.style.setProperty('--tilt-y', ty.toFixed(2) + 'deg');
+      raf = null;
+    }
+    card.addEventListener('mousemove', function(e){
+      var rect = card.getBoundingClientRect();
+      var px = (e.clientX - rect.left) / rect.width;
+      var py = (e.clientY - rect.top) / rect.height;
+      ty = (px - .5) * 12;
+      tx = (.5 - py) * 12;
+      if(!raf) raf = requestAnimationFrame(apply);
+    });
+    card.addEventListener('mouseleave', function(){
+      tx = 0; ty = 0;
+      if(!raf) raf = requestAnimationFrame(apply);
+    });
+  }
+
   function animateStat(el, to){
     var from = parseInt(el.textContent, 10);
     if(isNaN(from)) from = 0;
@@ -2170,6 +2204,7 @@
       var card = document.createElement('article');
       card.className = 'card pending-reveal';
       card.style.transitionDelay = ((idx % 8) * 45) + 'ms';
+      if(canTilt) attachTilt(card);
 
       var pillClass = st.key === 'ready' ? 'pill-ready' : (st.key === 'almost' ? 'pill-almost' : 'pill-more');
       var pillText;
