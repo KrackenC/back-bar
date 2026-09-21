@@ -288,18 +288,26 @@
   .new-week{ margin-bottom:1.5rem; }
   .new-week-head{ display:flex; align-items:baseline; justify-content:space-between; gap:1rem; margin-bottom:.65rem; }
   .new-week-tag{ font-size:.72rem; color:var(--ink-soft); font-family:'Archivo', ui-sans-serif, system-ui, sans-serif; }
+  /* The fade lives on this separate, non-scrolling wrapper rather than on
+     .new-week-strip itself — putting position:relative + absolutely
+     positioned ::before/::after pseudo-elements directly on the
+     overflow-x:auto element caused a reproducible Chrome compositing seam
+     through whichever card landed at a certain scroll offset. Confirmed
+     independent of card content, backdrop-filter, box-shadow, the tilt
+     transform, and scroll-snap. This wrapper approach has none of that. */
+  .new-week-scroll{ position:relative; }
   .new-week-strip{
-    position:relative; display:flex; gap:.85rem; overflow-x:auto; padding-bottom:.4rem; margin:0 -.1rem;
+    display:flex; gap:.85rem; overflow-x:auto; padding-bottom:.4rem; margin:0 -.1rem;
     scroll-snap-type:x proximity;
   }
-  .new-week-strip::before, .new-week-strip::after{
+  .new-week-scroll::before, .new-week-scroll::after{
     content:""; position:absolute; top:0; bottom:.4rem; width:28px; z-index:2; pointer-events:none;
     transition: opacity .2s ease;
   }
-  .new-week-strip::before{ left:0; background:linear-gradient(90deg, var(--paper), transparent); }
-  .new-week-strip::after{ right:0; background:linear-gradient(270deg, var(--paper), transparent); }
-  .new-week-strip.at-start::before{ opacity:0; }
-  .new-week-strip.at-end::after{ opacity:0; }
+  .new-week-scroll::before{ left:0; background:linear-gradient(90deg, var(--paper), transparent); }
+  .new-week-scroll::after{ right:0; background:linear-gradient(270deg, var(--paper), transparent); }
+  .new-week-scroll.at-start::before{ opacity:0; }
+  .new-week-scroll.at-end::after{ opacity:0; }
   .new-card{
     --tilt-x:0deg; --tilt-y:0deg;
     scroll-snap-align:start;
@@ -431,7 +439,7 @@
 
 <script>
 (function(){
-  var CURRENT_VERSION = "2026-09-21T04:11:45Z";
+  var CURRENT_VERSION = "2026-09-21T14:41:40Z";
   function showUpdateBanner(newVersion){
     var bar = document.createElement('div');
     bar.setAttribute('style',
@@ -545,7 +553,9 @@
           <p class="subhead" style="margin:0;">New This Week</p>
           <span class="new-week-tag" id="newWeekTag"></span>
         </div>
-        <div class="new-week-strip" id="newWeekGrid"></div>
+        <div class="new-week-scroll">
+          <div class="new-week-strip" id="newWeekGrid"></div>
+        </div>
       </section>
 
       <section class="panel-queue" aria-label="Next three to make">
@@ -2006,10 +2016,11 @@
 
   function updateNewWeekEdges(){
     var strip = document.getElementById('newWeekGrid');
+    var wrap = strip.parentElement;
     var atStart = strip.scrollLeft <= 2;
     var atEnd = strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 2;
-    strip.classList.toggle('at-start', atStart);
-    strip.classList.toggle('at-end', atEnd);
+    wrap.classList.toggle('at-start', atStart);
+    wrap.classList.toggle('at-end', atEnd);
   }
 
   function renderNewWeek(statuses){
