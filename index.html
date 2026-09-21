@@ -446,7 +446,7 @@
 
 <script>
 (function(){
-  var CURRENT_VERSION = "2026-09-21T15:07:35Z";
+  var CURRENT_VERSION = "2026-09-21T22:53:14Z";
   function showUpdateBanner(newVersion){
     var bar = document.createElement('div');
     bar.setAttribute('style',
@@ -512,7 +512,7 @@
 
   <header class="masthead">
     <div class="brand">
-      <h1><svg class="brand-mark" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.2 3c0 2.8 2.1 5 4.8 5s4.8-2.2 4.8-5M8 8v5.2M5.3 13.5h5.4"/></svg>Back Bar</h1>
+      <h1><svg class="brand-mark" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 16 16" fill="none" stroke="#C97A4A" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.2 3c0 2.8 2.1 5 4.8 5s4.8-2.2 4.8-5M8 8v5.2M5.3 13.5h5.4"/></svg>Back Bar</h1>
       <p>What's behind your bottles, and what it pours</p>
     </div>
     <div class="masthead-right">
@@ -1921,7 +1921,7 @@
   };
   function glassIconSvg(glass){
     var d = GLASS_ICON_PATHS[glass] || GLASS_ICON_PATHS.Rocks;
-    return '<svg class="glass-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" ' +
+    return '<svg class="glass-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="#98A3BE" stroke-width="1.3" ' +
       'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>';
   }
   var CATEGORY_ICON_PATHS = {
@@ -1934,7 +1934,7 @@
   function categoryIconSvg(group){
     var d = CATEGORY_ICON_PATHS[group];
     if(!d) return '';
-    return '<svg class="category-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" ' +
+    return '<svg class="category-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#C97A4A" stroke-width="1.2" ' +
       'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>';
   }
 
