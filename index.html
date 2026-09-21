@@ -63,12 +63,16 @@
      to the header box with no negative-margin breakout since a
      horizontally-scrolling strip has bitten this layout's width before. */
   header.masthead{
-    position:relative; overflow:hidden;
+    position:sticky; top:0; z-index:40; overflow:hidden;
     display:flex; justify-content:space-between; align-items:flex-end; gap:2rem;
     flex-wrap:wrap;
     padding:2.4rem 0 1.85rem;
     border-bottom:3px double var(--accent);
     margin-bottom:.85rem;
+    transition: padding .25s ease;
+  }
+  header.masthead::after{
+    content:""; position:absolute; inset:0; z-index:-2; background:var(--paper);
   }
   header.masthead::before{
     content:""; position:absolute; inset:0; z-index:-1;
@@ -77,12 +81,24 @@
     background-size:160% 160%;
     background-position:15% -25%;
   }
+  /* Sticks to the top and condenses once the page scrolls (see the small
+     scroll-listener IIFE near the end of the script) — a solid backdrop
+     (::after) keeps content scrolling underneath from showing through,
+     painted behind the glow (::before) via more-negative z-index. */
+  header.masthead.condensed{ padding-top:1rem; padding-bottom:.9rem; }
   .brand h1{
     font-family:'Cormorant Garamond', Georgia, serif; font-weight:600;
     font-size:clamp(2.6rem, 4.4vw, 3.75rem);
     letter-spacing:.09em; text-transform:uppercase; line-height:1.05;
+    transition: font-size .25s ease;
   }
-  .brand p{ margin:.6rem 0 0; color:var(--ink-soft); font-size:.96rem; letter-spacing:.03em; font-family:'Archivo', sans-serif; }
+  header.masthead.condensed .brand h1{ font-size:1.6rem; }
+  .brand p{
+    margin:.6rem 0 0; color:var(--ink-soft); font-size:.96rem; letter-spacing:.03em; font-family:'Archivo', sans-serif;
+    max-height:2rem; overflow:hidden;
+    transition: opacity .2s ease, max-height .25s ease, margin-top .25s ease;
+  }
+  header.masthead.condensed .brand p{ opacity:0; max-height:0; margin-top:0; }
   .masthead-right{ display:flex; flex-direction:column; align-items:flex-end; gap:.55rem; }
   .stats{
     display:flex; gap:1.1rem; font-family:'Archivo', ui-sans-serif, system-ui, sans-serif; font-variant-numeric:tabular-nums;
@@ -272,8 +288,20 @@
   .new-week{ margin-bottom:1.5rem; }
   .new-week-head{ display:flex; align-items:baseline; justify-content:space-between; gap:1rem; margin-bottom:.65rem; }
   .new-week-tag{ font-size:.72rem; color:var(--ink-soft); font-family:'Archivo', ui-sans-serif, system-ui, sans-serif; }
-  .new-week-strip{ display:flex; gap:.85rem; overflow-x:auto; padding-bottom:.4rem; margin:0 -.1rem; }
+  .new-week-strip{
+    position:relative; display:flex; gap:.85rem; overflow-x:auto; padding-bottom:.4rem; margin:0 -.1rem;
+    scroll-snap-type:x proximity;
+  }
+  .new-week-strip::before, .new-week-strip::after{
+    content:""; position:absolute; top:0; bottom:.4rem; width:28px; z-index:2; pointer-events:none;
+    transition: opacity .2s ease;
+  }
+  .new-week-strip::before{ left:0; background:linear-gradient(90deg, var(--paper), transparent); }
+  .new-week-strip::after{ right:0; background:linear-gradient(270deg, var(--paper), transparent); }
+  .new-week-strip.at-start::before{ opacity:0; }
+  .new-week-strip.at-end::after{ opacity:0; }
   .new-card{
+    scroll-snap-align:start;
     flex:0 0 230px; background:rgba(22,32,46,.82); border:1px solid var(--accent); border-radius:2px;
     padding:.85rem .95rem; cursor:pointer; display:flex; flex-direction:column; gap:.5rem;
     backdrop-filter:blur(8px) saturate(140%); -webkit-backdrop-filter:blur(8px) saturate(140%);
@@ -388,12 +416,14 @@
       from{ background-position: 5% -35%; }
       to{ background-position: 95% 5%; }
     }
+    .stat .n.pulse{ animation: statPulse .6s ease; }
+    @keyframes statPulse{ 0%{ color:var(--accent); } 100%{ color:var(--ink); } }
   }
 </style>
 
 <script>
 (function(){
-  var CURRENT_VERSION = "2026-09-21T03:50:26Z";
+  var CURRENT_VERSION = "2026-09-21T04:03:14Z";
   function showUpdateBanner(newVersion){
     var bar = document.createElement('div');
     bar.setAttribute('style',
@@ -1966,6 +1996,14 @@
     return d.toLocaleDateString(undefined, {month:'short', day:'numeric', year:'numeric'});
   }
 
+  function updateNewWeekEdges(){
+    var strip = document.getElementById('newWeekGrid');
+    var atStart = strip.scrollLeft <= 2;
+    var atEnd = strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 2;
+    strip.classList.toggle('at-start', atStart);
+    strip.classList.toggle('at-end', atEnd);
+  }
+
   function renderNewWeek(statuses){
     var section = document.getElementById('newWeek');
     var batch = newestBatch();
@@ -1995,6 +2033,7 @@
         '<p class="new-note">' + r.note + '</p>';
       grid.appendChild(card);
     });
+    updateNewWeekEdges();
   }
 
   function renderQueueSlots(statuses){
@@ -2051,7 +2090,13 @@
   function animateStat(el, to){
     var from = parseInt(el.textContent, 10);
     if(isNaN(from)) from = 0;
-    if(reducedMotion || from === to){ el.textContent = to; return; }
+    if(from === to) return;
+    if(reducedMotion){ el.textContent = to; return; }
+    el.classList.add('pulse');
+    el.addEventListener('animationend', function done(){
+      el.classList.remove('pulse');
+      el.removeEventListener('animationend', done);
+    });
     var start = null, duration = 450;
     function step(ts){
       if(start === null) start = ts;
@@ -2401,6 +2446,28 @@
   load();
   applyShelfCollapsed(loadShelfCollapsed());
   renderAll();
+
+  // ---------- sticky masthead condensing on scroll ----------
+  (function(){
+    var header = document.querySelector('header.masthead');
+    var condensed = false;
+    function onScroll(){
+      var should = window.scrollY > 32;
+      if(should !== condensed){
+        condensed = should;
+        header.classList.toggle('condensed', condensed);
+      }
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  })();
+
+  // ---------- New This Week edge-fade on manual scroll/resize ----------
+  (function(){
+    var strip = document.getElementById('newWeekGrid');
+    strip.addEventListener('scroll', updateNewWeekEdges, {passive:true});
+    window.addEventListener('resize', updateNewWeekEdges);
+  })();
 })();
 </script>
 
