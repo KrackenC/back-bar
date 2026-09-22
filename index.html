@@ -94,12 +94,10 @@
   }
   header.masthead.condensed .brand h1{ font-size:1.6rem; }
   .brand-mark{
-    width:1.6rem; height:1.6rem; margin-right:.5rem; vertical-align:-.3rem;
-    border-radius:50%; object-fit:cover; display:inline-block;
-    border:1px solid var(--accent);
+    width:1.6rem; height:1.6rem; margin-right:.45rem; vertical-align:-.25rem;
     transition: width .25s ease, height .25s ease;
   }
-  header.masthead.condensed .brand-mark{ width:1.15rem; height:1.15rem; vertical-align:-.2rem; }
+  header.masthead.condensed .brand-mark{ width:1.15rem; height:1.15rem; vertical-align:-.15rem; }
   .glass-icon{ width:12px; height:12px; display:inline-block; vertical-align:-2px; margin-right:.35em; flex-shrink:0; }
   .category-icon{ width:13px; height:13px; display:inline-block; vertical-align:-2px; margin-right:.5em; flex-shrink:0; color:var(--accent); }
   .brand p{
@@ -448,7 +446,7 @@
 
 <script>
 (function(){
-  var CURRENT_VERSION = "2026-09-21T23:59:59Z";
+  var CURRENT_VERSION = "2026-09-22T00:05:19Z";
   function showUpdateBanner(newVersion){
     var bar = document.createElement('div');
     bar.setAttribute('style',
@@ -514,7 +512,7 @@
 
   <header class="masthead">
     <div class="brand">
-      <h1><img class="brand-mark" src="data:image/jpeg;base64,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" alt="">Back Bar</h1>
+      <h1><svg class="brand-mark" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 16 16" fill="none" stroke="#C97A4A" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 2h12L8 8Z"/><path d="M4.6 3.8h6.8"/><path d="M8 8v4.3"/><path d="M4.6 12.7h6.8"/><path d="M9.4 1.6l3.5-.6"/><circle cx="12.9" cy="1" r=".85" fill="#C97A4A" stroke="none"/></svg>Back Bar</h1>
       <p>What's behind your bottles, and what it pours</p>
     </div>
     <div class="masthead-right">
