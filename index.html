@@ -211,6 +211,8 @@
   .clear-btn:hover{ color:var(--accent); }
 
   .shelf{ display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.75rem; min-height:2.2rem; }
+  /* display:flex above would otherwise beat the [hidden] attribute */
+  .shelf[hidden]{ display:none; }
   .shelf-empty{ color:var(--ink-soft); font-size:.85rem; font-style:italic; padding:.3rem 0; }
 
   .chip{
@@ -460,7 +462,7 @@
 
 <script>
 (function(){
-  var CURRENT_VERSION = "2026-09-25T00:25:30Z";
+  var CURRENT_VERSION = "2026-09-25T01:03:33Z";
   function showUpdateBanner(newVersion){
     var bar = document.createElement('div');
     bar.setAttribute('style',
