@@ -187,6 +187,12 @@
 
   .shelf-row{ display:flex; align-items:center; justify-content:space-between; margin-top:1.6rem; }
   .shelf-row-actions{ display:inline-flex; align-items:center; }
+  /* "On the shelf" list hides behind its own toggle, same look as the
+     Your Back Bar header toggle, so a long shelf doesn't push Quick Add
+     down the page. */
+  .shelf-list-toggle{ margin:1.6rem 0 0; }
+  .shelf-list-toggle .count{ color:var(--ink-soft); font-weight:600; margin-left:.35em; font-variant-numeric:tabular-nums; }
+  .shelf-list-actions{ display:flex; justify-content:flex-end; margin-top:.2rem; }
   /* real padding, no negative-margin trick: keeps the clickable box and the
      visible text in exactly the same place */
   .starter-btn{
@@ -454,7 +460,7 @@
 
 <script>
 (function(){
-  var CURRENT_VERSION = "2026-09-22T01:33:31Z";
+  var CURRENT_VERSION = "2026-09-25T00:25:30Z";
   function showUpdateBanner(newVersion){
     var bar = document.createElement('div');
     bar.setAttribute('style',
@@ -548,15 +554,18 @@
         </form>
         <p class="tip">Try <b>rye whiskey</b>, <b>triple sec</b>, <b>lime juice</b> — separate a list with commas. Brand names work too, like <b>Cointreau</b> or <b>Jameson</b> — the chip keeps the bottle's name and still counts under its general type. Not sure which style you've got? Type just <b>“rum”</b> or <b>“whiskey”</b> and it'll count toward any recipe in that family.</p>
 
-        <div class="shelf-row">
-          <span class="subhead" style="font-size:.66rem;">On the shelf</span>
+        <button class="shelf-toggle shelf-list-toggle" id="shelfListToggle" type="button" aria-expanded="false" aria-controls="shelf">
+          <span class="subhead">On the shelf<span class="count" id="shelfListCount">(0)</span></span>
+          <span class="shelf-toggle-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="shelf-list-actions">
           <span class="shelf-row-actions">
             <button class="starter-btn" id="starterBtn" type="button">Load a starter shelf</button>
             <span style="color:var(--line); margin:0 .05rem;">·</span>
             <button class="clear-btn" id="clearBtn" type="button">Clear</button>
           </span>
         </div>
-        <div class="shelf" id="shelf"></div>
+        <div class="shelf" id="shelf" hidden></div>
 
         <div class="quick-add" id="quickAdd"></div>
       </div>
@@ -731,8 +740,8 @@
     {id:'agave_syrup', name:'Agave Syrup', category:'Syrup', group:'Syrups'},
     {id:'coconut_syrup', name:'Coconut Syrup', category:'Syrup', group:'Syrups'},
     {id:'chocolate_syrup', name:'Chocolate Syrup', category:'Syrup', group:'Syrups'},
-    {id:'pineapple_syrup', name:'Pineapple Syrup', category:'Syrup', group:'Syrups'},
-    {id:'peach_puree', name:'Peach Purée', category:'Fruit Purée', group:'Juice & Mixers'}
+    {id:'peach_puree', name:'Peach Purée', category:'Fruit Purée', group:'Juice & Mixers'},
+    {id:'pineapple_syrup', name:'Pineapple Syrup', category:'Syrup', group:'Syrups'}
   ];
 
   var GROUP_ORDER = ['Spirits','Liqueurs & Fortified Wine','Bitters','Juice & Mixers','Syrups'];
@@ -1583,7 +1592,6 @@
       items:[{id:'scotch_whisky', amt:'1.5 oz'},{id:'honey_syrup', amt:'.25 oz'},{id:'almond_bitters', amt:'1 dash'},{id:'orange_bitters', amt:'1 dash'}],
       garnish:'Orange peel', note:'Stir over ice in the glass; garnish with an orange peel — a modern riff on the classic Old Fashioned.'},
 
-    // ---------- Irish Whiskey ----------
     {name:'Irish Boulevardier', base:'Whiskey', glass:'Rocks', method:'Stirred', added:'2026-09-11',
       items:[{id:'whiskey_any', amt:'1.5 oz', familyOk:true},{id:'campari', amt:'.75 oz'},{id:'sweet_vermouth', amt:'1 oz'}],
       garnish:'Orange twist', note:'Stir with ice; strain over a large cube — a mellower, Irish-whiskey take on the bourbon original.'},
@@ -1786,6 +1794,25 @@
     document.getElementById('shelfToggle').querySelector('.shelf-toggle-icon').textContent = collapsed ? '+' : '–';
   }
 
+  // The "On the shelf" chip list starts hidden behind its own toggle; the
+  // open/closed choice is remembered per visitor.
+  var SHELF_LIST_OPEN_KEY = 'backbar.shelfListOpen.v1';
+
+  function persistShelfListOpen(open){
+    try{ localStorage.setItem(SHELF_LIST_OPEN_KEY, open ? '1' : '0'); }catch(e){}
+  }
+
+  function loadShelfListOpen(){
+    try{ return localStorage.getItem(SHELF_LIST_OPEN_KEY) === '1'; }catch(e){ return false; }
+  }
+
+  function applyShelfListOpen(open){
+    var toggle = document.getElementById('shelfListToggle');
+    document.getElementById('shelf').hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.querySelector('.shelf-toggle-icon').textContent = open ? '–' : '+';
+  }
+
   // Bottle count for a shelf without disturbing the currently active one —
   // used to show "(N)" on the inactive tab in the switcher. Reads straight
   // from storage rather than an in-memory Map, since only one shelf is ever
@@ -1982,6 +2009,7 @@
   function renderShelf(){
     var el = document.getElementById('shelf');
     el.innerHTML = '';
+    document.getElementById('shelfListCount').textContent = '(' + have.size + ')';
     if(have.size === 0){
       el.innerHTML = '<p class="shelf-empty">Nothing yet — add a bottle above or load the starter shelf.</p>';
       return;
@@ -2403,6 +2431,12 @@
     persistShelfCollapsed(collapsed);
   });
 
+  document.getElementById('shelfListToggle').addEventListener('click', function(){
+    var open = document.getElementById('shelf').hidden;
+    applyShelfListOpen(open);
+    persistShelfListOpen(open);
+  });
+
   document.getElementById('starterBtn').addEventListener('click', function(){
     STARTER.forEach(function(id){ have.set(id, byId[id]); });
     persist();
@@ -2559,6 +2593,7 @@
   loadShelfNames();
   load();
   applyShelfCollapsed(loadShelfCollapsed());
+  applyShelfListOpen(loadShelfListOpen());
   renderAll();
 
   // ---------- sticky masthead condensing on scroll ----------
@@ -2584,6 +2619,5 @@
   })();
 })();
 </script>
-
 </body>
 </html>
