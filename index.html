@@ -462,7 +462,7 @@
 
 <script>
 (function(){
-  var CURRENT_VERSION = "2026-09-25T01:03:33Z";
+  var CURRENT_VERSION = "2026-09-25T13:13:59Z";
   function showUpdateBanner(newVersion){
     var bar = document.createElement('div');
     bar.setAttribute('style',
@@ -615,7 +615,7 @@
 
   </main>
 
-  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 246 recipes, drawn from the IBA official list, the standard classics, and distillers' and bar guides' own recipe books.</footer>
+  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 251 recipes, drawn from the IBA official list, the standard classics, and distillers' and bar guides' own recipe books.</footer>
 
 </div>
 
@@ -726,6 +726,7 @@
     {id:'cilantro', name:'Fresh Cilantro', category:'Fresh Herb', group:'Juice & Mixers'},
     {id:'jalapeno', name:'Jalapeño', category:'Fresh Produce', group:'Juice & Mixers'},
     {id:'fresh_ginger', name:'Fresh Ginger', category:'Fresh Produce', group:'Juice & Mixers'},
+    {id:'cucumber', name:'Cucumber', category:'Fresh Produce', group:'Juice & Mixers'},
     {id:'egg_white', name:'Egg White', category:'Egg', group:'Juice & Mixers'},
 
     {id:'simple_syrup', name:'Simple Syrup', category:'Syrup', group:'Syrups'},
@@ -1642,7 +1643,24 @@
       garnish:'Green olive', note:"Stir with ice and strain into a chilled coupe — Lima's pisco answer to the Manhattan, said to date to 1920s cavalry-captain lore."},
     {name:'Pisco Naranja', base:'Pisco', glass:'Collins', method:'Shaken', added:'2026-09-18',
       items:[{id:'pisco', amt:'1.5 oz'},{id:'orange_curacao', amt:'.75 oz'},{id:'orange_juice', amt:'3 oz'}],
-      garnish:'Orange slice', note:'Shake with ice and strain over fresh ice — a citrus-forward pisco cocktail built on orange curaçao and fresh orange juice.'}
+      garnish:'Orange slice', note:'Shake with ice and strain over fresh ice — a citrus-forward pisco cocktail built on orange curaçao and fresh orange juice.'},
+
+    // ---------- Hendrick's ----------
+    {name:"Hendrick's Gin & Tonic", base:'Gin', glass:'Highball', method:'Built', added:'2026-09-25',
+      items:[{id:'hendricks', amt:'1.75 oz'},{id:'tonic_water', amt:'top'}],
+      garnish:'3 cucumber rounds', note:"Hendrick's signature serve swaps the usual lime for thin cucumber slices, echoing the gin's own cucumber and rose distillate."},
+    {name:"Hendrick's Martini", base:'Gin', glass:'Coupe', method:'Stirred', added:'2026-09-25',
+      items:[{id:'hendricks', amt:'2.5 oz'},{id:'dry_vermouth', amt:'.5 oz'}],
+      garnish:'Cucumber slice', note:'Stir with ice and strain into a chilled coupe; garnished with cucumber instead of the usual olive or lemon twist.'},
+    {name:"Hendrick's Gin Mule", base:'Gin', glass:'Highball', method:'Built', added:'2026-09-25',
+      items:[{id:'hendricks', amt:'2 oz'},{id:'lime_juice', amt:'.25 oz'},{id:'ginger_beer', amt:'top'}],
+      garnish:'Cucumber rounds, mint sprig', note:"Hendrick's take on the gin buck, built over ice and topped with ginger beer."},
+    {name:"Hendrick's Cucumber Lemonade", base:'Gin', glass:'Highball', method:'Built', added:'2026-09-25',
+      items:[{id:'hendricks', amt:'1.5 oz'},{id:'lemon_juice', amt:'1.5 oz'},{id:'simple_syrup', amt:'1.5 oz'},{id:'soda_water', amt:'top'}],
+      garnish:'Cucumber rounds, lemon wheel', note:'An equal-parts gin sour lengthened with soda water and finished with cucumber and lemon.'},
+    {name:"Hendrick's Cranberry Fizz", base:'Gin', glass:'Highball', method:'Built', added:'2026-09-25',
+      items:[{id:'hendricks', amt:'1.75 oz'},{id:'cranberry_juice', amt:'2.5 oz'},{id:'lemon_juice', amt:'.25 oz'},{id:'soda_water', amt:'top'}],
+      garnish:'Cucumber slices, mint sprig, cranberries', note:'A festive riff on the gin fizz, built over ice with cranberry juice and a splash of soda.'}
   ];
 
   var STARTER = ['gin','vodka','dry_vermouth','sweet_vermouth','campari','triple_sec','lime_juice','lemon_juice','simple_syrup','soda_water','angostura_bitters','bourbon'];
