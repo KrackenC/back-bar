@@ -462,7 +462,7 @@
 
 <script>
 (function(){
-  var CURRENT_VERSION = "2026-09-25T13:13:59Z";
+  var CURRENT_VERSION = "2026-10-02T13:15:40Z";
   function showUpdateBanner(newVersion){
     var bar = document.createElement('div');
     bar.setAttribute('style',
@@ -615,7 +615,7 @@
 
   </main>
 
-  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 251 recipes, drawn from the IBA official list, the standard classics, and distillers' and bar guides' own recipe books.</footer>
+  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 256 recipes, drawn from the IBA official list, the standard classics, and distillers' and bar guides' own recipe books.</footer>
 
 </div>
 
@@ -688,6 +688,7 @@
     {id:'peychauds_bitters', name:"Peychaud's Bitters", category:'Aromatic Bitters', group:'Bitters'},
     {id:'peach_bitters', name:'Peach Bitters', category:'Fruit Bitters', group:'Bitters'},
     {id:'orange_bitters', name:'Orange Bitters', category:'Citrus Bitters', group:'Bitters'},
+    {id:'lemon_bitters', name:'Lemon Bitters', category:'Citrus Bitters', group:'Bitters'},
     {id:'cherry_bitters', name:'Cherry Bitters', category:'Fruit Bitters', group:'Bitters'},
     {id:'almond_bitters', name:'Almond Bitters', category:'Nut Bitters', group:'Bitters'},
 
@@ -1660,7 +1661,24 @@
       garnish:'Cucumber rounds, lemon wheel', note:'An equal-parts gin sour lengthened with soda water and finished with cucumber and lemon.'},
     {name:"Hendrick's Cranberry Fizz", base:'Gin', glass:'Highball', method:'Built', added:'2026-09-25',
       items:[{id:'hendricks', amt:'1.75 oz'},{id:'cranberry_juice', amt:'2.5 oz'},{id:'lemon_juice', amt:'.25 oz'},{id:'soda_water', amt:'top'}],
-      garnish:'Cucumber slices, mint sprig, cranberries', note:'A festive riff on the gin fizz, built over ice with cranberry juice and a splash of soda.'}
+      garnish:'Cucumber slices, mint sprig, cranberries', note:'A festive riff on the gin fizz, built over ice with cranberry juice and a splash of soda.'},
+
+    // ---------- St-Germain ----------
+    {name:'French Blonde', base:'Gin', glass:'Coupe', method:'Shaken', added:'2026-10-02',
+      items:[{id:'gin', amt:'1 oz'},{id:'elderflower_liqueur', amt:'.75 oz'},{id:'dry_vermouth', amt:'.5 oz'},{id:'grapefruit_juice', amt:'1.5 oz'},{id:'lemon_bitters', amt:'1 dash'}],
+      garnish:'Grapefruit twist', note:'Shake everything with ice and strain into a chilled coupe; the grapefruit juice balances the gin and elderflower liqueur.'},
+    {name:'St-Germain Cocktail', base:'Sparkling', glass:'Collins', method:'Built', added:'2026-10-02',
+      items:[{id:'elderflower_liqueur', amt:'1.5 oz'},{id:'white_wine', amt:'2 oz'},{id:'soda_water', amt:'2 oz'}],
+      garnish:'Lemon twist', note:"Created by Simon Difford for St-Germain's 2007 launch; build over ice, stirring in the wine before topping with soda water."},
+    {name:'French 77', base:'Gin', glass:'Flute', method:'Shaken, topped', added:'2026-10-02',
+      items:[{id:'gin', amt:'1 oz'},{id:'elderflower_liqueur', amt:'1 oz'},{id:'lemon_juice', amt:'.5 oz'},{id:'sparkling_wine', amt:'top'}],
+      garnish:'Lemon twist', note:'A French 75 variant that swaps the simple syrup for elderflower liqueur; shake the rest with ice and top with sparkling wine.'},
+    {name:'St-Germain Royale', base:'Sparkling', glass:'Flute', method:'Built', added:'2026-10-02',
+      items:[{id:'elderflower_liqueur', amt:'.75 oz'},{id:'sparkling_wine', amt:'top'}],
+      garnish:'Blackberry', note:'Pour the liqueur into a chilled flute and top with sparkling wine for a simple, floral champagne cocktail.'},
+    {name:'French Gimlet', base:'Gin', glass:'Coupe', method:'Shaken', added:'2026-10-02',
+      items:[{id:'gin', amt:'2 oz'},{id:'elderflower_liqueur', amt:'1 oz'},{id:'lime_juice', amt:'.75 oz'}],
+      garnish:'Lime wheel', note:"A gimlet variation that rounds out the gin and lime with elderflower liqueur in place of the usual simple syrup."}
   ];
 
   var STARTER = ['gin','vodka','dry_vermouth','sweet_vermouth','campari','triple_sec','lime_juice','lemon_juice','simple_syrup','soda_water','angostura_bitters','bourbon'];
