@@ -273,6 +273,14 @@
   }
   .segmented button + button{ border-left:1px solid var(--line); }
   .segmented button.active{ background:var(--ink); color:var(--paper); }
+  /* Filters sit in two columns, filled top to bottom: All / Almost / Ready,
+     then Favorites / Made It / Mocktails. The 1px gap over a line-colored
+     background draws the dividers between cells. */
+  #filterSeg{
+    display:inline-grid; grid-template-columns:repeat(2, auto); grid-template-rows:repeat(3, auto);
+    grid-auto-flow:column; gap:1px; background:var(--line);
+  }
+  #filterSeg button{ border:none; text-align:left; }
   .shelf-switcher{ margin-top:.9rem; }
   .shelf-switcher .count{ opacity:.7; font-variant-numeric:tabular-nums; }
   .shelf-switcher .rename-btn{ margin-left:.35rem; opacity:.55; font-size:.85rem; cursor:pointer; }
@@ -585,6 +593,8 @@
             <button data-filter="almost" type="button">Almost</button>
             <button data-filter="ready" type="button">Ready</button>
             <button data-filter="favorites" type="button">Favorites</button>
+            <button data-filter="made" type="button">Made It</button>
+            <button data-filter="mocktails" type="button">Mocktails</button>
           </div>
         </div>
       </div>
@@ -598,7 +608,7 @@
 
   </main>
 
-  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 256 recipes, all from publicly available sources: the IBA's official cocktail list, spirit producers' own published recipes, and Difford's Guide online.
+  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 263 recipes, all from publicly available sources: the IBA's official cocktail list, spirit producers' own published recipes, and Difford's Guide online.
     <p class="drink-responsibly">Please drink responsibly. Enjoy only if you're of legal drinking age, know your limits, and never drink and drive.</p>
   </footer>
 
@@ -1663,7 +1673,29 @@
       garnish:'Blackberry', note:'Pour the liqueur into a chilled flute and top with sparkling wine for a simple, floral champagne cocktail.'},
     {name:'French Gimlet', base:'Gin', glass:'Coupe', method:'Shaken', added:'2026-10-02',
       items:[{id:'gin', amt:'2 oz'},{id:'elderflower_liqueur', amt:'1 oz'},{id:'lime_juice', amt:'.75 oz'}],
-      garnish:'Lime wheel', note:"A gimlet variation that rounds out the gin and lime with elderflower liqueur in place of the usual simple syrup."}
+      garnish:'Lime wheel', note:"A gimlet variation that rounds out the gin and lime with elderflower liqueur in place of the usual simple syrup."},
+    // ---------- Mocktails (alcohol-free; recipes from Difford's Guide) ----------
+    {name:'Shirley Temple', base:'Mocktail', glass:'Collins', method:'Built', added:'2026-10-07',
+      items:[{id:'grenadine', amt:'.25 oz'},{id:'lemon_juice', amt:'.33 oz'},{id:'ginger_ale', amt:'5.5 oz'}],
+      garnish:'Lemon wheel, cherry', note:"Pour into a chilled glass and fill with ice; credited to Chasen's restaurant in Beverly Hills, named for the child star Shirley Temple."},
+    {name:'Roy Rogers', base:'Mocktail', glass:'Collins', method:'Built', added:'2026-10-07',
+      items:[{id:'grenadine', amt:'.25 oz'},{id:'cola', amt:'top'}],
+      garnish:'Lime wedge', note:'Pour the grenadine over ice, top with cola, and stir; cola sweetened with grenadine.'},
+    {name:'Ginger No-jito', base:'Mocktail', glass:'Collins', method:'Built', added:'2026-10-07',
+      items:[{id:'lime_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'mint_leaves', amt:'12 leaves'},{id:'ginger_beer', amt:'3.5 oz'}],
+      garnish:'Mint sprigs', note:'Churn the lime, syrup, and mint with crushed ice, then top with ginger beer: an alcohol-free Mojito with a ginger kick.'},
+    {name:'Virgin Mary', base:'Mocktail', glass:'Collins', method:'Rolled', added:'2026-10-07',
+      items:[{id:'tomato_juice', amt:'5 oz'},{id:'lemon_juice', amt:'.5 oz'},{id:'hot_sauce', amt:'8 drops'},{id:'worcestershire', amt:'4 dashes'}],
+      garnish:'Celery stick', note:'Roll with ice along with a little horseradish, celery salt, and black pepper, then strain over fresh ice: a Bloody Mary without the vodka.'},
+    {name:'Arnold Palmer', base:'Mocktail', glass:'Collins', method:'Shaken, topped', added:'2026-10-07',
+      items:[{id:'black_tea', amt:'2 oz'},{id:'lemon_juice', amt:'1.25 oz'},{id:'simple_syrup', amt:'1 oz'},{id:'soda_water', amt:'1 oz'}],
+      garnish:'Lemon wheel', note:'Shake the tea, lemon, and syrup with ice and strain over fresh ice with a splash of soda; named for the golfer Arnold Palmer.'},
+    {name:'Cinderella', base:'Mocktail', glass:'Collins', method:'Shaken, topped', added:'2026-10-07',
+      items:[{id:'orange_juice', amt:'2 oz'},{id:'pineapple_juice', amt:'1.5 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'grenadine', amt:'.17 oz'},{id:'angostura_bitters', amt:'3 dashes'},{id:'soda_water', amt:'top'}],
+      garnish:'Lemon wheel', note:'Shake everything but the soda with ice, strain over fresh ice, and top with soda water.'},
+    {name:'Temperance Piña Colada', base:'Mocktail', glass:'Hurricane', method:'Blended', added:'2026-10-07',
+      items:[{id:'pineapple_juice', amt:'4 oz'},{id:'coconut_cream', amt:'1.5 oz'},{id:'cream', amt:'.75 oz'},{id:'milk', amt:'.75 oz'}],
+      garnish:'Pineapple wedge, cherry', note:'Blend with crushed ice until smooth and pour into a chilled glass: the Piña Colada without the rum.'}
   ];
 
   var STARTER = ['gin','vodka','dry_vermouth','sweet_vermouth','campari','triple_sec','lime_juice','lemon_juice','simple_syrup','soda_water','angostura_bitters','bourbon'];
@@ -2368,6 +2400,8 @@
       if(filter === 'ready' && s.status.key !== 'ready') return false;
       if(filter === 'almost' && s.status.key !== 'almost') return false;
       if(filter === 'favorites' && !favorites.has(s.recipe.name)) return false;
+      if(filter === 'made' && !made[s.recipe.name]) return false;
+      if(filter === 'mocktails' && s.recipe.base !== 'Mocktail') return false;
       if(q){
         var nameMatch = normalize(s.recipe.name).indexOf(q) !== -1;
         var baseMatch = normalize(s.recipe.base).indexOf(q) !== -1;
@@ -2398,6 +2432,8 @@
     if(visible.length === 0){
       var emptyMsg = filter === 'favorites'
         ? 'No favorites yet — tap the star on a recipe to save it here.'
+        : filter === 'made'
+        ? 'Nothing made yet — tap Made it on a recipe after you pour it.'
         : 'Nothing matches. Try a different filter or search term.';
       grid.innerHTML = '<p class="empty-state">' + emptyMsg + '</p>';
       return;
@@ -2774,7 +2810,7 @@
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-07T23:34:25Z";
+  var CURRENT_VERSION = "2026-10-07T23:46:02Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
