@@ -445,6 +445,7 @@
   .queue-slot .pill{ margin-top:.5rem; }
 
   footer{ margin-top:3rem; padding-top:1.2rem; border-top:1px solid var(--line); font-size:.75rem; color:var(--ink-soft); }
+  .drink-responsibly{ margin:.9rem 0 0; color:var(--accent); font-weight:600; letter-spacing:.02em; }
 
   @media (prefers-reduced-motion: no-preference){
     .chip.fresh{ animation:pop .3s ease; }
@@ -552,7 +553,9 @@
 
   </main>
 
-  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 256 recipes, all from publicly available sources: the IBA's official cocktail list, spirit producers' own published recipes, and Difford's Guide online.</footer>
+  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 256 recipes, all from publicly available sources: the IBA's official cocktail list, spirit producers' own published recipes, and Difford's Guide online.
+    <p class="drink-responsibly">Please drink responsibly. Enjoy only if you're of legal drinking age, know your limits, and never drink and drive.</p>
+  </footer>
 
 </div>
 
@@ -2608,7 +2611,7 @@
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-07T17:37:45Z";
+  var CURRENT_VERSION = "2026-10-07T17:43:06Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
