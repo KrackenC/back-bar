@@ -444,6 +444,38 @@
   .queue-meta{ font-size:.68rem; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-soft); margin-top:.2rem; }
   .queue-slot .pill{ margin-top:.5rem; }
 
+  /* ---------- Made It ---------- */
+  /* A per-card "Made it" button logs each pour (count + last date), and the
+     collapsible Made It section lists everything poured so far, using the
+     same toggle bar as the shelf panel. */
+  .panel-made{ margin-bottom:1.75rem; }
+  .panel-made .shelf-toggle .count{ color:var(--ink-soft); font-weight:600; margin-left:.35em; font-variant-numeric:tabular-nums; }
+  #madeBody[hidden]{ display:none; }
+  .made-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; }
+  .made-row{ display:flex; align-items:center; justify-content:space-between; gap:.75rem; padding:.55rem 0; border-top:1px solid var(--line); }
+  .made-row:first-child{ border-top:none; }
+  .made-row-name{ font-family:'Cormorant Garamond', serif; font-weight:700; font-size:1.08rem; line-height:1.2; }
+  .made-row-meta{ font-size:.72rem; color:var(--ink-soft); margin-top:.15rem; font-variant-numeric:tabular-nums; }
+  .made-row-actions{ display:inline-flex; gap:.3rem; flex-shrink:0; }
+  .made-row-actions button{
+    border:1px solid var(--line); background:var(--paper-raised); color:var(--ink-soft); border-radius:2px;
+    width:1.6rem; height:1.6rem; cursor:pointer; font-size:.85rem; line-height:1;
+    transition: border-color .15s ease, color .15s ease;
+  }
+  .made-row-actions button:hover{ border-color:var(--accent); color:var(--accent); }
+  .made-empty{ color:var(--ink-soft); font-size:.82rem; font-style:italic; margin:.2rem 0 0; }
+  .card-foot{ display:flex; align-items:center; justify-content:space-between; gap:.75rem; margin-top:auto; padding-top:.2rem; }
+  .made-btn{
+    border:1px solid var(--accent); background:transparent; color:var(--accent); border-radius:2px;
+    padding:.35rem .7rem; font:600 .76rem 'Archivo', sans-serif; cursor:pointer;
+    transition: background .15s ease, color .15s ease, transform .1s ease;
+  }
+  .made-btn:hover{ background:var(--accent); color:var(--paper-sunken); }
+  .made-btn:active{ transform:scale(.95); }
+  .made-btn.done{ border-color:var(--good-fg); color:var(--good-fg); }
+  .made-btn.done:hover{ background:var(--good-fg); color:var(--paper-sunken); }
+  .made-meta{ font-size:.72rem; color:var(--ink-soft); font-variant-numeric:tabular-nums; text-align:right; }
+
   footer{ margin-top:3rem; padding-top:1.2rem; border-top:1px solid var(--line); font-size:.75rem; color:var(--ink-soft); }
   .drink-responsibly{ margin:.9rem 0 0; color:var(--accent); font-weight:600; letter-spacing:.02em; }
 
@@ -529,6 +561,19 @@
         </div>
         <p class="queue-tag">Drag a recipe card here — or tap its <b>+</b> — to line up what to pour next.</p>
         <div id="queueSlots"></div>
+      </section>
+
+      <section class="panel-made" aria-label="Drinks you've made">
+        <button class="shelf-toggle" id="madeToggle" type="button" aria-expanded="false" aria-controls="madeBody">
+          <span class="subhead">Made It<span class="count" id="madeCount">(0)</span></span>
+          <span class="shelf-toggle-icon" aria-hidden="true">+</span>
+        </button>
+        <div id="madeBody" hidden>
+          <ul class="made-list" id="madeList"></ul>
+          <div class="queue-row" style="margin-top:.4rem; justify-content:flex-end;">
+            <button class="clear-btn" id="madeClearBtn" type="button">Clear history</button>
+          </div>
+        </div>
       </section>
 
       <div class="recipes-head">
@@ -1655,6 +1700,7 @@
   var openGroups = new Set(); // quick-add category panels the user has expanded
   var favorites = new Set(); // recipe names starred as favorites
   var queue = [null, null, null]; // recipe names lined up as "next to make", by slot
+  var made = {}; // recipe name -> {count, last:'YYYY-MM-DD'} for drinks marked "Made it"
 
   function normalize(s){
     // fold accented characters to their plain form first (Curaçao -> curacao,
@@ -2082,6 +2128,79 @@
     return {date:maxDate, recipes:dated.filter(function(r){ return r.added === maxDate; })};
   }
 
+  // ---------- Made It ----------
+  var MADE_KEY = 'backbar.made.v1';
+  var MADE_OPEN_KEY = 'backbar.madeOpen.v1';
+
+  function persistMade(){
+    try{ localStorage.setItem(MADE_KEY, JSON.stringify(made)); }catch(e){}
+  }
+
+  function loadMade(){
+    try{
+      var raw = localStorage.getItem(MADE_KEY);
+      if(!raw) return;
+      var obj = JSON.parse(raw);
+      if(obj && typeof obj === 'object') made = obj;
+    }catch(e){}
+  }
+
+  function todayIso(){
+    var d = new Date();
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+
+  function markMade(name){
+    var m = made[name] || {count:0, last:null};
+    m.count += 1;
+    m.last = todayIso();
+    made[name] = m;
+  }
+
+  function madeMetaText(m){
+    return 'Made ' + m.count + '× · last ' + formatAddedDate(m.last);
+  }
+
+  function applyMadeOpen(open){
+    var toggle = document.getElementById('madeToggle');
+    document.getElementById('madeBody').hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.querySelector('.shelf-toggle-icon').textContent = open ? '–' : '+';
+  }
+
+  function loadMadeOpen(){
+    try{ return localStorage.getItem(MADE_OPEN_KEY) === '1'; }catch(e){ return false; }
+  }
+
+  function persistMadeOpen(open){
+    try{ localStorage.setItem(MADE_OPEN_KEY, open ? '1' : '0'); }catch(e){}
+  }
+
+  function renderMade(){
+    var names = Object.keys(made);
+    document.getElementById('madeCount').textContent = '(' + names.length + ')';
+    document.getElementById('madeClearBtn').hidden = names.length === 0;
+    var list = document.getElementById('madeList');
+    if(names.length === 0){
+      list.innerHTML = '<li class="made-empty">Nothing yet — tap <b>Made it</b> on a recipe after you pour it.</li>';
+      return;
+    }
+    names.sort(function(a, b){
+      if(made[a].last !== made[b].last) return made[a].last < made[b].last ? 1 : -1;
+      return a.localeCompare(b);
+    });
+    list.innerHTML = names.map(function(name){
+      var m = made[name];
+      var safe = name.replace(/"/g, '&quot;');
+      return '<li class="made-row"><div><div class="made-row-name">' + name + '</div>' +
+        '<div class="made-row-meta">' + madeMetaText(m) + '</div></div>' +
+        '<span class="made-row-actions">' +
+          '<button type="button" data-made-dec="' + safe + '" aria-label="Take one off the count for ' + safe + '" title="Take one off">−</button>' +
+          '<button type="button" data-made-remove="' + safe + '" aria-label="Remove ' + safe + ' from Made It" title="Remove">×</button>' +
+        '</span></li>';
+    }).join('');
+  }
+
   function formatAddedDate(iso){
     var parts = iso.split('-');
     var d = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
@@ -2328,7 +2447,11 @@
         '</div>' +
         '<ul class="items">' + itemsHtml + '</ul>' +
         (r.garnish && r.garnish !== '—' ? '<p class="garnish">Garnish: ' + r.garnish + '</p>' : '') +
-        '<p class="note">' + r.note + '</p>';
+        '<p class="note">' + r.note + '</p>' +
+        '<div class="card-foot">' +
+          '<button class="made-btn' + (made[r.name] ? ' done' : '') + '" type="button" data-name="' + r.name + '" aria-label="Mark ' + r.name + ' as made">' + (made[r.name] ? '✓ Made it again' : 'Made it') + '</button>' +
+          (made[r.name] ? '<span class="made-meta">' + madeMetaText(made[r.name]) + '</span>' : '') +
+        '</div>';
 
       grid.appendChild(card);
       card.addEventListener('transitionend', function clearDelay(e){
@@ -2360,6 +2483,7 @@
     renderQuickAdd();
     renderRecipes(statuses);
     renderQueueSlots(statuses);
+    renderMade();
     lastAdded = null;
   }
 
@@ -2441,6 +2565,14 @@
   });
 
   document.getElementById('grid').addEventListener('click', function(e){
+    var mbtn = e.target.closest('button.made-btn');
+    if(mbtn){
+      markMade(mbtn.getAttribute('data-name'));
+      persistMade();
+      renderRecipes(computeStatuses());
+      renderMade();
+      return;
+    }
     var qbtn = e.target.closest('button.queue-btn');
     if(qbtn){
       toggleQueue(qbtn.getAttribute('data-name'));
@@ -2526,13 +2658,40 @@
     renderAll();
   });
 
+  document.getElementById('madeToggle').addEventListener('click', function(){
+    var open = document.getElementById('madeBody').hidden;
+    applyMadeOpen(open);
+    persistMadeOpen(open);
+  });
+
+  document.getElementById('madeList').addEventListener('click', function(e){
+    var dec = e.target.closest('button[data-made-dec]');
+    var rem = e.target.closest('button[data-made-remove]');
+    if(dec){
+      var n = dec.getAttribute('data-made-dec');
+      if(made[n]){ made[n].count -= 1; if(made[n].count <= 0) delete made[n]; }
+    } else if(rem){
+      delete made[rem.getAttribute('data-made-remove')];
+    } else return;
+    persistMade();
+    renderRecipes(computeStatuses());
+    renderMade();
+  });
+
+  document.getElementById('madeClearBtn').addEventListener('click', function(){
+    made = {};
+    persistMade();
+    renderRecipes(computeStatuses());
+    renderMade();
+  });
+
   document.getElementById('queueClearBtn').addEventListener('click', function(){
     queue = [null, null, null];
     persistQueue();
     renderAll();
   });
 
-  // One button that clears the shelf, favorites, and Up Next queue together.
+  // One button that clears the shelf, favorites, Up Next queue, and Made It history together.
   // Click-again-to-confirm rather than a blocking confirm() dialog, so it
   // can't stall the page — a stray click just times out back to the label.
   (function(){
@@ -2559,8 +2718,10 @@
       SHELF_KEYS.forEach(function(key){ try{ localStorage.removeItem(key); }catch(e){} }); // both shelves, not just the active one
       favorites.clear();
       queue = [null, null, null];
+      made = {};
       persistFavorites();
       persistQueue();
+      persistMade();
       renderAll();
     });
   })();
@@ -2572,6 +2733,8 @@
   load();
   applyShelfCollapsed(loadShelfCollapsed());
   applyShelfListOpen(loadShelfListOpen());
+  loadMade();
+  applyMadeOpen(loadMadeOpen());
   renderAll();
 
   // ---------- sticky masthead condensing on scroll ----------
@@ -2611,7 +2774,7 @@
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-07T17:43:06Z";
+  var CURRENT_VERSION = "2026-10-07T23:34:25Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
