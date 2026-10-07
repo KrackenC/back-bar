@@ -2608,7 +2608,8 @@
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-07T17:36:30Z";
+  var CURRENT_VERSION = "2026-10-07T17:37:45Z";
+  /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
   var msg = document.getElementById('__update-msg');
@@ -2632,11 +2633,11 @@
     return fetch('./?_=' + Date.now(), { cache: 'no-store' })
       .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
       .then(function (html) {
-        if (want && html.indexOf('CURRENT_VERSION = "2026-10-07T17:36:30Z"') < 0) throw new Error('not live yet');
+        if (want && html.indexOf('CURRENT_VERSION = "' + want + '"') < 0) throw new Error('not live yet');
         try { sessionStorage.setItem('__updatedTo', want || ''); } catch (e) {}
         return fetch('./', { cache: 'reload' }).then(function (r) { return r.ok ? r.text() : ''; }, function () { return ''; })
           .then(function (stored) {
-            if (!isPhone && stored.indexOf('CURRENT_VERSION = "2026-10-07T17:36:30Z"') >= 0) { location.reload(); return true; }
+            if (!isPhone && stored.indexOf('CURRENT_VERSION = "' + want + '"') >= 0) { location.reload(); return true; }
             document.open(); document.write(html); document.close();
             return true;
           });
