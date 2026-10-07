@@ -459,69 +459,6 @@
     @keyframes statPulse{ 0%{ color:var(--accent); } 100%{ color:var(--ink); } }
   }
 </style>
-
-<script>
-(function(){
-  var CURRENT_VERSION = "2026-10-02T13:15:40Z";
-  function showUpdateBanner(newVersion){
-    var bar = document.createElement('div');
-    bar.setAttribute('style',
-      'position:fixed;left:0;right:0;bottom:0;z-index:9999;' +
-      'background:#1A2420;color:#E9EAE1;font:14px -apple-system,system-ui,sans-serif;' +
-      'padding:.75rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem;' +
-      'box-shadow:0 -2px 10px rgba(0,0,0,.3);');
-    var label = document.createElement('span');
-    label.textContent = 'A new version of Back Bar is ready.';
-    var actions = document.createElement('span');
-    actions.setAttribute('style', 'display:flex;gap:.5rem;flex-shrink:0;');
-    var updateBtn = document.createElement('button');
-    updateBtn.textContent = 'Update';
-    updateBtn.setAttribute('style',
-      'background:#B3123B;color:#fff;border:none;border-radius:6px;padding:.45rem .9rem;' +
-      'font-weight:600;font-size:.85rem;cursor:pointer;');
-    var dismissBtn = document.createElement('button');
-    dismissBtn.textContent = 'Later';
-    dismissBtn.setAttribute('style',
-      'background:none;color:#E9EAE1;border:none;padding:.45rem .5rem;font-size:.85rem;cursor:pointer;opacity:.75;');
-    updateBtn.addEventListener('click', function(){
-      updateBtn.textContent = 'Updating…';
-      updateBtn.disabled = true;
-      fetch('./?_=' + Date.now(), {cache:'no-store'})
-        .then(function(r){ return r.ok ? r.text() : null; })
-        .then(function(html){
-          if(!html){ updateBtn.textContent = 'Update'; updateBtn.disabled = false; return; }
-          document.open();
-          document.write(html);
-          document.close();
-        })
-        .catch(function(){ updateBtn.textContent = 'Update'; updateBtn.disabled = false; });
-    });
-    dismissBtn.addEventListener('click', function(){
-      try { sessionStorage.setItem('backbar_update_dismissed', newVersion); } catch(e) {}
-      bar.remove();
-    });
-    actions.appendChild(updateBtn);
-    actions.appendChild(dismissBtn);
-    bar.appendChild(label);
-    bar.appendChild(actions);
-    document.body.appendChild(bar);
-  }
-  try {
-    fetch('./version.json?_=' + Date.now(), {cache:'no-store'})
-      .then(function(r){ return r.ok ? r.json() : null; })
-      .then(function(data){
-        if(!data || !data.v || data.v === CURRENT_VERSION) return;
-        var dismissedKey = 'backbar_update_dismissed';
-        var dismissed = null;
-        try { dismissed = sessionStorage.getItem(dismissedKey); } catch(e) {}
-        if(dismissed === data.v) return; // user already said "Later" for this version this session
-        if(document.body) showUpdateBanner(data.v);
-        else document.addEventListener('DOMContentLoaded', function(){ showUpdateBanner(data.v); });
-      })
-      .catch(function(){});
-  } catch(e) {}
-})();
-</script>
 </head>
 <body>
 <div class="wrap">
@@ -2657,5 +2594,105 @@
   })();
 })();
 </script>
+<div id="__update-banner" style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#101820;color:#e7eef5;font:600 14px/1.4 -apple-system,BlinkMacSystemFont,sans-serif;padding:12px 16px;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px));align-items:center;justify-content:space-between;gap:12px;box-shadow:0 -2px 12px rgba(0,0,0,.4);">
+  <span id="__update-msg">A newer version of Back Bar is available.</span>
+  <span id="__update-actions" style="display:flex;gap:8px;flex-shrink:0;">
+    <button id="__update-btn" style="font:700 13px/1 -apple-system,sans-serif;background:#ff7a33;color:#1c0d04;border:0;border-radius:4px;padding:8px 14px;cursor:pointer;">Update</button>
+    <button id="__dismiss-btn" style="font:600 13px/1 -apple-system,sans-serif;background:transparent;color:#93a6b8;border:1px solid #324459;border-radius:4px;padding:8px 14px;cursor:pointer;">Later</button>
+  </span>
+</div>
+<script>
+/* Update check. Found on launch or when the app comes back to the front, a new version installs
+   itself unless the person is in the middle of something; otherwise the Update button is offered.
+   Phones swap the page in place (never navigate: a reload or URL change once handed an iPhone
+   Home Screen app a fresh, empty storage container). Only a page that really is the announced
+   version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
+(function () {
+  var CURRENT_VERSION = "2026-10-07T01:45:56Z";
+  var VERSION_KEY = "v";
+  var banner = document.getElementById('__update-banner');
+  var msg = document.getElementById('__update-msg');
+  var actions = document.getElementById('__update-actions');
+  var updateBtn = document.getElementById('__update-btn');
+  var dismissBtn = document.getElementById('__dismiss-btn');
+  var DEFAULT_MSG = msg.textContent;
+  var lastCheck = 0, applying = false;
+  var isPhone = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
+
+  function busy() {
+    var a = document.activeElement;
+    if (document.querySelector('dialog[open]')) return true;
+    if (a && /INPUT|TEXTAREA|SELECT/.test(a.tagName) && a.value) return true;
+    try { return !!(false); } catch (e) { return false; }
+  }
+  function showBanner() { banner.style.display = 'flex'; }
+  function applyUpdate(want) {
+    if (applying) return Promise.resolve(false);
+    applying = true;
+    return fetch('./?_=' + Date.now(), { cache: 'no-store' })
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+      .then(function (html) {
+        if (want && html.indexOf('CURRENT_VERSION = "' + want + '"') < 0) throw new Error('not live yet');
+        try { sessionStorage.setItem('__updatedTo', want || ''); } catch (e) {}
+        return fetch('./', { cache: 'reload' }).then(function (r) { return r.ok ? r.text() : ''; }, function () { return ''; })
+          .then(function (stored) {
+            if (!isPhone && stored.indexOf('CURRENT_VERSION = "' + want + '"') >= 0) { location.reload(); return true; }
+            document.open(); document.write(html); document.close();
+            return true;
+          });
+      })
+      .catch(function () { applying = false; return false; });
+  }
+  function checkVersion(auto) {
+    lastCheck = Date.now();
+    return fetch('./version.json?_=' + Date.now(), { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        var v = data && data[VERSION_KEY];
+        if (!v || v === CURRENT_VERSION) return false;
+        if (auto === true && !busy()) return applyUpdate(v).then(function (ok) { if (!ok) { banner.dataset.want = v; showBanner(); } return true; });
+        banner.dataset.want = v;
+        showBanner();
+        return true;
+      })
+      .catch(function () { return null; });
+  }
+  window.__appVersion = CURRENT_VERSION;
+  window.__checkForUpdate = checkVersion;
+
+  updateBtn.addEventListener('click', function () {
+    updateBtn.textContent = 'Updating…';
+    updateBtn.disabled = true;
+    applyUpdate(banner.dataset.want).then(function (ok) {
+      if (ok) return;
+      updateBtn.textContent = 'Update';
+      updateBtn.disabled = false;
+      msg.textContent = 'The new version is still reaching GitHub. Try again in a minute.';
+    });
+  });
+  dismissBtn.addEventListener('click', function () { banner.style.display = 'none'; msg.textContent = DEFAULT_MSG; });
+
+  try {
+    var to = sessionStorage.getItem('__updatedTo');
+    if (to) {
+      sessionStorage.removeItem('__updatedTo');
+      if (to === CURRENT_VERSION) {
+        msg.textContent = 'Back Bar updated to the latest version.';
+        actions.style.display = 'none';
+        showBanner();
+        setTimeout(function () { banner.style.display = 'none'; actions.style.display = 'flex'; msg.textContent = DEFAULT_MSG; }, 4000);
+      }
+    }
+  } catch (e) {}
+
+  if (document.readyState === 'complete') checkVersion(true);
+  else addEventListener('load', function () { checkVersion(true); });
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) checkVersion(true); });
+  addEventListener('focus', function () { if (Date.now() - lastCheck > 60000) checkVersion(); });
+  clearInterval(window.__updateTimer);
+  window.__updateTimer = setInterval(checkVersion, 15 * 60 * 1000);
+})();
+</script>
+
 </body>
 </html>
