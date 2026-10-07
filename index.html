@@ -472,7 +472,7 @@
       <div class="stats" id="stats">
         <div class="stat"><span class="n" id="statReady">0</span><span class="l">Ready</span></div>
         <div class="stat"><span class="n" id="statAlmost">0</span><span class="l">Almost</span></div>
-        <div class="stat"><span class="n" id="statTotal">0</span><span class="l">In the book</span></div>
+        <div class="stat"><span class="n" id="statTotal">0</span><span class="l">Recipes</span></div>
       </div>
       <button class="reset-all-btn" id="resetAllBtn" type="button">Reset everything</button>
     </div>
@@ -533,7 +533,7 @@
       <div class="recipes-head">
         <p class="subhead" style="margin:0;">What You Can Make</p>
         <div style="display:flex; gap:.7rem; flex-wrap:wrap;">
-          <div class="search"><input type="text" id="searchInput" placeholder="Search the book…"></div>
+          <div class="search"><input type="text" id="searchInput" placeholder="Search recipes…"></div>
           <div class="segmented" id="filterSeg">
             <button data-filter="all" class="active" type="button">All</button>
             <button data-filter="almost" type="button">Almost</button>
@@ -552,7 +552,7 @@
 
   </main>
 
-  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 256 recipes, drawn from the IBA official list, the standard classics, and distillers' and bar guides' own recipe books.</footer>
+  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 256 recipes, all from publicly available sources: the IBA's official cocktail list, spirit producers' own published recipes, and Difford's Guide online.</footer>
 
 </div>
 
@@ -2113,7 +2113,7 @@
       card.setAttribute('data-name', r.name);
       card.setAttribute('tabindex', '0');
       card.setAttribute('role', 'button');
-      card.setAttribute('aria-label', 'Find ' + r.name + ' in the book below');
+      card.setAttribute('aria-label', 'Find ' + r.name + ' in the recipes below');
       card.innerHTML =
         '<div class="new-card-head"><h4>' + r.name + '</h4>' +
           '<button class="fav-btn queue-btn' + (isQueued ? ' active' : '') + '" type="button" data-name="' + r.name + '" aria-label="' + (isQueued ? 'Remove ' + r.name + ' from Up Next' : 'Add ' + r.name + ' to Up Next') + '" aria-pressed="' + isQueued + '" title="Add to Up Next">' + (isQueued ? '✓' : '+') + '</button>' +
@@ -2152,7 +2152,7 @@
             '</div>' +
             '<span class="pill ' + pillClass + '">' + pillText + '</span>';
         } else {
-          // recipe was removed from the book since it was queued
+          // recipe was removed from the recipe list since it was queued
           slot.innerHTML =
             '<span class="queue-num">' + (i + 1) + '</span>' +
             '<div class="queue-card-head"><p class="queue-name">' + name + '</p><button class="queue-remove" type="button" data-slot="' + i + '" aria-label="Remove from Up Next">×</button></div>';
@@ -2238,7 +2238,7 @@
     animateStat(document.getElementById('statTotal'), total);
 
     var q = normalize(query);
-    // Search looks at the whole book, not just what's stocked: it matches the
+    // Search looks at every recipe, not just what's stocked: it matches the
     // recipe name, its base spirit, and — so typing a specific bottle like
     // "Cointreau" or "Curaçao" finds every recipe that calls for it — the
     // name of each ingredient in the recipe, whether or not it's on the shelf.
@@ -2267,7 +2267,7 @@
     });
 
     document.getElementById('countLine').innerHTML =
-      '<b>' + ready + '</b> ready to pour · <b>' + almost + '</b> almost there · <b>' + (total - ready - almost) + '</b> still in the book';
+      '<b>' + ready + '</b> ready to pour · <b>' + almost + '</b> almost there · <b>' + (total - ready - almost) + '</b> need more bottles';
     document.getElementById('favClearBtn').hidden = !(filter === 'favorites' && favorites.size > 0);
 
     var grid = document.getElementById('grid');
@@ -2454,7 +2454,7 @@
   });
 
   // Clicking (or Enter/Space-ing) a New This Week card jumps the search box
-  // to that recipe so it's easy to find in the full book below — except its
+  // to that recipe so it's easy to find in the full recipe list below — except its
   // own "+" button, which queues the recipe directly instead.
   document.getElementById('newWeekGrid').addEventListener('click', function(e){
     var qbtn = e.target.closest('button.queue-btn');
@@ -2608,7 +2608,7 @@
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-07T01:45:56Z";
+  var CURRENT_VERSION = "2026-10-07T17:36:30Z";
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
   var msg = document.getElementById('__update-msg');
@@ -2632,11 +2632,11 @@
     return fetch('./?_=' + Date.now(), { cache: 'no-store' })
       .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
       .then(function (html) {
-        if (want && html.indexOf('CURRENT_VERSION = "' + want + '"') < 0) throw new Error('not live yet');
+        if (want && html.indexOf('CURRENT_VERSION = "2026-10-07T17:36:30Z"') < 0) throw new Error('not live yet');
         try { sessionStorage.setItem('__updatedTo', want || ''); } catch (e) {}
         return fetch('./', { cache: 'reload' }).then(function (r) { return r.ok ? r.text() : ''; }, function () { return ''; })
           .then(function (stored) {
-            if (!isPhone && stored.indexOf('CURRENT_VERSION = "' + want + '"') >= 0) { location.reload(); return true; }
+            if (!isPhone && stored.indexOf('CURRENT_VERSION = "2026-10-07T17:36:30Z"') >= 0) { location.reload(); return true; }
             document.open(); document.write(html); document.close();
             return true;
           });
