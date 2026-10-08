@@ -273,7 +273,7 @@
   }
   .segmented button + button{ border-left:1px solid var(--line); }
   .segmented button.active{ background:var(--ink); color:var(--paper); }
-  /* Filters sit in two columns, filled top to bottom: All / Almost / Ready,
+  /* Filters sit in two columns, filled top to bottom: Ready / Almost / All,
      then Favorites / Made It / Mocktails. Each is its own raised button: a
      top-lit gradient, a light inner top edge and a dark lip underneath give
      it depth, and the active one reads as pressed in. */
@@ -586,9 +586,9 @@
         <div style="display:flex; gap:.7rem; flex-wrap:wrap;">
           <div class="search"><input type="text" id="searchInput" placeholder="Search recipes…"></div>
           <div class="segmented" id="filterSeg">
-            <button data-filter="all" class="active" type="button">All</button>
-            <button data-filter="almost" type="button">Almost</button>
             <button data-filter="ready" type="button">Ready</button>
+            <button data-filter="almost" type="button">Almost</button>
+            <button data-filter="all" class="active" type="button">All</button>
             <button data-filter="favorites" type="button">Favorites</button>
             <button data-filter="made" type="button">Made It</button>
             <button data-filter="mocktails" type="button">Mocktails</button>
@@ -2745,7 +2745,7 @@
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-08T00:05:39Z";
+  var CURRENT_VERSION = "2026-10-08T00:13:01Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
