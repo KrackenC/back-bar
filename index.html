@@ -261,6 +261,10 @@
 
   /* ---------- Recipes panel ---------- */
   .recipes-head{ display:flex; flex-wrap:wrap; gap:.9rem; align-items:center; justify-content:space-between; }
+  /* Search and the filter buttons each take the full column width, so the
+     two filter columns split it evenly on any screen. */
+  .recipes-controls{ display:flex; flex-direction:column; gap:.75rem; width:100%; }
+  .recipes-controls .search input{ width:100%; }
   .search input{
     padding:.55rem .7rem; border-radius:2px; border:1px solid var(--line); background:var(--paper-sunken);
     color:var(--ink); font:inherit; font-size:.88rem; width:220px; max-width:100%;
@@ -278,8 +282,8 @@
      top-lit gradient, a light inner top edge and a dark lip underneath give
      it depth, and the active one reads as pressed in. */
   #filterSeg{
-    display:inline-grid; grid-template-columns:repeat(2, minmax(7.5rem, 1fr)); grid-template-rows:repeat(3, auto);
-    grid-auto-flow:column; gap:.55rem .6rem; border:none; overflow:visible; background:none;
+    display:grid; width:100%; grid-template-columns:1fr 1fr; grid-template-rows:repeat(3, auto);
+    grid-auto-flow:column; gap:.65rem .75rem; border:none; overflow:visible; background:none; padding-bottom:3px;
   }
   #filterSeg button{
     border:1px solid #2E3B55; border-radius:6px; text-align:center;
@@ -348,11 +352,11 @@
      transform, and scroll-snap. This wrapper approach has none of that. */
   .new-week-scroll{ position:relative; }
   .new-week-strip{
-    display:flex; gap:.85rem; overflow-x:auto; padding-bottom:.4rem; margin:0 -.1rem;
+    display:flex; gap:.85rem; overflow-x:auto; padding:.35rem 0 .9rem; margin:0 -.1rem; /* room for the cards' raised lip and hover lift inside the scroller */
     scroll-snap-type:x proximity;
   }
   .new-week-scroll::before, .new-week-scroll::after{
-    content:""; position:absolute; top:0; bottom:.4rem; width:28px; z-index:2; pointer-events:none;
+    content:""; position:absolute; top:0; bottom:.9rem; width:28px; z-index:2; pointer-events:none;
     transition: opacity .2s ease;
   }
   .new-week-scroll::before{ left:0; background:linear-gradient(90deg, var(--paper), transparent); }
@@ -362,17 +366,17 @@
   .new-card{
     --tilt-x:0deg; --tilt-y:0deg;
     scroll-snap-align:start;
-    flex:0 0 230px; background:rgba(22,32,46,.82); border:1px solid var(--accent); border-radius:2px;
+    flex:0 0 230px; background:linear-gradient(180deg, rgba(32,44,66,.9) 0%, rgba(20,29,44,.9) 100%); border:1px solid var(--accent); border-radius:8px;
     padding:.85rem .95rem; cursor:pointer; display:flex; flex-direction:column; gap:.5rem;
     backdrop-filter:blur(8px) saturate(140%); -webkit-backdrop-filter:blur(8px) saturate(140%);
-    box-shadow: 0 8px 20px -14px rgba(0,0,0,.6);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.09), inset 0 -2px 0 rgba(0,0,0,.25), 0 4px 0 #070B12, 0 10px 20px -8px rgba(0,0,0,.6);
     transform: perspective(600px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
     transition: background .15s ease, transform .18s ease, box-shadow .18s ease;
   }
   .new-card:hover, .new-card:focus-visible{
     background:var(--accent-soft-bg);
     transform: translateY(-3px) perspective(600px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
-    box-shadow: 0 14px 28px -16px rgba(0,0,0,.7);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.12), inset 0 -2px 0 rgba(0,0,0,.25), 0 6px 0 #070B12, 0 18px 30px -12px rgba(0,0,0,.7);
   }
   .new-card-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:.5rem; }
   .new-card-head .queue-btn{ flex-shrink:0; }
@@ -385,8 +389,16 @@
 
   .card{
     --tilt-x:0deg; --tilt-y:0deg;
-    background:var(--paper-raised); border:1px solid var(--line); border-radius:2px;
-    padding:1.05rem 1.15rem 1.15rem; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:.65rem;
+    background:linear-gradient(180deg, #1C2840 0%, #141D2C 100%);
+    border:1px solid #2E3B55; border-radius:8px;
+    padding:1.05rem 1.15rem 1.15rem; display:flex; flex-direction:column; gap:.65rem;
+    /* raised: a light top bevel, a darker bottom bevel, a solid lip below,
+       and a soft drop shadow, so each card reads as a lifted slab */
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.09),
+      inset 0 -2px 0 rgba(0,0,0,.25),
+      0 4px 0 #070B12,
+      0 10px 22px -8px rgba(0,0,0,.65);
     cursor:grab; position:relative;
     transform: perspective(800px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
     transition: opacity .4s ease, transform .2s ease, box-shadow .2s ease, border-color .2s ease;
@@ -398,7 +410,11 @@
   .card:hover, .card:focus-within{
     transform: translateY(-4px) perspective(800px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
     border-color:var(--accent);
-    box-shadow: 0 3px 8px rgba(0,0,0,.4), 0 18px 34px -14px rgba(0,0,0,.65);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.12),
+      inset 0 -2px 0 rgba(0,0,0,.25),
+      0 6px 0 #070B12,
+      0 20px 34px -12px rgba(0,0,0,.7);
   }
   .card:active{ cursor:grabbing; }
   /* a small copper diamond astride the top edge — one recurring deco mark,
@@ -583,7 +599,7 @@
 
       <div class="recipes-head">
         <p class="subhead" style="margin:0;">What You Can Make</p>
-        <div style="display:flex; gap:.7rem; flex-wrap:wrap;">
+        <div class="recipes-controls">
           <div class="search"><input type="text" id="searchInput" placeholder="Search recipes…"></div>
           <div class="segmented" id="filterSeg">
             <button data-filter="ready" type="button">Ready</button>
@@ -2745,7 +2761,7 @@
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-08T00:13:01Z";
+  var CURRENT_VERSION = "2026-10-08T00:32:53Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
