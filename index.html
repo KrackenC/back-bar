@@ -133,28 +133,22 @@
   .subhead{ font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:#FFFFFF; font-weight:700; }
 
   /* ---------- Layout ---------- */
-  .app{ display:grid; grid-template-columns:340px 1fr; gap:0; margin-top:1.75rem; align-items:start; }
-  /* min-width:0 overrides the grid item's default auto min-width, which
-     otherwise sizes to the widest un-wrapping descendant (the New This Week
-     card strip's horizontal scroller) and forces the whole grid — both
-     columns share one track once it collapses to a single column on phones
-     — wider than the viewport, showing as extra empty space on one side. */
-  .panel-shelf{ padding-right:2rem; border-right:1px solid var(--line); min-width:0; }
-  .panel-recipes{ padding:0 2rem; min-width:0; }
-  @media (max-width:860px){
-    .app{ grid-template-columns:1fr; }
-    .panel-shelf{ border-right:none; border-bottom:1px solid var(--line); padding-right:0; padding-bottom:2rem; margin-bottom:2rem; }
-    .panel-recipes{ padding:0; }
+  /* One stacked column at every width: Up Next, New This Week and Your Back
+     Bar sit on top as fold-out bars, with the recipe list underneath.
+     min-width:0 keeps the New This Week scroller from widening the track
+     past the viewport (a CSS Grid min-content trap that bit this layout once). */
+  .app{ display:grid; grid-template-columns:1fr; gap:0; margin-top:1.75rem; align-items:start; }
+  .panel-shelf, .panel-recipes, .panel-fold{ min-width:0; }
+  .panel-recipes{ padding:0; }
+  .panel-fold{ margin-bottom:.75rem; }
+  .panel-fold .shelf-toggle{ margin-bottom:0; }
+  .panel-fold .fold-body{ margin-top:.85rem; margin-bottom:.6rem; }
+  .panel-fold .shelf-toggle .count, .panel-shelf .shelf-toggle .count{
+    color:var(--ink-soft); font-weight:600; margin-left:.6em; letter-spacing:.04em; text-transform:none; font-variant-numeric:tabular-nums;
   }
-
-  /* Collapsed shelf: the panel shrinks to a single toggle line spanning the
-     full width, and the recipes panel (now the only other column) reflows
-     up into the row it vacated. */
+  .panel-shelf{ border-bottom:1px solid var(--line); padding-bottom:2rem; margin-bottom:2rem; }
+  .panel-shelf.collapsed{ padding-bottom:1.25rem; margin-bottom:1.75rem; }
   .app.shelf-collapsed{ grid-template-columns:1fr; }
-  .panel-shelf.collapsed{
-    border-right:none; border-bottom:1px solid var(--line);
-    padding-right:0; padding-bottom:1rem; margin-bottom:1.75rem;
-  }
   .shelf-toggle{
     display:flex; align-items:center; justify-content:space-between; gap:.75rem; width:100%;
     background:var(--paper-raised); border:1px solid var(--line); border-radius:2px;
@@ -340,7 +334,6 @@
   .closest-need{ font-size:.78rem; color:var(--ink-soft); text-align:right; }
 
   /* ---------- New This Week spotlight ---------- */
-  .new-week{ margin-bottom:1.5rem; }
   .new-week-head{ display:flex; align-items:baseline; justify-content:space-between; gap:1rem; margin-bottom:.65rem; }
   .new-week-tag{ font-size:.72rem; color:var(--ink-soft); font-family:'Archivo', ui-sans-serif, system-ui, sans-serif; }
   /* The fade lives on this separate, non-scrolling wrapper rather than on
@@ -462,13 +455,10 @@
   .empty-state{ padding:3rem 1rem; text-align:center; color:var(--ink-soft); font-size:.92rem; }
 
   /* ---------- Up-next queue ---------- */
-  /* Lives inline under New This Week now, in the wide recipes column rather
-     than a narrow sidebar, so the 3 slots sit in a row (stacking again once
-     the app itself stacks to a single column on phones) instead of piling
-     up vertically the way they did in the old 250px-wide aside. */
-  .panel-queue{ margin-bottom:1.75rem; }
-  .queue-tag{ color:var(--ink-soft); font-size:.82rem; line-height:1.5; margin:.5rem 0 1.1rem; }
-  .queue-row{ display:flex; align-items:center; justify-content:space-between; margin-top:1.6rem; }
+  /* The top fold-out bar. Its 3 slots sit in a row on wide screens and
+     stack on phones. */
+  .queue-tag{ color:var(--ink-soft); font-size:.82rem; line-height:1.5; margin:0; }
+  .queue-row{ display:flex; align-items:center; justify-content:space-between; gap:1rem; margin:0 0 .9rem; }
   #queueSlots{ display:grid; grid-template-columns:repeat(3, 1fr); gap:.7rem; }
   @media (max-width:860px){
     #queueSlots{ grid-template-columns:1fr; }
@@ -547,6 +537,32 @@
 
   <main class="app" id="app">
 
+    <section class="panel-fold panel-queue" id="panelQueue" aria-label="Next three to make">
+      <button class="shelf-toggle" id="queueToggle" type="button" aria-expanded="false" aria-controls="queueBody">
+        <span class="subhead">Up Next<span class="count" id="queueCount">(0 of 3)</span></span>
+        <span class="shelf-toggle-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="fold-body" id="queueBody" hidden>
+        <div class="queue-row">
+          <p class="queue-tag">Drag a recipe card here — or tap its <b>+</b> — to line up what to pour next.</p>
+          <button class="clear-btn" id="queueClearBtn" type="button">Clear</button>
+        </div>
+        <div id="queueSlots"></div>
+      </div>
+    </section>
+
+    <section class="panel-fold new-week" id="newWeek" hidden aria-label="New this week">
+      <button class="shelf-toggle" id="newWeekToggle" type="button" aria-expanded="false" aria-controls="newWeekBody">
+        <span class="subhead">New This Week<span class="count" id="newWeekTag"></span></span>
+        <span class="shelf-toggle-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="fold-body" id="newWeekBody" hidden>
+        <div class="new-week-scroll">
+          <div class="new-week-strip" id="newWeekGrid"></div>
+        </div>
+      </div>
+    </section>
+
     <section class="panel-shelf" id="panelShelf" aria-label="Your back bar">
       <button class="shelf-toggle" id="shelfToggle" type="button" aria-expanded="true" aria-controls="shelfBody">
         <span class="subhead"><img class="shaker-icon" src="data:image/jpeg;base64,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" alt="">Your Back Bar</span>
@@ -578,25 +594,6 @@
     </section>
 
     <section class="panel-recipes" aria-label="Cocktails">
-      <section class="new-week" id="newWeek" hidden aria-label="New this week">
-        <div class="new-week-head">
-          <p class="subhead" style="margin:0;">New This Week</p>
-          <span class="new-week-tag" id="newWeekTag"></span>
-        </div>
-        <div class="new-week-scroll">
-          <div class="new-week-strip" id="newWeekGrid"></div>
-        </div>
-      </section>
-
-      <section class="panel-queue" aria-label="Next three to make">
-        <div class="queue-row">
-          <p class="subhead" style="margin:0;">Up Next</p>
-          <button class="clear-btn" id="queueClearBtn" type="button">Clear</button>
-        </div>
-        <p class="queue-tag">Drag a recipe card here — or tap its <b>+</b> — to line up what to pour next.</p>
-        <div id="queueSlots"></div>
-      </section>
-
       <div class="recipes-head">
         <p class="subhead" style="margin:0;">What You Can Make</p>
         <div class="recipes-controls">
@@ -1882,6 +1879,30 @@
     toggle.querySelector('.shelf-toggle-icon').textContent = open ? '–' : '+';
   }
 
+  // Up Next and New This Week fold out from their own toggle bars, like
+  // Your Back Bar; each remembers open/closed per visitor (closed by default).
+  var FOLDS = {
+    queue:   {toggle:'queueToggle',   body:'queueBody',   key:'backbar.queueOpen.v1'},
+    newWeek: {toggle:'newWeekToggle', body:'newWeekBody', key:'backbar.newWeekOpen.v1'}
+  };
+
+  function applyFold(name, open){
+    var f = FOLDS[name];
+    var toggle = document.getElementById(f.toggle);
+    document.getElementById(f.body).hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.querySelector('.shelf-toggle-icon').textContent = open ? '–' : '+';
+    if(name === 'newWeek' && open) updateNewWeekEdges();
+  }
+
+  function loadFold(name){
+    try{ return localStorage.getItem(FOLDS[name].key) === '1'; }catch(e){ return false; }
+  }
+
+  function persistFold(name, open){
+    try{ localStorage.setItem(FOLDS[name].key, open ? '1' : '0'); }catch(e){}
+  }
+
   // Bottle count for a shelf without disturbing the currently active one —
   // used to show "(N)" on the inactive tab in the switcher. Reads straight
   // from storage rather than an in-memory Map, since only one shelf is ever
@@ -2256,6 +2277,7 @@
   function renderQueueSlots(statuses){
     var el = document.getElementById('queueSlots');
     el.innerHTML = '';
+    document.getElementById('queueCount').textContent = '(' + queue.filter(function(n){ return !!n; }).length + ' of 3)';
     for(var i = 0; i < 3; i++){
       var slot = document.createElement('div');
       slot.className = 'queue-slot';
@@ -2535,6 +2557,14 @@
     if(input) commitShelfRename(input);
   });
 
+  Object.keys(FOLDS).forEach(function(name){
+    document.getElementById(FOLDS[name].toggle).addEventListener('click', function(){
+      var open = document.getElementById(FOLDS[name].body).hidden;
+      applyFold(name, open);
+      persistFold(name, open);
+    });
+  });
+
   document.getElementById('shelfToggle').addEventListener('click', function(){
     var collapsed = !document.getElementById('panelShelf').classList.contains('collapsed');
     applyShelfCollapsed(collapsed);
@@ -2721,6 +2751,8 @@
   load();
   applyShelfCollapsed(loadShelfCollapsed());
   applyShelfListOpen(loadShelfListOpen());
+  applyFold('queue', loadFold('queue'));
+  applyFold('newWeek', loadFold('newWeek'));
   loadMade();
   renderAll();
 
@@ -2761,7 +2793,7 @@
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-08T00:32:53Z";
+  var CURRENT_VERSION = "2026-10-08T22:59:23Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
