@@ -94,25 +94,25 @@
   }
   header.masthead.condensed .brand h1{ font-size:1.6rem; }
   .brand-mark{
-    width:1.9rem; height:1.9rem; margin-left:.5rem; vertical-align:baseline;
+    width:2.85rem; height:2.85rem; margin-left:.6rem; vertical-align:baseline;
     border-radius:50%; object-fit:cover; display:inline-block;
     border:1px solid var(--accent);
     transition: width .25s ease, height .25s ease;
   }
-  header.masthead.condensed .brand-mark{ width:1.3rem; height:1.3rem; }
-  .glass-icon{ width:12px; height:12px; display:inline-block; vertical-align:-2px; margin-right:.35em; flex-shrink:0; }
-  .category-icon{ width:13px; height:13px; display:inline-block; vertical-align:-2px; margin-right:.5em; flex-shrink:0; color:var(--accent); }
+  header.masthead.condensed .brand-mark{ width:1.95rem; height:1.95rem; }
+  .glass-icon{ width:18px; height:18px; display:inline-block; vertical-align:-4px; margin-right:.35em; flex-shrink:0; }
+  .category-icon{ width:20px; height:20px; display:inline-block; vertical-align:-4px; margin-right:.5em; flex-shrink:0; color:var(--accent); }
   /* the Up Next, New This Week and Your Back Bar badges: round art, so no square frame */
-  .newweek-icon, .upnext-icon, .backbar-icon{ width:2.4rem; height:2.4rem; margin:-.25rem .55rem -.25rem -.15rem; vertical-align:middle; object-fit:contain; display:inline-block; }
+  .newweek-icon, .upnext-icon, .backbar-icon{ width:3.6rem; height:3.6rem; margin:-.4rem .7rem -.4rem -.2rem; vertical-align:middle; object-fit:contain; display:inline-block; }
   /* the Up Next and Your Back Bar art have a solid black square background; lighten blending
      drops the black so it reads as a round badge like New This Week */
   .upnext-icon, .backbar-icon{ mix-blend-mode:lighten; }
-  .shaker-icon{ width:1.9rem; height:1.9rem; margin-right:.5rem; vertical-align:-.55rem; border-radius:3px; object-fit:cover; display:inline-block; border:1px solid var(--accent); }
-  .spirits-icon{ width:2.6rem; height:2.6rem; margin-right:.55em; vertical-align:-.85rem; border-radius:3px; object-fit:cover; display:inline-block; flex-shrink:0; border:1px solid var(--accent); }
-  .liqueur-icon{ width:2.6rem; height:2.6rem; margin-right:.55em; vertical-align:-.85rem; border-radius:3px; object-fit:cover; display:inline-block; flex-shrink:0; border:1px solid var(--accent); }
-  .bitters-icon{ width:2.6rem; height:2.6rem; margin-right:.55em; vertical-align:-.85rem; border-radius:3px; object-fit:cover; display:inline-block; flex-shrink:0; border:1px solid var(--accent); }
-  .juice-icon{ width:2.6rem; height:2.6rem; margin-right:.55em; vertical-align:-.85rem; border-radius:3px; object-fit:cover; display:inline-block; flex-shrink:0; border:1px solid var(--accent); }
-  .syrup-icon{ width:2.6rem; height:2.6rem; margin-right:.55em; vertical-align:-.85rem; border-radius:3px; object-fit:cover; display:inline-block; flex-shrink:0; border:1px solid var(--accent); }
+  .shaker-icon{ width:2.85rem; height:2.85rem; margin-right:.5rem; vertical-align:-.55rem; border-radius:3px; object-fit:cover; display:inline-block; border:1px solid var(--accent); }
+  .spirits-icon{ width:3.9rem; height:3.9rem; margin-right:.7em; vertical-align:-1.35rem; border-radius:3px; object-fit:cover; display:inline-block; flex-shrink:0; border:1px solid var(--accent); }
+  .liqueur-icon{ width:3.9rem; height:3.9rem; margin-right:.7em; vertical-align:-1.35rem; border-radius:3px; object-fit:cover; display:inline-block; flex-shrink:0; border:1px solid var(--accent); }
+  .bitters-icon{ width:3.9rem; height:3.9rem; margin-right:.7em; vertical-align:-1.35rem; border-radius:3px; object-fit:cover; display:inline-block; flex-shrink:0; border:1px solid var(--accent); }
+  .juice-icon{ width:3.9rem; height:3.9rem; margin-right:.7em; vertical-align:-1.35rem; border-radius:3px; object-fit:cover; display:inline-block; flex-shrink:0; border:1px solid var(--accent); }
+  .syrup-icon{ width:3.9rem; height:3.9rem; margin-right:.7em; vertical-align:-1.35rem; border-radius:3px; object-fit:cover; display:inline-block; flex-shrink:0; border:1px solid var(--accent); }
   .brand p{
     margin:.6rem 0 0; color:var(--ink-soft); font-size:.96rem; letter-spacing:.03em; font-family:'Archivo', sans-serif;
     max-height:2rem; overflow:hidden;
@@ -2051,7 +2051,7 @@
   };
   function glassIconSvg(glass){
     var d = GLASS_ICON_PATHS[glass] || GLASS_ICON_PATHS.Rocks;
-    return '<svg class="glass-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="#98A3BE" stroke-width="1.3" ' +
+    return '<svg class="glass-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="#98A3BE" stroke-width="1.3" ' +
       'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>';
   }
   var CATEGORY_ICON_PATHS = {
@@ -2079,7 +2079,7 @@
     }
     var d = CATEGORY_ICON_PATHS[group];
     if(!d) return '';
-    return '<svg class="category-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#C97A4A" stroke-width="1.2" ' +
+    return '<svg class="category-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="#C97A4A" stroke-width="1.2" ' +
       'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>';
   }
 
@@ -2798,7 +2798,7 @@
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-09T00:53:44Z";
+  var CURRENT_VERSION = "2026-10-09T00:58:48Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
