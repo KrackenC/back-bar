@@ -636,7 +636,7 @@
 
   </main>
 
-  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 263 recipes, all from publicly available sources: the IBA's official cocktail list, spirit producers' own published recipes, and Difford's Guide online.
+  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 269 recipes, all from publicly available sources: the IBA's official cocktail list, spirit producers' own published recipes, and Difford's Guide online.
     <p class="photo-credit" style="margin:.6rem 0 0;">Drink photos are free-licensed shots from photographers on <a href="https://unsplash.com/?utm_source=back_bar&amp;utm_medium=referral" target="_blank" rel="noopener">Unsplash</a>, credited on each card. Most are a similar drink standing in for the recipe, marked "Similar drink".</p>
     <p class="drink-responsibly">Please drink responsibly. Enjoy only if you're of legal drinking age, know your limits, and never drink and drive.</p>
   </footer>
@@ -1787,6 +1787,24 @@ var DRINK_PHOTOS = [
     {name:'French Gimlet', base:'Gin', glass:'Coupe', method:'Shaken', added:'2026-10-02',
       items:[{id:'gin', amt:'2 oz'},{id:'elderflower_liqueur', amt:'1 oz'},{id:'lime_juice', amt:'.75 oz'}],
       garnish:'Lime wheel', note:"A gimlet variation that rounds out the gin and lime with elderflower liqueur in place of the usual simple syrup."},
+
+    // ---------- Mezcal ----------
+    {name:'Call Mexico', base:'Mezcal', glass:'Coupe', method:'Shaken', added:'2026-10-09',
+      items:[{id:'sherry', amt:'2 oz'},{id:'mezcal', amt:'.67 oz'},{id:'lime_juice', amt:'.33 oz'},{id:'agave_syrup', amt:'.33 oz'}],
+      garnish:'Grapefruit twist', note:'Shake with ice and fine-strain into a chilled coupe — a mezcal-and-lime reversal of the gin-and-lemon Call London, from Difford’s Guide.'},
+    {name:'Closing Argument', base:'Mezcal', glass:'Coupe', method:'Shaken', added:'2026-10-09',
+      items:[{id:'mezcal', amt:'.75 oz'},{id:'green_chartreuse', amt:'.75 oz'},{id:'maraschino_liqueur', amt:'.75 oz'},{id:'lime_juice', amt:'.75 oz'}],
+      garnish:'Lime twist', note:'Equal parts, shaken with ice and double-strained into a chilled coupe — a mezcal riff on the gin Last Word, also known as the Mezcal Last Word.'},
+    {name:'Mezcal Stone Sour', base:'Mezcal', glass:'Rocks', method:'Shaken, dry-shaken', added:'2026-10-09',
+      items:[{id:'mezcal', amt:'1.67 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'orange_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'orange_bitters', amt:'2 dashes'},{id:'egg_white', amt:'1', optional:true}],
+      garnish:'Orange twist', note:'Shake with ice, strain, then dry-shake without ice to emulsify before straining over fresh ice; the "stone" refers to the splash of orange juice in this mezcal sour, from Difford’s Guide.'},
+    {name:'Dragon Punch', base:'Mezcal', glass:'Coupe', method:'Shaken', added:'2026-10-09',
+      items:[{id:'mezcal', amt:'1.5 oz'},{id:'yellow_chartreuse', amt:'.5 oz'},{id:'lime_juice', amt:'1 oz'},{id:'orgeat_syrup', amt:'.5 oz'},{id:'hot_sauce', amt:'2 dashes'}],
+      garnish:'Cucumber', note:'Shake with ice and fine-strain into a chilled coupe; created in 2020 by Robert Weeks of The Coldroom bar in Montréal.'},
+    {name:'50/50 Margarita', base:'Mezcal', glass:'Rocks', method:'Shaken', added:'2026-10-09',
+      items:[{id:'mezcal', amt:'1 oz'},{id:'sherry', amt:'1 oz'},{id:'triple_sec', amt:'.5 oz', familyOk:true},{id:'lime_juice', amt:'.75 oz'},{id:'agave_syrup', amt:'.25 oz'}],
+      garnish:'Salt rim', note:'Shake with ice and strain over fresh ice in a salt-rimmed glass; created around 2020 by Natasha Bermúdez at Llama San in New York, splitting the base evenly between mezcal and manzanilla sherry.'},
+
     // ---------- Mocktails (alcohol-free; recipes from Difford's Guide) ----------
     {name:'Shirley Temple', base:'Mocktail', glass:'Collins', method:'Built', added:'2026-10-07',
       items:[{id:'grenadine', amt:'.25 oz'},{id:'lemon_juice', amt:'.33 oz'},{id:'ginger_ale', amt:'5.5 oz'}],
@@ -1808,7 +1826,10 @@ var DRINK_PHOTOS = [
       garnish:'Lemon wheel', note:'Shake everything but the soda with ice, strain over fresh ice, and top with soda water.'},
     {name:'Temperance Piña Colada', base:'Mocktail', glass:'Hurricane', method:'Blended', added:'2026-10-07',
       items:[{id:'pineapple_juice', amt:'4 oz'},{id:'coconut_cream', amt:'1.5 oz'},{id:'cream', amt:'.75 oz'},{id:'milk', amt:'.75 oz'}],
-      garnish:'Pineapple wedge, cherry', note:'Blend with crushed ice until smooth and pour into a chilled glass: the Piña Colada without the rum.'}
+      garnish:'Pineapple wedge, cherry', note:'Blend with crushed ice until smooth and pour into a chilled glass: the Piña Colada without the rum.'},
+    {name:'Mock Margarita', base:'Mocktail', glass:'Rocks', method:'Shaken', added:'2026-10-09',
+      items:[{id:'lime_juice', amt:'1 oz'},{id:'lemon_juice', amt:'.5 oz'},{id:'agave_syrup', amt:'1 oz'},{id:'ginger_beer', amt:'1.33 oz'}],
+      garnish:'Salt rim, lime wheel', note:'Shaken with ice and strained over fresh ice in a salt-rimmed glass; adapted from a 2010 recipe by Cheri Loughlin, swapping the tequila and triple sec of a Margarita for ginger beer and agave.'}
   ];
 
   var STARTER = ['gin','vodka','dry_vermouth','sweet_vermouth','campari','triple_sec','lime_juice','lemon_juice','simple_syrup','soda_water','angostura_bitters','bourbon'];
@@ -3068,7 +3089,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-09T11:45:14Z";
+  var CURRENT_VERSION = "2026-10-09T13:20:21Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
