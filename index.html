@@ -2432,7 +2432,7 @@
       var emptyMsg = filter === 'favorites'
         ? 'No favorites yet — tap the star on a recipe to save it here.'
         : filter === 'made'
-        ? 'Nothing made yet — tap Made it on a recipe after you pour it.'
+        ? 'Nothing made yet — tap Made it? on a recipe after you pour it.'
         : 'Nothing matches. Try a different filter or search term.';
       grid.innerHTML = '<p class="empty-state">' + emptyMsg + '</p>';
       return;
@@ -2484,7 +2484,7 @@
         (r.garnish && r.garnish !== '—' ? '<p class="garnish">Garnish: ' + r.garnish + '</p>' : '') +
         '<p class="note">' + r.note + '</p>' +
         '<div class="card-foot">' +
-          '<button class="made-btn' + (made[r.name] ? ' done' : '') + '" type="button" data-name="' + r.name + '" aria-label="Mark ' + r.name + ' as made">' + (made[r.name] ? '✓ Made it again' : 'Made it') + '</button>' +
+          '<button class="made-btn' + (made[r.name] ? ' done' : '') + '" type="button" data-name="' + r.name + '" aria-label="Mark ' + r.name + ' as made">' + (made[r.name] ? '✓ Made it again' : 'Made it?') + '</button>' +
           (made[r.name] ? '<span class="made-meta">' + madeMetaText(made[r.name]) +
             '<button class="made-undo" type="button" data-name="' + r.name + '" aria-label="Take one off the made count for ' + r.name + '" title="Take one off">−</button></span>' : '') +
         '</div>';
@@ -2798,7 +2798,7 @@
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-09T00:51:25Z";
+  var CURRENT_VERSION = "2026-10-09T00:52:30Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
