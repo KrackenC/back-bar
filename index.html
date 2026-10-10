@@ -365,9 +365,9 @@
      animation replays every time the fold opens (display:none -> block) so
      the cards cascade down one after another */
   .new-week-list{ display:flex; flex-direction:column; gap:1.1rem; padding:.35rem 0 .5rem; }
-  .new-week-list.cascading .card{ animation: nw-cascade .45s cubic-bezier(.2,.7,.3,1) both; animation-delay: calc(var(--i, 0) * 110ms); }
+  .cascade-list.cascading .card{ animation: nw-cascade .45s cubic-bezier(.2,.7,.3,1) both; animation-delay: calc(var(--i, 0) * 110ms); }
   @keyframes nw-cascade{ from{ opacity:0; transform:translateY(-14px); } to{ opacity:1; transform:none; } }
-  @media (prefers-reduced-motion: reduce){ .new-week-list.cascading .card{ animation:none; } }
+  @media (prefers-reduced-motion: reduce){ .cascade-list.cascading .card{ animation:none; } }
   .new-card{
     --tilt-x:0deg; --tilt-y:0deg;
     scroll-snap-align:start;
@@ -495,6 +495,11 @@
   }
   .queue-slot.drag-over{ border-color:var(--accent); border-style:solid; background:var(--accent-soft-bg); }
   .queue-slot.filled{ border-style:solid; background:var(--paper-raised); justify-content:flex-start; box-shadow: 0 10px 22px -16px rgba(0,0,0,.6); }
+  /* a queued drink shows its full recipe card under a small "1 · ×" header */
+  #queueSlots{ align-items:start; }
+  .queue-slot.has-card{ border:none; background:none; box-shadow:none; padding:0; gap:.45rem; min-width:0; }
+  .queue-slot.has-card .queue-card-head{ align-items:center; margin:0; padding:0 .15rem; }
+  .queue-slot.has-card.drag-over{ outline:1px solid var(--accent); outline-offset:4px; border-radius:8px; }
   .queue-num{ font-family:'Archivo', ui-sans-serif, system-ui, sans-serif; font-size:.62rem; letter-spacing:.09em; color:var(--ink-soft); text-transform:uppercase; }
   .queue-empty{ color:var(--ink-soft); font-size:.78rem; text-align:center; font-style:italic; }
   .queue-card-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:.5rem; margin-top:.2rem; }
@@ -573,7 +578,7 @@
           <p class="queue-tag">Drag a recipe card here — or tap its <b>+</b> — to line up what to pour next.</p>
           <button class="clear-btn" id="queueClearBtn" type="button">Clear</button>
         </div>
-        <div id="queueSlots"></div>
+        <div id="queueSlots" class="cascade-list"></div>
       </div>
     </section>
 
@@ -583,7 +588,7 @@
         <span class="shelf-toggle-icon" aria-hidden="true">+</span>
       </button>
       <div class="fold-body" id="newWeekBody" hidden>
-        <div class="new-week-list" id="newWeekGrid"></div>
+        <div class="new-week-list cascade-list" id="newWeekGrid"></div>
       </div>
     </section>
 
@@ -2020,13 +2025,13 @@ var DRINK_PHOTOS = [
     var f = FOLDS[name];
     var toggle = document.getElementById(f.toggle);
     document.getElementById(f.body).hidden = !open;
-    // New This Week's cards cascade in only when the fold opens, not on every
-    // re-render (starring or marking one made redraws the list)
-    if(name === 'newWeek' && open){
-      var list = document.getElementById('newWeekGrid');
+    // Up Next's and New This Week's cards cascade in only when the fold opens,
+    // not on every re-render (starring or marking one made redraws the list)
+    var list = document.getElementById(f.body).querySelector('.cascade-list');
+    if(list && open){
       list.classList.add('cascading');
-      clearTimeout(applyFold.nwTimer);
-      applyFold.nwTimer = setTimeout(function(){ list.classList.remove('cascading'); }, 1400);
+      clearTimeout(f.cascadeTimer);
+      f.cascadeTimer = setTimeout(function(){ list.classList.remove('cascading'); }, 1400);
     }
     toggle.setAttribute('aria-expanded', String(open));
     toggle.querySelector('.shelf-toggle-icon').textContent = open ? '–' : '+';
@@ -2404,16 +2409,18 @@ var DRINK_PHOTOS = [
         var match = statuses.find(function(s){ return s.recipe.name === name; });
         slot.classList.add('filled');
         if(match){
-          var st = match.status;
-          var pillClass = st.key === 'ready' ? 'pill-ready' : (st.key === 'almost' ? 'pill-almost' : 'pill-more');
-          var pillText = st.key === 'ready' ? 'Ready to pour' : (st.key === 'almost' ? 'Missing: ' + byId[st.missing[0].id].name : 'Missing ' + st.missing.length);
+          slot.classList.add('has-card');
           slot.innerHTML =
-            '<span class="queue-num">' + (i + 1) + '</span>' +
             '<div class="queue-card-head">' +
-              '<div><p class="queue-name">' + match.recipe.name + '</p><p class="queue-meta">' + match.recipe.base + ' · ' + match.recipe.glass + '</p></div>' +
+              '<span class="queue-num">Up next · ' + (i + 1) + '</span>' +
               '<button class="queue-remove" type="button" data-slot="' + i + '" aria-label="Remove ' + name + ' from Up Next">×</button>' +
-            '</div>' +
-            '<span class="pill ' + pillClass + '">' + pillText + '</span>';
+            '</div>';
+          var card = document.createElement('article');
+          card.className = 'card';
+          card.style.setProperty('--i', i);
+          card.innerHTML = recipeCardHtml(match.recipe, match.status);
+          slot.appendChild(card);
+          if(canTilt) attachTilt(card);
         } else {
           // recipe was removed from the recipe list since it was queued
           slot.innerHTML =
@@ -2894,12 +2901,18 @@ var DRINK_PHOTOS = [
     renderRecipes(computeStatuses());
   });
 
+  // star / made / undo change what every card list shows, Up Next included
+  function renderCardLists(){
+    var statuses = computeStatuses();
+    renderRecipes(statuses);
+    renderQueueSlots(statuses);
+  }
   function onRecipeCardClick(e){
     var mbtn = e.target.closest('button.made-btn');
     if(mbtn){
       markMade(mbtn.getAttribute('data-name'));
       persistMade();
-      renderRecipes(computeStatuses());
+      renderCardLists();
       return;
     }
     var ubtn = e.target.closest('button.made-undo');
@@ -2907,7 +2920,7 @@ var DRINK_PHOTOS = [
       var un = ubtn.getAttribute('data-name');
       if(made[un]){ made[un].count -= 1; if(made[un].count <= 0) delete made[un]; }
       persistMade();
-      renderRecipes(computeStatuses());
+      renderCardLists();
       return;
     }
     var qbtn = e.target.closest('button.queue-btn');
@@ -2922,7 +2935,7 @@ var DRINK_PHOTOS = [
     var name = btn.getAttribute('data-name');
     if(favorites.has(name)) favorites.delete(name); else favorites.add(name);
     persistFavorites();
-    renderRecipes(computeStatuses());
+    renderCardLists();
   }
   document.getElementById('grid').addEventListener('click', onRecipeCardClick);
   document.getElementById('newWeekGrid').addEventListener('click', onRecipeCardClick);
@@ -2963,7 +2976,7 @@ var DRINK_PHOTOS = [
   });
   queueSlotsEl.addEventListener('click', function(e){
     var btn = e.target.closest('button.queue-remove');
-    if(!btn) return;
+    if(!btn){ onRecipeCardClick(e); return; }
     queue[Number(btn.getAttribute('data-slot'))] = null;
     persistQueue();
     renderAll();
@@ -3053,7 +3066,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-09T21:25:02Z";
+  var CURRENT_VERSION = "2026-10-10T02:01:55Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
