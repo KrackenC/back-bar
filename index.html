@@ -167,6 +167,39 @@
     font-family:'Archivo', ui-sans-serif, system-ui, sans-serif; font-size:1rem; line-height:1; color:var(--ink-soft); flex-shrink:0;
   }
   .panel-shelf.collapsed .shelf-toggle{ margin-bottom:0; }
+  /* The three main fold-out bars (Up Next, New This Week, Your Back Bar) are
+     raised, rounded buttons: a lit top edge, a dark lip underneath, and a
+     press-down on tap. The +/– sits in a small sunken knob. */
+  #queueToggle, #newWeekToggle, #shelfToggle{
+    border-radius:14px; border:1px solid #34435F; padding:.6rem .8rem .6rem .9rem;
+    background:linear-gradient(180deg, #2B3956 0%, #1C2740 52%, #151D30 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.16), inset 0 -2px 0 rgba(0,0,0,.32),
+      0 4px 0 #070B12, 0 12px 20px -8px rgba(0,0,0,.7);
+    transform:translateY(0);
+    transition: transform .09s ease, box-shadow .09s ease, border-color .15s ease, background .15s ease;
+  }
+  #queueToggle:hover, #newWeekToggle:hover, #shelfToggle:hover{
+    border-color:var(--accent); transform:translateY(-1px);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.18), inset 0 -2px 0 rgba(0,0,0,.32),
+      0 5px 0 #070B12, 0 14px 24px -8px rgba(0,0,0,.75);
+  }
+  #queueToggle:active, #newWeekToggle:active, #shelfToggle:active{
+    transform:translateY(3px);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.10), inset 0 -1px 0 rgba(0,0,0,.3), 0 1px 0 #070B12, 0 3px 6px -3px rgba(0,0,0,.6);
+  }
+  #queueToggle[aria-expanded="true"], #newWeekToggle[aria-expanded="true"], #shelfToggle[aria-expanded="true"]{
+    border-color:rgba(224,145,103,.55);
+    background:linear-gradient(180deg, #303D5B 0%, #1E2A44 52%, #172034 100%);
+  }
+  #queueToggle .shelf-toggle-icon, #newWeekToggle .shelf-toggle-icon, #shelfToggle .shelf-toggle-icon{
+    width:1.9rem; height:1.9rem; border-radius:50%; display:grid; place-items:center;
+    font-size:1.1rem; color:var(--accent-hover);
+    background:linear-gradient(180deg, #121A2B 0%, #1B2540 100%); border:1px solid #2E3B55;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,.55), 0 1px 0 rgba(255,255,255,.08);
+  }
+  .panel-fold{ margin-bottom:1.05rem; }
 
   /* ---------- Shelf panel ---------- */
   .add-form{ display:flex; gap:.5rem; margin-top:.9rem; }
@@ -2379,7 +2412,7 @@ var DRINK_PHOTOS = [
     var batch = newestBatch();
     if(batch.recipes.length === 0){ section.hidden = true; return; }
     section.hidden = false;
-    document.getElementById('newWeekTag').textContent = 'Added ' + formatAddedDate(batch.date);
+    document.getElementById('newWeekTag').textContent = 'Added ' + formatAddedDate(batch.date).replace(/,? \d{4}$/, '');
     var grid = document.getElementById('newWeekGrid');
     grid.innerHTML = '';
     batch.recipes.forEach(function(r, idx){
@@ -3066,7 +3099,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-10T02:01:55Z";
+  var CURRENT_VERSION = "2026-10-10T02:31:48Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
