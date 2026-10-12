@@ -19,7 +19,7 @@ document.getElementById('s').onload=function(){
   var c=document.createElement('canvas');c.width=W;c.height=H;var g=c.getContext('2d');
   var sw=p[1]-p[0], y0=p[2], y1=p[3], sh=y1-y0, fs=H/sh, dw=sw*fs, dx=(W-dw)/2;
   var t=document.createElement('canvas');t.width=1;t.height=1;var tg=t.getContext('2d');
-  tg.drawImage(img,p[0]+6,6,1,1,0,0,1,1);var d=tg.getImageData(0,0,1,1).data;
+  tg.drawImage(img,Math.round((p[0]+p[1])/2),4,1,1,0,0,1,1);var d=tg.getImageData(0,0,1,1).data;
   var rgba=function(a){return 'rgba('+d[0]+','+d[1]+','+d[2]+','+a+')';};
   g.fillStyle=rgba(1);g.fillRect(0,0,W,H);
   var cy0=Math.max(0,y0), cy1=Math.min(img.naturalHeight,y1), top=(cy0-y0)*fs, bot=(cy1-y0)*fs;
