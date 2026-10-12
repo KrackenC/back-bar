@@ -7,17 +7,21 @@ import sys, json, subprocess, re, base64, html, os
 FILL=0.80
 src, outdir = sys.argv[1], sys.argv[2]
 panels=[]
+MAXW=158   # glass width (output px of 480) that still fits the card's 9:16 window (~169px)
 for spec in sys.argv[3:6]:
-    x0,x1,t,b=[int(v) for v in spec.split(',')]
-    pad=(b-t)*(1-FILL)/2/FILL
-    panels.append([x0,x1,round(t-pad),round(b+pad)])
+    v=[int(x) for x in spec.split(',')]
+    x0,x1,t,b=v[:4]; gx0,gx1=(v[4],v[5]) if len(v)>5 else (x0,x1)
+    fill=FILL
+    if len(v)>5: fill=min(FILL, MAXW*(b-t)/(300*(gx1-gx0)))
+    pad=(b-t)*(1-fill)/2/fill
+    panels.append([x0,x1,round(t-pad),round(b+pad),(gx0+gx1)/2])
 os.makedirs(outdir, exist_ok=True)
 page='''<html><body><img id="s" src="%s"><script>
 document.getElementById('s').onload=function(){
  var img=this,out=[],P=%s,W=480,H=300;
  P.forEach(function(p){
   var c=document.createElement('canvas');c.width=W;c.height=H;var g=c.getContext('2d');
-  var sw=p[1]-p[0], y0=p[2], y1=p[3], sh=y1-y0, fs=H/sh, dw=sw*fs, dx=(W-dw)/2;
+  var sw=p[1]-p[0], y0=p[2], y1=p[3], sh=y1-y0, fs=H/sh, dw=sw*fs, dx=W/2-(p[4]-p[0])*fs;
   var t=document.createElement('canvas');t.width=1;t.height=1;var tg=t.getContext('2d');
   // backdrop colour: darkest of five samples along the panel's top edge (a soft
   // centre glow or a prop in a corner would otherwise give a lighter fill)
