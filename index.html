@@ -686,7 +686,6 @@
   </main>
 
   <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 269 recipes, all from publicly available sources: the IBA's official cocktail list, spirit producers' own published recipes, and Difford's Guide online.
-    <p class="photo-credit" style="margin:.6rem 0 0;">Drink photos are free-licensed shots from photographers on <a href="https://unsplash.com/?utm_source=back_bar&amp;utm_medium=referral" target="_blank" rel="noopener">Unsplash</a>, credited on each card. Most are a similar drink standing in for the recipe, marked "Similar drink".</p>
     <p class="drink-responsibly">Please drink responsibly. Enjoy only if you're of legal drinking age, know your limits, and never drink and drive.</p>
   </footer>
 
@@ -2694,15 +2693,15 @@ var DRINK_PHOTOS = [
 
   function hashStr(s){ var x = 2166136261; for(var i = 0; i < s.length; i++){ x ^= s.charCodeAt(i); x = Math.imul(x, 16777619); } return x >>> 0; }
 
+  // Unsplash License photos: free to use, attribution not required. Stand-ins
+  // keep a small "Similar drink" tag so they aren't mistaken for the recipe.
   function drinkPhotoHtml(recipe){
-    var pick = pickDrinkPhoto(recipe), p = DRINK_PHOTOS[pick.i];
-    var ref = '?utm_source=back_bar&amp;utm_medium=referral';
-    var who = '<a href="https://unsplash.com/@' + p.u + ref + '" target="_blank" rel="noopener">' + p.by + '</a>';
+    var pick = pickDrinkPhoto(recipe);
     var alt = pick.exact ? 'Photo of a ' + recipe.name : 'Photo of a drink similar to a ' + recipe.name;
     return '<figure class="drink-photo"><img src="' + drinkPhotoUrl(pick.i) + '" alt="' + alt.replace(/"/g, '&quot;') + '" loading="lazy" decoding="async">' +
-      '<figcaption>' + (pick.exact ? '' : '<span class="stand-in">Similar drink</span> · ') + 'Photo: ' + who +
-      ' on <a href="https://unsplash.com/' + ref + '" target="_blank" rel="noopener">Unsplash</a></figcaption></figure>';
+      (pick.exact ? '' : '<figcaption><span class="stand-in">Similar drink</span></figcaption>') + '</figure>';
   }
+
 
   // Full recipe card contents, shared by the main recipe grid and New This Week.
   function recipeCardHtml(r, st){
@@ -3109,7 +3108,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-12T00:43:13Z";
+  var CURRENT_VERSION = "2026-10-12T00:51:31Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
