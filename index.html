@@ -94,12 +94,17 @@
     transition: font-size .25s ease;
   }
   header.masthead.condensed .brand h1{ font-size:1.6rem; }
+  /* The logo keeps one fixed pixel size on its own compositing layer and
+     shrinks with a transform, so it's never re-rasterized mid-scroll (resizing
+     width/height every frame made it shimmer). The negative margins give back
+     the space the scale-down frees, so the condensed title stays tight. */
   .brand-mark{
-    width:2.85rem; height:2.85rem; margin-left:.6rem; flex-shrink:0; position:relative; top:var(--mark-nudge, 0);
-    border-radius:50%; object-fit:cover; display:inline-block;
-    transition: width .25s ease, height .25s ease;
+    width:2.85rem; height:2.85rem; margin-left:.6rem; flex-shrink:0;
+    border-radius:50%; object-fit:cover; display:block;
+    transform-origin:left center; will-change:transform; backface-visibility:hidden;
+    transition: transform .25s ease, margin .25s ease;
   }
-  header.masthead.condensed .brand-mark{ width:1.95rem; height:1.95rem; }
+  header.masthead.condensed .brand-mark{ transform:scale(.684); margin-right:-.9rem; margin-block:-.45rem; }
   .glass-icon{ width:18px; height:18px; display:inline-block; vertical-align:-4px; margin-right:.35em; flex-shrink:0; }
   .category-icon{ width:20px; height:20px; display:inline-block; vertical-align:-4px; margin-right:.5em; flex-shrink:0; color:var(--accent); }
   /* the Up Next, New This Week and Your Back Bar badges: round art, so no square frame */
@@ -3072,8 +3077,13 @@ var DRINK_PHOTOS = [
   (function(){
     var header = document.querySelector('header.masthead');
     var condensed = false;
+    // Hysteresis: condense past 160px but only expand again right at the top.
+    // Condensing shrinks the header ~110px, and the browser's scroll anchoring
+    // shifts scrollY by that much — with a single threshold that flipped the
+    // header back and forth and made the logo vibrate.
     function onScroll(){
-      var should = window.scrollY > 32;
+      var y = window.scrollY;
+      var should = condensed ? y > 8 : y > 160;
       if(should !== condensed){
         condensed = should;
         header.classList.toggle('condensed', condensed);
@@ -3099,7 +3109,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-10T02:31:48Z";
+  var CURRENT_VERSION = "2026-10-12T00:43:13Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
