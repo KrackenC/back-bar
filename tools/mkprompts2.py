@@ -143,14 +143,17 @@ exec(open('b4data.py').read())
 REDO2=[[(n,d,SC2[n]) for (n,d,_p) in OLD[i]] for i in range(15,30)]
 H=lambda t: f'\n  <h2 class="batch">{t}</h2>'
 RT=lambda g: new_prompt(g).replace(NEW_BASE, (NEW_BASE+STRICT).replace('real condensation, ice and liquid texture','clear ice and glossy liquid')).replace('only a light, natural mist of condensation on the outside, never a heavy coat of droplets or dots covering the glass','a dry, smooth outside of the glass').replace('only a light, fine mist of condensation on the outside, never a heavy coat of droplets covering the glass','a dry, smooth outside of the glass')
-cards=H('Re-takes · F3–F6 · drinks held back for texture (F5 is a spare second try; F6 re-takes R28)')
+SD={n:(n,d,sc) for n,d,sc in SINGLE}
+TRIO=[[SD["Chilcano de Pisco"],SD["Ginger No-jito"],SD["Cinderella"]],
+      [SD["Jamaican Mule"],SD["Bushwacker"],SD["Bourbon Highball"]]]
+cards=H('Open · T1–T2 · the last re-takes, three drinks per image (T2 left and right are optional upgrades)')
+for i,g in enumerate(TRIO,1): cards+=card(f'T{i}',f'T{i}',g,RT(g))
+cards+=H('Done · re-takes F2–F6 and S1–S2')
+cards+=card('F2','F2',RETAKE,new_prompt(RETAKE))
 for i,g in enumerate(RETAKE3,3): cards+=card(f'F{i}',f'F{i}',g,RT(g))
-cards+=H('Single-drink re-takes · S1–S11 · drinks that kept coming back textured, one per image (send each labeled, e.g. "S1")')
-for i,(n,d,sc) in enumerate(SINGLE,1): cards+=card(f'S{i}',f'S{i} · {n}',[(n,d,sc)],SINGLE_BASE+f"\n\nThe drink: {n}, a {d}. Scene: {sc}.")
-cards+=H('Fix · prompt F2 · re-take El Diablo, St-Germain Cocktail and Bermuda Rum Swizzle')+card('F2','F2',RETAKE,new_prompt(RETAKE))
 cards+=H('Done · Batch 4 · prompts 46–72')
 for i,g in enumerate(B4G,46): cards+=card(str(i),str(i),g,new_prompt(g))
-cards+=H('Redo · prompts R17–R31 · Batch 2 drinks in their own scenes')
+cards+=H('Done · R17–R31 · Batch 2 drinks in their own scenes')
 for i,g in enumerate(REDO2,17): cards+=card(f'R{i}',f'R{i}',g,new_prompt(g))
 cards+=H('Done · F1 · re-take of the three sparkling drinks')+card('F1','F1',FIX[0],new_prompt(FIX[0]))
 cards+=H('Done · R1–R16 · the 48 classics in their own scenes')
@@ -162,7 +165,7 @@ old=''
 for i,g in enumerate(OLD,1): old+=card(f'old{i}',str(i),g,old_prompt(g),check=False)
 t=open('prompts_tpl.html').read()
 t=t.replace('<p class="lede">Thirty ChatGPT image prompts covering 90 drinks, in two batches of 45. Each one makes a three-panel image in the same dark-slate style as your Daiquiri, Tom Collins and Aviation set.</p>',
- f'<p class="lede">{TOTAL} ChatGPT image prompts, one image each with three drinks, every drink in its own scene. New at the top: F3–F5 re-take the drinks held back in Batch 4, then R17–R31 redo Batch 2 in the new style. Finished prompts are further down.</p>')
+ f'<p class="lede">{TOTAL} ChatGPT image prompts, one image each with three drinks, every drink in its own scene. All 269 drinks now have their own photo. The two prompts at the top (T1, T2) re-shoot the last few dark-slate photos; everything below them is done. Finished prompts are further down.</p>')
 t=t.replace("0 of 30 done",f"0 of {TOTAL} done").replace("n+' of 30 done'",f"n+' of {TOTAL} done'").replace("(n/30*100)",f"(n/{TOTAL}*100)")
 t=t.replace("document.querySelectorAll('.prompt').forEach","document.querySelectorAll('.wrap > .list > .prompt').forEach")
 t=t.replace("el.querySelector('input').checked=on;","var inp=el.querySelector('input'); if(inp) inp.checked=on;")
