@@ -145,6 +145,8 @@ H=lambda t: f'\n  <h2 class="batch">{t}</h2>'
 RT=lambda g: new_prompt(g).replace(NEW_BASE, (NEW_BASE+STRICT).replace('real condensation, ice and liquid texture','clear ice and glossy liquid')).replace('only a light, natural mist of condensation on the outside, never a heavy coat of droplets or dots covering the glass','a dry, smooth outside of the glass').replace('only a light, fine mist of condensation on the outside, never a heavy coat of droplets covering the glass','a dry, smooth outside of the glass')
 cards=H('Re-takes · F3–F6 · drinks held back for texture (F5 is a spare second try; F6 re-takes R28)')
 for i,g in enumerate(RETAKE3,3): cards+=card(f'F{i}',f'F{i}',g,RT(g))
+cards+=H('Single-drink re-takes · S1–S9 · tall sparkling drinks, one per image (send each labeled, e.g. "S1")')
+for i,(n,d,sc) in enumerate(SINGLE,1): cards+=card(f'S{i}',f'S{i} · {n}',[(n,d,sc)],SINGLE_BASE+f"\n\nThe drink: {n}, a {d}. Scene: {sc}.")
 cards+=H('Fix · prompt F2 · re-take El Diablo, St-Germain Cocktail and Bermuda Rum Swizzle')+card('F2','F2',RETAKE,new_prompt(RETAKE))
 cards+=H('Done · Batch 4 · prompts 46–72')
 for i,g in enumerate(B4G,46): cards+=card(str(i),str(i),g,new_prompt(g))

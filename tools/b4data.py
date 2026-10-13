@@ -145,3 +145,20 @@ RETAKE3=[[("Brooklyn Godfather","rocks glass with one large ice cube, deep amber
  ("Brooklyn Godfather","rocks glass with one large ice cube, deep amber, an orange peel","a Brooklyn bar with exposed brick and Edison bulbs"),
  ("Kahlua Ginger Ale","highball glass with ice, light coffee-amber, a lime wedge","a sunny beach-shack bar")]]
 RETAKE3.append([(n,d,SC2[n]) for n,d in [("Kentucky Mule","highball glass with ice, golden-amber ginger beer, a lime wheel and a mint sprig"),("Jamaican Mule","highball glass with ice, deeper amber-brown ginger beer, a lime wedge"),("Bourbon Highball","highball glass with ice, pale amber, a lemon wedge")]])
+
+# Single-drink re-takes for tall sparkling drinks (three-panel images kept coating them in dots)
+SINGLE=[("Gin Rickey","highball glass with ice, crystal-clear, a lime wedge",SC2["Gin Rickey"]),
+ ("Kentucky Mule","highball glass with ice, golden-amber ginger beer, a lime wheel and a mint sprig",SC2["Kentucky Mule"]),
+ ("Jamaican Mule","highball glass with ice, deeper amber-brown ginger beer, a lime wedge",SC2["Jamaican Mule"]),
+ ("Bourbon Highball","highball glass with ice, pale amber, a lemon wedge",SC2["Bourbon Highball"]),
+ ("Chilcano de Pisco","tall Collins glass with ice, pale golden, a lime wedge",SC2["Chilcano de Pisco"]),
+ ("Ginger No-jito","tall Collins glass with ice, pale gold with mint leaves inside, mint sprigs",SC2["Ginger No-jito"]),
+ ("Kahlua Ginger Ale","highball glass with ice, light coffee-amber, a lime wedge","a sunny beach-shack bar"),
+ ("Johnnie & Ginger","highball glass with ice, pale amber, a slice of fresh ginger and a star anise","a modern Tokyo bar with soft paper-lantern light"),
+ ("Go Go Highball","highball glass with ice, deep cherry-amber, black cherries on a pick","a 1960s mod lounge in orange and white")]
+SINGLE_BASE=("Photorealistic editorial cocktail photograph, portrait 2:3. ONE cocktail standing centered, the entire glass "
+"visible from the top of the garnish down to the base, filling about 70% of the frame height, with clear backdrop above "
+"the garnish. The glass is perfectly smooth, dry and crystal-clear on the outside: absolutely no water droplets, beads, "
+"dots, frost or pebbled texture on the glass or on the ice. The ice is clear like polished glass. The drink is clear and "
+"glossy with only a few small, widely spaced bubbles rising inside. Rich, appetizing color, crisp focus on the glass, "
+"the setting softly blurred behind. No text, labels, logos, people or hands.")
