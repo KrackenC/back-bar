@@ -86,6 +86,7 @@ SCENE={'R1':[('Daiquiri','2,502,234,815,80,468'),('Tom Collins','512,1022,125,84
  '65':[('Rampede','2,504,176,836,104,384'),('Hennessy Berry','516,1022,412,830,604,946,140'),('Hennessy Sour Pineapple','1034,1534,438,812,1140,1494,140')],  # source user65b
  '66':[('Kahlua Sour (held: pebbled glass)','2,504,376,846,78,438,140'),('Kahlua Ginger Ale (held: pebbled glass)','516,1022,194,856,646,912'),('Tanqueray Tiny Ten','1034,1534,302,870,1092,1512,140')],  # source user66b
  '67':[('Johnnie & Ginger (held: pebbled glass)','2,504,190,858,120,386'),('Go Go Highball (held: pebbled glass)','516,1022,190,850,640,900'),('Black Cask Old Fashioned','1034,1534,390,804,1112,1504,140')],  # source user67b
+ '68':[('Emerald','2,504,262,850,76,490,140'),('Patrón Señor Sling','516,1022,154,866,642,940'),('Patrósa','1034,1534,144,904,1144,1448')],  # source user68b
  'F1':[('Tom Collins','2,504,120,860,150,427'),('Americano','516,1022,188,855,646,888'),('Shirley Temple','1034,1534,150,852,1166,1464')]}  # F1 supersedes R1/R3/R4 for these three
 import json; json.dump({k:[n for n,_ in v] for k,v in S.items()},open('recrop_map.json','w'),ensure_ascii=False)
 for k,v in S.items():
