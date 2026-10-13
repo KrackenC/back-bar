@@ -76,6 +76,7 @@ SCENE={'R1':[('Daiquiri','2,502,234,815,80,468'),('Tom Collins','512,1022,125,84
  '55':[('Bella Donna Daiquiri','2,504,300,866,64,490,140'),('Brooklyn Godfather (held: crackled ice)','516,1022,372,820,612,950,140'),("Explorer 'Martini'",'1034,1534,260,850,1122,1468,140')],  # source user55b
  '56':[('Homely Smoke','2,504,446,818,88,430,140'),('Killer Cocktail','516,1022,404,812,608,940,140'),('Madurised Old Fashioned Godfather','1034,1534,402,814,1124,1458,140')],  # source user56b
  '57':[('Orange Brûlée','2,504,336,892,64,452,140'),('Petanque','516,1022,252,888,584,950,140'),('Toasted Old Fashioned Godfather (held: crackled ice)','1034,1534,390,812,1116,1464,140')],  # source user57b
+ '58':[('Ancient Mariner','2,504,414,814,98,452,140'),('Chicago Fizz (held: dense speckle)','516,1022,228,824,664,862'),('Alexandra','1034,1534,370,890,1098,1478,140')],  # source user58b
  'F1':[('Tom Collins','2,504,120,860,150,427'),('Americano','516,1022,188,855,646,888'),('Shirley Temple','1034,1534,150,852,1166,1464')]}  # F1 supersedes R1/R3/R4 for these three
 import json; json.dump({k:[n for n,_ in v] for k,v in S.items()},open('recrop_map.json','w'),ensure_ascii=False)
 for k,v in S.items():
