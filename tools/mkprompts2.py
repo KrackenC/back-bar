@@ -13,7 +13,10 @@ NEW_BASE=("Photorealistic, editorial cocktail photograph, landscape 3:2 (1536×1
 FIZZ_NOTE=(" Make the carbonation look real: thin, smooth, crystal-clear glass walls; fine, separate streams of tiny "
 "bubbles rising through clear liquid, with clear liquid visible between them; a few small bubbles clinging to the ice and "
 "the inside of the glass; a delicate fizz at the surface; only a light, natural mist of condensation on the outside.")
+ICE_NOTE=(" The ice must look real: crystal-clear, smooth-faced ice with soft rounded edges, like polished glass, with no cracks, "
+"veins or crackle pattern inside it; the spirit around it is clear and glossy with no texture in the liquid.")
 import re as _re
+ICY=_re.compile(r"ice cube|with ice|over ice|crushed ice", _re.I)
 FIZZY=_re.compile(r"sparkling (?!sugar)|soda|fizz|bubbl|tonic|ginger beer|ginger ale|\bcola\b", _re.I)
 # (name, drink description, scene)
 REDO=[
@@ -118,7 +121,7 @@ assert len(REDO)==16 and sum(len(g) for g in REDO)==48
 assert len(B3)==15 and len({d[0] for g in B3 for d in g})==45
 POS=["LEFT","MIDDLE","RIGHT"]
 def new_prompt(g):
-    return "\n".join([NEW_BASE,""]+[f"{p} panel: {n}, a {d}. Scene: {sc}."+(FIZZ_NOTE if FIZZY.search(d) else "") for p,(n,d,sc) in zip(POS,g)])
+    return "\n".join([NEW_BASE,""]+[f"{p} panel: {n}, a {d}. Scene: {sc}."+(FIZZ_NOTE if FIZZY.search(d) else "")+(ICE_NOTE if ICY.search(d) and not FIZZY.search(d) else "") for p,(n,d,sc) in zip(POS,g)])
 def old_prompt(g):
     return "\n".join([OLD_BASE,""]+[f"{p} panel: {n}, a {d}; beside it, {pr}." for p,(n,d,pr) in zip(POS,g)])
 def card(pid,label,g,text,check=True):
