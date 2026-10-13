@@ -20,6 +20,7 @@ for spec in argv[3:6]:
     fill=FILL
     mw=v[6] if len(v)>6 else MAXW   # optional 7th value: max glass width (output px) for very wide glasses
     if len(v)>5: fill=min(FILL, mw*(b-t)/(300*(gx1-gx0)))
+    if len(v)>8: fill=v[8]/100   # optional 9th value: fill percent override (tall flutes in fit mode)
     pad=(b-t)*(1-fill)/2/fill
     y0,y1=round(t-pad),round(b+pad)
     if SCENE:
