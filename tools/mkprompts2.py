@@ -149,7 +149,7 @@ TRIO=[[SD["Chilcano de Pisco"],SD["Ginger No-jito"],SD["Cinderella"]],
 def RT2(g):
     t=RT(g)
     if len(g)==2:
-        t=t.replace('split into three equal vertical panels','split into two equal vertical panels').replace('The three panels must not look alike','The two panels must not look alike')
+        t=t.replace('MIDDLE panel:','RIGHT panel:').replace('split into three equal vertical panels','split into two equal vertical panels').replace('The three panels must not look alike','The two panels must not look alike')
     return t
 cards=H('Open · U1–U17 · the 50 classics still on stock photos, in their own scenes (U17 has two drinks)')
 for i,g in enumerate(U,1): cards+=card(f'U{i}',f'U{i}',g,RT2(g))
