@@ -130,6 +130,7 @@ SCENE={'R1':[('Daiquiri','2,502,234,815,80,468'),('Tom Collins','512,1022,125,84
  'U15':[('Spicy Margarita','2,504,412,852,78,452,140'),('Blue Lagoon','516,1022,146,876,642,886'),('Stout Espresso Martini','1034,1534,340,888,1100,1468,140')],  # source userU15
  'U16':[("Hendrick's Gin & Tonic (held: dot coat)",'2,504,250,900,146,386'),('Roy Rogers','516,1022,258,892,632,880'),('Virgin Mary','1034,1534,52,900,1150,1400')],  # source userU16
  'U17':[('Temperance Piña Colada','2,754,110,896,196,544'),('Bramble','782,1534,392,896,960,1346,140')],  # source userU17 (two wide panels)
+ 'HGT':[("Hendrick's Gin & Tonic",'420,1070,58,940,592,894')],  # single drink, landscape source
  'F1':[('Tom Collins','2,504,120,860,150,427'),('Americano','516,1022,188,855,646,888'),('Shirley Temple','1034,1534,150,852,1166,1464')]}  # F1 supersedes R1/R3/R4 for these three
 import json; json.dump({k:[n for n,_ in v] for k,v in S.items()},open('recrop_map.json','w'),ensure_ascii=False)
 for k,v in S.items():
