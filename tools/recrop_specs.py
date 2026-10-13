@@ -30,6 +30,8 @@ S={6:[('Daiquiri','8,498,140,872,35,500'),('Tom Collins','516,1024,70,872,625,91
 34:[('Gin Rickey','4,506,106,832,128,412'),('Gin Gin Mule','516,1020,60,830,630,995'),('Alabama Slammer','1032,1532,156,832,1138,1426')],
 35:[('Pisco Punch','4,506,138,834,132,402'),('Chilcano de Pisco','516,1020,100,834,630,910'),('Ginger No-jito','1032,1532,60,836,1148,1512')],
 36:[('Cinderella','4,506,91,850,138,436'),('Rosé Spritzer','516,1020,92,874,606,934'),('Bushwacker','1032,1532,71,906,1124,1418')]}
+# scene-style re-shoots (run panels.py with --scene)
+SCENE={'R1':[('Daiquiri','2,502,234,815,80,468'),('Tom Collins','512,1022,125,848,658,966'),('Aviation','1032,1534,298,855,1118,1470')]}
 import json; json.dump({k:[n for n,_ in v] for k,v in S.items()},open('recrop_map.json','w'),ensure_ascii=False)
 for k,v in S.items():
     subprocess.run(['python3','tools/panels.py',f'user{k}/src.png',f'fit{k}']+[x for _,x in v],check=True)
