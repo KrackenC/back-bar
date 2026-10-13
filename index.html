@@ -463,6 +463,42 @@
     header.masthead.condensed{ padding-top:.7rem; padding-bottom:.6rem; }
   }
 
+
+  /* ---------- Compact drink rows: tap a row to open its recipe ---------- */
+  .grid{ align-items:start; }
+  .card-head{ display:flex; align-items:flex-start; gap:.35rem; }
+  .card-title{ flex:1; min-width:0; display:flex; flex-direction:column; gap:.3rem; cursor:pointer; border-radius:4px; outline-offset:3px; }
+  .card-title:focus-visible{ outline:2px solid var(--accent); }
+  .card-title .pill{ align-self:flex-start; }
+  .card-quick{ display:flex; align-items:center; flex-shrink:0; margin-top:-.15rem; }
+  .card-detail{ display:flex; flex-direction:column; gap:.55rem; margin-top:.55rem; }
+  .card-detail .card-options{ margin-top:.15rem; }
+  .chev{ display:none; }
+  .row-card .chev{
+    display:inline-flex; align-items:center; justify-content:center; width:1.7rem; height:2.75rem;
+    color:var(--ink-soft); font-size:1.05rem; transition:transform .2s ease; pointer-events:none;
+  }
+  .row-card.open .chev{ transform:rotate(180deg); color:var(--accent-hover); }
+  .row-card{ cursor:default; }
+  .row-card, .row-card:hover, .row-card:focus-within{ transform:none !important; }
+  .row-card .drink-photo{ cursor:pointer; }
+  .row-card:not(.open) .card-detail{ display:none; }
+  .row-card:not(.open) .drink-photo{ flex:0 0 5.9rem; max-width:5.9rem; position:relative; }
+  .row-card:not(.open) .drink-photo img{ position:absolute; inset:0; width:100%; height:100%; aspect-ratio:auto; object-fit:cover; }
+  .row-card:not(.open) .card-body{ padding:.7rem .45rem .7rem .9rem; justify-content:center; }
+  .row-card:not(.open) .card-body h3{ font-size:1.12rem; }
+  .row-card:not(.open) .card-meta{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  @media (max-width:640px){
+    .row-card:not(.open) .drink-photo{ flex-basis:5.2rem; max-width:5.2rem; }
+    .row-card:not(.open) .card-body{ padding:.6rem .2rem .6rem .75rem; }
+    .row-card .chev{ width:1.15rem; }
+    .row-card .fav-btn{ min-width:2.5rem; margin:-.5rem -.2rem; }
+    /* opened on a phone: photo across the top, recipe full width below */
+    .row-card.open{ flex-direction:column; }
+    .row-card.open .drink-photo{ flex:none; max-width:100%; border-radius:7px 7px 0 0; border-right:none; border-bottom:1px solid #2E3B55; }
+    .row-card.open .drink-photo img{ aspect-ratio:16/10; }
+  }
+
   /* ---------- Recipes panel ---------- */
   .recipes-head{ display:flex; flex-wrap:wrap; gap:.9rem; align-items:center; justify-content:space-between; }
   /* Search and the filter buttons each take the full column width, so the
@@ -910,7 +946,7 @@
         <li><div><h4>Plan your next round</h4>
           <p>Tap the <b>☆</b> on a card to save a favorite. Tap <b>+</b>, or drag a card onto <b>Up Next</b>, to line up as many as three drinks to make next. <b>New This Week</b> highlights recently added recipes.</p></div></li>
         <li><div><h4>Mix, then mark it made</h4>
-          <p>Each card shows the glass, the method, exact measures, the garnish and a note on technique. After you pour, tap <b>Made it?</b>. Back Bar remembers when you last made each drink, and the <b>Made before</b> filter shows your history.</p></div></li>
+          <p>Tap any drink to open its full recipe: exact measures, the garnish, a note on technique and the bar tools you'll need. Tap it again to fold it away. After you pour, tap <b>Made it?</b>. Back Bar remembers when you last made each drink, and the <b>Made before</b> filter shows your history.</p></div></li>
       </ol>
       <h3><span class="kicker">Behind the bar</span>Tips for better drinks</h3>
       <ul class="tip-list">
@@ -3263,6 +3299,15 @@ var DRINK_PHOTOS = [
     return t.filter(function(x, i){ return t.indexOf(x) === i; });
   }
 
+  var openCards = new Set();
+  function toggleRowCard(card){
+    var name = card.getAttribute('data-name');
+    var open = !card.classList.contains('open');
+    card.classList.toggle('open', open);
+    if(open) openCards.add(name); else openCards.delete(name);
+    var t = card.querySelector('.card-title');
+    if(t) t.setAttribute('aria-expanded', String(open));
+  }
   function recipeCardHtml(r, st){
     var pillClass = st.key === 'ready' ? 'pill-ready' : (st.key === 'almost' ? 'pill-almost' : 'pill-more');
     var pillText;
@@ -3290,15 +3335,27 @@ var DRINK_PHOTOS = [
 
     // photo in a dark column on the left; recipe on the right with the
     // card's options (star, Up Next, status, Made it?) in a row underneath
+    // A head row (name, spirit/glass/method, status, star and +) and a detail
+    // block (recipe, method, tools, Made it). In the main list the detail is
+    // folded until the drink is tapped; Up Next and New This Week show it open.
+    var isOpen = openCards.has(r.name);
     return drinkPhotoHtml(r) +
       '<div class="card-body">' +
-        '<h3>' + r.name + '</h3>' +
-        '<p class="card-meta">' + glassIconSvg(r.glass) + r.base + ' · ' + r.glass + ' · ' + r.method + '</p>' +
-        '<ul class="items">' + itemsHtml + '</ul>' +
-        (r.garnish && r.garnish !== '—' ? '<p class="garnish">Garnish: ' + r.garnish + '</p>' : '') +
-        '<p class="note">' + r.note + '</p>' +
-        '<p class="tools"><span class="tools-label">Bar tools</span>' + barToolsFor(r).join(' · ') + '</p>' +
-        '<div class="card-options">' + favBtn + queueBtn + '<span class="pill ' + pillClass + '">' + pillText + '</span>' + madeBtn + madeMeta + '</div>' +
+        '<div class="card-head">' +
+          '<div class="card-title" role="button" tabindex="0" aria-expanded="' + isOpen + '" aria-label="' + r.name + ', ' + pillText + '. Show recipe">' +
+            '<h3>' + r.name + '</h3>' +
+            '<p class="card-meta">' + glassIconSvg(r.glass) + r.base + ' · ' + r.glass + ' · ' + r.method + '</p>' +
+            '<span class="pill ' + pillClass + '">' + pillText + '</span>' +
+          '</div>' +
+          '<div class="card-quick">' + favBtn + queueBtn + '<span class="chev" aria-hidden="true">⌄</span></div>' +
+        '</div>' +
+        '<div class="card-detail">' +
+          '<ul class="items">' + itemsHtml + '</ul>' +
+          (r.garnish && r.garnish !== '—' ? '<p class="garnish">Garnish: ' + r.garnish + '</p>' : '') +
+          '<p class="note">' + r.note + '</p>' +
+          '<p class="tools"><span class="tools-label">Bar tools</span>' + barToolsFor(r).join(' · ') + '</p>' +
+          '<div class="card-options">' + madeBtn + madeMeta + '</div>' +
+        '</div>' +
       '</div>';
   }
 
@@ -3365,7 +3422,8 @@ var DRINK_PHOTOS = [
     visible.forEach(function(s, idx){
       var r = s.recipe, st = s.status;
       var card = document.createElement('article');
-      card.className = 'card pending-reveal';
+      card.className = 'card row-card pending-reveal' + (openCards.has(r.name) ? ' open' : '');
+      card.setAttribute('data-name', r.name);
       card.style.transitionDelay = ((idx % 8) * 45) + 'ms';
       if(canTilt) attachTilt(card);
 
@@ -3586,6 +3644,11 @@ var DRINK_PHOTOS = [
       renderAll();
       return;
     }
+    var title = e.target.closest('.card-title, .drink-photo');
+    if(title && !e.target.closest('button')){
+      var rc = title.closest('.row-card');
+      if(rc){ toggleRowCard(rc); return; }
+    }
     var btn = e.target.closest('button.fav-btn');
     if(!btn) return;
     var name = btn.getAttribute('data-name');
@@ -3594,6 +3657,14 @@ var DRINK_PHOTOS = [
     renderCardLists();
   }
   document.getElementById('grid').addEventListener('click', onRecipeCardClick);
+  document.getElementById('grid').addEventListener('keydown', function(e){
+    if(e.key !== 'Enter' && e.key !== ' ') return;
+    var t = e.target.closest && e.target.closest('.card-title');
+    var rc = t && t.closest('.row-card');
+    if(!rc) return;
+    e.preventDefault();
+    toggleRowCard(rc);
+  });
   document.getElementById('newWeekGrid').addEventListener('click', onRecipeCardClick);
 
   document.getElementById('favClearBtn').addEventListener('click', function(){
@@ -3727,7 +3798,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-13T05:33:43Z";
+  var CURRENT_VERSION = "2026-10-13T16:31:51Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
