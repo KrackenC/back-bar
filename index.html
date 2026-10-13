@@ -634,6 +634,8 @@
   .items .opt{ font-size:.72rem; font-style:italic; color:var(--ink-soft); }
 
   .garnish{ font-size:.78rem; color:var(--ink-soft); font-style:italic; margin:0; }
+  .tools{ font-size:.74rem; line-height:1.5; color:var(--ink-soft); margin:.45rem 0 0; }
+  .tools-label{ display:block; font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; font-weight:700; color:var(--accent-hover); margin-bottom:.1rem; }
   .note{ font-size:.82rem; color:var(--ink-soft); margin:0; border-top:1px solid var(--line); padding-top:.6rem; line-height:1.5; }
 
   .empty-state{ padding:3rem 1rem; text-align:center; color:var(--ink-soft); font-size:.92rem; }
@@ -3157,6 +3159,31 @@ var DRINK_PHOTOS = [
 
 
   // Full recipe card contents, shared by the main recipe grid and New This Week.
+  // Bar tools for a recipe, worked out from its method, glass, ingredients and
+  // garnish so every card lists what you need on the counter before you start.
+  function barToolsFor(r){
+    var m = ((r.method || '') + ' ' + (r.note || '').replace(/\broll(s|ed)?\b/gi, 'rolled').replace(/\bmuddle(s|d)?\b/gi, 'muddled').replace(/\bblend(s|ed)?\b/gi, 'blended')).toLowerCase(), g = (r.garnish || '').toLowerCase();
+    var ids = r.items.map(function(it){ return it.id; });
+    function has(){ for(var i = 0; i < arguments.length; i++) if(ids.indexOf(arguments[i]) !== -1) return true; return false; }
+    var t = ['Jigger'];
+    var shaken = m.indexOf('shaken') !== -1, stirred = m.indexOf('stirred') !== -1;
+    var servedUp = r.glass === 'Coupe' || r.glass === 'Flute';
+    if(shaken){ t.push('Shaker', 'Hawthorne strainer'); if(servedUp) t.push('Fine strainer'); }
+    if(stirred){ t.push('Mixing glass', 'Julep strainer'); }
+    if(m.indexOf('blended') !== -1) t.push('Blender');
+    if(m.indexOf('rolled') !== -1) t.push('Two shaker tins');
+    if(stirred || m.indexOf('built') !== -1 || m.indexOf('topped') !== -1 || m.indexOf('layered') !== -1 || m.indexOf('floated') !== -1) t.push('Bar spoon');
+    if(m.indexOf('muddled') !== -1 || has('lime_wedges', 'jalapeno', 'fresh_raspberries', 'basil', 'fresh_ginger') ||
+       (has('mint_leaves') && !shaken)) t.push('Muddler');
+    if(has('lime_juice', 'lemon_juice')) t.push('Citrus press');
+    if(has('espresso')) t.push('Espresso maker');
+    if(r.glass === 'Mug') t.push('Kettle');
+    if(/twist|peel|zest/.test(g)) t.push('Peeler');
+    if(/wheel|wedge|slice|round|cucumber|celery|pineapple|\blime\b|\blemon\b/.test(g.replace(/(lemon|lime|orange|grapefruit) (twist|peel|zest)/g, '')) || has('lime_wedges', 'jalapeno')) t.push('Paring knife');
+    if(g.indexOf('nutmeg') !== -1) t.push('Nutmeg grater');
+    return t.filter(function(x, i){ return t.indexOf(x) === i; });
+  }
+
   function recipeCardHtml(r, st){
     var pillClass = st.key === 'ready' ? 'pill-ready' : (st.key === 'almost' ? 'pill-almost' : 'pill-more');
     var pillText;
@@ -3191,6 +3218,7 @@ var DRINK_PHOTOS = [
         '<ul class="items">' + itemsHtml + '</ul>' +
         (r.garnish && r.garnish !== '—' ? '<p class="garnish">Garnish: ' + r.garnish + '</p>' : '') +
         '<p class="note">' + r.note + '</p>' +
+        '<p class="tools"><span class="tools-label">Bar tools</span>' + barToolsFor(r).join(' · ') + '</p>' +
         '<div class="card-options">' + favBtn + queueBtn + '<span class="pill ' + pillClass + '">' + pillText + '</span>' + madeBtn + madeMeta + '</div>' +
       '</div>';
   }
@@ -3561,7 +3589,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-13T04:48:54Z";
+  var CURRENT_VERSION = "2026-10-13T04:57:01Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');

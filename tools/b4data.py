@@ -219,3 +219,25 @@ U=[
 assert sum(len(g) for g in U)==50 and len({d[0] for g in U for d in g})==50
 # QC fix (2026-10-12): Italian Sun's Batch 4 prompt used Italian Sunset's recipe by mistake
 QC1=("Italian Sun","rocks glass with ice, pale straw-gold white wine and limoncello, a lemon wheel","a sunny Amalfi lemon-grove terrace with a whitewashed wall and terracotta pots, bright midday light, lemons and hazelnuts")
+# No-garnish re-takes (2026-10-12): recipes list no garnish, but photos showed one
+NOGAR_NOTE=(" NO GARNISH on this drink: nothing on the rim or in the glass, no citrus twist, peel, wheel, wedge, cherry, berries, "
+"fruit or pick; the glass and drink alone. Keep any fruit out of the scene too.")
+NG=[
+ [("Corpse Reviver No. 2","chilled coupe of pale cloudy lemon-yellow","a gothic setting of deep plum velvet and candlelight, an antique unlabeled absinthe bottle"),
+  ("White Lady","chilled coupe of pale cloudy white with a thin silky foam layer","an elegant ivory satin setting with a string of pearls, soft diffused glowing light"),
+  ("Salvatore Meets","chilled coupe of pale cloudy lemon-white with a light sparkle","a Capri boat dock above bright blue water, a coil of rope")],
+ [("Paper Plane","chilled coupe of bright orange-amber, clear and glowing","a vintage map and kraft paper surface in warm afternoon light, a folded paper airplane"),
+  ("Tipperary","chilled coupe of deep amber-red with a faint green glint","an Irish manor library of green leather and old books in lamplight"),
+  ("Grand Sidecar","chilled coupe of glowing orange-amber","a vintage luxury train dining car with wood paneling and a table lamp")],
+ [("French Martini","chilled coupe of soft raspberry-pink with a fine velvety foam top","a chic Parisian boudoir with blush-pink velvet and soft glamorous light"),
+  ("Havana Special","chilled coupe of pale cloudy pineapple-yellow","a 1950s Havana nightclub of red velvet and warm brass"),
+  ("Grand Frozen Margarita","chilled coupe of frosty, slushy pale orange-yellow","a sunny poolside with bright blue water behind")],
+ [("Gin Fizz","highball glass without ice, pale cloudy white with a tall fluffy white foam head","a vintage soda-fountain counter of white tile and chrome, bright airy daylight, a silver shaker"),
+  ("Greyhound","highball glass with ice, pale pink-yellow grapefruit juice","a bright sunlit kitchen with a soft pastel-peach backdrop, fresh morning light"),
+  ("Brass Monkey","highball glass with ice, opaque bright orange","a stage with a gleaming brass trumpet and warm spotlights")],
+ [("New York Sour","rocks glass over ice, golden whiskey sour with a distinct layer of red wine floating on top","a Manhattan rooftop ledge at night, blurred city lights behind, cool blue and warm gold tones"),
+  ("Disaronno Sour","rocks glass over ice, golden amber with a thick white foam top","an Italian lakeside terrace in warm sunset light, a small dish of almonds"),
+  ("Hennessy Berry","rocks glass with ice, deep berry red","a city rooftop at night with a purple skyline")],
+ [("Amaretto Fizz","champagne flute of sparkling golden orange","an Italian brunch table with pastel linens in morning sun, a small dish of almonds"),
+  ("Rampede","highball glass with ice, bright aqua-green tropical","a beach party at night with glowing neon lights")]]
+assert sum(len(g) for g in NG)==17
