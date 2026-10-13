@@ -1,8 +1,12 @@
 <html><body><img id=s src="src.png"><script>
-s.onload=function(){var out={};[200,180,64].forEach(function(n){var c=document.createElement('canvas');c.width=c.height=n;var g=c.getContext('2d');
-g.imageSmoothingQuality='high';var X=40,Y=25,S=1164;g.drawImage(s,X,Y,S,S,0,0,n,n);
-// gentle vignette to calm the bokeh behind the glass
-var r=g.createRadialGradient(n*.5,n*.42,n*.12,n*.5,n*.5,n*.48);r.addColorStop(0,'rgba(0,0,0,0)');r.addColorStop(.55,'rgba(0,0,0,.35)');r.addColorStop(1,'rgba(0,0,0,.6)');g.save();g.beginPath();g.arc(n/2,n*0.497,n*0.438,0,Math.PI*2);g.clip();g.fillStyle=r;g.fillRect(0,0,n,n);g.restore();
-// black outside the circle (corners) for the square icons
-g.globalCompositeOperation='destination-over';g.fillStyle='#000';g.fillRect(0,0,n,n);
+s.onload=function(){var out={};[400,180,64].forEach(function(n){var c=document.createElement('canvas');c.width=c.height=n;var g=c.getContext('2d');
+g.imageSmoothingQuality='high';g.filter='contrast(1.15) saturate(1.12)';g.drawImage(s,40,25,1164,1164,0,0,n,n);g.filter='none';
+// darken the bar background inside the ring; keep the glass (bowl centre ~0.5,0.40) bright
+g.save();g.beginPath();g.arc(n/2,n*0.497,n*0.438,0,Math.PI*2);g.clip();
+var r=g.createRadialGradient(n*.5,n*.40,n*.10,n*.5,n*.5,n*.46);
+r.addColorStop(0,'rgba(0,0,0,0)');r.addColorStop(.35,'rgba(0,0,0,.35)');r.addColorStop(.7,'rgba(0,0,0,.62)');r.addColorStop(1,'rgba(0,0,0,.78)');
+g.fillStyle=r;g.fillRect(0,0,n,n);
+// keep the stem and foot readable: a soft light column down the centre
+var st=g.createLinearGradient(n*.42,0,n*.58,0);st.addColorStop(0,'rgba(0,0,0,0)');st.addColorStop(.5,'rgba(0,0,0,0)');st.addColorStop(1,'rgba(0,0,0,0)');
+g.restore();
 out[n]=c.toDataURL('image/jpeg',0.9)});document.body.setAttribute('data-out',JSON.stringify(out))}</script></body></html>
