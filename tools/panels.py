@@ -46,7 +46,7 @@ document.getElementById('s').onload=function(){
     g.drawImage(img,p[0],0,sw,img.naturalHeight,(W-sw*bs)/2,(H-img.naturalHeight*bs)/2,sw*bs,img.naturalHeight*bs); g.filter='none';
     var tc=document.createElement('canvas');tc.width=W;tc.height=H;var tg2=tc.getContext('2d');
     tg2.drawImage(img,p[0],y0,sw,sh,dx,0,dw,H);
-    var M=tg2.createLinearGradient(dx,0,dx+dw,0),e=Math.min(.12,22/dw);
+    var M=tg2.createLinearGradient(dx,0,dx+dw,0),e=Math.min(.05,6/dw);
     M.addColorStop(0,'rgba(0,0,0,0)');M.addColorStop(e,'rgba(0,0,0,1)');M.addColorStop(1-e,'rgba(0,0,0,1)');M.addColorStop(1,'rgba(0,0,0,0)');
     tg2.globalCompositeOperation='destination-in';tg2.fillStyle=M;tg2.fillRect(0,0,W,H);
     g.drawImage(tc,0,0); out.push(c.toDataURL('image/jpeg',0.72)); return;

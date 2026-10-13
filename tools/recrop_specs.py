@@ -32,7 +32,8 @@ S={6:[('Daiquiri','8,498,140,872,35,500'),('Tom Collins','516,1024,70,872,625,91
 36:[('Cinderella','4,506,91,850,138,436'),('Rosé Spritzer','516,1020,92,874,606,934'),('Bushwacker','1032,1532,71,906,1124,1418')]}
 # scene-style re-shoots (run panels.py with --scene)
 SCENE={'R1':[('Daiquiri','2,502,234,815,80,468'),('Tom Collins','512,1022,125,848,658,966'),('Aviation','1032,1534,298,855,1118,1470')],
- 'R2':[('Sidecar','2,504,296,838,78,488'),('Kir Royale','516,1020,90,906,650,892'),('Penicillin','1032,1534,366,792,1136,1458')]}
+ 'R2':[('Sidecar','2,504,296,838,78,488'),('Kir Royale','516,1020,90,906,650,892'),('Penicillin','1032,1534,366,792,1136,1458')],
+ 'R3':[('Last Word','2,506,296,825,86,436'),('Americano','518,1020,204,848,640,897'),('Black Russian','1034,1534,416,803,1148,1476')]}
 import json; json.dump({k:[n for n,_ in v] for k,v in S.items()},open('recrop_map.json','w'),ensure_ascii=False)
 for k,v in S.items():
     subprocess.run(['python3','tools/panels.py',f'user{k}/src.png',f'fit{k}']+[x for _,x in v],check=True)
