@@ -14,7 +14,7 @@ for f in files:
     for sp in specs:
         key='"n": [%s]'%json.dumps(sp.split('|')[0],ensure_ascii=False)
         if rep:
-            pat=r',\n    \{"g": "[^"]*", "c": "[^"]*", '+re.escape(key)+r'[^\n]*?b64:"[^"]*"\}'
+            pat=r',\n    \{"g": "[^"]*", "c": "[^"]*", '+re.escape(key)+r'[^\n]*?(?:b64|src):"[^"]*"\}'
             s,k=re.subn(pat,'',s); assert k==1,(sp,k)
         elif tko:
             nm=sp.split('|')[0]; q=json.dumps(nm,ensure_ascii=False)

@@ -14,6 +14,7 @@ p='''<script>setTimeout(function(){var c=document.querySelectorAll('#grid .card'
 open(f'p{n}.html','w').write(s.replace('</body>',p,1))
 P
 perl -e 'alarm 60; exec @ARGV' "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --disable-gpu --virtual-time-budget=4000 --dump-dom file://$PWD/p$N.html 2>/dev/null | grep -o 'data-probe="[^"]*' | sed 's/&quot;/"/g'
+python3 tools/split_images.py back-bar-site
 cd back-bar-site && git fetch -q && git log HEAD..origin/main --oneline
 V=$(date -u +%Y-%m-%dT%H:%M:%SZ); sed -i '' "s/var CURRENT_VERSION = \"[^\"]*\"/var CURRENT_VERSION = \"$V\"/" index.html; printf '{"v": "%s"}\n' "$V" > version.json
 cp ../tools/finish.sh tools/ 2>/dev/null || true
