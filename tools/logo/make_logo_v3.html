@@ -1,0 +1,10 @@
+<html><body><img id=s src="src.png"><script>
+s.onload=function(){var W=s.naturalWidth,c=document.createElement('canvas');c.width=c.height=W;var g=c.getContext('2d');g.drawImage(s,0,0);
+var im=g.getImageData(0,0,W,W),d=im.data,CX=617,CY=602,R=562;
+for(var y=0;y<W;y++)for(var x=0;x<W;x++){var dx=x-CX,dy=y-CY,r=Math.sqrt(dx*dx+dy*dy);if(r<R-2)continue;
+ var i=(y*W+x)*4,l=(d[i]*.3+d[i+1]*.59+d[i+2]*.11)/255;var a=Math.max(0,Math.min(1,(l-.06)/.22));
+ var edge=Math.max(0,Math.min(1,(r-(R-2))/6));d[i+3]=Math.round(255*(1-edge+edge*a));}
+g.putImageData(im,0,0);var out={};
+function scaled(n,type,q,opaque){var k=document.createElement('canvas');k.width=k.height=n;var h=k.getContext('2d');h.imageSmoothingQuality='high';if(opaque){h.fillStyle='#000';h.fillRect(0,0,n,n);h.drawImage(s,0,0,n,n)}else h.drawImage(c,0,0,n,n);return k.toDataURL(type,q)}
+out.h=scaled(400,'image/webp',.86);out.f=scaled(64,'image/png');out.t=scaled(180,'image/jpeg',.9,true);
+document.body.setAttribute('data-out',JSON.stringify(out))}</script></body></html>
