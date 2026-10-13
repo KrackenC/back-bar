@@ -112,6 +112,7 @@ SCENE={'R1':[('Daiquiri','2,502,234,815,80,468'),('Tom Collins','512,1022,125,84
  'S1':[('Gin Rickey','0,1024,318,1278,355,730')],  # single-drink 1024x1536; pass the spec 3x, use p0
  'S2':[('Kentucky Mule','0,1024,262,1310,345,768')],  # single-drink; supersedes F6 panel
  'T1':[('Chilcano de Pisco','2,504,222,862,176,402'),('Ginger No-jito','516,1022,152,862,662,944'),('Cinderella','1034,1534,214,862,1150,1410')],  # source userT1
+ 'T2':[('Jamaican Mule','2,504,226,860,146,398'),('Bushwacker','516,1022,88,888,650,952'),('Bourbon Highball','1034,1534,236,862,1170,1408')],  # source userT2
  'F1':[('Tom Collins','2,504,120,860,150,427'),('Americano','516,1022,188,855,646,888'),('Shirley Temple','1034,1534,150,852,1166,1464')]}  # F1 supersedes R1/R3/R4 for these three
 import json; json.dump({k:[n for n,_ in v] for k,v in S.items()},open('recrop_map.json','w'),ensure_ascii=False)
 for k,v in S.items():
