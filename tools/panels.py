@@ -38,6 +38,8 @@ document.getElementById('s').onload=function(){
     var q=tg.getImageData(0,0,1,1).data; if(!d||q[0]+q[1]+q[2]<d[0]+d[1]+d[2]) d=[q[0],q[1],q[2]];});
   var rgba=function(a){return 'rgba('+d[0]+','+d[1]+','+d[2]+','+a+')';};
   if(SCENE){
+    // zoom in just enough that the real photo always covers the card's 9:16 window
+    var need=(H*9/16+4)/sw; if(fs<need){var mid=(y0+y1)/2; fs=need; sh=H/fs; y0=mid-sh/2; y1=y0+sh; if(y0<0){y1-=y0;y0=0;} dw=sw*fs;}
     if(y1>img.naturalHeight){var sh0=y1-img.naturalHeight; y0=Math.max(0,y0-sh0); y1=img.naturalHeight; sh=y1-y0; fs=H/sh; dw=sw*fs;}
     var hw=(H*9/16)/2/fs, cx=Math.min(Math.max(p[4],p[0]+hw),p[1]-hw); if(p[1]-p[0]<2*hw) cx=(p[0]+p[1])/2;
     dx=W/2-(cx-p[0])*fs;
