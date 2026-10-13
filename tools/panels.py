@@ -18,7 +18,8 @@ for spec in argv[3:6]:
     v=[int(x) for x in spec.split(',')]
     x0,x1,t,b=v[:4]; gx0,gx1=(v[4],v[5]) if len(v)>5 else (x0,x1)
     fill=FILL
-    if len(v)>5: fill=min(FILL, MAXW*(b-t)/(300*(gx1-gx0)))
+    mw=v[6] if len(v)>6 else MAXW   # optional 7th value: max glass width (output px) for very wide glasses
+    if len(v)>5: fill=min(FILL, mw*(b-t)/(300*(gx1-gx0)))
     pad=(b-t)*(1-fill)/2/fill
     y0,y1=round(t-pad),round(b+pad)
     if SCENE:
