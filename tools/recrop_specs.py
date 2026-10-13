@@ -91,6 +91,7 @@ SCENE={'R1':[('Daiquiri','2,502,234,815,80,468'),('Tom Collins','512,1022,125,84
  '70':[('Pisco Naranja','2,504,164,856,134,408'),("Hendrick's Martini",'516,1022,292,876,570,966,140'),("Hendrick's Cranberry Fizz",'1034,1534,164,858,1158,1470')],  # source user70b
  '71':[('French Blonde','2,504,320,864,78,462,140'),('Call Mexico','516,1022,252,868,594,910,140'),('Closing Argument','1034,1534,306,868,1106,1514,140')],  # source user71b
  '72':[('Mezcal Stone Sour','2,504,422,846,80,416,140'),('Dragon Punch','516,1022,288,880,570,976,140'),('50/50 Margarita','1034,1534,462,880,1118,1474,140')],  # source user72b
+ 'R17':[('Southside','2,504,316,866,84,436,140'),('Alexander','516,1022,336,866,586,946,140'),('Between the Sheets','1034,1534,334,872,1100,1532,140')],  # source userR17
  'F1':[('Tom Collins','2,504,120,860,150,427'),('Americano','516,1022,188,855,646,888'),('Shirley Temple','1034,1534,150,852,1166,1464')]}  # F1 supersedes R1/R3/R4 for these three
 import json; json.dump({k:[n for n,_ in v] for k,v in S.items()},open('recrop_map.json','w'),ensure_ascii=False)
 for k,v in S.items():
