@@ -162,3 +162,5 @@ SINGLE_BASE=("Photorealistic editorial cocktail photograph, portrait 2:3. ONE co
 "dots, frost or pebbled texture on the glass or on the ice. The ice is clear like polished glass. The drink is clear and "
 "glossy with only a few small, widely spaced bubbles rising inside. Rich, appetizing color, crisp focus on the glass, "
 "the setting softly blurred behind. No text, labels, logos, people or hands.")
+SINGLE+=[("Cinderella","tall Collins glass with ice, sunset orange, a lemon wheel",SC2["Cinderella"]),
+ ("Bushwacker","hurricane glass of thick, smooth, creamy mocha-brown frozen drink with a dusting of grated nutmeg; the glass itself is smooth and clear, not frosted",SC2["Bushwacker"])]
