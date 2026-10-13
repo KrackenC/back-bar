@@ -25,7 +25,8 @@ S={6:[('Daiquiri','8,498,140,872,35,500'),('Tom Collins','516,1024,70,872,625,91
 29:[('Garibaldi','4,506,228,772,76,486'),('Godmother','516,1020,294,764,576,964'),('French Connection','1032,1532,302,772,1094,1486')],
 30:[('Oaxaca Old Fashioned','4,506,255,738,74,474'),('Ti Punch','516,1020,370,725,618,920'),('Gold Rush','1032,1532,255,724,1074,1454')],
 31:[('Kingston Negroni','4,506,248,748,74,476'),('White Negroni','516,1020,278,748,578,993'),('Blood Orange Margarita','1032,1532,240,745,1064,1470')],
-32:[('Milk Punch','4,506,283,745,76,468'),('Mock Margarita','516,1020,226,745,576,1011'),('Irish Mule','1032,1532,190,745,1068,1478')]}
+32:[('Milk Punch','4,506,283,745,76,468'),('Mock Margarita','516,1020,226,745,576,1011'),('Irish Mule','1032,1532,190,745,1068,1478')],
+33:[('Kentucky Mule','4,506,50,832,66,442'),('Jamaican Mule','516,1020,120,834,630,916'),('Bourbon Highball','1032,1532,106,834,1142,1428')]}
 import json; json.dump({k:[n for n,_ in v] for k,v in S.items()},open('recrop_map.json','w'),ensure_ascii=False)
 for k,v in S.items():
     subprocess.run(['python3','tools/panels.py',f'user{k}/src.png',f'fit{k}']+[x for _,x in v],check=True)
