@@ -19,7 +19,8 @@ S={6:[('Daiquiri','8,498,140,872,35,500'),('Tom Collins','516,1024,70,872,625,91
 23:[('Brandy Crusta','4,506,148,820,38,466'),('Casino','516,1020,185,818,553,982'),('Hanky Panky','1032,1532,160,815,1076,1506')],
 24:[('Mary Pickford','4,506,112,820,46,462'),('Monkey Gland','516,1020,188,818,552,975'),('Remember the Maine','1032,1532,128,815,1074,1486')],
 25:[('Tuxedo','4,506,135,820,46,470'),('El Presidente','516,1020,158,818,553,993'),('Naked and Famous','1032,1532,182,815,1076,1490')],
-26:[('Brown Derby','4,506,150,820,46,494'),('Pineapple Martini','516,1020,120,818,552,1004'),('Cable Car','1032,1532,158,815,1074,1513')]}
+26:[('Brown Derby','4,506,150,820,46,494'),('Pineapple Martini','516,1020,120,818,552,1004'),('Cable Car','1032,1532,158,815,1074,1513')],
+27:[('Old Cuban','4,506,136,820,44,462'),('Ward Eight','516,1020,128,818,552,986'),('Death in the Afternoon','1032,1532,44,846,1146,1410')]}
 import json; json.dump({k:[n for n,_ in v] for k,v in S.items()},open('recrop_map.json','w'),ensure_ascii=False)
 for k,v in S.items():
     subprocess.run(['python3','tools/panels.py',f'user{k}/src.png',f'fit{k}']+[x for _,x in v],check=True)
