@@ -139,17 +139,26 @@ def card(pid,label,g,text,check=True):
     </header>
     <pre id="t{pid}">{html.escape(text)}</pre>
   </article>'''
-cards='\n  <h2 class="batch">Fix · prompt F1 · re-take the three sparkling drinks (realistic bubbles)</h2>'+card('F1','F1',FIX[0],new_prompt(FIX[0]))
-cards+='\n  <h2 class="batch">Redo · prompts R1–R16 · the 48 classics, each in its own scene</h2>'
+exec(open('b4data.py').read())
+REDO2=[[(n,d,SC2[n]) for (n,d,_p) in OLD[i]] for i in range(15,30)]
+H=lambda t: f'\n  <h2 class="batch">{t}</h2>'
+cards=H('Fix · prompt F2 · re-take El Diablo, St-Germain Cocktail and Bermuda Rum Swizzle')+card('F2','F2',RETAKE,new_prompt(RETAKE))
+cards+=H('Batch 4 · prompts 46–72 · the last 81 drinks')
+for i,g in enumerate(B4G,46): cards+=card(str(i),str(i),g,new_prompt(g))
+cards+=H('Redo · prompts R17–R31 · Batch 2 drinks in their own scenes')
+for i,g in enumerate(REDO2,17): cards+=card(f'R{i}',f'R{i}',g,new_prompt(g))
+cards+=H('Done · F1 · re-take of the three sparkling drinks')+card('F1','F1',FIX[0],new_prompt(FIX[0]))
+cards+=H('Done · R1–R16 · the 48 classics in their own scenes')
 for i,g in enumerate(REDO,1): cards+=card(f'R{i}',f'R{i}',g,new_prompt(g))
-cards+='\n  <h2 class="batch">Batch 3 · prompts 31–45 · new drinks</h2>'
+cards+=H('Done · Batch 3 · prompts 31–45')
 for i,g in enumerate(B3,31): cards+=card(str(i),str(i),g,new_prompt(g))
+TOTAL=cards.count('type="checkbox"')
 old=''
 for i,g in enumerate(OLD,1): old+=card(f'old{i}',str(i),g,old_prompt(g),check=False)
 t=open('prompts_tpl.html').read()
 t=t.replace('<p class="lede">Thirty ChatGPT image prompts covering 90 drinks, in two batches of 45. Each one makes a three-panel image in the same dark-slate style as your Daiquiri, Tom Collins and Aviation set.</p>',
- '<p class="lede">32 ChatGPT image prompts, one image each with three drinks. Every drink now gets its own scene: its own backdrop, lighting, setting and props. The R prompts redo the 48 most popular classics in the new style, and Batch 3 adds 45 new drinks. Sparkling drinks now get extra direction so the bubbles look real.</p>')
-t=t.replace("0 of 30 done","0 of 32 done").replace("n+' of 30 done'","n+' of 32 done'").replace("(n/30*100)","(n/32*100)")
+ f'<p class="lede">{TOTAL} ChatGPT image prompts, one image each with three drinks, every drink in its own scene. New at the top: F2 re-takes three drinks, Batch 4 covers the last 81 drinks, and R17–R31 redo Batch 2 in the new style. Finished prompts are further down.</p>')
+t=t.replace("0 of 30 done",f"0 of {TOTAL} done").replace("n+' of 30 done'",f"n+' of {TOTAL} done'").replace("(n/30*100)",f"(n/{TOTAL}*100)")
 t=t.replace("document.querySelectorAll('.prompt').forEach","document.querySelectorAll('.wrap > .list > .prompt').forEach")
 t=t.replace("el.querySelector('input').checked=on;","var inp=el.querySelector('input'); if(inp) inp.checked=on;")
 t=t.replace('{{CARDS}}\n  </div>','{{CARDS}}\n  </div>\n  <details class="earlier"><summary>Earlier prompts 1–30 (old dark-slate style, already done)</summary><div class="list old">{{OLD}}\n  </div></details>')
