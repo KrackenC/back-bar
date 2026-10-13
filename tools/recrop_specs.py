@@ -97,6 +97,7 @@ SCENE={'R1':[('Daiquiri','2,502,234,815,80,468'),('Tom Collins','512,1022,125,84
  'R20':[('Tuxedo','2,504,322,866,86,432,140'),('El Presidente','516,1022,292,866,596,938,140'),('Naked and Famous','1034,1534,346,866,1114,1456,140')],  # source userR20
  'R21':[('Brown Derby','2,504,322,866,40,430,140'),('Pineapple Martini','516,1022,296,866,590,976,140'),('Cable Car','1034,1534,350,866,1116,1522,140')],  # source userR21
  'R22':[('Old Cuban','2,504,304,866,84,434,140'),('Ward Eight','516,1022,292,866,596,938,140'),('Death in the Afternoon','1034,1534,152,904,1172,1396,158,1,90')],  # source userR22
+ 'R23':[('Airmail','2,504,150,876,166,394,158,1,90'),('Seelbach','516,1022,146,882,660,880,158,1,90'),('Russian Spring Punch','1034,1534,282,866,1164,1400')],  # source userR23
  'F1':[('Tom Collins','2,504,120,860,150,427'),('Americano','516,1022,188,855,646,888'),('Shirley Temple','1034,1534,150,852,1166,1464')]}  # F1 supersedes R1/R3/R4 for these three
 import json; json.dump({k:[n for n,_ in v] for k,v in S.items()},open('recrop_map.json','w'),ensure_ascii=False)
 for k,v in S.items():
