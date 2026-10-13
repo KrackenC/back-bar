@@ -8,7 +8,13 @@ NEW_BASE=("Photorealistic, editorial cocktail photograph, landscape 3:2 (1536×1
 "of the panel height and no more than half its width; leave clear, uncluttered backdrop above the garnish and keep "
 "props low and to the sides so nothing touches the top edge. Rich, appetizing color, crisp focus on the glass, real "
 "condensation, ice and liquid texture, the setting softly blurred behind. No text, labels, logos, branded bottles, "
-"people or hands.")
+"people or hands. Keep every surface natural and smooth: never cover the glass, liquid, ice or table in a uniform "
+"pebbled, crackled or scaly texture.")
+FIZZ_NOTE=(" Make the carbonation look real: thin, smooth, crystal-clear glass walls; fine, separate streams of tiny "
+"bubbles rising through clear liquid, with clear liquid visible between them; a few small bubbles clinging to the ice and "
+"the inside of the glass; a delicate fizz at the surface; only a light, natural mist of condensation on the outside.")
+import re as _re
+FIZZY=_re.compile(r"sparkling (?!sugar)|soda|fizz|bubbl|tonic|ginger beer|ginger ale|\bcola\b", _re.I)
 # (name, drink description, scene)
 REDO=[
  [("Daiquiri","chilled coupe of pale, cloudy lime-white with a thin lime wheel on the rim","a sun-drenched Havana café table of worn turquoise-painted wood against peeling pastel-yellow plaster, bright late-afternoon sun with crisp shadows, halved limes and a small bowl of raw sugar"),
@@ -107,11 +113,12 @@ B3=[
   ("Baltimore Eggnog","rocks glass of creamy ivory with grated nutmeg on top","a Christmas scene with twinkling lights blurred behind, red and green, warm fireplace glow"),
   ("Amaretto Fizz","champagne flute of sparkling golden orange","an Italian brunch table with pastel linens in morning sun, oranges and almonds")],
 ]
+FIX=[[REDO[0][1],REDO[2][1],REDO[3][2]]]
 assert len(REDO)==16 and sum(len(g) for g in REDO)==48
 assert len(B3)==15 and len({d[0] for g in B3 for d in g})==45
 POS=["LEFT","MIDDLE","RIGHT"]
 def new_prompt(g):
-    return "\n".join([NEW_BASE,""]+[f"{p} panel: {n}, a {d}. Scene: {sc}." for p,(n,d,sc) in zip(POS,g)])
+    return "\n".join([NEW_BASE,""]+[f"{p} panel: {n}, a {d}. Scene: {sc}."+(FIZZ_NOTE if FIZZY.search(d) else "") for p,(n,d,sc) in zip(POS,g)])
 def old_prompt(g):
     return "\n".join([OLD_BASE,""]+[f"{p} panel: {n}, a {d}; beside it, {pr}." for p,(n,d,pr) in zip(POS,g)])
 def card(pid,label,g,text,check=True):
@@ -127,7 +134,8 @@ def card(pid,label,g,text,check=True):
     </header>
     <pre id="t{pid}">{html.escape(text)}</pre>
   </article>'''
-cards='\n  <h2 class="batch">Redo · prompts R1–R16 · the 48 classics, each in its own scene</h2>'
+cards='\n  <h2 class="batch">Fix · prompt F1 · re-take the three sparkling drinks (realistic bubbles)</h2>'+card('F1','F1',FIX[0],new_prompt(FIX[0]))
+cards+='\n  <h2 class="batch">Redo · prompts R1–R16 · the 48 classics, each in its own scene</h2>'
 for i,g in enumerate(REDO,1): cards+=card(f'R{i}',f'R{i}',g,new_prompt(g))
 cards+='\n  <h2 class="batch">Batch 3 · prompts 31–45 · new drinks</h2>'
 for i,g in enumerate(B3,31): cards+=card(str(i),str(i),g,new_prompt(g))
@@ -135,8 +143,8 @@ old=''
 for i,g in enumerate(OLD,1): old+=card(f'old{i}',str(i),g,old_prompt(g),check=False)
 t=open('prompts_tpl.html').read()
 t=t.replace('<p class="lede">Thirty ChatGPT image prompts covering 90 drinks, in two batches of 45. Each one makes a three-panel image in the same dark-slate style as your Daiquiri, Tom Collins and Aviation set.</p>',
- '<p class="lede">31 ChatGPT image prompts, one image each with three drinks. Every drink now gets its own scene: its own backdrop, lighting, setting and props. The R prompts redo the 48 most popular classics in the new style, and Batch 3 adds 45 new drinks.</p>')
-t=t.replace("0 of 30 done","0 of 31 done").replace("n+' of 30 done'","n+' of 31 done'").replace("(n/30*100)","(n/31*100)")
+ '<p class="lede">32 ChatGPT image prompts, one image each with three drinks. Every drink now gets its own scene: its own backdrop, lighting, setting and props. The R prompts redo the 48 most popular classics in the new style, and Batch 3 adds 45 new drinks. Sparkling drinks now get extra direction so the bubbles look real.</p>')
+t=t.replace("0 of 30 done","0 of 32 done").replace("n+' of 30 done'","n+' of 32 done'").replace("(n/30*100)","(n/32*100)")
 t=t.replace("document.querySelectorAll('.prompt').forEach","document.querySelectorAll('.wrap > .list > .prompt').forEach")
 t=t.replace("el.querySelector('input').checked=on;","var inp=el.querySelector('input'); if(inp) inp.checked=on;")
 t=t.replace('{{CARDS}}\n  </div>','{{CARDS}}\n  </div>\n  <details class="earlier"><summary>Earlier prompts 1–30 (old dark-slate style, already done)</summary><div class="list old">{{OLD}}\n  </div></details>')
