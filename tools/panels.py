@@ -24,7 +24,7 @@ for spec in argv[3:6]:
     y0,y1=round(t-pad),round(b+pad)
     if SCENE:
         if y0<0: y1-=y0; y0=0
-    panels.append([x0,x1,y0,y1,(gx0+gx1)/2])
+    panels.append([x0,x1,y0,y1,(gx0+gx1)/2, 1 if len(v)>7 and v[7] else 0])  # 8th value 1: fit (don't zoom to cover) for very tall glasses
 os.makedirs(outdir, exist_ok=True)
 page='''<html><body><img id="s" src="%s"><script>
 document.getElementById('s').onload=function(){
@@ -40,7 +40,7 @@ document.getElementById('s').onload=function(){
   var rgba=function(a){return 'rgba('+d[0]+','+d[1]+','+d[2]+','+a+')';};
   if(SCENE){
     // zoom in just enough that the real photo always covers the card's 9:16 window
-    var need=(H*9/16+16)/sw; if(fs<need){var mid=(y0+y1)/2; fs=need; sh=H/fs; y0=mid-sh/2; y1=y0+sh; if(y0<0){y1-=y0;y0=0;} dw=sw*fs;}
+    var need=(H*9/16+16)/sw; if(fs<need && !p[5]){var mid=(y0+y1)/2; fs=need; sh=H/fs; y0=mid-sh/2; y1=y0+sh; if(y0<0){y1-=y0;y0=0;} dw=sw*fs;}
     if(y1>img.naturalHeight){var sh0=y1-img.naturalHeight; y0=Math.max(0,y0-sh0); y1=img.naturalHeight; sh=y1-y0; fs=H/sh; dw=sw*fs;}
     var hw=(H*9/16)/2/fs+8/fs, cx=Math.min(Math.max(p[4],p[0]+hw),p[1]-hw); if(p[1]-p[0]<2*hw) cx=(p[0]+p[1])/2;
     dx=W/2-(cx-p[0])*fs;
