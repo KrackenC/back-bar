@@ -57,6 +57,7 @@ SCENE={'R1':[('Daiquiri','2,502,234,815,80,468'),('Tom Collins','512,1022,125,84
  '37':[("Baileys S'mores Martini",'2,504,198,870,50,460,140'),('Baileys Mudslide','516,1022,264,868,558,982,140'),('Baileys Flat White Martini','1034,1534,276,880,1082,1494,140')],  # source user37b
  '38':[('Chambord Royale','2,504,188,866,70,440,140'),('Chambord Margarita','516,1022,400,812,610,946'),('Cointreau Royale','1034,1534,76,900,1190,1392,158,1,90')],  # source user38b
  '39':[('Cointreau Fizz','2,504,190,858,124,392'),('Bermuda Rum Swizzle (held: pebbled glass)','516,1022,164,866,626,896'),('Doctor Funk','1034,1534,150,856,1154,1412')],  # source user39b
+ '40':[('Sherry Cobbler','2,504,74,880,96,468'),('Suffering Bastard','516,1022,118,860,646,920'),('Trinidad Sour','1034,1534,284,866,1074,1514,140')],  # source user40b
  'F1':[('Tom Collins','2,504,120,860,150,427'),('Americano','516,1022,188,855,646,888'),('Shirley Temple','1034,1534,150,852,1166,1464')]}  # F1 supersedes R1/R3/R4 for these three
 import json; json.dump({k:[n for n,_ in v] for k,v in S.items()},open('recrop_map.json','w'),ensure_ascii=False)
 for k,v in S.items():
