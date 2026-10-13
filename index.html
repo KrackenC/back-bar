@@ -499,6 +499,33 @@
     .row-card.open .drink-photo img{ aspect-ratio:16/10; }
   }
 
+
+  /* ---------- UX pass 2: refine row, units, focus, backup ---------- */
+  .refine-row{ display:flex; flex-wrap:wrap; align-items:center; gap:.6rem .9rem; }
+  .refine{ display:inline-flex; align-items:center; gap:.45rem; font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; font-weight:700; color:var(--ink-soft); }
+  .refine select{
+    font:600 .82rem 'Archivo', sans-serif; letter-spacing:0; text-transform:none; color:var(--ink);
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:6px; padding:.5rem 1.9rem .5rem .7rem; min-height:2.6rem;
+    appearance:none; -webkit-appearance:none; cursor:pointer;
+    background-image:linear-gradient(45deg, transparent 50%, var(--ink-soft) 50%), linear-gradient(135deg, var(--ink-soft) 50%, transparent 50%);
+    background-position:calc(100% - 15px) 52%, calc(100% - 10px) 52%; background-size:5px 5px; background-repeat:no-repeat;
+  }
+  .refine select:hover{ border-color:var(--accent); }
+  .unit-toggle{ display:inline-flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; margin-left:auto; }
+  .unit-toggle button{ border:none; background:var(--paper-raised); color:var(--ink-soft); font:700 .8rem 'Archivo', sans-serif; padding:.5rem .9rem; min-height:2.6rem; min-width:2.9rem; cursor:pointer; }
+  .unit-toggle button.active{ background:var(--accent); color:var(--paper-sunken); }
+  button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible, a:focus-visible, [tabindex]:focus-visible{
+    outline:2px solid var(--accent-hover); outline-offset:2px;
+  }
+  .backup-code{
+    width:100%; min-height:7rem; resize:vertical; font:.78rem/1.45 ui-monospace, SFMono-Regular, Menlo, monospace;
+    background:var(--paper-sunken); color:var(--ink); border:1px solid var(--line); border-radius:6px; padding:.7rem; word-break:break-all;
+  }
+  .backup-actions{ display:flex; flex-wrap:wrap; gap:.6rem; align-items:center; margin-top:.6rem; }
+  .backup-msg{ font-size:.82rem; color:var(--good-fg); }
+  .backup-msg.err{ color:var(--warn-fg); }
+  @media (max-width:640px){ .unit-toggle{ margin-left:0; } }
+
   /* ---------- Recipes panel ---------- */
   .recipes-head{ display:flex; flex-wrap:wrap; gap:.9rem; align-items:center; justify-content:space-between; }
   /* Search and the filter buttons each take the full column width, so the
@@ -879,7 +906,7 @@
       <div id="shelfBody">
         <div class="segmented shelf-switcher" id="shelfSwitcher"></div>
         <form class="add-form" id="addForm">
-          <input type="text" id="addInput" placeholder="Type a bottle or mixer…" autocomplete="off" spellcheck="false">
+          <input type="text" id="addInput" placeholder="Type a bottle or mixer…" autocomplete="off" spellcheck="false" list="ingList"><datalist id="ingList"></datalist>
           <button type="submit">Add</button>
         </form>
         <p class="tip">Separate several with commas, like <b>gin, lime juice, simple syrup</b>. Brand names work too.</p>
@@ -915,6 +942,11 @@
             <button data-filter="made" type="button">Made before</button>
             <button data-filter="mocktails" type="button">Mocktails</button>
           </div>
+          <div class="refine-row">
+            <label class="refine"><span>Spirit</span><select id="spiritSel" aria-label="Filter by spirit"><option value="">All spirits</option></select></label>
+            <label class="refine"><span>Sort</span><select id="sortSel" aria-label="Sort recipes"><option value="ready">Closest to ready</option><option value="az">A to Z</option><option value="fewest">Fewest ingredients</option><option value="made">Most made</option></select></label>
+            <div class="unit-toggle" role="group" aria-label="Measurements"><button type="button" data-unit="oz" class="active" aria-pressed="true">oz</button><button type="button" data-unit="ml" aria-pressed="false">ml</button></div>
+          </div>
         </div>
       </div>
       <div class="count-row">
@@ -942,7 +974,7 @@
         <li><div><h4>See what you can make</h4>
           <p><b>What You Can Make</b> lists every recipe. A green <b>Ready to pour</b> tag means you have everything; <b>Missing:</b> names the one thing you still need. The <b>Ready</b> and <b>Almost</b> numbers at the top keep score. Back Bar counts close substitutes, so Cointreau covers triple sec and any whiskey covers a recipe that just says whiskey.</p></div></li>
         <li><div><h4>Find the right drink</h4>
-          <p>Search by name or ingredient, or use the filters: <b>Ready</b>, <b>Almost</b>, <b>Favorites</b>, <b>Made before</b> and <b>Mocktails</b>. <b>Closest to ready</b> shows which drinks need just one more bottle, so you know what to buy next.</p></div></li>
+          <p>Search by name or ingredient, or use the filters: <b>Ready</b>, <b>Almost</b>, <b>Favorites</b>, <b>Made before</b> and <b>Mocktails</b>. <b>Closest to ready</b> shows which drinks need just one more bottle, so you know what to buy next. Under the filters you can narrow by spirit, change the sort order, and switch measures between oz and ml.</p></div></li>
         <li><div><h4>Plan your next round</h4>
           <p>Tap the <b>☆</b> on a card to save a favorite. Tap <b>+</b>, or drag a card onto <b>Up Next</b>, to line up as many as three drinks to make next. <b>New This Week</b> highlights recently added recipes.</p></div></li>
         <li><div><h4>Mix, then mark it made</h4>
@@ -958,7 +990,7 @@
         <li>Top fizzy drinks (soda, tonic, sparkling wine) last, and stir gently so they keep their bubbles.</li>
       </ul>
       <h3><span class="kicker">Your data</span>Saved on this device</h3>
-      <p class="sheet-lede">Your shelf, favorites, Up Next and Made It? history stay in this browser only; nothing is sent anywhere. <b>Reset everything</b>, at the bottom of the page, clears it all.</p>
+      <p class="sheet-lede">Your shelf, favorites, Up Next and Made It? history stay in this browser only; nothing is sent anywhere. <b>Reset everything</b>, at the bottom of the page, clears it all. To keep a copy or move your bar to another device, use <b>Back up or move your bar</b>, also at the bottom.</p>
     </div>
   </dialog>
 
@@ -1064,9 +1096,26 @@
   })();
   </script>
 
+  <dialog class="sheet" id="backupSheet" aria-labelledby="backupTitle">
+    <div class="sheet-head">
+      <h2 id="backupTitle">Back Up or Move Your Bar</h2>
+      <button class="sheet-close" type="button" data-close aria-label="Close">✕</button>
+    </div>
+    <div class="sheet-body">
+      <p class="sheet-lede">Back Bar saves everything in this browser only. To keep a copy, or to move your bar to another phone or computer, copy this code and paste it into Back Bar there.</p>
+      <h3><span class="kicker">Copy</span>Your bar as a code</h3>
+      <textarea class="backup-code" id="backupOut" readonly aria-label="Backup code"></textarea>
+      <div class="backup-actions"><button class="tier-add" type="button" id="backupCopy">Copy code</button><span class="backup-msg" id="backupCopyMsg" aria-live="polite"></span></div>
+      <h3><span class="kicker">Restore</span>Paste a code from another device</h3>
+      <p class="sheet-lede">This replaces both shelves, your favorites, Up Next and your Made history on this device.</p>
+      <textarea class="backup-code" id="backupIn" placeholder="Paste a Back Bar code here" aria-label="Paste backup code"></textarea>
+      <div class="backup-actions"><button class="tier-add" type="button" id="backupRestore">Restore</button><span class="backup-msg" id="backupRestoreMsg" aria-live="polite"></span></div>
+    </div>
+  </dialog>
+
   <div class="undo-toast" id="undoToast" role="status" aria-live="polite"><span class="undo-msg"></span><button type="button">Undo</button></div>
   <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 269 recipes, all from publicly available sources: the IBA's official cocktail list, spirit producers' own published recipes, and Difford's Guide online.
-    <div class="footer-actions"><button class="reset-all-btn" id="resetAllBtn" type="button">Reset everything</button> <span style="margin-left:.4rem">Clears both shelves, favorites, Up Next and your Made history.</span></div>
+    <div class="footer-actions"><button class="help-link" id="backupBtn" type="button" aria-haspopup="dialog">Back up or move your bar</button> <span style="margin:0 .5rem;color:var(--line)">·</span> <button class="reset-all-btn" id="resetAllBtn" type="button">Reset everything</button> <span style="margin-left:.4rem">Clears both shelves, favorites, Up Next and your Made history.</span></div>
     <p class="drink-responsibly">Please drink responsibly. Enjoy only if you're of legal drinking age, know your limits, and never drink and drive.</p>
   </footer>
 
@@ -2479,6 +2528,7 @@ var DRINK_PHOTOS = [
   var activeShelf = 0;
   var editingShelf = null; // index of the shelf whose name is being renamed right now, or null
   var filter = 'all';
+  var spiritFilter = '', sortMode = 'ready', unitMode = 'oz';
   var query = '';
   var lastAdded = null;
   var openGroups = new Set(); // quick-add category panels the user has expanded
@@ -3308,6 +3358,13 @@ var DRINK_PHOTOS = [
     var t = card.querySelector('.card-title');
     if(t) t.setAttribute('aria-expanded', String(open));
   }
+  function fmtAmt(a){
+    if(unitMode !== 'ml') return a;
+    var m = /^(\d*\.?\d+)\s*oz$/.exec(a);
+    if(!m) return a;
+    var ml = Math.round(parseFloat(m[1]) * 30 / 2.5) * 2.5;
+    return (ml % 1 ? ml.toFixed(1) : String(ml)) + ' ml';
+  }
   function recipeCardHtml(r, st){
     var pillClass = st.key === 'ready' ? 'pill-ready' : (st.key === 'almost' ? 'pill-almost' : 'pill-more');
     var pillText;
@@ -3324,7 +3381,7 @@ var DRINK_PHOTOS = [
       var cls = ok ? 'have' : 'need';
       var mark = ok ? '✓' : '·';
       var optTag = it.optional ? ' <span class="opt">(optional)</span>' : '';
-      return '<li class="' + cls + '"><span class="mark">' + mark + '</span><span class="amt">' + it.amt + '</span><span>' + ing.name + optTag + '</span></li>';
+      return '<li class="' + cls + '"><span class="mark">' + mark + '</span><span class="amt">' + fmtAmt(it.amt) + '</span><span>' + ing.name + optTag + '</span></li>';
     }).join('');
 
     var favBtn = '<button class="fav-btn' + (isFav ? ' active' : '') + '" type="button" data-name="' + r.name + '" aria-label="' + (isFav ? 'Remove ' + r.name + ' from favorites' : 'Add ' + r.name + ' to favorites') + '" aria-pressed="' + isFav + '">' + (isFav ? '★' : '☆') + '</button>';
@@ -3382,6 +3439,7 @@ var DRINK_PHOTOS = [
       if(filter === 'favorites' && !favorites.has(s.recipe.name)) return false;
       if(filter === 'made' && !made[s.recipe.name]) return false;
       if(filter === 'mocktails' && s.recipe.base !== 'Mocktail') return false;
+      if(spiritFilter && s.recipe.base !== spiritFilter) return false;
       if(q){
         var nameMatch = normalize(s.recipe.name).indexOf(q) !== -1;
         var baseMatch = normalize(s.recipe.base).indexOf(q) !== -1;
@@ -3396,6 +3454,9 @@ var DRINK_PHOTOS = [
 
     var order = {ready:0, almost:1, more:2};
     visible.sort(function(a,b){
+      if(sortMode === 'az') return a.recipe.name.localeCompare(b.recipe.name);
+      if(sortMode === 'fewest'){ var d = a.recipe.items.length - b.recipe.items.length; if(d) return d; return a.recipe.name.localeCompare(b.recipe.name); }
+      if(sortMode === 'made'){ var ma = made[a.recipe.name] ? made[a.recipe.name].count : 0, mb = made[b.recipe.name] ? made[b.recipe.name].count : 0; if(ma !== mb) return mb - ma; }
       var oa = order[a.status.key], ob = order[b.status.key];
       if(oa !== ob) return oa - ob;
       if(a.status.missing.length !== b.status.missing.length) return a.status.missing.length - b.status.missing.length;
@@ -3403,6 +3464,7 @@ var DRINK_PHOTOS = [
     });
 
     document.getElementById('countLine').innerHTML =
+      (visible.length !== total ? 'Showing <b>' + visible.length + '</b> of ' + total + ' · ' : '') +
       '<b>' + ready + '</b> ready to pour · <b>' + almost + '</b> almost there · <b>' + (total - ready - almost) + '</b> need more bottles';
     document.getElementById('favClearBtn').hidden = !(filter === 'favorites' && favorites.size > 0);
 
@@ -3750,6 +3812,96 @@ var DRINK_PHOTOS = [
     });
   })();
 
+  // ---------- UX pass 2: spirit filter, sort, units, autocomplete, backup ----------
+  function readPref(k, d){ try{ var v = localStorage.getItem(k); return v === null ? d : v; }catch(e){ return d; } }
+  function writePref(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  spiritFilter = readPref('backbar.spirit.v1', '');
+  sortMode = readPref('backbar.sort.v1', 'ready');
+  unitMode = readPref('backbar.unit.v1', 'oz');
+  (function(){
+    var counts = {};
+    RECIPES.forEach(function(r){ counts[r.base] = (counts[r.base] || 0) + 1; });
+    var sel = document.getElementById('spiritSel');
+    Object.keys(counts).sort(function(a, b){ return counts[b] - counts[a] || a.localeCompare(b); }).forEach(function(b){
+      var o = document.createElement('option'); o.value = b; o.textContent = b + ' (' + counts[b] + ')'; sel.appendChild(o);
+    });
+    if(spiritFilter && !counts[spiritFilter]) spiritFilter = '';
+    sel.value = spiritFilter;
+    document.getElementById('sortSel').value = sortMode;
+    document.querySelectorAll('.unit-toggle button').forEach(function(b){
+      var on = b.getAttribute('data-unit') === unitMode; b.classList.toggle('active', on); b.setAttribute('aria-pressed', String(on));
+    });
+    // suggestions in the add box: every bottle and mixer Back Bar knows
+    var dl = document.getElementById('ingList'), seen = {};
+    ALL_INGREDIENTS.map(function(i){ return i.name; }).sort().forEach(function(n){
+      if(seen[n]) return; seen[n] = 1; var o = document.createElement('option'); o.value = n; dl.appendChild(o);
+    });
+  })();
+  document.getElementById('spiritSel').addEventListener('change', function(e){
+    spiritFilter = e.target.value; writePref('backbar.spirit.v1', spiritFilter); renderRecipes(computeStatuses());
+  });
+  document.getElementById('sortSel').addEventListener('change', function(e){
+    sortMode = e.target.value; writePref('backbar.sort.v1', sortMode); renderRecipes(computeStatuses());
+  });
+  document.querySelector('.unit-toggle').addEventListener('click', function(e){
+    var b = e.target.closest('button[data-unit]'); if(!b) return;
+    unitMode = b.getAttribute('data-unit'); writePref('backbar.unit.v1', unitMode);
+    document.querySelectorAll('.unit-toggle button').forEach(function(x){
+      var on = x === b; x.classList.toggle('active', on); x.setAttribute('aria-pressed', String(on));
+    });
+    renderAll();
+  });
+
+  // Back up / move: every 'backbar.' key in this browser, as one copyable code
+  function backupCode(){
+    var data = {};
+    try{ for(var i = 0; i < localStorage.length; i++){ var k = localStorage.key(i); if(k && k.indexOf('backbar.') === 0) data[k] = localStorage.getItem(k); } }catch(e){}
+    return 'BB1:' + btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+  }
+  document.getElementById('backupBtn').addEventListener('click', function(){
+    document.getElementById('backupOut').value = backupCode();
+    document.getElementById('backupIn').value = '';
+    document.getElementById('backupCopyMsg').textContent = '';
+    var rm = document.getElementById('backupRestoreMsg'); rm.textContent = ''; rm.classList.remove('err');
+    var d = document.getElementById('backupSheet');
+    if(d.showModal){ try{ d.showModal(); }catch(e){ d.setAttribute('open', ''); } } else d.setAttribute('open', '');
+  });
+  document.getElementById('backupCopy').addEventListener('click', function(){
+    var out = document.getElementById('backupOut'), msg = document.getElementById('backupCopyMsg');
+    function fallback(){ out.focus(); out.select(); msg.textContent = 'Selected: press Ctrl/⌘+C to copy'; }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(out.value).then(function(){ msg.textContent = 'Copied'; }, fallback);
+    } else fallback();
+  });
+  document.getElementById('backupSheet').addEventListener('click', function(e){
+    if(e.target.closest('[data-close]') || e.target === this){ if(this.close) this.close(); else this.removeAttribute('open'); }
+  });
+  var restoreArmed = false;
+  document.getElementById('backupRestore').addEventListener('click', function(){
+    var btn = this, msg = document.getElementById('backupRestoreMsg');
+    msg.classList.remove('err');
+    var raw = document.getElementById('backupIn').value.trim(), data;
+    try{
+      if(raw.indexOf('BB1:') !== 0) throw 0;
+      data = JSON.parse(decodeURIComponent(escape(atob(raw.slice(4)))));
+      if(!data || typeof data !== 'object') throw 0;
+    }catch(e){ msg.textContent = "That doesn't look like a Back Bar code."; msg.classList.add('err'); return; }
+    if(!restoreArmed){
+      restoreArmed = true; btn.textContent = 'Tap again to replace this bar';
+      setTimeout(function(){ restoreArmed = false; btn.textContent = 'Restore'; }, 5000);
+      return;
+    }
+    restoreArmed = false; btn.textContent = 'Restore';
+    try{
+      Object.keys(localStorage).forEach(function(k){ if(k.indexOf('backbar.') === 0) localStorage.removeItem(k); });
+      Object.keys(data).forEach(function(k){ if(k.indexOf('backbar.') === 0 && typeof data[k] === 'string') localStorage.setItem(k, data[k]); });
+    }catch(e){ msg.textContent = 'This browser blocked saving.'; msg.classList.add('err'); return; }
+    have.clear(); favorites.clear(); queue = [null, null, null]; made = {};
+    loadFavorites(); loadQueue(); loadActiveShelf(); loadShelfNames(); load(); loadMade();
+    renderAll();
+    msg.textContent = 'Restored: ' + have.size + ' bottles on ' + SHELF_LABELS[activeShelf] + '.';
+  });
+
   loadFavorites();
   loadQueue();
   loadActiveShelf();
@@ -3798,7 +3950,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-13T16:31:51Z";
+  var CURRENT_VERSION = "2026-10-13T19:39:32Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
