@@ -100,7 +100,11 @@
      frame made it shimmer); only the box around it changes size, so the
      condensed header still gets its space back. */
   .brand{ display:flex; align-items:center; gap:1.1rem; min-width:0; }
-  .brand-text{ min-width:0; }
+  /* Cormorant's capitals leave extra room above them, so a box-centred title and
+     tagline read about 4px low against the logo; nudge the text block up so the
+     visible letters centre on it. The condensed header (title only) already lines up. */
+  .brand-text{ min-width:0; transform:translateY(-4px); transition:transform .25s ease; }
+  header.masthead.condensed .brand-text{ transform:none; }
   .brand-mark-box{
     flex-shrink:0;
     width:var(--logo); height:var(--logo); --logo:6.4rem;
@@ -119,6 +123,7 @@
     .brand-mark-box{ --logo:4.9rem; } .brand-mark{ width:4.9rem; height:4.9rem; }
     header.masthead.condensed .brand-mark{ transform:scale(.5306); }
     .brand{ gap:.8rem; }
+    .brand-text{ transform:translateY(-2px); }
     .masthead .brand h1{ font-size:2.15rem; letter-spacing:.07em; }
     .masthead .brand p{ max-height:3rem; line-height:1.35; font-size:.9rem; }
     header.masthead.condensed .brand p{ max-height:0; }
@@ -3340,7 +3345,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-13T04:26:31Z";
+  var CURRENT_VERSION = "2026-10-13T04:30:06Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
