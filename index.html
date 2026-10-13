@@ -321,6 +321,80 @@
   .qa-btn.brand{ color:var(--ink-soft); border-style:dashed; }
   .qa-btn.brand.active{ color:var(--paper-sunken); border-style:solid; }
 
+  /* ---------- How to use / Bar essentials sheets ---------- */
+  .masthead-links{ display:flex; flex-wrap:wrap; justify-content:flex-end; align-items:center; gap:.2rem .9rem; }
+  .help-link{
+    background:none; border:none; cursor:pointer; padding:.2rem 0;
+    color:var(--accent-hover); font-size:.72rem; letter-spacing:.03em; font-weight:600;
+    text-decoration:underline; text-underline-offset:2px; font-family:inherit;
+  }
+  .help-link:hover{ color:var(--ink); }
+  dialog.sheet{
+    width:min(46rem, calc(100% - 2rem)); max-height:min(86vh, 900px); padding:0;
+    background:var(--paper-raised); color:var(--ink);
+    border:1px solid var(--line); border-top:3px solid var(--accent); border-radius:6px;
+    box-shadow:0 30px 80px rgba(0,0,0,.6);
+  }
+  dialog.sheet::backdrop{ background:rgba(4,7,12,.72); backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px); }
+  .sheet-head{
+    position:sticky; top:0; z-index:1; display:flex; justify-content:space-between; align-items:center; gap:1rem;
+    padding:1rem 1.25rem .85rem; background:var(--paper-raised); border-bottom:1px solid var(--line);
+  }
+  .sheet-head h2{ font-size:1.7rem; font-weight:600; letter-spacing:.04em; line-height:1.1; }
+  .sheet-close{
+    flex-shrink:0; width:2.2rem; height:2.2rem; border-radius:50%; cursor:pointer;
+    background:var(--paper-sunken); border:1px solid var(--line); color:var(--ink); font-size:1.15rem; line-height:1;
+  }
+  .sheet-close:hover{ border-color:var(--accent); color:var(--accent-hover); }
+  .sheet-body{ padding:1.1rem 1.25rem 1.5rem; font-size:.93rem; line-height:1.6; color:var(--ink); }
+  .sheet-body > * + *{ margin-top:1.1rem; }
+  .sheet-lede{ color:var(--ink-soft); max-width:62ch; }
+  .sheet-body h3{ font-size:1.25rem; font-weight:600; letter-spacing:.02em; margin-top:1.6rem; color:var(--ink); }
+  .sheet-body h3 .kicker{ display:block; font-family:'Archivo', sans-serif; font-size:.64rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-hover); margin-bottom:.15rem; }
+  .sheet-body p, .sheet-body li{ max-width:66ch; }
+  .sheet-body b{ color:#FFFFFF; font-weight:700; }
+  .howto-steps{ list-style:none; padding:0; margin:0; counter-reset:step; display:grid; gap:.9rem; }
+  .howto-steps li{ counter-increment:step; display:grid; grid-template-columns:2rem 1fr; gap:.75rem; align-items:start; }
+  .howto-steps li::before{
+    content:counter(step); width:2rem; height:2rem; border-radius:50%; display:grid; place-items:center;
+    background:var(--accent-soft-bg); border:1px solid var(--accent); color:var(--accent-hover);
+    font-weight:700; font-size:.85rem; font-variant-numeric:tabular-nums;
+  }
+  .howto-steps h4{ font-family:'Archivo', sans-serif; font-size:.95rem; font-weight:700; color:#FFFFFF; margin:.2rem 0 .15rem; }
+  .howto-steps p{ margin:0; color:var(--ink-soft); }
+  .tip-list{ margin:0; padding-left:1.1rem; color:var(--ink-soft); }
+  .tip-list li + li{ margin-top:.35rem; }
+  .ess-table-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:4px; }
+  .ess-table{ width:100%; border-collapse:collapse; font-size:.86rem; }
+  .ess-table th, .ess-table td{ text-align:left; padding:.55rem .75rem; border-bottom:1px solid var(--line); vertical-align:top; }
+  .ess-table tr:last-child td{ border-bottom:none; }
+  .ess-table th{ font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); font-weight:700; background:var(--paper-sunken); }
+  .ess-table td:first-child{ font-weight:700; color:#FFFFFF; white-space:nowrap; }
+  .ess-table td.num{ text-align:right; font-variant-numeric:tabular-nums; color:var(--accent-hover); font-weight:700; white-space:nowrap; }
+  .ess-table td.why{ color:var(--ink-soft); }
+  .tier{ border:1px solid var(--line); border-radius:5px; padding:.9rem 1rem; background:var(--paper); }
+  .tier + .tier{ margin-top:.8rem; }
+  .tier-head{ display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap:.3rem 1rem; }
+  .tier-head h4{ font-family:'Archivo', sans-serif; font-size:1rem; font-weight:700; color:#FFFFFF; margin:0; }
+  .tier-count{ font-size:.78rem; color:var(--good-fg); font-weight:700; font-variant-numeric:tabular-nums; }
+  .tier-items{ display:flex; flex-wrap:wrap; gap:.35rem; margin:.6rem 0 .7rem; padding:0; list-style:none; }
+  .tier-items li{ font-size:.78rem; padding:.2rem .55rem; border-radius:999px; background:var(--paper-raised); border:1px solid var(--line); color:var(--ink); }
+  .tier-add{
+    cursor:pointer; font-family:inherit; font-size:.78rem; font-weight:700; letter-spacing:.02em;
+    padding:.45rem .85rem; border-radius:4px; border:1px solid var(--accent); background:var(--accent-soft-bg); color:var(--accent-hover);
+  }
+  .tier-add:hover{ background:var(--accent); color:#1A0F08; }
+  .tier-add.done{ border-color:var(--good-fg); background:var(--good-bg); color:var(--good-fg); cursor:default; }
+  .tier-note{ font-size:.78rem; color:var(--ink-soft); margin-left:.6rem; }
+  .syrup-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(13rem, 1fr)); gap:.7rem; }
+  .syrup{ border:1px solid var(--line); border-radius:5px; padding:.75rem .9rem; background:var(--paper); }
+  .syrup h4{ font-family:'Archivo', sans-serif; font-size:.92rem; font-weight:700; color:#FFFFFF; margin:0 0 .25rem; }
+  .syrup p{ margin:0; font-size:.84rem; color:var(--ink-soft); }
+  @media (max-width:520px){
+    .sheet-head{ padding:.85rem 1rem .75rem; } .sheet-body{ padding:1rem 1rem 1.3rem; }
+    .sheet-head h2{ font-size:1.45rem; }
+  }
+
   /* ---------- Recipes panel ---------- */
   .recipes-head{ display:flex; flex-wrap:wrap; gap:.9rem; align-items:center; justify-content:space-between; }
   /* Search and the filter buttons each take the full column width, so the
@@ -534,7 +608,7 @@
   .card-head-actions{ display:flex; align-items:center; gap:.5rem; flex-shrink:0; }
   .fav-btn{
     background:none; border:none; cursor:pointer; padding:0 .1rem; line-height:1;
-    font-size:1.2rem; color:var(--line);
+    font-size:1.32rem; color:#B9C3DB; text-shadow:0 0 6px rgba(185,195,219,.25);
     transition: color .15s ease, transform .12s ease;
   }
   .fav-btn:hover{ color:var(--warn-fg); transform:scale(1.12); }
@@ -649,7 +723,11 @@
         <div class="stat"><span class="n" id="statAlmost">0</span><span class="l">Almost</span></div>
         <div class="stat"><span class="n" id="statTotal">0</span><span class="l">Recipes</span></div>
       </div>
-      <button class="reset-all-btn" id="resetAllBtn" type="button">Reset everything</button>
+      <div class="masthead-links">
+        <button class="help-link" id="howToBtn" type="button" aria-haspopup="dialog">How to use</button>
+        <button class="help-link" id="essentialsBtn" type="button" aria-haspopup="dialog">Bar essentials</button>
+        <button class="reset-all-btn" id="resetAllBtn" type="button">Reset everything</button>
+      </div>
     </div>
   </header>
 
@@ -733,6 +811,143 @@
     </section>
 
   </main>
+
+  <dialog class="sheet" id="howToSheet" aria-labelledby="howToTitle">
+    <div class="sheet-head">
+      <h2 id="howToTitle">How to Use Back Bar</h2>
+      <button class="sheet-close" type="button" data-close aria-label="Close">✕</button>
+    </div>
+    <div class="sheet-body">
+      <p class="sheet-lede">Tell Back Bar what's on your shelf, and it shows every cocktail you can pour right now, plus the ones you're a bottle away from.</p>
+      <ol class="howto-steps">
+        <li><div><h4>Stock your back bar</h4>
+          <p>Under <b>Your Back Bar</b>, type what you have: a bottle, a mixer or a juice. Add several at once by separating them with commas, like <b>gin, lime juice, simple syrup</b>. Brand names work too (<b>Cointreau</b>, <b>Campari</b>). You can also browse the category lists below the box and tap to add, or tap <b>Load a starter shelf</b> to begin with the basics.</p></div></li>
+        <li><div><h4>Keep two bars if you like</h4>
+          <p>Switch between <b>Home Bar</b> and <b>Cabin Bar</b> at the top of the shelf. Tap the pencil on either one to rename it. Each keeps its own list of bottles.</p></div></li>
+        <li><div><h4>See what you can make</h4>
+          <p><b>What You Can Make</b> lists every recipe. A green <b>Ready to pour</b> tag means you have everything; <b>Missing:</b> names the one thing you still need. The <b>Ready</b> and <b>Almost</b> numbers at the top keep score. Back Bar counts close substitutes, so Cointreau covers triple sec and any whiskey covers a recipe that just says whiskey.</p></div></li>
+        <li><div><h4>Find the right drink</h4>
+          <p>Search by name or ingredient, or use the filters: <b>Ready</b>, <b>Almost</b>, <b>Favorites</b>, <b>Made It?</b> and <b>Mocktails</b>. <b>Closest to ready</b> shows which drinks need just one more bottle, so you know what to buy next.</p></div></li>
+        <li><div><h4>Plan your next round</h4>
+          <p>Tap the <b>☆</b> on a card to save a favorite. Tap <b>+</b>, or drag a card onto <b>Up Next</b>, to line up as many as three drinks to make next. <b>New This Week</b> highlights recently added recipes.</p></div></li>
+        <li><div><h4>Mix, then mark it made</h4>
+          <p>Each card shows the glass, the method, exact measures, the garnish and a note on technique. After you pour, tap <b>Made it?</b>. Back Bar remembers when you last made each drink, and the <b>Made It?</b> filter shows your history.</p></div></li>
+      </ol>
+      <h3><span class="kicker">Behind the bar</span>Tips for better drinks</h3>
+      <ul class="tip-list">
+        <li><b>Shake</b> anything with citrus, cream or egg, hard, with plenty of ice, for 10 to 15 seconds. <b>Stir</b> drinks made only of spirits (Martini, Manhattan, Negroni) for about 30 seconds, so they stay silky and clear.</li>
+        <li><b>Squeeze citrus fresh.</b> Fresh lime and lemon are the biggest upgrade you can make. Bottled juice tastes flat.</li>
+        <li><b>Measure.</b> A jigger keeps every drink balanced and lets you repeat a good one.</li>
+        <li><b>Chill the glass</b> with ice water or a few minutes in the freezer before pouring a drink served without ice.</li>
+        <li>For <b>egg white</b> drinks, shake once without ice (a dry shake) to build the foam, then again with ice.</li>
+        <li>Top fizzy drinks (soda, tonic, sparkling wine) last, and stir gently so they keep their bubbles.</li>
+      </ul>
+      <h3><span class="kicker">Your data</span>Saved on this device</h3>
+      <p class="sheet-lede">Your shelf, favorites, Up Next and Made It? history stay in this browser only; nothing is sent anywhere. <b>Reset everything</b> at the top clears it all.</p>
+    </div>
+  </dialog>
+
+  <dialog class="sheet" id="essentialsSheet" aria-labelledby="essentialsTitle">
+    <div class="sheet-head">
+      <h2 id="essentialsTitle">Bar Essentials</h2>
+      <button class="sheet-close" type="button" data-close aria-label="Close">✕</button>
+    </div>
+    <div class="sheet-body">
+      <p class="sheet-lede">What you need to make the drinks in Back Bar. The counts come from the 269 recipes in the app, so you can see where each purchase pays off.</p>
+
+      <h3><span class="kicker">Step 1</span>Stock the shelf in three rounds</h3>
+      <p class="sheet-lede">Each round builds on the one before. Tap <b>Add to my shelf</b> to put the whole round on your current shelf.</p>
+      <div class="tier">
+        <div class="tier-head"><h4>The essentials</h4><span class="tier-count">13 items · 22 drinks ready</span></div>
+        <ul class="tier-items"><li>Gin</li><li>Vodka</li><li>Bourbon</li><li>White rum</li><li>Tequila</li><li>Triple sec</li><li>Sweet vermouth</li><li>Dry vermouth</li><li>Angostura bitters</li><li>Fresh limes</li><li>Fresh lemons</li><li>Simple syrup</li><li>Soda water</li></ul>
+        <button class="tier-add" type="button" data-items="lime juice, lemon juice, simple syrup, soda water, angostura bitters, gin, vodka, bourbon, white rum, tequila, triple sec, sweet vermouth, dry vermouth">Add to my shelf</button><span class="tier-note" aria-live="polite"></span>
+      </div>
+      <div class="tier">
+        <div class="tier-head"><h4>Level up</h4><span class="tier-count">+16 items · 83 drinks ready</span></div>
+        <ul class="tier-items"><li>Dark rum</li><li>Campari</li><li>Scotch</li><li>Brandy / Cognac</li><li>Sparkling wine</li><li>Ginger beer</li><li>Tonic water</li><li>Orange juice</li><li>Pineapple juice</li><li>Cranberry juice</li><li>Grapefruit juice</li><li>Grenadine</li><li>Honey syrup</li><li>Eggs (for egg white)</li><li>Fresh mint</li><li>Orange bitters</li></ul>
+        <button class="tier-add" type="button" data-items="dark rum, campari, scotch whisky, brandy, sparkling wine, ginger beer, tonic water, orange juice, pineapple juice, cranberry juice, grapefruit juice, grenadine, honey syrup, egg white, fresh mint, orange bitters">Add to my shelf</button><span class="tier-note" aria-live="polite"></span>
+      </div>
+      <div class="tier">
+        <div class="tier-head"><h4>The specialty shelf</h4><span class="tier-count">+18 items · 150 drinks ready</span></div>
+        <ul class="tier-items"><li>Amaretto</li><li>Maraschino liqueur</li><li>Green Chartreuse</li><li>Absinthe</li><li>Coffee liqueur</li><li>Elderflower liqueur</li><li>Mezcal</li><li>Rye whiskey</li><li>Peychaud's bitters</li><li>Orgeat</li><li>Crème de cacao</li><li>Heavy cream</li><li>Espresso</li><li>Aperol</li><li>Limoncello</li><li>Irish cream</li><li>Ginger ale</li><li>Cola</li></ul>
+        <button class="tier-add" type="button" data-items="amaretto, maraschino liqueur, green chartreuse, absinthe, coffee liqueur, elderflower liqueur, mezcal, rye whiskey, peychaud's bitters, orgeat syrup, creme de cacao, heavy cream, espresso, aperol, limoncello, irish cream, ginger ale, cola">Add to my shelf</button><span class="tier-note" aria-live="polite"></span>
+      </div>
+      <p class="sheet-lede">The other 119 recipes each call for something more particular, like a specific brand, a fortified wine or an unusual liqueur. A recipe's <b>Missing:</b> tag tells you what to look for.</p>
+
+      <h3><span class="kicker">Step 2</span>Tools</h3>
+      <div class="ess-table-wrap"><table class="ess-table">
+        <thead><tr><th>Tool</th><th>What it's for</th><th style="text-align:right">Recipes</th></tr></thead>
+        <tbody>
+          <tr><td>Jigger</td><td class="why">Measuring every pour. Get one marked in ¼ oz steps.</td><td class="num">All</td></tr>
+          <tr><td>Cocktail shaker</td><td class="why">Shaken drinks. A two-piece tin set is the easiest to use and seal.</td><td class="num">123</td></tr>
+          <tr><td>Hawthorne strainer</td><td class="why">Holds back the ice when you pour from the shaker.</td><td class="num">123</td></tr>
+          <tr><td>Citrus press</td><td class="why">Fresh lime and lemon juice.</td><td class="num">129</td></tr>
+          <tr><td>Mixing glass + bar spoon</td><td class="why">Stirred drinks. A sturdy pint glass works to start.</td><td class="num">46</td></tr>
+          <tr><td>Fine-mesh strainer</td><td class="why">Catches ice chips and pulp so drinks served up stay silky.</td><td class="num">Most shaken</td></tr>
+          <tr><td>Peeler or channel knife</td><td class="why">Citrus twists and peels for garnish.</td><td class="num">Many</td></tr>
+          <tr><td>Muddler</td><td class="why">Pressing mint, basil and fruit (Mojito, Smash, Caipirinha).</td><td class="num">13+</td></tr>
+          <tr><td>Blender</td><td class="why">Frozen drinks like the Piña Colada.</td><td class="num">8</td></tr>
+          <tr><td>Paring knife + small board</td><td class="why">Cutting wheels, wedges and garnishes.</td><td class="num">Most</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3><span class="kicker">Step 3</span>Glassware</h3>
+      <p class="sheet-lede">Three shapes cover nearly nine in ten recipes. Start with these, then add others as you need them.</p>
+      <div class="ess-table-wrap"><table class="ess-table">
+        <thead><tr><th>Glass</th><th>Used for</th><th style="text-align:right">Recipes</th></tr></thead>
+        <tbody>
+          <tr><td>Coupe</td><td class="why">Drinks served up, without ice: Daiquiri, Martini, Sidecar.</td><td class="num">86</td></tr>
+          <tr><td>Rocks</td><td class="why">Drinks on ice or one big cube: Old Fashioned, Negroni, Margarita.</td><td class="num">81</td></tr>
+          <tr><td>Highball / Collins</td><td class="why">Tall drinks topped with soda, tonic or juice.</td><td class="num">68</td></tr>
+          <tr><td>Flute</td><td class="why">Sparkling drinks: French 75, Mimosa, Bellini.</td><td class="num">12</td></tr>
+          <tr><td>Hurricane</td><td class="why">Tropical and frozen drinks.</td><td class="num">10</td></tr>
+          <tr><td>Wine glass</td><td class="why">Spritzes.</td><td class="num">5</td></tr>
+          <tr><td>Glass mug</td><td class="why">Hot drinks: Irish Coffee, Hot Toddy.</td><td class="num">2</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3><span class="kicker">Step 4</span>Easy homemade syrups and ice</h3>
+      <div class="syrup-grid">
+        <div class="syrup"><h4>Simple syrup</h4><p>1 part sugar to 1 part hot water; stir until clear. Keeps about a month in the fridge. Used in 66 recipes.</p></div>
+        <div class="syrup"><h4>Honey syrup</h4><p>1 part honey to 1 part warm water; stir to blend. Keeps about two weeks. Used in 12 recipes.</p></div>
+        <div class="syrup"><h4>Ice</h4><p>Lots of it, made fresh. Large 2-inch cubes melt slowly for drinks served on a big cube; regular cubes are for shaking.</p></div>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+  // How to use / Bar essentials sheets. Uses only the page's own controls (the
+  // shelf's add form and grid), so it stays independent of the main script.
+  (function(){
+    function open(id){
+      var d=document.getElementById(id);
+      if(d.showModal){ try{ d.showModal(); }catch(e){ d.setAttribute('open',''); } } else { d.setAttribute('open',''); }
+      d.querySelector('.sheet-body').scrollTop=0;
+    }
+    function close(d){ if(d.close) d.close(); else d.removeAttribute('open'); }
+    document.getElementById('howToBtn').addEventListener('click', function(){ open('howToSheet'); });
+    document.getElementById('essentialsBtn').addEventListener('click', function(){ open('essentialsSheet'); });
+    document.querySelectorAll('dialog.sheet').forEach(function(d){
+      d.addEventListener('click', function(e){
+        if(e.target.closest('[data-close]') || e.target === d) close(d);
+      });
+    });
+    document.querySelectorAll('.tier-add').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var input=document.getElementById('addInput'), form=document.getElementById('addForm');
+        if(!input || !form) return;
+        input.value=btn.getAttribute('data-items');
+        form.dispatchEvent(new Event('submit',{cancelable:true}));
+        var ready=document.querySelectorAll('#grid .pill-ready').length;
+        btn.textContent='✓ Added';
+        btn.classList.add('done');
+        var note=btn.nextElementSibling;
+        if(note) note.textContent=ready+' drinks ready on this shelf';
+        setTimeout(function(){ btn.textContent='Add to my shelf'; btn.classList.remove('done'); }, 4000);
+      });
+    });
+  })();
+  </script>
 
   <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 269 recipes, all from publicly available sources: the IBA's official cocktail list, spirit producers' own published recipes, and Difford's Guide online.
     <p class="drink-responsibly">Please drink responsibly. Enjoy only if you're of legal drinking age, know your limits, and never drink and drive.</p>
@@ -3346,7 +3561,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-13T04:35:22Z";
+  var CURRENT_VERSION = "2026-10-13T04:43:12Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
