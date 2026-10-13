@@ -143,7 +143,7 @@ exec(open('b4data.py').read())
 REDO2=[[(n,d,SC2[n]) for (n,d,_p) in OLD[i]] for i in range(15,30)]
 H=lambda t: f'\n  <h2 class="batch">{t}</h2>'
 RT=lambda g: new_prompt(g).replace(NEW_BASE, (NEW_BASE+STRICT).replace('real condensation, ice and liquid texture','clear ice and glossy liquid')).replace('only a light, natural mist of condensation on the outside, never a heavy coat of droplets or dots covering the glass','a dry, smooth outside of the glass').replace('only a light, fine mist of condensation on the outside, never a heavy coat of droplets covering the glass','a dry, smooth outside of the glass')
-cards=H('Re-takes · F3–F5 · the 7 drinks held back in Batch 4 (F5 is a spare second try for three of them)')
+cards=H('Re-takes · F3–F6 · drinks held back for texture (F5 is a spare second try; F6 re-takes R28)')
 for i,g in enumerate(RETAKE3,3): cards+=card(f'F{i}',f'F{i}',g,RT(g))
 cards+=H('Fix · prompt F2 · re-take El Diablo, St-Germain Cocktail and Bermuda Rum Swizzle')+card('F2','F2',RETAKE,new_prompt(RETAKE))
 cards+=H('Done · Batch 4 · prompts 46–72')

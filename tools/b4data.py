@@ -144,3 +144,4 @@ RETAKE3=[[("Brooklyn Godfather","rocks glass with one large ice cube, deep amber
  [("Go Go Highball","highball glass with ice, deep cherry-amber, black cherries on a pick","a 1960s mod lounge in orange and white"),
  ("Brooklyn Godfather","rocks glass with one large ice cube, deep amber, an orange peel","a Brooklyn bar with exposed brick and Edison bulbs"),
  ("Kahlua Ginger Ale","highball glass with ice, light coffee-amber, a lime wedge","a sunny beach-shack bar")]]
+RETAKE3.append([(n,d,SC2[n]) for n,d in [("Kentucky Mule","highball glass with ice, golden-amber ginger beer, a lime wheel and a mint sprig"),("Jamaican Mule","highball glass with ice, deeper amber-brown ginger beer, a lime wedge"),("Bourbon Highball","highball glass with ice, pale amber, a lemon wedge")]])
