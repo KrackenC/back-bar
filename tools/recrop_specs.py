@@ -23,7 +23,8 @@ S={6:[('Daiquiri','8,498,140,872,35,500'),('Tom Collins','516,1024,70,872,625,91
 27:[('Old Cuban','4,506,136,820,44,462'),('Ward Eight','516,1020,128,818,552,986'),('Death in the Afternoon','1032,1532,44,846,1146,1410')],
 28:[('Airmail','4,506,56,845,154,412'),('Seelbach','516,1020,55,842,644,895'),('Russian Spring Punch','1032,1532,152,840,1126,1442')],
 29:[('Garibaldi','4,506,228,772,76,486'),('Godmother','516,1020,294,764,576,964'),('French Connection','1032,1532,302,772,1094,1486')],
-30:[('Oaxaca Old Fashioned','4,506,255,738,74,474'),('Ti Punch','516,1020,370,725,618,920'),('Gold Rush','1032,1532,255,724,1074,1454')]}
+30:[('Oaxaca Old Fashioned','4,506,255,738,74,474'),('Ti Punch','516,1020,370,725,618,920'),('Gold Rush','1032,1532,255,724,1074,1454')],
+31:[('Kingston Negroni','4,506,248,748,74,476'),('White Negroni','516,1020,278,748,578,993'),('Blood Orange Margarita','1032,1532,240,745,1064,1470')]}
 import json; json.dump({k:[n for n,_ in v] for k,v in S.items()},open('recrop_map.json','w'),ensure_ascii=False)
 for k,v in S.items():
     subprocess.run(['python3','tools/panels.py',f'user{k}/src.png',f'fit{k}']+[x for _,x in v],check=True)
