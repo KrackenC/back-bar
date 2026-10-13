@@ -84,6 +84,7 @@ SCENE={'R1':[('Daiquiri','2,502,234,815,80,468'),('Tom Collins','512,1022,125,84
  '63':[('Grand Old Fashioned','2,504,398,792,108,414,140'),('Grand Sidecar','516,1022,282,856,584,990,140'),('Double Oaked Bourbon Orange Fizz','1034,1534,178,848,1168,1442')],  # source user63b
  '64':[('Piña Verde','2,504,152,836,90,366'),('Division Bell','516,1022,284,846,586,1018,140'),('G-Mentini','1034,1534,256,860,1088,1468,140')],  # source user64b
  '65':[('Rampede','2,504,176,836,104,384'),('Hennessy Berry','516,1022,412,830,604,946,140'),('Hennessy Sour Pineapple','1034,1534,438,812,1140,1494,140')],  # source user65b
+ '66':[('Kahlua Sour (held: pebbled glass)','2,504,376,846,78,438,140'),('Kahlua Ginger Ale (held: pebbled glass)','516,1022,194,856,646,912'),('Tanqueray Tiny Ten','1034,1534,302,870,1092,1512,140')],  # source user66b
  'F1':[('Tom Collins','2,504,120,860,150,427'),('Americano','516,1022,188,855,646,888'),('Shirley Temple','1034,1534,150,852,1166,1464')]}  # F1 supersedes R1/R3/R4 for these three
 import json; json.dump({k:[n for n,_ in v] for k,v in S.items()},open('recrop_map.json','w'),ensure_ascii=False)
 for k,v in S.items():
