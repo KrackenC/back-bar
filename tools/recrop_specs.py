@@ -14,7 +14,10 @@ S={6:[('Daiquiri','8,498,140,872,35,500'),('Tom Collins','516,1024,70,872,625,91
 18:[('Rum Punch','4,506,40,852,105,470'),('Blue Margarita','516,1020,146,828,562,1018'),('Ranch Water','1032,1532,138,838,1140,1460')],
 19:[('Hemingway Daiquiri','4,506,155,818,38,505'),('Kamikaze','516,1020,157,818,550,1018'),('Lemon Drop Martini','1032,1532,203,822,1065,1495')],
 20:[('French Martini','4,506,190,812,45,455'),('Blood and Sand','516,1020,185,818,560,995'),('Martinez','1032,1532,170,812,1080,1515')],
-21:[('Paper Plane','4,506,195,818,48,450'),('Champagne Cocktail','516,1020,45,862,668,892'),('Gibson','1032,1532,145,818,1080,1500')]}
+21:[('Paper Plane','4,506,195,818,48,450'),('Champagne Cocktail','516,1020,45,862,668,892'),('Gibson','1032,1532,145,818,1080,1500')],
+22:[('Southside','4,506,160,822,42,462'),('Alexander','516,1020,178,812,552,985'),('Between the Sheets','1032,1532,160,818,1078,1502')],
+23:[('Brandy Crusta','4,506,148,820,38,466'),('Casino','516,1020,185,818,553,982'),('Hanky Panky','1032,1532,160,815,1076,1506')],
+24:[('Mary Pickford','4,506,112,820,46,462'),('Monkey Gland','516,1020,188,818,552,975'),('Remember the Maine','1032,1532,128,815,1074,1486')]}
 import json; json.dump({k:[n for n,_ in v] for k,v in S.items()},open('recrop_map.json','w'),ensure_ascii=False)
 for k,v in S.items():
     subprocess.run(['python3','tools/panels.py',f'user{k}/src.png',f'fit{k}']+[x for _,x in v],check=True)
