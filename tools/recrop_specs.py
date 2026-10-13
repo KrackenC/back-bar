@@ -136,6 +136,8 @@ SCENE={'R1':[('Daiquiri','2,502,234,815,80,468'),('Tom Collins','512,1022,125,84
  'N3':[('French Martini','2,504,292,876,68,442,140'),('Havana Special','516,1022,294,872,584,952,140'),('Grand Frozen Margarita','1034,1534,290,884,1098,1472,140')],  # source userN3 (no garnish)
  'N4':[('Gin Fizz','2,504,256,866,146,392'),('Greyhound','516,1022,300,866,644,898'),('Brass Monkey','1034,1534,298,860,1176,1412')],  # source userN4 (no garnish)
  'N5':[('New York Sour','2,504,422,840,72,442,140'),('Disaronno Sour','516,1022,432,840,602,940,140'),('Hennessy Berry','1034,1534,430,830,1122,1464,140')],  # source userN5 (no garnish)
+ 'N6':[('Amaretto Fizz','2,754,90,912,272,520,158,1,90'),('Rampede','782,1534,228,892,1016,1290')],  # source userN6 (two wide panels, no garnish)
+ 'Q1':[('Italian Sun','0,1024,582,1272,255,778,140')],  # source userQ1 (single portrait)
  'F1':[('Tom Collins','2,504,120,860,150,427'),('Americano','516,1022,188,855,646,888'),('Shirley Temple','1034,1534,150,852,1166,1464')]}  # F1 supersedes R1/R3/R4 for these three
 import json; json.dump({k:[n for n,_ in v] for k,v in S.items()},open('recrop_map.json','w'),ensure_ascii=False)
 for k,v in S.items():
