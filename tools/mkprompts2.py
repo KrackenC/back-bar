@@ -12,9 +12,11 @@ NEW_BASE=("Photorealistic, editorial cocktail photograph, landscape 3:2 (1536×1
 "pebbled, crackled or scaly texture.")
 FIZZ_NOTE=(" Make the carbonation look real: thin, smooth, crystal-clear glass walls; fine, separate streams of tiny "
 "bubbles rising through clear liquid, with clear liquid visible between them; a few small bubbles clinging to the ice and "
-"the inside of the glass; a delicate fizz at the surface; only a light, natural mist of condensation on the outside.")
+"the inside of the glass; a delicate fizz at the surface; only a light, natural mist of condensation on the outside, never a "
+"heavy coat of droplets or dots covering the glass.")
 ICE_NOTE=(" The ice must look real: crystal-clear, smooth-faced ice with soft rounded edges, like polished glass, with no cracks, "
-"veins or crackle pattern inside it; the spirit around it is clear and glossy with no texture in the liquid.")
+"veins or crackle pattern inside it; the spirit around it is clear and glossy with no texture in the liquid; only a light, "
+"fine mist of condensation on the outside, never a heavy coat of droplets covering the glass.")
 import re as _re
 ICY=_re.compile(r"ice cube|with ice|over ice|crushed ice", _re.I)
 FIZZY=_re.compile(r"sparkling (?!sugar)|soda|fizz|bubbl|tonic|ginger beer|ginger ale|\bcola\b", _re.I)
