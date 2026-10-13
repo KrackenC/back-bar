@@ -131,3 +131,16 @@ B4=[
 ("50/50 Margarita","rocks glass with ice and a salt rim, pale golden","a Mexico City rooftop at dusk with the skyline glowing")]
 assert len(B4)==81 and len({x[0] for x in B4})==81
 B4G=[B4[i:i+3] for i in range(0,81,3)]
+# Re-takes after Batch 4 (held for crackled ice / pebbled glass / dense speckle)
+STRICT=(" STRICT: the outside of the glass is dry and perfectly smooth, with no droplets, dots, beads, frost or pebbled "
+"texture anywhere; the ice is crystal-clear like polished glass with no cracks, lines or crackle; the liquid is clear and "
+"glossy with only a few small, widely spaced bubbles.")
+RETAKE3=[[("Brooklyn Godfather","rocks glass with one large ice cube, deep amber, an orange peel","a Brooklyn bar with exposed brick and Edison bulbs"),
+ ("Chicago Fizz","highball glass without ice, clear deep rosy wine-red with a thick white foam head","an empty 1920s Chicago jazz club with a brass trumpet resting on the table, no people"),
+ ("Toasted Old Fashioned Godfather","rocks glass with one large ice cube, deep amber, an orange peel","a dark bar with a torch-toasted oak plank and a curl of smoke")],
+ [("Kahlua Sour","rocks glass with ice, deep coffee-brown with a smooth white foam top, a lemon wedge","a Mexican coffee plantation with red coffee cherries"),
+ ("Kahlua Ginger Ale","highball glass with ice, light coffee-amber, a lime wedge","a sunny beach-shack bar"),
+ ("Johnnie & Ginger","highball glass with ice, pale amber, a slice of fresh ginger and a star anise","a modern Tokyo bar with soft paper-lantern light")],
+ [("Go Go Highball","highball glass with ice, deep cherry-amber, black cherries on a pick","a 1960s mod lounge in orange and white"),
+ ("Brooklyn Godfather","rocks glass with one large ice cube, deep amber, an orange peel","a Brooklyn bar with exposed brick and Edison bulbs"),
+ ("Kahlua Ginger Ale","highball glass with ice, light coffee-amber, a lime wedge","a sunny beach-shack bar")]]

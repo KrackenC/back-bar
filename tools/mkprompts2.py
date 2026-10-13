@@ -142,8 +142,11 @@ def card(pid,label,g,text,check=True):
 exec(open('b4data.py').read())
 REDO2=[[(n,d,SC2[n]) for (n,d,_p) in OLD[i]] for i in range(15,30)]
 H=lambda t: f'\n  <h2 class="batch">{t}</h2>'
-cards=H('Fix · prompt F2 · re-take El Diablo, St-Germain Cocktail and Bermuda Rum Swizzle')+card('F2','F2',RETAKE,new_prompt(RETAKE))
-cards+=H('Batch 4 · prompts 46–72 · the last 81 drinks')
+RT=lambda g: new_prompt(g).replace(NEW_BASE, NEW_BASE+STRICT)
+cards=H('Re-takes · F3–F5 · the 7 drinks held back in Batch 4 (F5 is a spare second try for three of them)')
+for i,g in enumerate(RETAKE3,3): cards+=card(f'F{i}',f'F{i}',g,RT(g))
+cards+=H('Fix · prompt F2 · re-take El Diablo, St-Germain Cocktail and Bermuda Rum Swizzle')+card('F2','F2',RETAKE,new_prompt(RETAKE))
+cards+=H('Done · Batch 4 · prompts 46–72')
 for i,g in enumerate(B4G,46): cards+=card(str(i),str(i),g,new_prompt(g))
 cards+=H('Redo · prompts R17–R31 · Batch 2 drinks in their own scenes')
 for i,g in enumerate(REDO2,17): cards+=card(f'R{i}',f'R{i}',g,new_prompt(g))
@@ -157,7 +160,7 @@ old=''
 for i,g in enumerate(OLD,1): old+=card(f'old{i}',str(i),g,old_prompt(g),check=False)
 t=open('prompts_tpl.html').read()
 t=t.replace('<p class="lede">Thirty ChatGPT image prompts covering 90 drinks, in two batches of 45. Each one makes a three-panel image in the same dark-slate style as your Daiquiri, Tom Collins and Aviation set.</p>',
- f'<p class="lede">{TOTAL} ChatGPT image prompts, one image each with three drinks, every drink in its own scene. New at the top: F2 re-takes three drinks, Batch 4 covers the last 81 drinks, and R17–R31 redo Batch 2 in the new style. Finished prompts are further down.</p>')
+ f'<p class="lede">{TOTAL} ChatGPT image prompts, one image each with three drinks, every drink in its own scene. New at the top: F3–F5 re-take the drinks held back in Batch 4, then R17–R31 redo Batch 2 in the new style. Finished prompts are further down.</p>')
 t=t.replace("0 of 30 done",f"0 of {TOTAL} done").replace("n+' of 30 done'",f"n+' of {TOTAL} done'").replace("(n/30*100)",f"(n/{TOTAL}*100)")
 t=t.replace("document.querySelectorAll('.prompt').forEach","document.querySelectorAll('.wrap > .list > .prompt').forEach")
 t=t.replace("el.querySelector('input').checked=on;","var inp=el.querySelector('input'); if(inp) inp.checked=on;")
