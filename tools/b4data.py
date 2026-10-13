@@ -217,3 +217,5 @@ U=[
 [("Temperance Piña Colada","hurricane glass of thick, smooth, creamy pale-yellow, a pineapple wedge and a cherry","a family-friendly poolside cabana with striped towels"),
  ("Bramble","rocks glass with crushed ice, clear gin with deep purple blackberry liqueur bleeding down through it, a blackberry and lemon slice","an English countryside hedgerow with wild blackberries")]]
 assert sum(len(g) for g in U)==50 and len({d[0] for g in U for d in g})==50
+# QC fix (2026-10-12): Italian Sun's Batch 4 prompt used Italian Sunset's recipe by mistake
+QC1=("Italian Sun","rocks glass with ice, pale straw-gold white wine and limoncello, a lemon wheel","a sunny Amalfi lemon-grove terrace with a whitewashed wall and terracotta pots, bright midday light, lemons and hazelnuts")

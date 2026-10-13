@@ -151,7 +151,9 @@ def RT2(g):
     if len(g)==2:
         t=t.replace('MIDDLE panel:','RIGHT panel:').replace('split into three equal vertical panels','split into two equal vertical panels').replace('The three panels must not look alike','The two panels must not look alike')
     return t
-cards=H('Open · U1–U17 · the 50 classics still on stock photos, in their own scenes (U17 has two drinks)')
+n,d,sc=QC1
+cards=H('Open · Q1 · photo fix found in QC (one drink)')+card('Q1','Q1 · Italian Sun',[QC1],SINGLE_BASE+f"\n\nThe drink: {n}, a {d}. Scene: {sc}.")
+cards+=H('Done · U1–U17 · the 50 classics still on stock photos, in their own scenes (U17 has two drinks)')
 for i,g in enumerate(U,1): cards+=card(f'U{i}',f'U{i}',g,RT2(g))
 cards+=H('Done · T1–T2 · last re-takes')
 for i,g in enumerate(TRIO,1): cards+=card(f'T{i}',f'T{i}',g,RT(g))
@@ -172,7 +174,7 @@ old=''
 for i,g in enumerate(OLD,1): old+=card(f'old{i}',str(i),g,old_prompt(g),check=False)
 t=open('prompts_tpl.html').read()
 t=t.replace('<p class="lede">Thirty ChatGPT image prompts covering 90 drinks, in two batches of 45. Each one makes a three-panel image in the same dark-slate style as your Daiquiri, Tom Collins and Aviation set.</p>',
- f'<p class="lede">{TOTAL} ChatGPT image prompts, one image each with three drinks, every drink in its own scene. All 269 drinks have their own photo. U1–U17 at the top bring the last 50 classics (still on stock photos) into the same scene style; everything below them is done. Finished prompts are further down.</p>')
+ f'<p class="lede">{TOTAL} ChatGPT image prompts, one image each with three drinks, every drink in its own scene. All 269 drinks have their own photo. Q1 at the top fixes one photo found in a quality check; everything below it is done. Finished prompts are further down.</p>')
 t=t.replace("0 of 30 done",f"0 of {TOTAL} done").replace("n+' of 30 done'",f"n+' of {TOTAL} done'").replace("(n/30*100)",f"(n/{TOTAL}*100)")
 t=t.replace("document.querySelectorAll('.prompt').forEach","document.querySelectorAll('.wrap > .list > .prompt').forEach")
 t=t.replace("el.querySelector('input').checked=on;","var inp=el.querySelector('input'); if(inp) inp.checked=on;")
