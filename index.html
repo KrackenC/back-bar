@@ -191,6 +191,9 @@
     transition: border-color .15s ease;
   }
   .shelf-toggle .subhead{ font-size:.64rem; transition: color .15s ease; }
+  #shelfToggle .subhead{ font-size:1.25rem; text-transform:none; letter-spacing:.01em; }
+  #shelfToggle .subhead .count{ font-size:.85rem; }
+  @media (max-width:520px){ #shelfToggle .subhead{ font-size:1.1rem; } }
   .shelf-toggle:hover{ border-color:var(--accent); }
   .shelf-toggle:hover .subhead{ color:var(--accent-hover); }
   .shelf-toggle-icon{
@@ -3892,7 +3895,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-14T00:03:59Z";
+  var CURRENT_VERSION = "2026-10-14T00:15:00Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
