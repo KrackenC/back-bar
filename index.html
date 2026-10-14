@@ -226,7 +226,7 @@
     border-color:rgba(224,145,103,.55);
     background:linear-gradient(180deg, #303D5B 0%, #1E2A44 52%, #172034 100%);
   }
-  #queueToggle .shelf-toggle-icon, #newWeekToggle .shelf-toggle-icon, #shelfToggle .shelf-toggle-icon{
+  #queueToggle .shelf-toggle-icon, #newWeekToggle .shelf-toggle-icon, #shelfToggle .shelf-toggle-icon, #welcomeToggle .shelf-toggle-icon{
     width:1.9rem; height:1.9rem; border-radius:50%; display:grid; place-items:center;
     font-size:1.1rem; color:var(--accent-hover);
     background:linear-gradient(180deg, #121A2B 0%, #1B2540 100%); border:1px solid #2E3B55;
@@ -405,7 +405,15 @@
     background:linear-gradient(160deg, rgba(201,122,74,.16), rgba(22,32,46,.9) 55%), var(--paper-raised);
     box-shadow:0 14px 30px -18px rgba(0,0,0,.8);
   }
-  .welcome h2{ font-size:1.7rem; font-weight:600; letter-spacing:.03em; line-height:1.15; }
+  .welcome h2{ font-size:1.7rem; font-weight:600; letter-spacing:.03em; line-height:1.15; margin:0; }
+  .welcome-head{ display:flex; align-items:center; gap:.8rem; width:100%; min-height:44px; padding:0; background:none; border:0; color:inherit; font:inherit; letter-spacing:inherit; text-align:left; cursor:pointer; }
+  .welcome-head .welcome-title{ flex:1; min-width:0; }
+  .welcome-hint{ display:none; font-family:'Archivo', ui-sans-serif, system-ui, sans-serif; font-size:.78rem; letter-spacing:0; color:var(--ink-soft); font-weight:500; margin-left:.6em; }
+  .welcome.folded{ padding:.55rem 1.1rem .55rem 1.4rem; }
+  .welcome.folded h2{ font-size:1.2rem; }
+  .welcome.folded .welcome-hint{ display:inline; }
+  .welcome-head:hover .shelf-toggle-icon{ border-color:var(--accent); }
+  .sheet-lede .starter-btn{ padding:0; font-size:inherit; text-decoration:underline; text-underline-offset:3px; }
   .welcome p{ margin:.45rem 0 0; color:var(--ink-soft); max-width:60ch; line-height:1.5; }
   .welcome-actions{ display:grid; grid-template-columns:repeat(auto-fit, minmax(13rem, 1fr)); gap:.7rem; margin-top:1.1rem; }
   .welcome-btn{
@@ -867,13 +875,15 @@
   </header>
 
   <main class="app" id="app">
-    <section class="welcome" id="welcome" hidden aria-label="Getting started">
-      <h2>Welcome to Back Bar</h2>
+    <section class="welcome" id="welcome" aria-label="Getting started">
+      <h2><button class="welcome-head" id="welcomeToggle" type="button" aria-expanded="true" aria-controls="welcomeBody"><span class="welcome-title">Welcome to Back Bar<span class="welcome-hint">Getting started tips</span></span><span class="shelf-toggle-icon" aria-hidden="true">–</span></button></h2>
+      <div id="welcomeBody">
       <p>Tell it what bottles you have, and it shows every cocktail you can pour right now, out of 269 recipes. Pick a way to start:</p>
       <div class="welcome-actions">
         <button class="welcome-btn primary" type="button" id="welcomeEssentials"><b>Start with the essentials</b><span>Adds 13 basics (gin, vodka, bourbon, rum, tequila, citrus, syrup) and shows the 22 drinks they make.</span></button>
         <button class="welcome-btn" type="button" id="welcomeOwn"><b>Add my own bottles</b><span>Type what's on your shelf, or tap through the category lists.</span></button>
         <button class="welcome-btn" type="button" id="welcomeBrowse"><b>Just browse recipes</b><span>Look through every drink first. You can add bottles any time.</span></button>
+      </div>
       </div>
     </section>
 
@@ -964,6 +974,7 @@
           <p>After you pour, open the drink and tap <b>Made it?</b>. Back Bar remembers how many times you've made each one and when, and the <b>Made before</b> filter shows your history.</p></div></li>
       </ol>
       <p class="sheet-lede">New to mixing drinks? <b>Bar essentials</b>, at the top of the page, lists the bottles, tools and glasses worth starting with.</p>
+      <p class="sheet-lede">Want the getting-started panel back? <button class="starter-btn" id="showWelcomeBtn" type="button">Show the welcome tips</button>. It also stays at the top of the page, folded to one line once your shelf has bottles; tap it to open it.</p>
       <h3><span class="kicker">Behind the bar</span>Tips for better drinks</h3>
       <ul class="tip-list">
         <li><b>Shake</b> anything with citrus, cream or egg, hard, with plenty of ice, for 10 to 15 seconds. <b>Stir</b> drinks made only of spirits (Martini, Manhattan, Negroni) for about 30 seconds, so they stay silky and clear.</li>
@@ -3518,9 +3529,32 @@ var DRINK_PHOTOS = [
   // ---------- UX pass: welcome panel, shelf summary, undo ----------
   var WELCOME_KEY = 'backbar.welcomeDismissed.v1';
   function welcomeDismissed(){ try{ return localStorage.getItem(WELCOME_KEY) === '1'; }catch(e){ return false; } }
+  // The welcome panel always stays on the page. It opens by itself only while the
+  // shelf is empty and it hasn't been dismissed; otherwise it folds to one line.
+  // welcomeOpen is null (automatic) until the visitor taps the header.
+  var welcomeOpen = null;
+  function setWelcomeOpen(open){
+    var w = document.getElementById('welcome'), t = document.getElementById('welcomeToggle');
+    w.classList.toggle('folded', !open);
+    document.getElementById('welcomeBody').hidden = !open;
+    t.setAttribute('aria-expanded', open ? 'true' : 'false');
+    t.querySelector('.shelf-toggle-icon').textContent = open ? '–' : '+';
+  }
+  document.getElementById('welcomeToggle').addEventListener('click', function(){
+    welcomeOpen = document.getElementById('welcomeBody').hidden;
+    setWelcomeOpen(welcomeOpen);
+  });
+  document.getElementById('showWelcomeBtn').addEventListener('click', function(){
+    try{ localStorage.removeItem(WELCOME_KEY); }catch(e){}
+    welcomeOpen = true;
+    setWelcomeOpen(true);
+    var d = document.getElementById('howToSheet');
+    if(d.close) d.close(); else d.removeAttribute('open');
+    document.getElementById('welcome').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
   function afterRender(){
     var empty = have.size === 0;
-    document.getElementById('welcome').hidden = !empty || welcomeDismissed();
+    setWelcomeOpen(welcomeOpen === null ? (empty && !welcomeDismissed()) : welcomeOpen);
     document.querySelector('header.masthead').classList.toggle('empty-shelf', empty);
     var sum = document.getElementById('shelfSummary');
     if(sum) sum.innerHTML = empty ? '' : '<span class="sum-shelf">· ' + String(SHELF_LABELS[activeShelf]).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }) + ' </span><span class="sum-label">· ' + have.size + (have.size === 1 ? ' bottle' : ' bottles') + '</span>';
@@ -3631,6 +3665,7 @@ var DRINK_PHOTOS = [
     showUndo('Shelf cleared', function(){ restoreShelf(before); });
   });
   document.getElementById('welcomeEssentials').addEventListener('click', function(){
+    welcomeOpen = null;
     var before = snapshotShelf();
     ESSENTIALS.forEach(function(id){ if(byId[id]) have.set(id, byId[id]); });
     persist();
@@ -3650,6 +3685,7 @@ var DRINK_PHOTOS = [
   });
   document.getElementById('welcomeBrowse').addEventListener('click', function(){
     try{ localStorage.setItem(WELCOME_KEY, '1'); }catch(e){}
+    welcomeOpen = null;
     afterRender();
     goToRecipes();
   });
@@ -3895,7 +3931,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-14T00:15:00Z";
+  var CURRENT_VERSION = "2026-10-14T01:20:49Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
