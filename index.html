@@ -193,7 +193,13 @@
   .shelf-toggle .subhead{ font-size:.64rem; transition: color .15s ease; }
   #shelfToggle .subhead{ font-size:1.25rem; text-transform:none; letter-spacing:.01em; }
   #shelfToggle .subhead .count{ font-size:.85rem; }
-  @media (max-width:520px){ #shelfToggle .subhead{ font-size:1.1rem; } }
+  @media (max-width:520px){
+    #shelfToggle{ gap:.5rem; }
+    #shelfToggle .subhead{ display:flex; align-items:center; flex:1; min-width:0; white-space:nowrap; font-size:clamp(.92rem, 4.4vw, 1.1rem); letter-spacing:0; }
+    #shelfToggle .backbar-icon{ width:2.7rem; height:2.7rem; margin:-.3rem .55rem -.3rem -.3rem; flex-shrink:0; }
+    #shelfToggle .subhead .count{ font-size:.8rem; margin-left:.4em; letter-spacing:0; flex-shrink:0; }
+    #shelfToggle .sum-word{ display:none; }
+  }
   .shelf-toggle:hover{ border-color:var(--accent); }
   .shelf-toggle:hover .subhead{ color:var(--accent-hover); }
   .shelf-toggle-icon{
@@ -3557,7 +3563,7 @@ var DRINK_PHOTOS = [
     setWelcomeOpen(welcomeOpen === null ? (empty && !welcomeDismissed()) : welcomeOpen);
     document.querySelector('header.masthead').classList.toggle('empty-shelf', empty);
     var sum = document.getElementById('shelfSummary');
-    if(sum) sum.innerHTML = empty ? '' : '<span class="sum-shelf">· ' + String(SHELF_LABELS[activeShelf]).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }) + ' </span><span class="sum-label">· ' + have.size + (have.size === 1 ? ' bottle' : ' bottles') + '</span>';
+    if(sum) sum.innerHTML = empty ? '' : '<span class="sum-shelf">· ' + String(SHELF_LABELS[activeShelf]).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }) + ' </span><span class="sum-label">· ' + have.size + '<span class="sum-word">' + (have.size === 1 ? ' bottle' : ' bottles') + '</span></span>';
   }
   var undoTimer = null;
   function showUndo(msg, undoFn){
@@ -3931,7 +3937,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-14T01:20:49Z";
+  var CURRENT_VERSION = "2026-10-14T02:28:01Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
