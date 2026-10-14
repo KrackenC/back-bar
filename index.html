@@ -451,12 +451,16 @@
   .tip-more[open] summary{ color:var(--ink-soft); }
   /* filters: one row of chips that scrolls sideways on narrow screens */
   .recipes-controls #filterSeg{
-    display:flex; flex-wrap:wrap; gap:.5rem; width:100%; overflow:visible;
-    border:none; background:none; padding:2px 2px 7px; scrollbar-width:none; -webkit-overflow-scrolling:touch;
-    grid-template-columns:none; grid-template-rows:none;
+    display:grid; grid-template-columns:repeat(8, minmax(0, 1fr)); grid-template-rows:none; grid-auto-flow:row;
+    gap:.5rem; width:100%; overflow:visible;
+    border:none; background:none; padding:2px 2px 7px;
   }
+  /* eight equal buttons: one row on wide screens, 4 x 2 on mid widths,
+     and two columns of four on phones (read down the first column, then the second) */
+  @media (max-width:1000px){ .recipes-controls #filterSeg{ grid-template-columns:repeat(4, minmax(0, 1fr)); } }
+  @media (max-width:640px){ .recipes-controls #filterSeg{ grid-template-columns:repeat(2, minmax(0, 1fr)); grid-template-rows:repeat(4, auto); grid-auto-flow:column; } }
   .recipes-controls #filterSeg::-webkit-scrollbar{ display:none; }
-  .recipes-controls #filterSeg button{ flex:0 0 auto; border-radius:999px; padding:.55rem 1.05rem; min-height:2.6rem; white-space:nowrap; }
+  .recipes-controls #filterSeg button{ width:100%; min-width:0; border-radius:999px; padding:.55rem .5rem; min-height:2.6rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-align:center; }
   .recipes-controls #filterSeg button + button{ border-left:1px solid #2E3B55; }
   /* bigger hit areas for the per-card actions (the glyphs stay the same size) */
   .fav-btn{ min-width:2.75rem; min-height:2.75rem; display:inline-flex; align-items:center; justify-content:center; margin:-.5rem -.35rem; }
@@ -3955,7 +3959,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-14T02:36:37Z";
+  var CURRENT_VERSION = "2026-10-14T02:46:33Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
