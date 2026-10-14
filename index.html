@@ -451,7 +451,7 @@
   .tip-more[open] summary{ color:var(--ink-soft); }
   /* filters: one row of chips that scrolls sideways on narrow screens */
   .recipes-controls #filterSeg{
-    display:flex; flex-wrap:nowrap; gap:.5rem; width:100%; overflow-x:auto; overflow-y:visible;
+    display:flex; flex-wrap:wrap; gap:.5rem; width:100%; overflow:visible;
     border:none; background:none; padding:2px 2px 7px; scrollbar-width:none; -webkit-overflow-scrolling:touch;
     grid-template-columns:none; grid-template-rows:none;
   }
@@ -989,7 +989,7 @@
         <li><div><h4>See what you can make</h4>
           <p><b>What You Can Make</b> lists every recipe. A green <b>Ready to pour</b> tag means you have everything. <b>Missing:</b> names the one thing you still need, and <b>Missing 3</b> means three things. The <b>Ready</b> and <b>Almost</b> counts in the header appear once your shelf has bottles. Back Bar counts close substitutes, so Cointreau covers triple sec, and any whiskey covers a recipe that just says whiskey.</p></div></li>
         <li><div><h4>Find the right drink</h4>
-          <p>Search by name or ingredient, or tap a filter: <b>All</b>, <b>Ready</b>, <b>Almost</b>, <b>Favorites</b>, <b>Made before</b>, <b>New this week</b>, <b>Up next</b> or <b>Mocktails</b>. On a phone, swipe the row sideways to see them all. Below the filters you can narrow by <b>Spirit</b>, change the <b>Sort</b> order, and switch measures between <b>oz</b> and <b>ml</b>. <b>Closest to ready</b> shows which drinks need just one more bottle, so you know what to buy next.</p></div></li>
+          <p>Search by name or ingredient, or tap a filter: <b>All</b>, <b>Ready</b>, <b>Almost</b>, <b>Favorites</b>, <b>Made before</b>, <b>New this week</b>, <b>Up next</b> or <b>Mocktails</b>. Below the filters you can narrow by <b>Spirit</b>, change the <b>Sort</b> order, and switch measures between <b>oz</b> and <b>ml</b>. <b>Closest to ready</b> shows which drinks need just one more bottle, so you know what to buy next.</p></div></li>
         <li><div><h4>Open a recipe</h4>
           <p>Tap any drink to open its full recipe: exact measures, the garnish, a note on technique and the bar tools you'll need. Tap it again to fold it away.</p></div></li>
         <li><div><h4>Plan your next round</h4>
@@ -3955,7 +3955,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-14T02:30:17Z";
+  var CURRENT_VERSION = "2026-10-14T02:36:37Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
