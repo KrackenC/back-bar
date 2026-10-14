@@ -435,7 +435,7 @@
     #welcome h2{ font-size:clamp(.92rem, 4.4vw, 1.1rem); letter-spacing:0; }
     /* phones: the note drops under the title so the title stays on one line */
     #welcome .welcome-title, #shelfToggle .sh-text{ display:flex; flex-direction:column; align-items:flex-start; line-height:1.2; }
-    #welcome .welcome-hint, #shelfToggle #shelfSummary{ font-size:.74rem; margin:.15rem 0 0; }
+    #welcome .welcome-hint, #shelfToggle #shelfSummary{ font-size:.74rem; margin:.15rem 0 0; white-space:normal; line-height:1.3; }
     #shelfSummary::before, #welcome .welcome-hint::before{ content:none; }
     #welcome.folded, #shelfToggle{ padding:.5rem .8rem .5rem 1rem; min-height:3.6rem; }
   }
@@ -934,7 +934,7 @@
 
     <section class="panel-shelf" id="panelShelf" aria-label="Your back bar">
       <button class="shelf-toggle" id="shelfToggle" type="button" aria-expanded="true" aria-controls="shelfBody">
-        <span class="subhead"><span class="sh-text">BUILD Your Back Bar<span class="count" id="shelfSummary">Choose your items</span></span></span>
+        <span class="subhead"><span class="sh-text">BUILD Your Back Bar<span class="count" id="shelfSummary">Choose your items, make the drink to your taste or mood</span></span></span>
         <span class="shelf-toggle-icon" aria-hidden="true">–</span>
       </button>
       <div id="shelfBody">
@@ -3602,7 +3602,7 @@ var DRINK_PHOTOS = [
     setWelcomeOpen(welcomeOpen === null ? (empty && !welcomeDismissed()) : welcomeOpen);
     document.querySelector('header.masthead').classList.toggle('empty-shelf', empty);
     var sum = document.getElementById('shelfSummary');
-    if(sum) sum.textContent = 'Choose your items';
+    if(sum) sum.textContent = 'Choose your items, make the drink to your taste or mood';
   }
   var undoTimer = null;
   function showUndo(msg, undoFn){
@@ -3976,7 +3976,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-14T03:12:58Z";
+  var CURRENT_VERSION = "2026-10-14T03:38:42Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
