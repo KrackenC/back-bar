@@ -550,6 +550,10 @@
     background-position:calc(100% - 15px) 52%, calc(100% - 10px) 52%; background-size:5px 5px; background-repeat:no-repeat;
   }
   .refine select:hover{ border-color:var(--accent); }
+  /* Spirit and Sort: same-width labels and boxes, so the boxes line up when stacked */
+  .refine > span{ display:inline-block; width:3.7em; }
+  .refine select{ width:12.5rem; max-width:100%; }
+  @media (max-width:640px){ .refine-row{ flex-direction:column; align-items:flex-start; } }
   .unit-toggle{ display:inline-flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; margin-left:auto; }
   .unit-toggle button{ border:none; background:var(--paper-raised); color:var(--ink-soft); font:700 .8rem 'Archivo', sans-serif; padding:.5rem .9rem; min-height:2.6rem; min-width:2.9rem; cursor:pointer; }
   .unit-toggle button.active{ background:var(--accent); color:var(--paper-sunken); }
@@ -3959,7 +3963,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-14T02:46:33Z";
+  var CURRENT_VERSION = "2026-10-14T03:02:43Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
