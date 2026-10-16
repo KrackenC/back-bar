@@ -1194,7 +1194,7 @@
   </dialog>
 
   <div class="undo-toast" id="undoToast" role="status" aria-live="polite"><span class="undo-msg"></span><button type="button">Undo</button></div>
-  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 269 recipes, all from publicly available sources: the IBA's official cocktail list, spirit producers' own published recipes, and Difford's Guide online.
+  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 275 recipes, all from publicly available sources: the IBA's official cocktail list, spirit producers' own published recipes, and Difford's Guide online.
     <div class="footer-actions"><button class="help-link" id="backupBtn" type="button" aria-haspopup="dialog">Back up or move your bar</button> <span style="margin:0 .5rem;color:var(--line)">·</span> <button class="reset-all-btn" id="resetAllBtn" type="button">Reset everything</button> <span style="margin-left:.4rem">Clears both shelves, favorites, Up Next and your Made history.</span></div>
     <p class="drink-responsibly">Please drink responsibly. Enjoy only if you're of legal drinking age, know your limits, and never drink and drive.</p>
   </footer>
@@ -1600,7 +1600,9 @@ var DRINK_PHOTOS = [
     {id:'coconut_syrup', name:'Coconut Syrup', category:'Syrup', group:'Syrups'},
     {id:'chocolate_syrup', name:'Chocolate Syrup', category:'Syrup', group:'Syrups'},
     {id:'peach_puree', name:'Peach Purée', category:'Fruit Purée', group:'Juice & Mixers'},
-    {id:'pineapple_syrup', name:'Pineapple Syrup', category:'Syrup', group:'Syrups'}
+    {id:'pineapple_syrup', name:'Pineapple Syrup', category:'Syrup', group:'Syrups'},
+    {id:'maple_syrup', name:'Maple Syrup', category:'Syrup', group:'Syrups'},
+    {id:'cinnamon_syrup', name:'Cinnamon Syrup', category:'Syrup', group:'Syrups'}
   ];
 
   var GROUP_ORDER = ['Spirits','Liqueurs & Fortified Wine','Bitters','Juice & Mixers','Syrups'];
@@ -1715,7 +1717,8 @@ var DRINK_PHOTOS = [
     {id:'carpano_antica', name:'Carpano Antica', category:'Fortified Wine', group:'Liqueurs & Fortified Wine', substitutesFor:'sweet_vermouth'},
     {id:'martini_rosso', name:'Martini Rosso', category:'Fortified Wine', group:'Liqueurs & Fortified Wine', substitutesFor:'sweet_vermouth'},
     {id:'roses_grenadine', name:"Rose's Grenadine", category:'Syrup', group:'Syrups', substitutesFor:'grenadine'},
-    {id:'roses_lime_juice', name:"Rose's Lime Juice", category:'Citrus Juice', group:'Juice & Mixers', substitutesFor:'lime_juice'}
+    {id:'roses_lime_juice', name:"Rose's Lime Juice", category:'Citrus Juice', group:'Juice & Mixers', substitutesFor:'lime_juice'},
+    {id:'branca_menta', name:'Branca Menta', category:'Mint Liqueur', group:'Liqueurs & Fortified Wine', substitutesFor:'creme_de_menthe'}
   ];
 
   // Alternate typed forms that don't reduce to the same text as the brand's
@@ -2552,6 +2555,23 @@ var DRINK_PHOTOS = [
       items:[{id:'mezcal', amt:'1 oz'},{id:'sherry', amt:'1 oz'},{id:'triple_sec', amt:'.5 oz', familyOk:true},{id:'lime_juice', amt:'.75 oz'},{id:'agave_syrup', amt:'.25 oz'}],
       garnish:'Salt rim', note:'Shake with ice and strain over fresh ice in a salt-rimmed glass; created around 2020 by Natasha Bermúdez at Llama San in New York, splitting the base evenly between mezcal and manzanilla sherry.'},
 
+    // ---------- Fernet-Branca ----------
+    {name:'Toronto Cocktail', base:'Whiskey', glass:'Coupe', method:'Stirred', added:'2026-10-16',
+      items:[{id:'rye_whiskey', amt:'1.75 oz', familyOk:true},{id:'fernet_branca', amt:'.25 oz'},{id:'maple_syrup', amt:'.25 oz'},{id:'angostura_bitters', amt:'1 dash'}],
+      garnish:'Orange peel', note:'Stir rye, Fernet-Branca, maple syrup, and bitters with ice, then strain into a chilled glass; a Manhattan variant dating to the 1920s that swaps vermouth for Fernet.'},
+    {name:'Fernandito', base:'Liqueur', glass:'Rocks', method:'Built', added:'2026-10-16',
+      items:[{id:'fernet_branca', amt:'1.5 oz'},{id:'cola', amt:'3.5 oz'}],
+      garnish:'Lime wedge', note:'Pour Fernet-Branca over ice in a double old-fashioned glass, top with cola, and stir gently; an Argentine bar order recognized by the IBA as an official New Era Drink.'},
+    {name:'Alligator', base:'Liqueur', glass:'Rocks', method:'Shaken', added:'2026-10-16',
+      items:[{id:'fernet_branca', amt:'2 oz'},{id:'triple_sec', amt:'.5 oz', familyOk:true},{id:'lime_juice', amt:'.75 oz'},{id:'cinnamon_syrup', amt:'.5 oz'}],
+      garnish:'—', note:'Shake with ice and strain over a large ice cube; created by Dante Wheat at Butchertown Social in Louisville.'},
+    {name:'The Waterfront', base:'Liqueur', glass:'Highball', method:'Built', added:'2026-10-16',
+      items:[{id:'fernet_branca', amt:'2 oz'},{id:'branca_menta', amt:'1 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'ginger_beer', amt:'top'}],
+      garnish:'Lime wheel, mint sprig', note:'Build the Fernet-Branca, Branca Menta, and lime over ice, top with ginger beer, and stir briefly; created by Damon Boelte for the opening menu of Prime Meats in Brooklyn as a minty riff on the Dark \'n\' Stormy.'},
+    {name:'Branca Smash', base:'Liqueur', glass:'Rocks', method:'Shaken', added:'2026-10-16',
+      items:[{id:'fernet_branca', amt:'2 oz'},{id:'pineapple_juice', amt:'2 oz'},{id:'lime_juice', amt:'1 oz'},{id:'simple_syrup', amt:'.67 oz'}],
+      garnish:'—', note:'Shake with ice and strain into a rocks glass over fresh ice; the pineapple and lime soften Fernet-Branca\'s bitter edge.'},
+
     // ---------- Mocktails (alcohol-free; recipes from Difford's Guide) ----------
     {name:'Shirley Temple', base:'Mocktail', glass:'Collins', method:'Built', added:'2026-10-07',
       items:[{id:'grenadine', amt:'.25 oz'},{id:'lemon_juice', amt:'.33 oz'},{id:'ginger_ale', amt:'5.5 oz'}],
@@ -2576,7 +2596,10 @@ var DRINK_PHOTOS = [
       garnish:'Pineapple wedge, cherry', note:'Blend with crushed ice until smooth and pour into a chilled glass: the Piña Colada without the rum.'},
     {name:'Mock Margarita', base:'Mocktail', glass:'Rocks', method:'Shaken', added:'2026-10-09',
       items:[{id:'lime_juice', amt:'1 oz'},{id:'lemon_juice', amt:'.5 oz'},{id:'agave_syrup', amt:'1 oz'},{id:'ginger_beer', amt:'1.33 oz'}],
-      garnish:'Salt rim, lime wheel', note:'Shaken with ice and strained over fresh ice in a salt-rimmed glass; adapted from a 2010 recipe by Cheri Loughlin, swapping the tequila and triple sec of a Margarita for ginger beer and agave.'}
+      garnish:'Salt rim, lime wheel', note:'Shaken with ice and strained over fresh ice in a salt-rimmed glass; adapted from a 2010 recipe by Cheri Loughlin, swapping the tequila and triple sec of a Margarita for ginger beer and agave.'},
+    {name:'Gentle Breeze', base:'Mocktail', glass:'Collins', method:'Built', added:'2026-10-16',
+      items:[{id:'cranberry_juice', amt:'4 oz'},{id:'grapefruit_juice', amt:'2 oz'}],
+      garnish:'Lime wedge', note:'Pour over ice and stir: a Sea Breeze without the vodka.'}
   ];
 
   var STARTER = ['gin','vodka','dry_vermouth','sweet_vermouth','campari','triple_sec','lime_juice','lemon_juice','simple_syrup','soda_water','angostura_bitters','bourbon'];
@@ -4102,7 +4125,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-14T03:52:09Z";
+  var CURRENT_VERSION = "2026-10-16T13:10:44Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
