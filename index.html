@@ -1012,7 +1012,7 @@
             <button data-filter="almost" type="button">Almost</button>
             <button data-filter="favorites" type="button">Favorites</button>
             <button data-filter="made" type="button">Made before</button>
-            <button data-filter="new" type="button">New this week</button>
+            <button data-filter="new" type="button">Just added</button>
             <button data-filter="next" type="button">Up next</button>
             <button data-filter="mocktails" type="button">Mocktails</button>
           </div>
@@ -1050,11 +1050,11 @@
         <li><div><h4>See what you can make</h4>
           <p><b>What You Can Make</b> lists every recipe. A green <b>Ready to pour</b> tag means you have everything. <b>Missing:</b> names the one thing you still need, and <b>Missing 3</b> means three things. The <b>Ready</b> and <b>Almost</b> counts in the header appear once your shelf has bottles. Back Bar counts close substitutes, so Cointreau covers triple sec, and any whiskey covers a recipe that just says whiskey.</p></div></li>
         <li><div><h4>Find the right drink</h4>
-          <p>Search by name or ingredient, or tap a filter: <b>All</b>, <b>Ready</b>, <b>Almost</b>, <b>Favorites</b>, <b>Made before</b>, <b>New this week</b>, <b>Up next</b> or <b>Mocktails</b>. Tap <b>Refine</b> to narrow by <b>Spirit</b>, change the <b>Sort</b> order, or switch measures between <b>oz</b> and <b>ml</b>. <b>Best next bottle</b> shows which one bottle would unlock the most drinks; tap <b>Add</b> to put it on your shelf. Back Bar remembers the filter you used last.</p></div></li>
+          <p>Search by name or ingredient, or tap a filter: <b>All</b>, <b>Ready</b>, <b>Almost</b>, <b>Favorites</b>, <b>Made before</b>, <b>Just added</b>, <b>Up next</b> or <b>Mocktails</b>. Tap <b>Refine</b> to narrow by <b>Spirit</b>, change the <b>Sort</b> order, or switch measures between <b>oz</b> and <b>ml</b>. <b>Best next bottle</b> shows which one bottle would unlock the most drinks; tap <b>Add</b> to put it on your shelf. Back Bar remembers the filter you used last.</p></div></li>
         <li><div><h4>Open a recipe</h4>
           <p>Tap any drink to open its full recipe: exact measures, the garnish, a note on technique and the bar tools you'll need. Tap it again to fold it away.</p></div></li>
         <li><div><h4>Plan your next round</h4>
-          <p>Tap the <b>☆</b> on a drink to save it as a favorite. Tap <b>+</b> to line it up to make next. The <b>Up next</b> filter lists your line-up in order and shows how many are in it, and tapping <b>+</b> again takes a drink off. <b>New this week</b> shows the latest recipes, added every Friday.</p></div></li>
+          <p>Tap the <b>☆</b> on a drink to save it as a favorite. Tap <b>+</b> to line it up to make next. The <b>Up next</b> filter lists your line-up in order and shows how many are in it, and tapping <b>+</b> again takes a drink off. <b>Just added</b> shows the newest batch of recipes; new drinks arrive in a monthly or quarterly release.</p></div></li>
         <li><div><h4>Mix, then mark it made</h4>
           <p>After you pour, open the drink and tap <b>Made it?</b>. Back Bar remembers how many times you've made each one and when, and the <b>Made before</b> filter shows your history.</p></div></li>
       </ol>
@@ -3613,7 +3613,7 @@ var DRINK_PHOTOS = [
         : filter === 'next'
         ? 'Nothing lined up yet. Tap + on a drink to add it to Up next.'
         : filter === 'new'
-        ? 'No new recipes yet. New ones arrive every Friday.'
+        ? 'No new recipes yet. New ones arrive in the next release.'
         : filter === 'made'
         ? 'Nothing made yet — tap Made it? on a recipe after you pour it.'
         : 'Nothing matches. Try a different filter or search term.';
@@ -4125,7 +4125,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-16T13:10:44Z";
+  var CURRENT_VERSION = "2026-10-18T23:47:49Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Back Bar Collection</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap">
+<style>
+  :root{ --paper:#0D1420; --raised:#16202E; --sunken:#080D15; --ink:#E7E9F0; --soft:#98A3BE; --line:#26324A;
+    --accent:#C97A4A; --accent2:#E09167; --good:#8FCBB0; color-scheme:dark; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--paper); color:var(--ink); font:15px/1.55 'Archivo', system-ui, sans-serif; }
+  .wrap{ max-width:880px; margin:0 auto; padding:2rem 16px 4rem; }
+  h1{ font:700 2.2rem/1.1 'Cormorant Garamond', Georgia, serif; letter-spacing:.04em; margin:0; }
+  h2{ font:700 1.45rem/1.2 'Cormorant Garamond', Georgia, serif; margin:2.2rem 0 .3rem; }
+  .lede{ color:var(--soft); max-width:62ch; margin:.6rem 0 0; }
+  .meta{ color:var(--soft); font-size:.85rem; margin:.2rem 0 1rem; }
+  .bar{ height:6px; background:var(--sunken); border-radius:3px; overflow:hidden; margin:.8rem 0 0; }
+  .bar i{ display:block; height:100%; width:0; background:var(--accent); transition:width .3s; }
+  .prompt{ border:1px solid var(--line); background:var(--raised); border-radius:8px; margin:0 0 1rem; overflow:hidden; }
+  .prompt.done{ opacity:.55; }
+  .prompt header{ display:flex; align-items:center; gap:.8rem; padding:.75rem .9rem; border-bottom:1px solid var(--line); flex-wrap:wrap; }
+  .prompt header h3{ flex:1; min-width:0; margin:0; font:600 .98rem 'Archivo', sans-serif; }
+  .prompt header label{ display:inline-flex; align-items:center; gap:.4rem; color:var(--accent2); font-weight:700; font-size:.8rem; cursor:pointer; }
+  .prompt header input{ width:1.1rem; height:1.1rem; accent-color:var(--accent); }
+  button.copy{ background:var(--accent); color:#1A0F08; border:0; border-radius:999px; font:700 .8rem 'Archivo', sans-serif; padding:.5rem 1rem; min-height:2.5rem; cursor:pointer; }
+  button.copy.ok{ background:var(--good); }
+  pre{ margin:0; padding:.9rem; white-space:pre-wrap; word-break:break-word; font:13px/1.5 ui-monospace, Menlo, monospace; color:#D5DAE6; max-height:16rem; overflow:auto; }
+  .drink{ border-top:1px solid var(--line); padding:.8rem 0; }
+  .drink:first-of-type{ border-top:0; }
+  .drink b{ font:700 1.1rem 'Cormorant Garamond', serif; }
+  .drink .sub{ color:var(--soft); font-size:.82rem; }
+  .drink ul{ margin:.35rem 0 0; padding-left:1.1rem; font-size:.88rem; }
+  .tag{ display:inline-block; font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:.1rem .45rem; border-radius:3px; margin-left:.4rem; vertical-align:2px; }
+  .tag.wait{ background:#332012; color:#D9915A; } .tag.live{ background:#16332A; color:var(--good); }
+  a{ color:var(--accent2); }
+  .empty{ color:var(--soft); font-style:italic; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Back Bar · Collection</h1>
+  <p class="lede">New drinks are collected here each week and added to the app in a monthly or quarterly release. Every drink without a photo gets a ChatGPT image prompt below, three drinks per image, each in its own scene.</p>
+  <p class="meta" id="summary">Loading…</p>
+
+  <h2>Image prompts</h2>
+  <p class="meta" id="promptMeta"></p>
+  <div class="bar"><i id="barFill"></i></div>
+  <div id="prompts" style="margin-top:1rem"></div>
+
+  <h2>Collected drinks</h2>
+  <p class="meta">Waiting for the next release, newest first.</p>
+  <div id="waiting"></div>
+
+  <h2>Released, photo still needed</h2>
+  <div id="live"></div>
+</div>
+<script>
+var T = {"BASE3": "Photorealistic, editorial cocktail photograph, landscape 3:2 (1536\u00d71024), split into three equal vertical panels separated by thin black gaps. Each panel is its OWN distinct photo shoot: its own backdrop, surface, color palette, lighting and mood, exactly as described below. The three panels must not look alike. In every panel: one cocktail standing centered, the entire glass visible from the top of the garnish down to the base; the glass fills about 70% of the panel height and no more than half its width; leave clear, uncluttered backdrop above the garnish and keep props low and to the sides so nothing touches the top edge. Rich, appetizing color, crisp focus on the glass, clear ice and glossy liquid, the setting softly blurred behind. No text, labels, logos, branded bottles, people or hands. Keep every surface natural and smooth: never cover the glass, liquid, ice or table in a uniform pebbled, crackled or scaly texture. STRICT: the outside of the glass is dry and perfectly smooth, with no droplets, dots, beads, frost or pebbled texture anywhere; the ice is crystal-clear like polished glass with no cracks, lines or crackle; the liquid is clear and glossy with only a few small, widely spaced bubbles.", "FIZZ": " Make the carbonation look real: thin, smooth, crystal-clear glass walls; fine, separate streams of tiny bubbles rising through clear liquid, with clear liquid visible between them; a few small bubbles clinging to the ice and the inside of the glass; a delicate fizz at the surface; a dry, smooth outside of the glass.", "ICE": " The ice must look real: crystal-clear, smooth-faced ice with soft rounded edges, like polished glass, with no cracks, veins or crackle pattern inside it; the spirit around it is clear and glossy with no texture in the liquid; a dry, smooth outside of the glass.", "SINGLE": "Photorealistic editorial cocktail photograph, portrait 2:3. ONE cocktail standing centered, the entire glass visible from the top of the garnish down to the base, filling about 70% of the frame height, with clear backdrop above the garnish. The glass is perfectly smooth, dry and crystal-clear on the outside: absolutely no water droplets, beads, dots, frost or pebbled texture on the glass or on the ice. The ice is clear like polished glass. The drink is clear and glossy with only a few small, widely spaced bubbles rising inside. Rich, appetizing color, crisp focus on the glass, the setting softly blurred behind. No text, labels, logos, people or hands.", "NOGAR": " NO GARNISH on this drink: nothing on the rim or in the glass, no citrus twist, peel, wheel, wedge, cherry, berries, fruit or pick; the glass and drink alone. Keep any fruit out of the scene too."};
+var KEY = 'backbar.pendingDone.v1';
+function load(){ try{ return JSON.parse(localStorage.getItem(KEY) || '{}'); }catch(e){ return {}; } }
+function save(o){ try{ localStorage.setItem(KEY, JSON.stringify(o)); }catch(e){} }
+var FIZZY = /sparkling (?!sugar)|soda|fizz|bubbl|tonic|ginger beer|ginger ale|\bcola\b/i;
+var ICY = /ice cube|with ice|over ice|crushed ice/i;
+function noGarnish(d){ return !d.garnish || /^[—–-]*$/.test(d.garnish.trim()) || /^none$/i.test(d.garnish.trim()); }
+function line(d){
+  var fizzy = d.fizzy === true || (d.fizzy !== false && FIZZY.test(d.look));
+  return d.name + ', a ' + d.look + '. Scene: ' + d.scene + '.' + (fizzy ? T.FIZZ : (ICY.test(d.look) ? (d.base === 'Mocktail' ? T.ICE.replace('the spirit around it', 'the drink around it') : T.ICE) : '')) + (noGarnish(d) ? T.NOGAR : '');
+}
+function promptFor(g){
+  if(g.length === 1) return T.SINGLE + '\n\nThe drink: ' + line(g[0]);
+  var base = T.BASE3, pos = ['LEFT', 'MIDDLE', 'RIGHT'];
+  if(g.length === 2){
+    base = base.replace('split into three equal vertical panels', 'split into two equal vertical panels').replace('The three panels must not look alike', 'The two panels must not look alike');
+    pos = ['LEFT', 'RIGHT'];
+  }
+  return base + '\n\n' + g.map(function(d, i){ return pos[i] + ' panel: ' + line(d); }).join('\n');
+}
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+function recipe(d){
+  return '<div class="drink"><b>' + esc(d.name) + '</b><span class="tag ' + (d.status === 'collected' ? 'wait">Waiting' : 'live">In the app') + '</span>' +
+    '<div class="sub">' + esc(d.base) + ' · ' + esc(d.glass) + ' · ' + esc(d.method) + (d.collected ? ' · collected ' + esc(d.collected) : '') +
+    (d.source && d.source.url ? ' · <a href="' + esc(d.source.url) + '" target="_blank" rel="noopener">' + esc(d.source.site || 'source') + '</a>' : (d.source && d.source.site ? ' · ' + esc(d.source.site) : '')) + '</div>' +
+    '<ul>' + d.items.map(function(it){ return '<li>' + esc(it.amt) + ' ' + esc(it.label || it.id.replace(/_/g, ' ')) + (it.optional ? ' (optional)' : '') + '</li>'; }).join('') + '</ul>' +
+    '<div class="sub">Garnish: ' + esc(noGarnish(d) ? 'none' : d.garnish) + (d.note ? ' · ' + esc(d.note) : '') + '</div></div>';
+}
+fetch('drinks.json?_=' + Date.now()).then(function(r){ return r.json(); }).then(function(data){
+  var all = data.drinks || [];
+  var waiting = all.filter(function(d){ return d.status === 'collected'; });
+  var needPhoto = all.filter(function(d){ return !d.photo; });
+  document.getElementById('summary').textContent = waiting.length + ' collected and waiting for release · ' + needPhoto.length + ' need a photo';
+  var groups = [];
+  for(var i = 0; i < needPhoto.length; i += 3) groups.push(needPhoto.slice(i, i + 3));
+  var done = load(), box = document.getElementById('prompts');
+  function refresh(){
+    var ids = groups.map(function(g){ return g.map(function(d){ return d.name; }).join(' · '); });
+    var n = ids.filter(function(id){ return done[id]; }).length;
+    document.getElementById('promptMeta').textContent = groups.length ? n + ' of ' + groups.length + ' made' : '';
+    document.getElementById('barFill').style.width = groups.length ? (n / groups.length * 100) + '%' : '0';
+  }
+  if(!groups.length) box.innerHTML = '<p class="empty">Every drink has its photo.</p>';
+  groups.forEach(function(g, k){
+    var id = g.map(function(d){ return d.name; }).join(' · '), text = promptFor(g);
+    var el = document.createElement('article');
+    el.className = 'prompt' + (done[id] ? ' done' : '');
+    el.innerHTML = '<header><label><input type="checkbox"' + (done[id] ? ' checked' : '') + '> Image ' + (k + 1) + '</label><h3>' + esc(id) + '</h3><button class="copy" type="button">Copy</button></header><pre>' + esc(text) + '</pre>';
+    el.querySelector('input').addEventListener('change', function(e){ if(e.target.checked) done[id] = 1; else delete done[id]; save(done); el.classList.toggle('done', e.target.checked); refresh(); });
+    el.querySelector('.copy').addEventListener('click', function(){
+      var b = this, pre = el.querySelector('pre');
+      function ok(){ b.textContent = 'Copied'; b.classList.add('ok'); setTimeout(function(){ b.textContent = 'Copy'; b.classList.remove('ok'); }, 1500); }
+      if(navigator.clipboard) navigator.clipboard.writeText(text).then(ok, function(){ var r = document.createRange(); r.selectNodeContents(pre); var s = getSelection(); s.removeAllRanges(); s.addRange(r); });
+    });
+    box.appendChild(el);
+  });
+  refresh();
+  document.getElementById('waiting').innerHTML = waiting.length ? waiting.slice().reverse().map(recipe).join('') : '<p class="empty">Nothing waiting yet. The first weekly collection runs on Friday.</p>';
+  var live = all.filter(function(d){ return d.status !== 'collected' && !d.photo; });
+  document.getElementById('live').innerHTML = live.length ? live.map(recipe).join('') : '<p class="empty">None.</p>';
+}).catch(function(){ document.getElementById('summary').textContent = 'Could not load drinks.json.'; });
+</script>
+</body>
+</html>
