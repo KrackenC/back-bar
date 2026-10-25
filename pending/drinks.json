@@ -887,9 +887,10 @@
    },
    "collected": "2026-10-24",
    "status": "collected",
-   "photo": false,
+   "photo": true,
    "look": "chilled coupe of rich golden-amber, clear and glossy, two skewered dark cherries",
-   "scene": "a candlelit Victorian hotel bar with dark carved wood, a gilt mirror and lace curtains"
+   "scene": "a candlelit Victorian hotel bar with dark carved wood, a gilt mirror and lace curtains",
+   "photoFile": "photos/widows-kiss.jpg"
   },
   {
    "name": "Twentieth Century",
@@ -922,9 +923,10 @@
    },
    "collected": "2026-10-24",
    "status": "collected",
-   "photo": false,
+   "photo": true,
    "look": "chilled coupe of pale straw-gold, clear and glossy, a lemon twist",
-   "scene": "an Art Deco 1930s railway dining car with polished chrome, etched glass and a blurred landscape through the window"
+   "scene": "an Art Deco 1930s railway dining car with polished chrome, etched glass and a blurred landscape through the window",
+   "photoFile": "photos/twentieth-century.jpg"
   },
   {
    "name": "Chrysanthemum",
@@ -953,9 +955,10 @@
    },
    "collected": "2026-10-24",
    "status": "collected",
-   "photo": false,
+   "photo": true,
    "look": "chilled coupe of pale honey-gold, clear and glossy, an orange twist",
-   "scene": "a Japanese garden teahouse in autumn, golden chrysanthemums and a paper lantern glowing softly behind"
+   "scene": "a Japanese garden teahouse in autumn, golden chrysanthemums and a paper lantern glowing softly behind",
+   "photoFile": "photos/chrysanthemum.jpg"
   },
   {
    "name": "Bitter Giuseppe",
