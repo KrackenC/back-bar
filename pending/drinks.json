@@ -1852,10 +1852,11 @@
    "status": "holiday",
    "collection": "holiday",
    "occasion": "New Year's",
-   "photo": false,
+   "photo": true,
    "look": "champagne flute of bright cranberry-red sparkling wine with fine rising bubbles, a small rosemary sprig",
    "scene": "an elegant holiday cocktail party, a grand staircase wrapped in garland and red ribbon, warm golden bokeh behind",
-   "fizzy": true
+   "fizzy": true,
+   "photoFile": "photos/poinsettia.jpg"
   },
   {
    "name": "Ritz Cocktail",
@@ -1895,10 +1896,11 @@
    "status": "holiday",
    "collection": "holiday",
    "occasion": "New Year's",
-   "photo": false,
+   "photo": true,
    "look": "chilled coupe of pale golden-amber sparkling cocktail with fine bubbles, an orange twist",
    "scene": "a grand hotel ballroom on New Year's Eve, crystal chandeliers and gold balloons softly blurred behind",
-   "fizzy": true
+   "fizzy": true,
+   "photoFile": "photos/ritz-cocktail.jpg"
   },
   {
    "name": "Prince of Wales",
@@ -1946,10 +1948,11 @@
    "status": "holiday",
    "collection": "holiday",
    "occasion": "New Year's",
-   "photo": false,
+   "photo": true,
    "look": "chilled coupe of pale golden sparkling cocktail with fine bubbles, a pineapple cube and a dark cherry on a gold pick",
    "scene": "a regal Edwardian gentlemen's club on New Year's Eve, dark panelling, a mantel clock near midnight and candlelight",
-   "fizzy": true
+   "fizzy": true,
+   "photoFile": "photos/prince-of-wales.jpg"
   },
   {
    "name": "Twinkle",
