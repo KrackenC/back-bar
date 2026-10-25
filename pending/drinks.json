@@ -1743,9 +1743,10 @@
    "status": "holiday",
    "collection": "holiday",
    "occasion": "Christmas",
-   "photo": false,
+   "photo": true,
    "look": "small rocks glass without ice, smooth creamy ivory-white coconut drink, a dusting of ground cinnamon on top and a cinnamon stick",
-   "scene": "a festive Puerto Rican home at Christmas, colourful parranda string lights, a guitar and poinsettias softly blurred behind"
+   "scene": "a festive Puerto Rican home at Christmas, colourful parranda string lights, a guitar and poinsettias softly blurred behind",
+   "photoFile": "photos/coquito.jpg"
   },
   {
    "name": "Snowball",
@@ -1777,7 +1778,8 @@
    "collection": "holiday",
    "occasion": "Christmas",
    "photo": false,
-   "look": "collins glass with clear ice, pale creamy-yellow fizzy drink with a light foam on top, a lime wheel on the rim",
+   "look": "collins glass with three large, smooth, crystal-clear ice cubes, a smooth translucent pale creamy-yellow drink with only a few fine bubbles and a thin soft white foam at the top, a lime wheel on the rim; the glass and the liquid are completely free of dots, speckles or droplets",
+   "reason": "First image showed pebbled dots over the glass and liquid and crackled ice",
    "scene": "a retro 1970s British living room at Christmas, tinsel garlands, a glowing television and paper chains softly blurred behind",
    "fizzy": true
   },
@@ -1815,9 +1817,10 @@
    "status": "holiday",
    "collection": "holiday",
    "occasion": "Christmas",
-   "photo": false,
+   "photo": true,
    "look": "small heatproof glass mug of warm golden-yellow egg liqueur topped with a generous swirl of whipped cream dusted with cinnamon",
-   "scene": "an Italian Alpine ski lodge terrace, snowy Dolomite peaks, wooden skis against the wall and late-afternoon sun"
+   "scene": "an Italian Alpine ski lodge terrace, snowy Dolomite peaks, wooden skis against the wall and late-afternoon sun",
+   "photoFile": "photos/bombardino.jpg"
   },
   {
    "name": "Poinsettia",
