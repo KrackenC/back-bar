@@ -1056,7 +1056,7 @@
         <li><div><h4>See what you can make</h4>
           <p><b>What You Can Make</b> lists every recipe. A green <b>Ready to pour</b> tag means you have everything. <b>Missing:</b> names the one thing you still need, and <b>Missing 3</b> means three things. The <b>Ready</b> and <b>Almost</b> counts in the header appear once your shelf has bottles. Back Bar counts close substitutes, so Cointreau covers triple sec, and any whiskey covers a recipe that just says whiskey.</p></div></li>
         <li><div><h4>Find the right drink</h4>
-          <p>Search by name or ingredient, or tap a filter: <b>All</b>, <b>Ready</b>, <b>Almost</b>, <b>Favorites</b>, <b>Made before</b>, <b>Just added</b>, <b>Up next</b> or <b>Mocktails</b>. From late November to early January a <b>Holidays</b> chip at the top gathers the Christmas ❄️ and New Year's 🥂 drinks. Tap <b>Refine</b> to narrow by <b>Spirit</b>, change the <b>Sort</b> order, or switch measures between <b>oz</b> and <b>ml</b>. <b>Best next bottle</b> shows which one bottle would unlock the most drinks; tap <b>Add</b> to put it on your shelf. Back Bar remembers the filter you used last.</p></div></li>
+          <p>Search by name or ingredient, or tap a filter: <b>All</b>, <b>Ready</b>, <b>Almost</b>, <b>Favorites</b>, <b>Made before</b>, <b>Just added</b>, <b>Up next</b> or <b>Mocktails</b>. From late November to early January a <b>Holidays</b> chip at the top gathers the Christmas and New Year's drinks. Holiday drinks are marked with a ❄️ all year. Tap <b>Refine</b> to narrow by <b>Spirit</b>, change the <b>Sort</b> order, or switch measures between <b>oz</b> and <b>ml</b>. <b>Best next bottle</b> shows which one bottle would unlock the most drinks; tap <b>Add</b> to put it on your shelf. Back Bar remembers the filter you used last.</p></div></li>
         <li><div><h4>Open a recipe</h4>
           <p>Tap any drink to open its full recipe: exact measures, the garnish, a note on technique and the bar tools you'll need. Tap it again to fold it away.</p></div></li>
         <li><div><h4>Plan your next round</h4>
@@ -3715,7 +3715,7 @@ var DRINK_PHOTOS = [
       '<div class="card-body">' +
         '<div class="card-head">' +
           '<div class="card-title" role="button" tabindex="0" aria-expanded="' + isOpen + '" aria-label="' + r.name + ', ' + pillText + '. Show recipe">' +
-            '<h3>' + r.name + (HOLIDAY_ON && r.holiday ? '<span class="hol-tag" title="' + (r.holiday === 'christmas' ? 'Christmas' : 'New Year\'s') + '">' + (r.holiday === 'christmas' ? '❄️' : '🥂') + '</span>' : '') + '</h3>' +
+            '<h3>' + r.name + (r.holiday ? '<span class="hol-tag" title="Holiday drink' + (r.holiday === 'christmas' ? ' · Christmas' : ' · New Year\'s') + '">❄️</span>' : '') + '</h3>' +
             '<p class="card-meta">' + glassIconSvg(r.glass) + r.base + '<span class="meta-more"> · ' + r.glass + ' · ' + r.method + '</span></p>' +
             '<span class="pill ' + pillClass + '">' + pillText + '</span>' +
           '</div>' +
@@ -4273,8 +4273,9 @@ var DRINK_PHOTOS = [
   loadMade();
   // ---------- Holidays ----------
   // Christmas and New Year's drinks carry holiday:'christmas' or 'newyear'.
-  // They're always in All; the Holidays chip and the ❄️/🥂 tags only show
-  // from Nov 20 to Jan 7, or any time the page is opened with #holidays.
+  // They're always in All and always wear a ❄️ next to their name; the
+  // Holidays chip only shows from Nov 20 to Jan 7, or any time the page is
+  // opened with #holidays.
   (function(){
     var seg = document.getElementById('filterSeg');
     var chip = seg && seg.querySelector('[data-filter="holidays"]');
@@ -4327,7 +4328,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-25T02:47:56Z";
+  var CURRENT_VERSION = "2026-10-25T02:52:49Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
