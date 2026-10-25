@@ -783,9 +783,10 @@
    },
    "collected": "2026-10-24",
    "status": "collected",
-   "photo": false,
+   "photo": true,
    "look": "chilled coupe of pale citrus-gold, clear and glossy, a lime wedge on the rim",
-   "scene": "a colonial-era Burmese club veranda with teak shutters, rattan chairs and slow ceiling fans, tropical green beyond"
+   "scene": "a colonial-era Burmese club veranda with teak shutters, rattan chairs and slow ceiling fans, tropical green beyond",
+   "photoFile": "photos/pegu-club.jpg"
   },
   {
    "name": "Army & Navy",
@@ -818,9 +819,10 @@
    },
    "collected": "2026-10-24",
    "status": "collected",
-   "photo": false,
+   "photo": true,
    "look": "chilled coupe of pale creamy-lemon, softly cloudy and silky, a lemon twist",
-   "scene": "a wood-panelled officers' club library with brass ship instruments and leather armchairs"
+   "scene": "a wood-panelled officers' club library with brass ship instruments and leather armchairs",
+   "photoFile": "photos/army-navy.jpg"
   },
   {
    "name": "Bobby Burns",
@@ -849,9 +851,10 @@
    },
    "collected": "2026-10-24",
    "status": "collected",
-   "photo": false,
+   "photo": true,
    "look": "chilled coupe of deep mahogany-amber, clear and glossy, a skewered dark cherry",
-   "scene": "a Scottish Highland lodge on Burns Night, tartan throws, a stone hearth and candlelight"
+   "scene": "a Scottish Highland lodge on Burns Night, tartan throws, a stone hearth and candlelight",
+   "photoFile": "photos/bobby-burns.jpg"
   },
   {
    "name": "Widow's Kiss",
