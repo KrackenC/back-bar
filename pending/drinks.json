@@ -6,6 +6,60 @@
    "name": "Fresh Strawberries",
    "category": "Fresh Fruit",
    "group": "Juice & Mixers"
+  },
+  {
+   "id": "apple_brandy",
+   "name": "Apple Brandy / Calvados",
+   "category": "Brandy",
+   "group": "Spirits"
+  },
+  {
+   "id": "amer_picon",
+   "name": "Amer Picon",
+   "category": "Amaro",
+   "group": "Liqueurs & Fortified Wine"
+  },
+  {
+   "id": "aquavit",
+   "name": "Aquavit",
+   "category": "Aquavit",
+   "group": "Spirits"
+  },
+  {
+   "id": "americano_bianco",
+   "name": "Americano Bianco",
+   "category": "Fortified Wine",
+   "group": "Liqueurs & Fortified Wine"
+  },
+  {
+   "id": "apricot_liqueur",
+   "name": "Apricot Liqueur",
+   "category": "Apricot Liqueur",
+   "group": "Liqueurs & Fortified Wine"
+  },
+  {
+   "id": "orange_flower_water",
+   "name": "Orange Flower Water",
+   "category": "Flavouring",
+   "group": "Juice & Mixers"
+  },
+  {
+   "id": "clamato",
+   "name": "Clamato",
+   "category": "Juice",
+   "group": "Juice & Mixers"
+  },
+  {
+   "id": "celery_salt",
+   "name": "Celery Salt",
+   "category": "Seasoning",
+   "group": "Juice & Mixers"
+  },
+  {
+   "id": "black_pepper",
+   "name": "Black Pepper",
+   "category": "Seasoning",
+   "group": "Juice & Mixers"
   }
  ],
  "drinks": [
@@ -563,6 +617,783 @@
    "photo": true,
    "look": "rocks glass with ice, smooth creamy café-au-lait color",
    "scene": "a snug in an old Irish pub, dark carved wood paneling, a frosted-glass partition and a warm peat-fire glow blurred behind"
+  },
+  {
+   "name": "Bijou",
+   "base": "Gin",
+   "glass": "Coupe",
+   "method": "Stirred",
+   "items": [
+    {
+     "id": "gin",
+     "amt": ".83 oz",
+     "familyOk": true
+    },
+    {
+     "id": "green_chartreuse",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "sweet_vermouth",
+     "amt": "1 oz"
+    },
+    {
+     "id": "orange_bitters",
+     "amt": "1 dash"
+    }
+   ],
+   "garnish": "Cherry, expressed lemon twist",
+   "note": "Stir with ice and strain into a chilled glass. Named for the three jewels its colours suggest: gin's diamond, vermouth's ruby and Chartreuse's emerald; first printed in Harry Johnson's 1900 bartender's manual.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "collected",
+   "photo": false,
+   "look": "chilled coupe of deep jewel-toned amber-red, clear and glossy, a skewered dark cherry",
+   "scene": "a Belle Époque jeweller's salon, velvet display trays and soft gaslight glow blurred behind"
+  },
+  {
+   "name": "Brooklyn",
+   "base": "Whiskey",
+   "glass": "Coupe",
+   "method": "Stirred",
+   "items": [
+    {
+     "id": "rye_whiskey",
+     "amt": "1.5 oz",
+     "familyOk": true
+    },
+    {
+     "id": "dry_vermouth",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "amer_picon",
+     "amt": ".33 oz"
+    },
+    {
+     "id": "maraschino_liqueur",
+     "amt": ".33 oz"
+    }
+   ],
+   "garnish": "Cherry",
+   "note": "Stir with ice and fine-strain into a chilled coupe. The borough's answer to the Manhattan, first recorded in 1908.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "collected",
+   "photo": false,
+   "look": "chilled coupe of pale golden amber, clear and glossy, a skewered dark cherry",
+   "scene": "a 1900s Brooklyn brownstone parlour with the Brooklyn Bridge glowing through a tall window at dusk"
+  },
+  {
+   "name": "Jack Rose",
+   "base": "Brandy",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "apple_brandy",
+     "amt": "1.67 oz"
+    },
+    {
+     "id": "lemon_juice",
+     "amt": ".33 oz"
+    },
+    {
+     "id": "lime_juice",
+     "amt": ".17 oz"
+    },
+    {
+     "id": "simple_syrup",
+     "amt": ".17 oz"
+    },
+    {
+     "id": "raspberry_syrup",
+     "amt": "½ tsp"
+    },
+    {
+     "id": "grenadine",
+     "amt": "½ tsp"
+    },
+    {
+     "id": "orange_bitters",
+     "amt": "1 dash"
+    }
+   ],
+   "garnish": "Lemon twist",
+   "note": "Shake with ice and fine-strain into a chilled glass. An apple-brandy sour dating to 1908; David Embury counted it among his six basic cocktails.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "collected",
+   "photo": false,
+   "look": "chilled coupe of soft rose-pink, clear and glossy, a lemon twist",
+   "scene": "a New England apple orchard at golden hour, rustic wooden crates of red apples blurred behind"
+  },
+  {
+   "name": "Pegu Club",
+   "base": "Gin",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "gin",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "orange_curacao",
+     "amt": ".33 oz"
+    },
+    {
+     "id": "lime_juice",
+     "amt": ".17 oz"
+    },
+    {
+     "id": "roses_lime_juice",
+     "amt": ".17 oz"
+    },
+    {
+     "id": "simple_syrup",
+     "amt": ".17 oz"
+    },
+    {
+     "id": "angostura_bitters",
+     "amt": "1 dash"
+    },
+    {
+     "id": "orange_bitters",
+     "amt": "1 dash"
+    }
+   ],
+   "garnish": "Lime twist, lime wedge",
+   "note": "Shake with ice and fine-strain into a chilled coupe. The house drink of the Pegu Club, a British officers' club in Rangoon, Burma, in the 1920s.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "collected",
+   "photo": false,
+   "look": "chilled coupe of pale citrus-gold, clear and glossy, a lime wedge on the rim",
+   "scene": "a colonial-era Burmese club veranda with teak shutters, rattan chairs and slow ceiling fans, tropical green beyond"
+  },
+  {
+   "name": "Army & Navy",
+   "base": "Gin",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "gin",
+     "amt": "2 oz"
+    },
+    {
+     "id": "lemon_juice",
+     "amt": ".75 oz"
+    },
+    {
+     "id": "orgeat_syrup",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "angostura_bitters",
+     "amt": "2 dashes"
+    }
+   ],
+   "garnish": "Lemon twist",
+   "note": "Shake with ice and fine-strain into a chilled coupe. A gin sour sweetened with almond orgeat, first printed in David Embury's 1948 book.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "collected",
+   "photo": false,
+   "look": "chilled coupe of pale creamy-lemon, softly cloudy and silky, a lemon twist",
+   "scene": "a wood-panelled officers' club library with brass ship instruments and leather armchairs"
+  },
+  {
+   "name": "Bobby Burns",
+   "base": "Whiskey",
+   "glass": "Coupe",
+   "method": "Stirred",
+   "items": [
+    {
+     "id": "scotch_whisky",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "sweet_vermouth",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "benedictine",
+     "amt": ".25 oz"
+    }
+   ],
+   "garnish": "Cherry, expressed lemon twist",
+   "note": "Stir with ice and fine-strain into a chilled coupe. A Scotch Manhattan with a touch of Bénédictine, named for the poet Robert Burns.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "collected",
+   "photo": false,
+   "look": "chilled coupe of deep mahogany-amber, clear and glossy, a skewered dark cherry",
+   "scene": "a Scottish Highland lodge on Burns Night, tartan throws, a stone hearth and candlelight"
+  },
+  {
+   "name": "Widow's Kiss",
+   "base": "Brandy",
+   "glass": "Coupe",
+   "method": "Stirred",
+   "items": [
+    {
+     "id": "apple_brandy",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "benedictine",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "yellow_chartreuse",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "angostura_bitters",
+     "amt": "2 dashes"
+    }
+   ],
+   "garnish": "Two cherries",
+   "note": "Stir with ice and strain into a chilled glass. Created by George Kappeler at New York's Holland House Hotel and printed in his 1895 book.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "collected",
+   "photo": false,
+   "look": "chilled coupe of rich golden-amber, clear and glossy, two skewered dark cherries",
+   "scene": "a candlelit Victorian hotel bar with dark carved wood, a gilt mirror and lace curtains"
+  },
+  {
+   "name": "Twentieth Century",
+   "base": "Gin",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "gin",
+     "amt": "1.33 oz"
+    },
+    {
+     "id": "creme_de_cacao",
+     "amt": ".67 oz"
+    },
+    {
+     "id": "americano_bianco",
+     "amt": ".67 oz"
+    },
+    {
+     "id": "lemon_juice",
+     "amt": ".67 oz"
+    }
+   ],
+   "garnish": "Lemon twist",
+   "note": "Shake with ice and fine-strain into a chilled coupe. Named after the 20th Century Limited express train; first printed in the 1937 Café Royal Cocktail Book.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "collected",
+   "photo": false,
+   "look": "chilled coupe of pale straw-gold, clear and glossy, a lemon twist",
+   "scene": "an Art Deco 1930s railway dining car with polished chrome, etched glass and a blurred landscape through the window"
+  },
+  {
+   "name": "Chrysanthemum",
+   "base": "Liqueur",
+   "glass": "Coupe",
+   "method": "Stirred",
+   "items": [
+    {
+     "id": "dry_vermouth",
+     "amt": "1.67 oz"
+    },
+    {
+     "id": "benedictine",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "absinthe",
+     "amt": "4 dashes"
+    }
+   ],
+   "garnish": "Orange twist",
+   "note": "Stir with ice and fine-strain into a chilled glass. A low-strength aperitif from Hugo Ensslin's 1917 book, later served aboard ocean liners.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "collected",
+   "photo": false,
+   "look": "chilled coupe of pale honey-gold, clear and glossy, an orange twist",
+   "scene": "a Japanese garden teahouse in autumn, golden chrysanthemums and a paper lantern glowing softly behind"
+  },
+  {
+   "name": "Bitter Giuseppe",
+   "base": "Liqueur",
+   "glass": "Rocks",
+   "method": "Stirred",
+   "items": [
+    {
+     "id": "cynar",
+     "amt": "2 oz"
+    },
+    {
+     "id": "sweet_vermouth",
+     "amt": "1 oz"
+    },
+    {
+     "id": "lemon_juice",
+     "amt": ".25 oz"
+    },
+    {
+     "id": "orange_bitters",
+     "amt": "3 dashes"
+    }
+   ],
+   "garnish": "Lemon twist",
+   "note": "Express a lemon peel into the mixing glass, stir with ice and strain over a large cube. Created in 2007 by Stephen Cole at The Violet Hour in Chicago.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "collected",
+   "photo": false,
+   "look": "rocks glass with one large clear ice cube, deep brown-burgundy, a lemon twist",
+   "scene": "a Chicago speakeasy with tall velvet wingback chairs, chandeliers and moody candlelight"
+  },
+  {
+   "name": "Trident",
+   "base": "Liqueur",
+   "glass": "Rocks",
+   "method": "Stirred",
+   "items": [
+    {
+     "id": "sherry",
+     "amt": "1 oz"
+    },
+    {
+     "id": "cynar",
+     "amt": "1 oz"
+    },
+    {
+     "id": "aquavit",
+     "amt": "1 oz"
+    },
+    {
+     "id": "peach_bitters",
+     "amt": "2 dashes"
+    }
+   ],
+   "garnish": "Lemon twist",
+   "note": "Stir with ice and strain into an ice-filled glass. A bone-dry Nordic-Italian twist on the Negroni using aquavit, sherry and Cynar.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "collected",
+   "photo": false,
+   "look": "rocks glass with clear ice, warm russet-amber, a lemon twist",
+   "scene": "a Norwegian fjord-side boathouse at twilight, weathered red timber and still dark water beyond"
+  },
+  {
+   "name": "Fog Cutter",
+   "base": "Rum",
+   "glass": "Collins",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "white_rum",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "gin",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "brandy",
+     "amt": ".42 oz"
+    },
+    {
+     "id": "pisco",
+     "amt": ".33 oz"
+    },
+    {
+     "id": "orange_juice",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "orgeat_syrup",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "lemon_juice",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "sherry",
+     "amt": ".5 oz"
+    }
+   ],
+   "garnish": "Mint sprigs",
+   "note": "Shake all but the sherry with ice, strain over crushed ice and float the sherry on top. A Trader Vic's tiki classic from the 1940s.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "collected",
+   "photo": false,
+   "look": "collins glass of crushed ice, cloudy golden-orange with a darker sherry layer on top, a bouquet of mint sprigs",
+   "scene": "a misty San Francisco waterfront tiki bar at night, bamboo, carved tiki masks and fog drifting past lantern light"
+  },
+  {
+   "name": "Jasmine",
+   "base": "Gin",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "gin",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "campari",
+     "amt": ".25 oz"
+    },
+    {
+     "id": "triple_sec",
+     "amt": ".25 oz"
+    },
+    {
+     "id": "lemon_juice",
+     "amt": ".75 oz"
+    },
+    {
+     "id": "simple_syrup",
+     "amt": ".17 oz",
+     "optional": true
+    }
+   ],
+   "garnish": "Lemon twist",
+   "note": "Shake with ice and fine-strain into a chilled coupe. Created in the 1990s by Paul Harrington in Emeryville, California; it tastes remarkably like grapefruit.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "collected",
+   "photo": false,
+   "look": "chilled coupe of soft pink-grapefruit blush, clear and glossy, a lemon twist",
+   "scene": "a 1990s California bistro bar with warm blond wood, jasmine vines climbing a sunlit window"
+  },
+  {
+   "name": "Blinker",
+   "base": "Whiskey",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "rye_whiskey",
+     "amt": "1.5 oz",
+     "familyOk": true
+    },
+    {
+     "id": "grapefruit_juice",
+     "amt": "2 oz"
+    },
+    {
+     "id": "grenadine",
+     "amt": ".5 oz"
+    }
+   ],
+   "garnish": "Grapefruit twist",
+   "note": "Shake with ice and fine-strain into a chilled coupe. A rye and grapefruit sour from the 1930s.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "collected",
+   "photo": false,
+   "look": "chilled coupe of coral-pink, lightly cloudy and silky, a grapefruit twist",
+   "scene": "a 1930s roadside diner at dawn with chrome trim, a neon sign and red vinyl stools blurred behind"
+  },
+  {
+   "name": "Cameron's Kick",
+   "base": "Whiskey",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "scotch_whisky",
+     "amt": "1 oz"
+    },
+    {
+     "id": "whiskey_any",
+     "amt": "1 oz"
+    },
+    {
+     "id": "orgeat_syrup",
+     "amt": ".33 oz"
+    },
+    {
+     "id": "lemon_juice",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "egg_white",
+     "amt": ".5 oz",
+     "optional": true
+    }
+   ],
+   "garnish": "Lemon twist",
+   "note": "Shake with ice and fine-strain into a chilled coupe. A Scotch and Irish whiskey sour with orgeat, first printed in 1922.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "collected",
+   "photo": false,
+   "look": "chilled coupe of pale golden cream with a thin silky foam, a lemon twist",
+   "scene": "an old Dublin pub snug with a stained-glass partition and brass fittings, a different room from a fireside lounge"
+  },
+  {
+   "name": "Diamondback",
+   "base": "Whiskey",
+   "glass": "Coupe",
+   "method": "Stirred",
+   "items": [
+    {
+     "id": "rye_whiskey",
+     "amt": "1 oz",
+     "familyOk": true
+    },
+    {
+     "id": "apple_brandy",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "yellow_chartreuse",
+     "amt": ".5 oz"
+    }
+   ],
+   "garnish": "Cherry",
+   "note": "Stir with ice and strain into a chilled glass. From Ted Saucier's 1951 book Bottoms Up.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "collected",
+   "photo": false,
+   "look": "chilled coupe of bright golden-amber, clear and glossy, a skewered dark cherry",
+   "scene": "a desert ranch saloon at sunset, weathered wood bar, cowboy hat and rattlesnake-pattern leather blurred behind"
+  },
+  {
+   "name": "Ramos Gin Fizz",
+   "base": "Gin",
+   "glass": "Collins",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "gin",
+     "amt": "2 oz",
+     "familyOk": true
+    },
+    {
+     "id": "lemon_juice",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "lime_juice",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "simple_syrup",
+     "amt": ".75 oz"
+    },
+    {
+     "id": "orange_flower_water",
+     "amt": "¼ tsp"
+    },
+    {
+     "id": "egg_white",
+     "amt": ".75 oz"
+    },
+    {
+     "id": "cream",
+     "amt": ".75 oz"
+    },
+    {
+     "id": "soda_water",
+     "amt": "top"
+    }
+   ],
+   "garnish": "Quarter orange wheel",
+   "note": "Shake hard with ice, strain, dry-shake to emulsify, then pour slowly with soda into a chilled glass and let it settle for a minute to raise the foam. Created by Henry Ramos in New Orleans in 1888.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "collected",
+   "photo": false,
+   "look": "collins glass without ice, opaque milky-white with a tall stiff white foam rising above the rim, a quarter orange wheel",
+   "scene": "a sunny New Orleans Garden District courtyard with a wrought-iron fountain and magnolias, late-morning light",
+   "fizzy": true
+  },
+  {
+   "name": "Caesar",
+   "base": "Vodka",
+   "glass": "Collins",
+   "method": "Rolled",
+   "items": [
+    {
+     "id": "vodka",
+     "amt": "2 oz"
+    },
+    {
+     "id": "clamato",
+     "amt": "4 oz"
+    },
+    {
+     "id": "lemon_juice",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "hot_sauce",
+     "amt": "7 drops"
+    },
+    {
+     "id": "worcestershire",
+     "amt": "3 dashes"
+    },
+    {
+     "id": "celery_salt",
+     "amt": "2 pinches"
+    },
+    {
+     "id": "black_pepper",
+     "amt": "2 grinds"
+    }
+   ],
+   "garnish": "Celery-salt rim, pickled bean",
+   "note": "Roll with ice between two shakers rather than shaking, then strain into a chilled glass. Created in Calgary in 1969 and Canada's national cocktail.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "collected",
+   "photo": false,
+   "look": "collins glass with clear ice and a celery-salt rim, rich brick-red, a pickled green bean standing in the glass",
+   "scene": "a Canadian Rockies lakeside lodge, pine timber walls, snow-capped peaks and a turquoise lake beyond"
+  },
+  {
+   "name": "Saturn",
+   "base": "Gin",
+   "glass": "Collins",
+   "method": "Blended",
+   "items": [
+    {
+     "id": "gin",
+     "amt": "2.5 oz"
+    },
+    {
+     "id": "falernum",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "orgeat_syrup",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "passion_fruit_syrup",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "lemon_juice",
+     "amt": "1 oz"
+    }
+   ],
+   "garnish": "Lemon-peel ring and cherry 'planet'",
+   "note": "Blend with crushed ice until smooth and pour into a tall glass. Created in 1967 by J. 'Popo' Galsini, it won that year's International Bartender's Association competition.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "collected",
+   "photo": false,
+   "look": "tall glass of smooth frozen pale-golden slush, a cherry encircled by a lemon-peel ring like a planet",
+   "scene": "a 1960s space-age lounge with an atomic starburst clock, a curved white bar and a night sky full of stars"
+  },
+  {
+   "name": "Hotel Nacional Special",
+   "base": "Rum",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "rum_any",
+     "amt": "1.67 oz",
+     "familyOk": true
+    },
+    {
+     "id": "apricot_liqueur",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "pineapple_juice",
+     "amt": ".75 oz"
+    },
+    {
+     "id": "lime_juice",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "simple_syrup",
+     "amt": ".25 oz"
+    }
+   ],
+   "garnish": "Pineapple wedge",
+   "note": "Shake with ice and fine-strain into a chilled coupe. Named for Havana's grand Hotel Nacional de Cuba in the 1930s.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "collected",
+   "photo": false,
+   "look": "chilled coupe of pale apricot-gold, lightly cloudy and silky, a pineapple wedge on the rim",
+   "scene": "the grand terrace of a 1930s Havana hotel, palm trees, a colonnade and the Malecón seawall in late sun"
   }
  ]
 }
