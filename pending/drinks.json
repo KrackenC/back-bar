@@ -991,9 +991,10 @@
    },
    "collected": "2026-10-24",
    "status": "collected",
-   "photo": false,
+   "photo": true,
    "look": "rocks glass with one large clear ice cube, deep brown-burgundy, a lemon twist",
-   "scene": "a Chicago speakeasy with tall velvet wingback chairs, chandeliers and moody candlelight"
+   "scene": "a Chicago speakeasy with tall velvet wingback chairs, chandeliers and moody candlelight",
+   "photoFile": "photos/bitter-giuseppe.jpg"
   },
   {
    "name": "Trident",
@@ -1026,9 +1027,10 @@
    },
    "collected": "2026-10-24",
    "status": "collected",
-   "photo": false,
+   "photo": true,
    "look": "rocks glass with clear ice, warm russet-amber, a lemon twist",
-   "scene": "a Norwegian fjord-side boathouse at twilight, weathered red timber and still dark water beyond"
+   "scene": "a Norwegian fjord-side boathouse at twilight, weathered red timber and still dark water beyond",
+   "photoFile": "photos/trident.jpg"
   },
   {
    "name": "Fog Cutter",
@@ -1077,9 +1079,10 @@
    },
    "collected": "2026-10-24",
    "status": "collected",
-   "photo": false,
+   "photo": true,
    "look": "collins glass of crushed ice, cloudy golden-orange with a darker sherry layer on top, a bouquet of mint sprigs",
-   "scene": "a misty San Francisco waterfront tiki bar at night, bamboo, carved tiki masks and fog drifting past lantern light"
+   "scene": "a misty San Francisco waterfront tiki bar at night, bamboo, carved tiki masks and fog drifting past lantern light",
+   "photoFile": "photos/fog-cutter.jpg"
   },
   {
    "name": "Jasmine",
