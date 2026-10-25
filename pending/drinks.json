@@ -1467,9 +1467,10 @@
    "status": "reshoot",
    "reason": "Photo is a near-twin of Bitter Giuseppe (same rocks glass, single big cube, lemon twist, red-brown colour)",
    "requested": "2026-10-24",
-   "photo": false,
+   "photo": true,
    "look": "rocks glass filled with several smaller clear ice cubes, lighter translucent copper-russet with golden highlights, a long thin lemon peel spiralling down inside the glass against the ice",
-   "scene": "a Norwegian fjord-side boathouse at twilight, weathered red timber and still dark water beyond"
+   "scene": "a Norwegian fjord-side boathouse at twilight, weathered red timber and still dark water beyond",
+   "photoFile": "photos/trident.jpg"
   }
  ]
 }
