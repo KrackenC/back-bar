@@ -1227,9 +1227,10 @@
    },
    "collected": "2026-10-24",
    "status": "collected",
-   "photo": false,
+   "photo": true,
    "look": "chilled coupe of bright golden-amber, clear and glossy, a skewered dark cherry",
-   "scene": "a desert ranch saloon at sunset, weathered wood bar, cowboy hat and rattlesnake-pattern leather blurred behind"
+   "scene": "a desert ranch saloon at sunset, weathered wood bar, cowboy hat and rattlesnake-pattern leather blurred behind",
+   "photoFile": "photos/diamondback.jpg"
   },
   {
    "name": "Ramos Gin Fizz",
@@ -1279,10 +1280,11 @@
    },
    "collected": "2026-10-24",
    "status": "collected",
-   "photo": false,
+   "photo": true,
    "look": "collins glass without ice, opaque milky-white with a tall stiff white foam rising above the rim, a quarter orange wheel",
    "scene": "a sunny New Orleans Garden District courtyard with a wrought-iron fountain and magnolias, late-morning light",
-   "fizzy": true
+   "fizzy": true,
+   "photoFile": "photos/ramos-gin-fizz.jpg"
   },
   {
    "name": "Caesar",
@@ -1319,7 +1321,7 @@
      "amt": "2 grinds"
     }
    ],
-   "garnish": "Celery-salt rim, pickled bean",
+   "garnish": "Celery-salt rim, celery stalk, pickled bean",
    "note": "Roll with ice between two shakers rather than shaking, then strain into a chilled glass. Created in Calgary in 1969 and Canada's national cocktail.",
    "source": {
     "site": "Verified spec, 2026-10-24",
@@ -1327,9 +1329,10 @@
    },
    "collected": "2026-10-24",
    "status": "collected",
-   "photo": false,
+   "photo": true,
    "look": "collins glass with clear ice and a celery-salt rim, rich brick-red, a pickled green bean standing in the glass",
-   "scene": "a Canadian Rockies lakeside lodge, pine timber walls, snow-capped peaks and a turquoise lake beyond"
+   "scene": "a Canadian Rockies lakeside lodge, pine timber walls, snow-capped peaks and a turquoise lake beyond",
+   "photoFile": "photos/caesar.jpg"
   },
   {
    "name": "Saturn",
