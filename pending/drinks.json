@@ -40,7 +40,7 @@
   {
    "id": "orange_flower_water",
    "name": "Orange Flower Water",
-   "category": "Flavouring",
+   "category": "Seasoning",
    "group": "Juice & Mixers"
   },
   {
@@ -649,11 +649,12 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "collected",
+   "status": "released",
    "photo": true,
    "look": "chilled coupe of deep jewel-toned amber-red, clear and glossy, a skewered dark cherry",
    "scene": "a Belle Époque jeweller's salon, velvet display trays and soft gaslight glow blurred behind",
-   "photoFile": "photos/bijou.jpg"
+   "photoFile": "photos/bijou.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Brooklyn",
@@ -686,11 +687,12 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "collected",
+   "status": "released",
    "photo": true,
    "look": "chilled coupe of pale golden amber, clear and glossy, a skewered dark cherry",
    "scene": "a 1900s Brooklyn brownstone parlour with the Brooklyn Bridge glowing through a tall window at dusk",
-   "photoFile": "photos/brooklyn.jpg"
+   "photoFile": "photos/brooklyn.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Jack Rose",
@@ -734,11 +736,12 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "collected",
+   "status": "released",
    "photo": true,
    "look": "chilled coupe of soft rose-pink, clear and glossy, a lemon twist",
    "scene": "a New England apple orchard at golden hour, rustic wooden crates of red apples blurred behind",
-   "photoFile": "photos/jack-rose.jpg"
+   "photoFile": "photos/jack-rose.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Pegu Club",
@@ -782,11 +785,12 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "collected",
+   "status": "released",
    "photo": true,
    "look": "chilled coupe of pale citrus-gold, clear and glossy, a lime wedge on the rim",
    "scene": "a colonial-era Burmese club veranda with teak shutters, rattan chairs and slow ceiling fans, tropical green beyond",
-   "photoFile": "photos/pegu-club.jpg"
+   "photoFile": "photos/pegu-club.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Army & Navy",
@@ -818,11 +822,12 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "collected",
+   "status": "released",
    "photo": true,
    "look": "chilled coupe of pale creamy-lemon, softly cloudy and silky, a lemon twist",
    "scene": "a wood-panelled officers' club library with brass ship instruments and leather armchairs",
-   "photoFile": "photos/army-navy.jpg"
+   "photoFile": "photos/army-navy.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Bobby Burns",
@@ -850,11 +855,12 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "collected",
+   "status": "released",
    "photo": true,
    "look": "chilled coupe of deep mahogany-amber, clear and glossy, a skewered dark cherry",
    "scene": "a Scottish Highland lodge on Burns Night, tartan throws, a stone hearth and candlelight",
-   "photoFile": "photos/bobby-burns.jpg"
+   "photoFile": "photos/bobby-burns.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Widow's Kiss",
@@ -886,11 +892,12 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "collected",
+   "status": "released",
    "photo": true,
    "look": "chilled coupe of rich golden-amber, clear and glossy, two skewered dark cherries",
    "scene": "a candlelit Victorian hotel bar with dark carved wood, a gilt mirror and lace curtains",
-   "photoFile": "photos/widows-kiss.jpg"
+   "photoFile": "photos/widows-kiss.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Twentieth Century",
@@ -922,11 +929,12 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "collected",
+   "status": "released",
    "photo": true,
    "look": "chilled coupe of pale straw-gold, clear and glossy, a lemon twist",
    "scene": "an Art Deco 1930s railway dining car with polished chrome, etched glass and a blurred landscape through the window",
-   "photoFile": "photos/twentieth-century.jpg"
+   "photoFile": "photos/twentieth-century.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Chrysanthemum",
@@ -954,11 +962,12 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "collected",
+   "status": "released",
    "photo": true,
    "look": "chilled coupe of pale honey-gold, clear and glossy, an orange twist",
    "scene": "a Japanese garden teahouse in autumn, golden chrysanthemums and a paper lantern glowing softly behind",
-   "photoFile": "photos/chrysanthemum.jpg"
+   "photoFile": "photos/chrysanthemum.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Bitter Giuseppe",
@@ -990,11 +999,12 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "collected",
+   "status": "released",
    "photo": true,
    "look": "rocks glass with one large clear ice cube, deep brown-burgundy, a lemon twist",
    "scene": "a Chicago speakeasy with tall velvet wingback chairs, chandeliers and moody candlelight",
-   "photoFile": "photos/bitter-giuseppe.jpg"
+   "photoFile": "photos/bitter-giuseppe.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Trident",
@@ -1026,11 +1036,12 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "collected",
+   "status": "released",
    "photo": true,
    "look": "rocks glass with clear ice, warm russet-amber, a lemon twist",
    "scene": "a Norwegian fjord-side boathouse at twilight, weathered red timber and still dark water beyond",
-   "photoFile": "photos/trident.jpg"
+   "photoFile": "photos/trident.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Fog Cutter",
@@ -1078,11 +1089,12 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "collected",
+   "status": "released",
    "photo": true,
    "look": "collins glass of crushed ice, cloudy golden-orange with a darker sherry layer on top, a bouquet of mint sprigs",
    "scene": "a misty San Francisco waterfront tiki bar at night, bamboo, carved tiki masks and fog drifting past lantern light",
-   "photoFile": "photos/fog-cutter.jpg"
+   "photoFile": "photos/fog-cutter.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Jasmine",
@@ -1119,11 +1131,12 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "collected",
+   "status": "released",
    "photo": true,
    "look": "chilled coupe of soft pink-grapefruit blush, clear and glossy, a lemon twist",
    "scene": "a 1990s California bistro bar with warm blond wood, jasmine vines climbing a sunlit window",
-   "photoFile": "photos/jasmine.jpg"
+   "photoFile": "photos/jasmine.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Blinker",
@@ -1152,11 +1165,12 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "collected",
+   "status": "released",
    "photo": true,
    "look": "chilled coupe of coral-pink, lightly cloudy and silky, a grapefruit twist",
    "scene": "a 1930s roadside diner at dawn with chrome trim, a neon sign and red vinyl stools blurred behind",
-   "photoFile": "photos/blinker.jpg"
+   "photoFile": "photos/blinker.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Cameron's Kick",
@@ -1193,11 +1207,12 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "collected",
+   "status": "released",
    "photo": true,
    "look": "chilled coupe of pale golden cream with a thin silky foam, a lemon twist",
    "scene": "an old Dublin pub snug with a stained-glass partition and brass fittings, a different room from a fireside lounge",
-   "photoFile": "photos/camerons-kick.jpg"
+   "photoFile": "photos/camerons-kick.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Diamondback",
@@ -1226,11 +1241,12 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "collected",
+   "status": "released",
    "photo": true,
    "look": "chilled coupe of bright golden-amber, clear and glossy, a skewered dark cherry",
    "scene": "a desert ranch saloon at sunset, weathered wood bar, cowboy hat and rattlesnake-pattern leather blurred behind",
-   "photoFile": "photos/diamondback.jpg"
+   "photoFile": "photos/diamondback.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Ramos Gin Fizz",
@@ -1279,12 +1295,13 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "collected",
+   "status": "released",
    "photo": true,
    "look": "collins glass without ice, opaque milky-white with a tall stiff white foam rising above the rim, a quarter orange wheel",
    "scene": "a sunny New Orleans Garden District courtyard with a wrought-iron fountain and magnolias, late-morning light",
    "fizzy": true,
-   "photoFile": "photos/ramos-gin-fizz.jpg"
+   "photoFile": "photos/ramos-gin-fizz.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Caesar",
@@ -1328,16 +1345,17 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "collected",
+   "status": "released",
    "photo": true,
    "look": "collins glass with clear ice and a celery-salt rim, rich brick-red, a pickled green bean standing in the glass",
    "scene": "a Canadian Rockies lakeside lodge, pine timber walls, snow-capped peaks and a turquoise lake beyond",
-   "photoFile": "photos/caesar.jpg"
+   "photoFile": "photos/caesar.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Saturn",
    "base": "Gin",
-   "glass": "Collins",
+   "glass": "Hurricane",
    "method": "Blended",
    "items": [
     {
@@ -1368,10 +1386,12 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "collected",
-   "photo": false,
+   "status": "released",
+   "photo": true,
    "look": "tall glass of smooth frozen pale-golden slush, a cherry encircled by a lemon-peel ring like a planet",
-   "scene": "a 1960s space-age lounge with an atomic starburst clock, a curved white bar and a night sky full of stars"
+   "scene": "a 1960s space-age lounge with an atomic starburst clock, a curved white bar and a night sky full of stars",
+   "photoFile": "photos/saturn.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Hotel Nacional Special",
@@ -1408,10 +1428,12 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "collected",
-   "photo": false,
+   "status": "released",
+   "photo": true,
    "look": "chilled coupe of pale apricot-gold, lightly cloudy and silky, a pineapple wedge on the rim",
-   "scene": "the grand terrace of a 1930s Havana hotel, palm trees, a colonnade and the Malecón seawall in late sun"
+   "scene": "the grand terrace of a 1930s Havana hotel, palm trees, a colonnade and the Malecón seawall in late sun",
+   "photoFile": "photos/hotel-nacional-special.jpg",
+   "released": "2026-10-24"
   }
  ]
 }

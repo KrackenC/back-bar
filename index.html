@@ -1194,7 +1194,7 @@
   </dialog>
 
   <div class="undo-toast" id="undoToast" role="status" aria-live="polite"><span class="undo-msg"></span><button type="button">Undo</button></div>
-  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 280 recipes.
+  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 300 recipes.
     <div class="footer-actions"><button class="help-link" id="backupBtn" type="button" aria-haspopup="dialog">Back up or move your bar</button> <span style="margin:0 .5rem;color:var(--line)">·</span> <button class="reset-all-btn" id="resetAllBtn" type="button">Reset everything</button> <span style="margin-left:.4rem">Clears both shelves, favorites, Up Next and your Made history.</span></div>
     <p class="drink-responsibly">Please drink responsibly. Enjoy only if you're of legal drinking age, know your limits, and never drink and drive.</p>
   </footer>
@@ -1482,7 +1482,27 @@ var DRINK_PHOTOS = [
     {"g": "tiki", "c": "orange", "n": ["Rum Punch"], "by": "Back Bar", "u": "", src:"img/d/rum-punch-669a76cc.jpg"},
     {"g": "tall", "c": "pink", "n": ["Patrón & Grapefruit"], "by": "Back Bar", "u": "", src:"img/d/patr-n-grapefruit-1828353e.jpg"},
     {"g": "coupe", "c": "creamy", "n": ["Grasshopper"], "by": "Back Bar", "u": "", src:"img/d/grasshopper-93457000.jpg"},
-    {"g": "rocks", "c": "creamy", "n": ["Nutty Irishman"], "by": "Back Bar", "u": "", src:"img/d/nutty-irishman-1643e028.jpg"}
+    {"g": "rocks", "c": "creamy", "n": ["Nutty Irishman"], "by": "Back Bar", "u": "", src:"img/d/nutty-irishman-1643e028.jpg"},
+    {"g": "coupe", "c": "darkred", "n": ["Bijou"], "by": "Back Bar", "u": "", src:"img/d/bijou-6bc58efe.jpg"},
+    {"g": "coupe", "c": "amber", "n": ["Brooklyn"], "by": "Back Bar", "u": "", src:"img/d/brooklyn-5e9401cc.jpg"},
+    {"g": "coupe", "c": "pink", "n": ["Jack Rose"], "by": "Back Bar", "u": "", src:"img/d/jack-rose-f6929986.jpg"},
+    {"g": "coupe", "c": "yellow", "n": ["Pegu Club"], "by": "Back Bar", "u": "", src:"img/d/pegu-club-caf51a44.jpg"},
+    {"g": "coupe", "c": "creamy", "n": ["Army & Navy"], "by": "Back Bar", "u": "", src:"img/d/army-navy-5f475c98.jpg"},
+    {"g": "coupe", "c": "darkred", "n": ["Bobby Burns"], "by": "Back Bar", "u": "", src:"img/d/bobby-burns-8295760c.jpg"},
+    {"g": "coupe", "c": "amber", "n": ["Widow's Kiss"], "by": "Back Bar", "u": "", src:"img/d/widow-s-kiss-8a1f662a.jpg"},
+    {"g": "coupe", "c": "yellow", "n": ["Twentieth Century"], "by": "Back Bar", "u": "", src:"img/d/twentieth-century-2e87f697.jpg"},
+    {"g": "coupe", "c": "yellow", "n": ["Chrysanthemum"], "by": "Back Bar", "u": "", src:"img/d/chrysanthemum-b275e60b.jpg"},
+    {"g": "rocks", "c": "darkred", "n": ["Bitter Giuseppe"], "by": "Back Bar", "u": "", src:"img/d/bitter-giuseppe-03a684cb.jpg"},
+    {"g": "rocks", "c": "amber", "n": ["Trident"], "by": "Back Bar", "u": "", src:"img/d/trident-c9cdaf29.jpg"},
+    {"g": "tall", "c": "orange", "n": ["Fog Cutter"], "by": "Back Bar", "u": "", src:"img/d/fog-cutter-b0a4517d.jpg"},
+    {"g": "coupe", "c": "pink", "n": ["Jasmine"], "by": "Back Bar", "u": "", src:"img/d/jasmine-73752f58.jpg"},
+    {"g": "coupe", "c": "pink", "n": ["Blinker"], "by": "Back Bar", "u": "", src:"img/d/blinker-3d2546cb.jpg"},
+    {"g": "coupe", "c": "creamy", "n": ["Cameron's Kick"], "by": "Back Bar", "u": "", "foam": 1, src:"img/d/cameron-s-kick-2773abf8.jpg"},
+    {"g": "coupe", "c": "amber", "n": ["Diamondback"], "by": "Back Bar", "u": "", src:"img/d/diamondback-e218c69a.jpg"},
+    {"g": "tall", "c": "creamy", "n": ["Ramos Gin Fizz"], "by": "Back Bar", "u": "", "fizz": 1, "foam": 1, src:"img/d/ramos-gin-fizz-6473180b.jpg"},
+    {"g": "tall", "c": "red", "n": ["Caesar"], "by": "Back Bar", "u": "", src:"img/d/caesar-45190776.jpg"},
+    {"g": "tiki", "c": "yellow", "n": ["Saturn"], "by": "Back Bar", "u": "", src:"img/d/saturn-9f7464e1.jpg"},
+    {"g": "coupe", "c": "orange", "n": ["Hotel Nacional Special"], "by": "Back Bar", "u": "", src:"img/d/hotel-nacional-special-1857db04.jpg"}
   ];
 </script>
 <script>
@@ -1614,7 +1634,16 @@ var DRINK_PHOTOS = [
     {id:'pineapple_syrup', name:'Pineapple Syrup', category:'Syrup', group:'Syrups'},
     {id:'maple_syrup', name:'Maple Syrup', category:'Syrup', group:'Syrups'},
     {id:'cinnamon_syrup', name:'Cinnamon Syrup', category:'Syrup', group:'Syrups'},
-    {id:'fresh_strawberries', name:'Fresh Strawberries', category:'Fresh Fruit', group:'Juice & Mixers'}
+    {id:'fresh_strawberries', name:'Fresh Strawberries', category:'Fresh Fruit', group:'Juice & Mixers'},
+    {id:'apple_brandy', name:'Apple Brandy / Calvados', category:'Brandy', group:'Spirits'},
+    {id:'amer_picon', name:'Amer Picon', category:'Amaro', group:'Liqueurs & Fortified Wine'},
+    {id:'aquavit', name:'Aquavit', category:'Aquavit', group:'Spirits'},
+    {id:'americano_bianco', name:'Americano Bianco', category:'Fortified Wine', group:'Liqueurs & Fortified Wine'},
+    {id:'apricot_liqueur', name:'Apricot Liqueur', category:'Apricot Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'orange_flower_water', name:'Orange Flower Water', category:'Seasoning', group:'Juice & Mixers'},
+    {id:'clamato', name:'Clamato', category:'Juice', group:'Juice & Mixers'},
+    {id:'celery_salt', name:'Celery Salt', category:'Seasoning', group:'Juice & Mixers'},
+    {id:'black_pepper', name:'Black Pepper', category:'Seasoning', group:'Juice & Mixers'}
   ];
 
   var GROUP_ORDER = ['Spirits','Liqueurs & Fortified Wine','Bitters','Juice & Mixers','Syrups'];
@@ -2627,7 +2656,68 @@ var DRINK_PHOTOS = [
       garnish:'Lemon wheel, strawberry slice', note:"A modern bourbon buck created at San Diego's Polite Provisions by bartender Erick Castro around 2013. Muddle the strawberry in the shaker, add everything but the ginger beer, shake with ice, fine-strain over fresh ice and top with ginger beer."},
     {name:"Satan's Whiskers", base:'Gin', glass:'Coupe', method:'Shaken', added:'2026-10-24',
       items:[{id:'gin', amt:'.75 oz'},{id:'dry_vermouth', amt:'.5 oz'},{id:'sweet_vermouth', amt:'.5 oz'},{id:'orange_juice', amt:'.75 oz'},{id:'triple_sec', amt:'.25 oz', familyOk:true},{id:'orange_bitters', amt:'1 dash'}],
-      garnish:'Orange twist', note:"A gin cocktail created at London's Savoy Hotel American Bar in 1930, built like a Martini brightened with orange juice and orange liqueur."}
+      garnish:'Orange twist', note:"A gin cocktail created at London's Savoy Hotel American Bar in 1930, built like a Martini brightened with orange juice and orange liqueur."},
+    // ---------- Release 2026-10-24 ----------
+    {name:'Bijou', base:'Gin', glass:'Coupe', method:'Stirred', added:'2026-10-24',
+      items:[{id:'gin', amt:'.83 oz', familyOk:true},{id:'green_chartreuse', amt:'.5 oz'},{id:'sweet_vermouth', amt:'1 oz'},{id:'orange_bitters', amt:'1 dash'}],
+      garnish:'Cherry, expressed lemon twist', note:"Stir with ice and strain into a chilled glass. Named for the three jewels its colours suggest: gin's diamond, vermouth's ruby and Chartreuse's emerald; first printed in Harry Johnson's 1900 bartender's manual."},
+    {name:'Brooklyn', base:'Whiskey', glass:'Coupe', method:'Stirred', added:'2026-10-24',
+      items:[{id:'rye_whiskey', amt:'1.5 oz', familyOk:true},{id:'dry_vermouth', amt:'1.5 oz'},{id:'amer_picon', amt:'.33 oz'},{id:'maraschino_liqueur', amt:'.33 oz'}],
+      garnish:'Cherry', note:"Stir with ice and fine-strain into a chilled coupe. The borough's answer to the Manhattan, first recorded in 1908."},
+    {name:'Jack Rose', base:'Brandy', glass:'Coupe', method:'Shaken', added:'2026-10-24',
+      items:[{id:'apple_brandy', amt:'1.67 oz'},{id:'lemon_juice', amt:'.33 oz'},{id:'lime_juice', amt:'.17 oz'},{id:'simple_syrup', amt:'.17 oz'},{id:'raspberry_syrup', amt:'½ tsp'},{id:'grenadine', amt:'½ tsp'},{id:'orange_bitters', amt:'1 dash'}],
+      garnish:'Lemon twist', note:'Shake with ice and fine-strain into a chilled glass. An apple-brandy sour dating to 1908; David Embury counted it among his six basic cocktails.'},
+    {name:'Pegu Club', base:'Gin', glass:'Coupe', method:'Shaken', added:'2026-10-24',
+      items:[{id:'gin', amt:'1.5 oz'},{id:'orange_curacao', amt:'.33 oz'},{id:'lime_juice', amt:'.17 oz'},{id:'roses_lime_juice', amt:'.17 oz'},{id:'simple_syrup', amt:'.17 oz'},{id:'angostura_bitters', amt:'1 dash'},{id:'orange_bitters', amt:'1 dash'}],
+      garnish:'Lime twist, lime wedge', note:"Shake with ice and fine-strain into a chilled coupe. The house drink of the Pegu Club, a British officers' club in Rangoon, Burma, in the 1920s."},
+    {name:'Army & Navy', base:'Gin', glass:'Coupe', method:'Shaken', added:'2026-10-24',
+      items:[{id:'gin', amt:'2 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'orgeat_syrup', amt:'.5 oz'},{id:'angostura_bitters', amt:'2 dashes'}],
+      garnish:'Lemon twist', note:"Shake with ice and fine-strain into a chilled coupe. A gin sour sweetened with almond orgeat, first printed in David Embury's 1948 book."},
+    {name:'Bobby Burns', base:'Whiskey', glass:'Coupe', method:'Stirred', added:'2026-10-24',
+      items:[{id:'scotch_whisky', amt:'1.5 oz'},{id:'sweet_vermouth', amt:'1.5 oz'},{id:'benedictine', amt:'.25 oz'}],
+      garnish:'Cherry, expressed lemon twist', note:'Stir with ice and fine-strain into a chilled coupe. A Scotch Manhattan with a touch of Bénédictine, named for the poet Robert Burns.'},
+    {name:"Widow's Kiss", base:'Brandy', glass:'Coupe', method:'Stirred', added:'2026-10-24',
+      items:[{id:'apple_brandy', amt:'1.5 oz'},{id:'benedictine', amt:'.5 oz'},{id:'yellow_chartreuse', amt:'.5 oz'},{id:'angostura_bitters', amt:'2 dashes'}],
+      garnish:'Two cherries', note:"Stir with ice and strain into a chilled glass. Created by George Kappeler at New York's Holland House Hotel and printed in his 1895 book."},
+    {name:'Twentieth Century', base:'Gin', glass:'Coupe', method:'Shaken', added:'2026-10-24',
+      items:[{id:'gin', amt:'1.33 oz'},{id:'creme_de_cacao', amt:'.67 oz'},{id:'americano_bianco', amt:'.67 oz'},{id:'lemon_juice', amt:'.67 oz'}],
+      garnish:'Lemon twist', note:'Shake with ice and fine-strain into a chilled coupe. Named after the 20th Century Limited express train; first printed in the 1937 Café Royal Cocktail Book.'},
+    {name:'Chrysanthemum', base:'Liqueur', glass:'Coupe', method:'Stirred', added:'2026-10-24',
+      items:[{id:'dry_vermouth', amt:'1.67 oz'},{id:'benedictine', amt:'.5 oz'},{id:'absinthe', amt:'4 dashes'}],
+      garnish:'Orange twist', note:"Stir with ice and fine-strain into a chilled glass. A low-strength aperitif from Hugo Ensslin's 1917 book, later served aboard ocean liners."},
+    {name:'Bitter Giuseppe', base:'Liqueur', glass:'Rocks', method:'Stirred', added:'2026-10-24',
+      items:[{id:'cynar', amt:'2 oz'},{id:'sweet_vermouth', amt:'1 oz'},{id:'lemon_juice', amt:'.25 oz'},{id:'orange_bitters', amt:'3 dashes'}],
+      garnish:'Lemon twist', note:'Express a lemon peel into the mixing glass, stir with ice and strain over a large cube. Created in 2007 by Stephen Cole at The Violet Hour in Chicago.'},
+    {name:'Trident', base:'Liqueur', glass:'Rocks', method:'Stirred', added:'2026-10-24',
+      items:[{id:'sherry', amt:'1 oz'},{id:'cynar', amt:'1 oz'},{id:'aquavit', amt:'1 oz'},{id:'peach_bitters', amt:'2 dashes'}],
+      garnish:'Lemon twist', note:'Stir with ice and strain into an ice-filled glass. A bone-dry Nordic-Italian twist on the Negroni using aquavit, sherry and Cynar.'},
+    {name:'Fog Cutter', base:'Rum', glass:'Collins', method:'Shaken', added:'2026-10-24',
+      items:[{id:'white_rum', amt:'1.5 oz'},{id:'gin', amt:'.5 oz'},{id:'brandy', amt:'.42 oz'},{id:'pisco', amt:'.33 oz'},{id:'orange_juice', amt:'1.5 oz'},{id:'orgeat_syrup', amt:'.5 oz'},{id:'lemon_juice', amt:'.5 oz'},{id:'sherry', amt:'.5 oz'}],
+      garnish:'Mint sprigs', note:"Shake all but the sherry with ice, strain over crushed ice and float the sherry on top. A Trader Vic's tiki classic from the 1940s."},
+    {name:'Jasmine', base:'Gin', glass:'Coupe', method:'Shaken', added:'2026-10-24',
+      items:[{id:'gin', amt:'1.5 oz'},{id:'campari', amt:'.25 oz'},{id:'triple_sec', amt:'.25 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.17 oz', optional:true}],
+      garnish:'Lemon twist', note:'Shake with ice and fine-strain into a chilled coupe. Created in the 1990s by Paul Harrington in Emeryville, California; it tastes remarkably like grapefruit.'},
+    {name:'Blinker', base:'Whiskey', glass:'Coupe', method:'Shaken', added:'2026-10-24',
+      items:[{id:'rye_whiskey', amt:'1.5 oz', familyOk:true},{id:'grapefruit_juice', amt:'2 oz'},{id:'grenadine', amt:'.5 oz'}],
+      garnish:'Grapefruit twist', note:'Shake with ice and fine-strain into a chilled coupe. A rye and grapefruit sour from the 1930s.'},
+    {name:"Cameron's Kick", base:'Whiskey', glass:'Coupe', method:'Shaken', added:'2026-10-24',
+      items:[{id:'scotch_whisky', amt:'1 oz'},{id:'whiskey_any', amt:'1 oz'},{id:'orgeat_syrup', amt:'.33 oz'},{id:'lemon_juice', amt:'.5 oz'},{id:'egg_white', amt:'.5 oz', optional:true}],
+      garnish:'Lemon twist', note:'Shake with ice and fine-strain into a chilled coupe. A Scotch and Irish whiskey sour with orgeat, first printed in 1922.'},
+    {name:'Diamondback', base:'Whiskey', glass:'Coupe', method:'Stirred', added:'2026-10-24',
+      items:[{id:'rye_whiskey', amt:'1 oz', familyOk:true},{id:'apple_brandy', amt:'.5 oz'},{id:'yellow_chartreuse', amt:'.5 oz'}],
+      garnish:'Cherry', note:"Stir with ice and strain into a chilled glass. From Ted Saucier's 1951 book Bottoms Up."},
+    {name:'Ramos Gin Fizz', base:'Gin', glass:'Collins', method:'Shaken', added:'2026-10-24',
+      items:[{id:'gin', amt:'2 oz', familyOk:true},{id:'lemon_juice', amt:'.5 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'simple_syrup', amt:'.75 oz'},{id:'orange_flower_water', amt:'¼ tsp'},{id:'egg_white', amt:'.75 oz'},{id:'cream', amt:'.75 oz'},{id:'soda_water', amt:'top'}],
+      garnish:'Quarter orange wheel', note:'Shake hard with ice, strain, dry-shake to emulsify, then pour slowly with soda into a chilled glass and let it settle for a minute to raise the foam. Created by Henry Ramos in New Orleans in 1888.'},
+    {name:'Caesar', base:'Vodka', glass:'Collins', method:'Rolled', added:'2026-10-24',
+      items:[{id:'vodka', amt:'2 oz'},{id:'clamato', amt:'4 oz'},{id:'lemon_juice', amt:'.5 oz'},{id:'hot_sauce', amt:'7 drops'},{id:'worcestershire', amt:'3 dashes'},{id:'celery_salt', amt:'2 pinches'},{id:'black_pepper', amt:'2 grinds'}],
+      garnish:'Celery-salt rim, celery stalk, pickled bean', note:"Roll with ice between two shakers rather than shaking, then strain into a chilled glass. Created in Calgary in 1969 and Canada's national cocktail."},
+    {name:'Saturn', base:'Gin', glass:'Hurricane', method:'Blended', added:'2026-10-24',
+      items:[{id:'gin', amt:'2.5 oz'},{id:'falernum', amt:'.5 oz'},{id:'orgeat_syrup', amt:'.5 oz'},{id:'passion_fruit_syrup', amt:'.5 oz'},{id:'lemon_juice', amt:'1 oz'}],
+      garnish:"Lemon-peel ring and cherry 'planet'", note:"Blend with crushed ice until smooth and pour into a tall glass. Created in 1967 by J. 'Popo' Galsini, it won that year's International Bartender's Association competition."},
+    {name:'Hotel Nacional Special', base:'Rum', glass:'Coupe', method:'Shaken', added:'2026-10-24',
+      items:[{id:'rum_any', amt:'1.67 oz', familyOk:true},{id:'apricot_liqueur', amt:'.5 oz'},{id:'pineapple_juice', amt:'.75 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'simple_syrup', amt:'.25 oz'}],
+      garnish:'Pineapple wedge', note:"Shake with ice and fine-strain into a chilled coupe. Named for Havana's grand Hotel Nacional de Cuba in the 1930s."}
   ];
 
   var STARTER = ['gin','vodka','dry_vermouth','sweet_vermouth','campari','triple_sec','lime_juice','lemon_juice','simple_syrup','soda_water','angostura_bitters','bourbon'];
@@ -4153,7 +4243,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-25T01:32:52Z";
+  var CURRENT_VERSION = "2026-10-25T02:13:14Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
