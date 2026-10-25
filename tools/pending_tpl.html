@@ -49,6 +49,10 @@
   <div class="bar"><i id="barFill"></i></div>
   <div id="prompts" style="margin-top:1rem"></div>
 
+  <h2>Holiday collection</h2>
+  <p class="meta">Held for a special holiday section in the app, released separately from the regular batches.</p>
+  <div id="holiday"></div>
+
   <h2>Collected drinks</h2>
   <p class="meta">Waiting for the next release, newest first.</p>
   <div id="waiting"></div>
@@ -79,7 +83,7 @@ function promptFor(g){
 }
 function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
 function recipe(d){
-  return '<div class="drink"><b>' + esc(d.name) + '</b><span class="tag ' + (d.status === 'collected' ? 'wait">Waiting' : d.status === 'reshoot' ? 'live">Re-shoot' : 'live">In the app') + '</span>' +
+  return '<div class="drink"><b>' + esc(d.name) + '</b><span class="tag ' + (d.status === 'collected' ? 'wait">Waiting' : d.status === 'holiday' ? 'wait">' + (d.occasion === 'Christmas' ? '❄️ Christmas' : '🥂 New Year\'s') : d.status === 'reshoot' ? 'live">Re-shoot' : 'live">In the app') + '</span>' +
     '<div class="sub">' + esc(d.base) + ' · ' + esc(d.glass) + ' · ' + esc(d.method) + (d.collected ? ' · collected ' + esc(d.collected) : '') + (d.reason ? '<br>Why: ' + esc(d.reason) : '') +
     '</div>' +
     '<ul>' + d.items.map(function(it){ return '<li>' + esc(it.amt) + ' ' + esc(it.label || it.id.replace(/_/g, ' ')) + (it.optional ? ' (optional)' : '') + '</li>'; }).join('') + '</ul>' +
@@ -88,10 +92,14 @@ function recipe(d){
 fetch('drinks.json?_=' + Date.now()).then(function(r){ return r.json(); }).then(function(data){
   var all = data.drinks || [];
   var waiting = all.filter(function(d){ return d.status === 'collected'; });
+  var holiday = all.filter(function(d){ return d.status === 'holiday'; });
   var needPhoto = all.filter(function(d){ return !d.photo; });
-  document.getElementById('summary').textContent = waiting.length + ' collected and waiting for release · ' + needPhoto.length + ' need a photo';
+  document.getElementById('summary').textContent = waiting.length + ' collected and waiting for release · ' + holiday.length + ' in the holiday collection · ' + needPhoto.length + ' need a photo';
+  // Holiday drinks get their own images so they never share a panel with a regular drink.
   var groups = [];
-  for(var i = 0; i < needPhoto.length; i += 3) groups.push(needPhoto.slice(i, i + 3));
+  [needPhoto.filter(function(d){ return d.status !== 'holiday'; }), needPhoto.filter(function(d){ return d.status === 'holiday'; })].forEach(function(list){
+    for(var i = 0; i < list.length; i += 3) groups.push(list.slice(i, i + 3));
+  });
   var done = load(), box = document.getElementById('prompts');
   function refresh(){
     var ids = groups.map(function(g){ return g.map(function(d){ return d.name; }).join(' · '); });
@@ -104,7 +112,7 @@ fetch('drinks.json?_=' + Date.now()).then(function(r){ return r.json(); }).then(
     var id = g.map(function(d){ return d.name; }).join(' · '), text = promptFor(g);
     var el = document.createElement('article');
     el.className = 'prompt' + (done[id] ? ' done' : '');
-    el.innerHTML = '<header><label><input type="checkbox"' + (done[id] ? ' checked' : '') + '> Image ' + (k + 1) + '</label><h3>' + esc(id) + '</h3><button class="copy" type="button">Copy</button></header><pre>' + esc(text) + '</pre>';
+    el.innerHTML = '<header><label><input type="checkbox"' + (done[id] ? ' checked' : '') + '> Image ' + (k + 1) + (g[0].status === 'holiday' ? ' · Holiday' : '') + '</label><h3>' + esc(id) + '</h3><button class="copy" type="button">Copy</button></header><pre>' + esc(text) + '</pre>';
     el.querySelector('input').addEventListener('change', function(e){ if(e.target.checked) done[id] = 1; else delete done[id]; save(done); el.classList.toggle('done', e.target.checked); refresh(); });
     el.querySelector('.copy').addEventListener('click', function(){
       var b = this, pre = el.querySelector('pre');
@@ -115,7 +123,8 @@ fetch('drinks.json?_=' + Date.now()).then(function(r){ return r.json(); }).then(
   });
   refresh();
   document.getElementById('waiting').innerHTML = waiting.length ? waiting.slice().reverse().map(recipe).join('') : '<p class="empty">Nothing waiting yet. The first weekly collection runs on Friday.</p>';
-  var live = all.filter(function(d){ return d.status !== 'collected' && !d.photo; });
+  document.getElementById('holiday').innerHTML = holiday.length ? holiday.map(recipe).join('') : '<p class="empty">None yet.</p>';
+  var live = all.filter(function(d){ return d.status !== 'collected' && d.status !== 'holiday' && !d.photo; });
   document.getElementById('live').innerHTML = live.length ? live.map(recipe).join('') : '<p class="empty">None.</p>';
 }).catch(function(){ document.getElementById('summary').textContent = 'Could not load drinks.json.'; });
 </script>

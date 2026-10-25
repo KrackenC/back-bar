@@ -60,6 +60,84 @@
    "name": "Black Pepper",
    "category": "Seasoning",
    "group": "Juice & Mixers"
+  },
+  {
+   "id": "nutmeg",
+   "name": "Nutmeg",
+   "category": "Seasoning",
+   "group": "Juice & Mixers"
+  },
+  {
+   "id": "ground_cinnamon",
+   "name": "Ground Cinnamon",
+   "category": "Seasoning",
+   "group": "Juice & Mixers"
+  },
+  {
+   "id": "cloves",
+   "name": "Cloves",
+   "category": "Seasoning",
+   "group": "Juice & Mixers"
+  },
+  {
+   "id": "sugar",
+   "name": "Sugar",
+   "category": "Sugar",
+   "group": "Syrups"
+  },
+  {
+   "id": "whole_egg",
+   "name": "Whole Egg",
+   "category": "Egg",
+   "group": "Juice & Mixers"
+  },
+  {
+   "id": "butter",
+   "name": "Unsalted Butter",
+   "category": "Cream / Dairy",
+   "group": "Juice & Mixers"
+  },
+  {
+   "id": "evaporated_milk",
+   "name": "Evaporated Milk",
+   "category": "Cream / Dairy",
+   "group": "Juice & Mixers"
+  },
+  {
+   "id": "condensed_milk",
+   "name": "Sweetened Condensed Milk",
+   "category": "Cream / Dairy",
+   "group": "Juice & Mixers"
+  },
+  {
+   "id": "coconut_water",
+   "name": "Coconut Water",
+   "category": "Juice",
+   "group": "Juice & Mixers"
+  },
+  {
+   "id": "advocaat",
+   "name": "Advocaat",
+   "category": "Egg Liqueur",
+   "group": "Liqueurs & Fortified Wine"
+  },
+  {
+   "id": "lemon_sorbet",
+   "name": "Lemon Sorbet",
+   "category": "Frozen",
+   "group": "Juice & Mixers"
+  },
+  {
+   "id": "fresh_orange",
+   "name": "Fresh Orange",
+   "category": "Fresh Fruit",
+   "group": "Juice & Mixers"
+  },
+  {
+   "id": "fresh_pineapple",
+   "name": "Fresh Pineapple",
+   "category": "Fresh Fruit",
+   "group": "Juice & Mixers"
   }
  ],
  "drinks": [
@@ -1471,6 +1549,502 @@
    "look": "rocks glass filled with several smaller clear ice cubes, lighter translucent copper-russet with golden highlights, a long thin lemon peel spiralling down inside the glass against the ice",
    "scene": "a Norwegian fjord-side boathouse at twilight, weathered red timber and still dark water beyond",
    "photoFile": "photos/trident.jpg"
+  },
+  {
+   "name": "Tom and Jerry",
+   "base": "Brandy",
+   "glass": "Mug",
+   "method": "Hot",
+   "items": [
+    {
+     "id": "brandy",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "dark_rum",
+     "amt": ".5 oz",
+     "familyOk": true
+    },
+    {
+     "id": "whole_egg",
+     "amt": "⅓ (in batter)"
+    },
+    {
+     "id": "sugar",
+     "amt": "1 barspoon (in batter)"
+    },
+    {
+     "id": "ground_cinnamon",
+     "amt": "pinch"
+    },
+    {
+     "id": "cloves",
+     "amt": "pinch, ground"
+    },
+    {
+     "id": "nutmeg",
+     "amt": "pinch"
+    }
+   ],
+   "garnish": "Grated nutmeg",
+   "note": "Batter (serves 6): beat 2 egg yolks with 6 barspoons sugar, ½ oz Jamaican rum and a pinch each of cinnamon, clove and nutmeg; whisk 2 whites stiff and fold in. Per drink, stir 2 tbsp batter with the brandy and rum in a warmed mug, top with hot (not boiling) water and dust with nutmeg. A 19th-century American Christmas tradition, served from a matching punch bowl and mugs.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "holiday",
+   "collection": "holiday",
+   "occasion": "Christmas",
+   "photo": false,
+   "look": "white ceramic Tom and Jerry mug with a plain thin gold rim, pale creamy-beige drink with a thick frothy cream-colored head dusted with grated nutmeg, a faint wisp of steam",
+   "scene": "a cozy Victorian parlour at Christmas, a decorated tree with glowing candles and a crackling fireplace softly blurred behind"
+  },
+  {
+   "name": "Mulled Wine",
+   "base": "Wine",
+   "glass": "Mug",
+   "method": "Hot",
+   "items": [
+    {
+     "id": "red_wine",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "port_wine",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "grand_marnier",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "lemon_juice",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "honey_syrup",
+     "amt": "2 barspoons"
+    },
+    {
+     "id": "fresh_orange",
+     "amt": "1 wedge"
+    },
+    {
+     "id": "cloves",
+     "amt": "5 whole"
+    },
+    {
+     "id": "nutmeg",
+     "amt": "pinch"
+    },
+    {
+     "id": "ground_cinnamon",
+     "amt": "pinch"
+    }
+   ],
+   "garnish": "Orange wheel studded with cloves, cinnamon stick",
+   "note": "Warm everything gently in a pan without boiling (or build in a warmed mug and top with hot water). Europe's classic Christmas-market warmer, known as Glühwein in Germany.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "holiday",
+   "collection": "holiday",
+   "occasion": "Christmas",
+   "photo": false,
+   "look": "clear glass mug with a handle, deep ruby-red hot spiced wine, a clove-studded orange wheel and a cinnamon stick, a faint wisp of steam",
+   "scene": "a snowy German Christmas market at dusk, wooden stalls strung with warm fairy lights softly blurred behind"
+  },
+  {
+   "name": "Hot Buttered Rum",
+   "base": "Rum",
+   "glass": "Mug",
+   "method": "Hot",
+   "items": [
+    {
+     "id": "dark_rum",
+     "amt": "2 oz",
+     "familyOk": true
+    },
+    {
+     "id": "honey_syrup",
+     "amt": "2 barspoons"
+    },
+    {
+     "id": "butter",
+     "amt": "1 small knob"
+    },
+    {
+     "id": "nutmeg",
+     "amt": "2 pinches"
+    }
+   ],
+   "garnish": "Cinnamon stick, lemon slice studded with cloves",
+   "note": "Put the honey in a warmed mug, add the rum, butter and nutmeg, top with hot water and stir until the butter and honey melt. A colonial New England winter drink.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "holiday",
+   "collection": "holiday",
+   "occasion": "Christmas",
+   "photo": false,
+   "look": "glass toddy mug of warm golden-amber with a thin glossy sheen of melted butter on top, a cinnamon stick and a clove-studded lemon slice, a faint wisp of steam",
+   "scene": "a snowed-in New England log cabin, a woollen blanket, snow piled on the window sill and a woodstove glow softly blurred behind"
+  },
+  {
+   "name": "Coquito",
+   "base": "Rum",
+   "glass": "Rocks",
+   "method": "Blended",
+   "items": [
+    {
+     "id": "white_rum",
+     "amt": "1 oz"
+    },
+    {
+     "id": "coconut_water",
+     "amt": "1 oz"
+    },
+    {
+     "id": "coconut_cream",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "condensed_milk",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "evaporated_milk",
+     "amt": "1 oz"
+    },
+    {
+     "id": "ground_cinnamon",
+     "amt": "pinch"
+    },
+    {
+     "id": "nutmeg",
+     "amt": "pinch"
+    }
+   ],
+   "garnish": "Cinnamon stick, dusting of ground cinnamon",
+   "note": "Best made as a batch: simmer the coconut water with cinnamon and nutmeg, cool and strain, then blend with the rest and chill for at least 4 hours. Serve cold, no ice. Puerto Rico's beloved Christmas drink.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "holiday",
+   "collection": "holiday",
+   "occasion": "Christmas",
+   "photo": false,
+   "look": "small rocks glass without ice, smooth creamy ivory-white coconut drink, a dusting of ground cinnamon on top and a cinnamon stick",
+   "scene": "a festive Puerto Rican home at Christmas, colourful parranda string lights, a guitar and poinsettias softly blurred behind"
+  },
+  {
+   "name": "Snowball",
+   "base": "Liqueur",
+   "glass": "Collins",
+   "method": "Built",
+   "items": [
+    {
+     "id": "advocaat",
+     "amt": "2 oz"
+    },
+    {
+     "id": "lime_juice",
+     "amt": ".75 oz"
+    },
+    {
+     "id": "lemon_lime_soda",
+     "amt": "3.5 oz"
+    }
+   ],
+   "garnish": "Lime wheel",
+   "note": "Pour the soda and lime over ice, add the advocaat (it sinks) and stir briefly to keep the fizz. A British Christmas favourite.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "holiday",
+   "collection": "holiday",
+   "occasion": "Christmas",
+   "photo": false,
+   "look": "collins glass with clear ice, pale creamy-yellow fizzy drink with a light foam on top, a lime wheel on the rim",
+   "scene": "a retro 1970s British living room at Christmas, tinsel garlands, a glowing television and paper chains softly blurred behind",
+   "fizzy": true
+  },
+  {
+   "name": "Bombardino",
+   "base": "Liqueur",
+   "glass": "Mug",
+   "method": "Hot",
+   "items": [
+    {
+     "id": "advocaat",
+     "amt": "2 oz"
+    },
+    {
+     "id": "brandy",
+     "amt": "1 oz"
+    },
+    {
+     "id": "cream",
+     "amt": "1 oz, whipped"
+    },
+    {
+     "id": "ground_cinnamon",
+     "amt": "pinch",
+     "optional": true
+    }
+   ],
+   "garnish": "Whipped cream, dusting of cinnamon",
+   "note": "Warm the advocaat and brandy together gently (do not boil), pour into a small heatproof glass mug and float softly whipped cream on top. The après-ski drink of the Italian Alps.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "holiday",
+   "collection": "holiday",
+   "occasion": "Christmas",
+   "photo": false,
+   "look": "small heatproof glass mug of warm golden-yellow egg liqueur topped with a generous swirl of whipped cream dusted with cinnamon",
+   "scene": "an Italian Alpine ski lodge terrace, snowy Dolomite peaks, wooden skis against the wall and late-afternoon sun"
+  },
+  {
+   "name": "Poinsettia",
+   "base": "Sparkling",
+   "glass": "Flute",
+   "method": "Built",
+   "items": [
+    {
+     "id": "triple_sec",
+     "amt": ".5 oz",
+     "familyOk": true
+    },
+    {
+     "id": "cranberry_juice",
+     "amt": "2 oz"
+    },
+    {
+     "id": "sparkling_wine",
+     "amt": "2 oz"
+    }
+   ],
+   "garnish": "Rosemary sprig",
+   "note": "Pour the triple sec and cranberry into a chilled flute, top with sparkling wine and stir briefly. A festive red sparkler for holiday parties and New Year's Eve.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "holiday",
+   "collection": "holiday",
+   "occasion": "New Year's",
+   "photo": false,
+   "look": "champagne flute of bright cranberry-red sparkling wine with fine rising bubbles, a small rosemary sprig",
+   "scene": "an elegant holiday cocktail party, a grand staircase wrapped in garland and red ribbon, warm golden bokeh behind",
+   "fizzy": true
+  },
+  {
+   "name": "Ritz Cocktail",
+   "base": "Brandy",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "brandy",
+     "amt": "1 oz"
+    },
+    {
+     "id": "triple_sec",
+     "amt": ".5 oz",
+     "familyOk": true
+    },
+    {
+     "id": "maraschino_liqueur",
+     "amt": ".25 oz"
+    },
+    {
+     "id": "lemon_juice",
+     "amt": ".25 oz"
+    },
+    {
+     "id": "sparkling_wine",
+     "amt": "2 oz"
+    }
+   ],
+   "garnish": "Flamed orange twist",
+   "note": "Shake everything but the sparkling wine with ice, strain into a chilled coupe and top with sparkling wine. Created by Dale DeGroff at the Ritz-Carlton in the 1980s.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "holiday",
+   "collection": "holiday",
+   "occasion": "New Year's",
+   "photo": false,
+   "look": "chilled coupe of pale golden-amber sparkling cocktail with fine bubbles, an orange twist",
+   "scene": "a grand hotel ballroom on New Year's Eve, crystal chandeliers and gold balloons softly blurred behind",
+   "fizzy": true
+  },
+  {
+   "name": "Prince of Wales",
+   "base": "Whiskey",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "fresh_pineapple",
+     "amt": "1 cube"
+    },
+    {
+     "id": "rye_whiskey",
+     "amt": "1.5 oz",
+     "familyOk": true
+    },
+    {
+     "id": "pineapple_juice",
+     "amt": "1 barspoon"
+    },
+    {
+     "id": "simple_syrup",
+     "amt": "1 barspoon rich (2:1)"
+    },
+    {
+     "id": "maraschino_liqueur",
+     "amt": "dash"
+    },
+    {
+     "id": "angostura_bitters",
+     "amt": "1 dash"
+    },
+    {
+     "id": "sparkling_wine",
+     "amt": "1 oz"
+    }
+   ],
+   "garnish": "Pineapple cube and cherry on a pick",
+   "note": "Muddle the pineapple, add everything but the sparkling wine, shake with ice, fine-strain into a chilled coupe and top with sparkling wine. Attributed to Edward VII when he was Prince of Wales.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "holiday",
+   "collection": "holiday",
+   "occasion": "New Year's",
+   "photo": false,
+   "look": "chilled coupe of pale golden sparkling cocktail with fine bubbles, a pineapple cube and a dark cherry on a gold pick",
+   "scene": "a regal Edwardian gentlemen's club on New Year's Eve, dark panelling, a mantel clock near midnight and candlelight",
+   "fizzy": true
+  },
+  {
+   "name": "Twinkle",
+   "base": "Vodka",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "vodka",
+     "amt": "2 oz"
+    },
+    {
+     "id": "elderflower_liqueur",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "sparkling_wine",
+     "amt": "2 oz"
+    }
+   ],
+   "garnish": "Lemon twist",
+   "note": "Shake the vodka and elderflower liqueur with ice, fine-strain into a chilled coupe and top with sparkling wine. A modern London classic from 2002.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "holiday",
+   "collection": "holiday",
+   "occasion": "New Year's",
+   "photo": false,
+   "look": "chilled coupe of crystal-clear pale sparkling cocktail with fine bubbles, a long lemon twist",
+   "scene": "a London rooftop on New Year's Eve, fireworks bursting over the city skyline and the river at night",
+   "fizzy": true
+  },
+  {
+   "name": "Sgroppino",
+   "base": "Vodka",
+   "glass": "Flute",
+   "method": "Blended",
+   "items": [
+    {
+     "id": "vodka",
+     "amt": ".67 oz"
+    },
+    {
+     "id": "cream",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "sparkling_wine",
+     "amt": "2 oz"
+    },
+    {
+     "id": "lemon_sorbet",
+     "amt": "2½ scoops"
+    }
+   ],
+   "garnish": "Grated lemon zest",
+   "note": "Blend everything without ice on a slow setting until smooth and pour into a chilled flute. A Venetian after-dinner palate cleanser, perfect after a New Year's feast.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "holiday",
+   "collection": "holiday",
+   "occasion": "New Year's",
+   "photo": false,
+   "look": "champagne flute of smooth, frothy pale lemon-white frozen sorbet cocktail, grated lemon zest on top",
+   "scene": "a Venetian palazzo dining room at the end of a New Year's feast, candlelit table, Murano glass chandelier and a canal view through arched windows"
+  },
+  {
+   "name": "Black Velvet",
+   "base": "Sparkling",
+   "glass": "Flute",
+   "method": "Built",
+   "items": [
+    {
+     "id": "stout_beer",
+     "amt": "2.5 oz"
+    },
+    {
+     "id": "sparkling_wine",
+     "amt": "2.5 oz"
+    }
+   ],
+   "garnish": "—",
+   "note": "Pour the sparkling wine into a chilled flute, then slowly add the stout. First served in London in 1861, it became a favourite toast for New Year's.",
+   "source": {
+    "site": "Verified spec, 2026-10-24",
+    "url": ""
+   },
+   "collected": "2026-10-24",
+   "status": "holiday",
+   "collection": "holiday",
+   "occasion": "New Year's",
+   "photo": false,
+   "look": "champagne flute of deep near-black stout and sparkling wine with a creamy tan head and fine rising bubbles",
+   "scene": "a Dublin hotel bar on New Year's Eve, dark wood, brass rails, a stained-glass window and festive candlelight",
+   "fizzy": true
   }
  ]
 }
