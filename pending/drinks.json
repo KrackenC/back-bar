@@ -1434,6 +1434,42 @@
    "scene": "the grand terrace of a 1930s Havana hotel, palm trees, a colonnade and the Malecón seawall in late sun",
    "photoFile": "photos/hotel-nacional-special.jpg",
    "released": "2026-10-24"
+  },
+  {
+   "name": "Trident",
+   "base": "Liqueur",
+   "glass": "Rocks",
+   "method": "Stirred",
+   "items": [
+    {
+     "id": "sherry",
+     "amt": "1 oz"
+    },
+    {
+     "id": "cynar",
+     "amt": "1 oz"
+    },
+    {
+     "id": "aquavit",
+     "amt": "1 oz"
+    },
+    {
+     "id": "peach_bitters",
+     "amt": "2 dashes"
+    }
+   ],
+   "garnish": "Lemon twist",
+   "note": "Stir with ice and strain into an ice-filled glass. A bone-dry Nordic-Italian twist on the Negroni using aquavit, sherry and Cynar.",
+   "source": {
+    "site": "Back Bar photo review",
+    "url": ""
+   },
+   "status": "reshoot",
+   "reason": "Photo is a near-twin of Bitter Giuseppe (same rocks glass, single big cube, lemon twist, red-brown colour)",
+   "requested": "2026-10-24",
+   "photo": false,
+   "look": "rocks glass filled with several smaller clear ice cubes, lighter translucent copper-russet with golden highlights, a long thin lemon peel spiralling down inside the glass against the ice",
+   "scene": "a Norwegian fjord-side boathouse at twilight, weathered red timber and still dark water beyond"
   }
  ]
 }
