@@ -1983,10 +1983,11 @@
    "status": "holiday",
    "collection": "holiday",
    "occasion": "New Year's",
-   "photo": false,
+   "photo": true,
    "look": "chilled coupe of crystal-clear pale sparkling cocktail with fine bubbles, a long lemon twist",
    "scene": "a London rooftop on New Year's Eve, fireworks bursting over the city skyline and the river at night",
-   "fizzy": true
+   "fizzy": true,
+   "photoFile": "photos/twinkle.jpg"
   },
   {
    "name": "Sgroppino",
@@ -2021,9 +2022,10 @@
    "status": "holiday",
    "collection": "holiday",
    "occasion": "New Year's",
-   "photo": false,
+   "photo": true,
    "look": "champagne flute of smooth, frothy pale lemon-white frozen sorbet cocktail, grated lemon zest on top",
-   "scene": "a Venetian palazzo dining room at the end of a New Year's feast, candlelit table, Murano glass chandelier and a canal view through arched windows"
+   "scene": "a Venetian palazzo dining room at the end of a New Year's feast, candlelit table, Murano glass chandelier and a canal view through arched windows",
+   "photoFile": "photos/sgroppino.jpg"
   },
   {
    "name": "Black Velvet",
@@ -2050,10 +2052,11 @@
    "status": "holiday",
    "collection": "holiday",
    "occasion": "New Year's",
-   "photo": false,
+   "photo": true,
    "look": "champagne flute of deep near-black stout and sparkling wine with a creamy tan head and fine rising bubbles",
    "scene": "a Dublin hotel bar on New Year's Eve, dark wood, brass rails, a stained-glass window and festive candlelight",
-   "fizzy": true
+   "fizzy": true,
+   "photoFile": "photos/black-velvet.jpg"
   }
  ]
 }
