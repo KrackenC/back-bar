@@ -1777,11 +1777,12 @@
    "status": "holiday",
    "collection": "holiday",
    "occasion": "Christmas",
-   "photo": false,
+   "photo": true,
    "look": "collins glass with three large, smooth, crystal-clear ice cubes, a smooth translucent pale creamy-yellow drink with only a few fine bubbles and a thin soft white foam at the top, a lime wheel on the rim; the glass and the liquid are completely free of dots, speckles or droplets",
    "reason": "First image showed pebbled dots over the glass and liquid and crackled ice",
    "scene": "a retro 1970s British living room at Christmas, tinsel garlands, a glowing television and paper chains softly blurred behind",
-   "fizzy": true
+   "fizzy": true,
+   "photoFile": "photos/snowball.jpg"
   },
   {
    "name": "Bombardino",
