@@ -1596,9 +1596,10 @@
    "status": "holiday",
    "collection": "holiday",
    "occasion": "Christmas",
-   "photo": false,
+   "photo": true,
    "look": "white ceramic Tom and Jerry mug with a plain thin gold rim, pale creamy-beige drink with a thick frothy cream-colored head dusted with grated nutmeg, a faint wisp of steam",
-   "scene": "a cozy Victorian parlour at Christmas, a decorated tree with glowing candles and a crackling fireplace softly blurred behind"
+   "scene": "a cozy Victorian parlour at Christmas, a decorated tree with glowing candles and a crackling fireplace softly blurred behind",
+   "photoFile": "photos/tom-and-jerry.jpg"
   },
   {
    "name": "Mulled Wine",
@@ -1653,9 +1654,10 @@
    "status": "holiday",
    "collection": "holiday",
    "occasion": "Christmas",
-   "photo": false,
+   "photo": true,
    "look": "clear glass mug with a handle, deep ruby-red hot spiced wine, a clove-studded orange wheel and a cinnamon stick, a faint wisp of steam",
-   "scene": "a snowy German Christmas market at dusk, wooden stalls strung with warm fairy lights softly blurred behind"
+   "scene": "a snowy German Christmas market at dusk, wooden stalls strung with warm fairy lights softly blurred behind",
+   "photoFile": "photos/mulled-wine.jpg"
   },
   {
    "name": "Hot Buttered Rum",
@@ -1691,9 +1693,10 @@
    "status": "holiday",
    "collection": "holiday",
    "occasion": "Christmas",
-   "photo": false,
+   "photo": true,
    "look": "glass toddy mug of warm golden-amber with a thin glossy sheen of melted butter on top, a cinnamon stick and a clove-studded lemon slice, a faint wisp of steam",
-   "scene": "a snowed-in New England log cabin, a woollen blanket, snow piled on the window sill and a woodstove glow softly blurred behind"
+   "scene": "a snowed-in New England log cabin, a woollen blanket, snow piled on the window sill and a woodstove glow softly blurred behind",
+   "photoFile": "photos/hot-buttered-rum.jpg"
   },
   {
    "name": "Coquito",
