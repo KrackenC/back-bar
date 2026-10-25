@@ -79,8 +79,8 @@ function promptFor(g){
 }
 function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
 function recipe(d){
-  return '<div class="drink"><b>' + esc(d.name) + '</b><span class="tag ' + (d.status === 'collected' ? 'wait">Waiting' : 'live">In the app') + '</span>' +
-    '<div class="sub">' + esc(d.base) + ' · ' + esc(d.glass) + ' · ' + esc(d.method) + (d.collected ? ' · collected ' + esc(d.collected) : '') +
+  return '<div class="drink"><b>' + esc(d.name) + '</b><span class="tag ' + (d.status === 'collected' ? 'wait">Waiting' : d.status === 'reshoot' ? 'live">Re-shoot' : 'live">In the app') + '</span>' +
+    '<div class="sub">' + esc(d.base) + ' · ' + esc(d.glass) + ' · ' + esc(d.method) + (d.collected ? ' · collected ' + esc(d.collected) : '') + (d.reason ? '<br>Why: ' + esc(d.reason) : '') +
     (d.source && d.source.url ? ' · <a href="' + esc(d.source.url) + '" target="_blank" rel="noopener">' + esc(d.source.site || 'source') + '</a>' : (d.source && d.source.site ? ' · ' + esc(d.source.site) : '')) + '</div>' +
     '<ul>' + d.items.map(function(it){ return '<li>' + esc(it.amt) + ' ' + esc(it.label || it.id.replace(/_/g, ' ')) + (it.optional ? ' (optional)' : '') + '</li>'; }).join('') + '</ul>' +
     '<div class="sub">Garnish: ' + esc(noGarnish(d) ? 'none' : d.garnish) + (d.note ? ' · ' + esc(d.note) : '') + '</div></div>';
