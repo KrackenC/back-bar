@@ -81,7 +81,7 @@ for path in apps:
     block = ',\n    // ---------- Release ' + date + ' ----------\n' + ',\n'.join(recipe_js(d) for d in batch)
     s = s[:at] + block + s[at:]
     total = len(re.findall(r"\{name:\s*['\"]", s[s.index('var RECIPES = ['):close_array(s, 'RECIPES')]))
-    s, n = re.subn(r'(\. )\d+( recipes, all from)', r'\g<1>' + str(total) + r'\2', s)
+    s, n = re.subn(r'(\. )\d+( recipes[.,])', r'\g<1>' + str(total) + r'\2', s)
     if not dry:
         open(path, 'w').write(s)
     print(f'{path}: +{len(batch)} recipes, {total} total, footer updated: {bool(n)}')

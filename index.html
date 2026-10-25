@@ -1194,7 +1194,7 @@
   </dialog>
 
   <div class="undo-toast" id="undoToast" role="status" aria-live="polite"><span class="undo-msg"></span><button type="button">Undo</button></div>
-  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 280 recipes, all from publicly available sources: the IBA's official cocktail list, spirit producers' own published recipes, and Difford's Guide online.
+  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 280 recipes.
     <div class="footer-actions"><button class="help-link" id="backupBtn" type="button" aria-haspopup="dialog">Back up or move your bar</button> <span style="margin:0 .5rem;color:var(--line)">·</span> <button class="reset-all-btn" id="resetAllBtn" type="button">Reset everything</button> <span style="margin-left:.4rem">Clears both shelves, favorites, Up Next and your Made history.</span></div>
     <p class="drink-responsibly">Please drink responsibly. Enjoy only if you're of legal drinking age, know your limits, and never drink and drive.</p>
   </footer>
@@ -2553,13 +2553,13 @@ var DRINK_PHOTOS = [
     // ---------- Mezcal ----------
     {name:'Call Mexico', base:'Mezcal', glass:'Coupe', method:'Shaken', added:'2026-10-09',
       items:[{id:'sherry', amt:'2 oz'},{id:'mezcal', amt:'.67 oz'},{id:'lime_juice', amt:'.33 oz'},{id:'agave_syrup', amt:'.33 oz'}],
-      garnish:'Grapefruit twist', note:'Shake with ice and fine-strain into a chilled coupe — a mezcal-and-lime reversal of the gin-and-lemon Call London, from Difford’s Guide.'},
+      garnish:'Grapefruit twist', note:'Shake with ice and fine-strain into a chilled coupe — a mezcal-and-lime reversal of the gin-and-lemon Call London.'},
     {name:'Closing Argument', base:'Mezcal', glass:'Coupe', method:'Shaken', added:'2026-10-09',
       items:[{id:'mezcal', amt:'.75 oz'},{id:'green_chartreuse', amt:'.75 oz'},{id:'maraschino_liqueur', amt:'.75 oz'},{id:'lime_juice', amt:'.75 oz'}],
       garnish:'Lime twist', note:'Equal parts, shaken with ice and double-strained into a chilled coupe — a mezcal riff on the gin Last Word, also known as the Mezcal Last Word.'},
     {name:'Mezcal Stone Sour', base:'Mezcal', glass:'Rocks', method:'Shaken, dry-shaken', added:'2026-10-09',
       items:[{id:'mezcal', amt:'1.67 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'orange_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'orange_bitters', amt:'2 dashes'},{id:'egg_white', amt:'1', optional:true}],
-      garnish:'Orange twist', note:'Shake with ice, strain, then dry-shake without ice to emulsify before straining over fresh ice; the "stone" refers to the splash of orange juice in this mezcal sour, from Difford’s Guide.'},
+      garnish:'Orange twist', note:'Shake with ice, strain, then dry-shake without ice to emulsify before straining over fresh ice; the "stone" refers to the splash of orange juice in this mezcal sour.'},
     {name:'Dragon Punch', base:'Mezcal', glass:'Coupe', method:'Shaken', added:'2026-10-09',
       items:[{id:'mezcal', amt:'1.5 oz'},{id:'yellow_chartreuse', amt:'.5 oz'},{id:'lime_juice', amt:'1 oz'},{id:'orgeat_syrup', amt:'.5 oz'},{id:'hot_sauce', amt:'2 dashes'}],
       garnish:'Cucumber', note:'Shake with ice and fine-strain into a chilled coupe; created in 2020 by Robert Weeks of The Coldroom bar in Montréal.'},
@@ -2584,7 +2584,7 @@ var DRINK_PHOTOS = [
       items:[{id:'fernet_branca', amt:'2 oz'},{id:'pineapple_juice', amt:'2 oz'},{id:'lime_juice', amt:'1 oz'},{id:'simple_syrup', amt:'.67 oz'}],
       garnish:'—', note:'Shake with ice and strain into a rocks glass over fresh ice; the pineapple and lime soften Fernet-Branca\'s bitter edge.'},
 
-    // ---------- Mocktails (alcohol-free; recipes from Difford's Guide) ----------
+    // ---------- Mocktails (alcohol-free) ----------
     {name:'Shirley Temple', base:'Mocktail', glass:'Collins', method:'Built', added:'2026-10-07',
       items:[{id:'grenadine', amt:'.25 oz'},{id:'lemon_juice', amt:'.33 oz'},{id:'ginger_ale', amt:'5.5 oz'}],
       garnish:'Lemon wheel, cherry', note:"Pour into a chilled glass and fill with ice; credited to Chasen's restaurant in Beverly Hills, named for the child star Shirley Temple."},
@@ -4153,7 +4153,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-25T01:29:42Z";
+  var CURRENT_VERSION = "2026-10-25T01:32:52Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
