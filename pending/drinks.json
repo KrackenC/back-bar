@@ -1120,9 +1120,10 @@
    },
    "collected": "2026-10-24",
    "status": "collected",
-   "photo": false,
+   "photo": true,
    "look": "chilled coupe of soft pink-grapefruit blush, clear and glossy, a lemon twist",
-   "scene": "a 1990s California bistro bar with warm blond wood, jasmine vines climbing a sunlit window"
+   "scene": "a 1990s California bistro bar with warm blond wood, jasmine vines climbing a sunlit window",
+   "photoFile": "photos/jasmine.jpg"
   },
   {
    "name": "Blinker",
@@ -1152,9 +1153,10 @@
    },
    "collected": "2026-10-24",
    "status": "collected",
-   "photo": false,
+   "photo": true,
    "look": "chilled coupe of coral-pink, lightly cloudy and silky, a grapefruit twist",
-   "scene": "a 1930s roadside diner at dawn with chrome trim, a neon sign and red vinyl stools blurred behind"
+   "scene": "a 1930s roadside diner at dawn with chrome trim, a neon sign and red vinyl stools blurred behind",
+   "photoFile": "photos/blinker.jpg"
   },
   {
    "name": "Cameron's Kick",
@@ -1192,9 +1194,10 @@
    },
    "collected": "2026-10-24",
    "status": "collected",
-   "photo": false,
+   "photo": true,
    "look": "chilled coupe of pale golden cream with a thin silky foam, a lemon twist",
-   "scene": "an old Dublin pub snug with a stained-glass partition and brass fittings, a different room from a fireside lounge"
+   "scene": "an old Dublin pub snug with a stained-glass partition and brass fittings, a different room from a fireside lounge",
+   "photoFile": "photos/camerons-kick.jpg"
   },
   {
    "name": "Diamondback",
