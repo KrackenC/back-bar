@@ -97,7 +97,9 @@ fetch('drinks.json?_=' + Date.now()).then(function(r){ return r.json(); }).then(
   document.getElementById('summary').textContent = waiting.length + ' collected and waiting for release · ' + holiday.length + ' in the holiday collection · ' + needPhoto.length + ' need a photo';
   // Holiday drinks get their own images so they never share a panel with a regular drink.
   var groups = [];
-  [needPhoto.filter(function(d){ return d.status !== 'holiday'; }), needPhoto.filter(function(d){ return d.status === 'holiday'; })].forEach(function(list){
+  // A drink sent back for a re-shoot goes last, so the other prompts keep their groups.
+  function byRetake(list){ return list.filter(function(d){ return !d.reason; }).concat(list.filter(function(d){ return !!d.reason; })); }
+  [byRetake(needPhoto.filter(function(d){ return d.status !== 'holiday'; })), byRetake(needPhoto.filter(function(d){ return d.status === 'holiday'; }))].forEach(function(list){
     for(var i = 0; i < list.length; i += 3) groups.push(list.slice(i, i + 3));
   });
   var done = load(), box = document.getElementById('prompts');
