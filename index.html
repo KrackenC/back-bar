@@ -930,6 +930,11 @@
     .stat .n.pulse{ animation: statPulse .6s ease; }
     @keyframes statPulse{ 0%{ color:var(--accent); } 100%{ color:var(--ink); } }
   }
+  /* Holidays: a seasonal full-width chip above the eight filters (late Nov to early Jan) */
+  .recipes-controls #filterSeg .season-chip{ grid-column:1 / -1; grid-row:1; letter-spacing:.06em; }
+  .recipes-controls #filterSeg .season-chip:not(.active){ color:#F3E3C3; border-color:#8C6A3A; background:linear-gradient(180deg, #23443A 0%, #172E2A 100%); }
+  @media (max-width:640px){ .recipes-controls #filterSeg.has-season{ grid-template-rows:repeat(5, auto); } }
+  .hol-tag{ font-size:.8em; margin-left:.35em; vertical-align:.08em; }
 </style>
 </head>
 <body>
@@ -1007,6 +1012,7 @@
         <div class="recipes-controls">
           <div class="search"><input type="text" id="searchInput" placeholder="Search recipes…"></div>
           <div class="segmented" id="filterSeg">
+            <button data-filter="holidays" class="season-chip" type="button">❄️ Holidays 🥂</button>
             <button data-filter="all" class="active" type="button">All</button>
             <button data-filter="ready" type="button">Ready</button>
             <button data-filter="almost" type="button">Almost</button>
@@ -1050,7 +1056,7 @@
         <li><div><h4>See what you can make</h4>
           <p><b>What You Can Make</b> lists every recipe. A green <b>Ready to pour</b> tag means you have everything. <b>Missing:</b> names the one thing you still need, and <b>Missing 3</b> means three things. The <b>Ready</b> and <b>Almost</b> counts in the header appear once your shelf has bottles. Back Bar counts close substitutes, so Cointreau covers triple sec, and any whiskey covers a recipe that just says whiskey.</p></div></li>
         <li><div><h4>Find the right drink</h4>
-          <p>Search by name or ingredient, or tap a filter: <b>All</b>, <b>Ready</b>, <b>Almost</b>, <b>Favorites</b>, <b>Made before</b>, <b>Just added</b>, <b>Up next</b> or <b>Mocktails</b>. Tap <b>Refine</b> to narrow by <b>Spirit</b>, change the <b>Sort</b> order, or switch measures between <b>oz</b> and <b>ml</b>. <b>Best next bottle</b> shows which one bottle would unlock the most drinks; tap <b>Add</b> to put it on your shelf. Back Bar remembers the filter you used last.</p></div></li>
+          <p>Search by name or ingredient, or tap a filter: <b>All</b>, <b>Ready</b>, <b>Almost</b>, <b>Favorites</b>, <b>Made before</b>, <b>Just added</b>, <b>Up next</b> or <b>Mocktails</b>. From late November to early January a <b>Holidays</b> chip at the top gathers the Christmas ❄️ and New Year's 🥂 drinks. Tap <b>Refine</b> to narrow by <b>Spirit</b>, change the <b>Sort</b> order, or switch measures between <b>oz</b> and <b>ml</b>. <b>Best next bottle</b> shows which one bottle would unlock the most drinks; tap <b>Add</b> to put it on your shelf. Back Bar remembers the filter you used last.</p></div></li>
         <li><div><h4>Open a recipe</h4>
           <p>Tap any drink to open its full recipe: exact measures, the garnish, a note on technique and the bar tools you'll need. Tap it again to fold it away.</p></div></li>
         <li><div><h4>Plan your next round</h4>
@@ -1194,7 +1200,7 @@
   </dialog>
 
   <div class="undo-toast" id="undoToast" role="status" aria-live="polite"><span class="undo-msg"></span><button type="button">Undo</button></div>
-  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 300 recipes.
+  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 312 recipes.
     <div class="footer-actions"><button class="help-link" id="backupBtn" type="button" aria-haspopup="dialog">Back up or move your bar</button> <span style="margin:0 .5rem;color:var(--line)">·</span> <button class="reset-all-btn" id="resetAllBtn" type="button">Reset everything</button> <span style="margin-left:.4rem">Clears both shelves, favorites, Up Next and your Made history.</span></div>
     <p class="drink-responsibly">Please drink responsibly. Enjoy only if you're of legal drinking age, know your limits, and never drink and drive.</p>
   </footer>
@@ -1502,7 +1508,19 @@ var DRINK_PHOTOS = [
     {"g": "tall", "c": "red", "n": ["Caesar"], "by": "Back Bar", "u": "", src:"img/d/caesar-45190776.jpg"},
     {"g": "tiki", "c": "yellow", "n": ["Saturn"], "by": "Back Bar", "u": "", src:"img/d/saturn-9f7464e1.jpg"},
     {"g": "coupe", "c": "orange", "n": ["Hotel Nacional Special"], "by": "Back Bar", "u": "", src:"img/d/hotel-nacional-special-1857db04.jpg"},
-    {"g": "rocks", "c": "amber", "n": ["Trident"], "by": "Back Bar", "u": "", src:"img/d/trident-abef580c.jpg"}
+    {"g": "rocks", "c": "amber", "n": ["Trident"], "by": "Back Bar", "u": "", src:"img/d/trident-abef580c.jpg"},
+    {"g": "rocks", "c": "creamy", "n": ["Tom and Jerry"], "by": "Back Bar", "u": "", "foam": 1, src:"img/d/tom-and-jerry-e48f1c4c.jpg"},
+    {"g": "rocks", "c": "darkred", "n": ["Mulled Wine"], "by": "Back Bar", "u": "", src:"img/d/mulled-wine-1741d6d7.jpg"},
+    {"g": "rocks", "c": "amber", "n": ["Hot Buttered Rum"], "by": "Back Bar", "u": "", src:"img/d/hot-buttered-rum-3b23dfc1.jpg"},
+    {"g": "rocks", "c": "creamy", "n": ["Coquito"], "by": "Back Bar", "u": "", src:"img/d/coquito-2853ff22.jpg"},
+    {"g": "tall", "c": "yellow", "n": ["Snowball"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/snowball-1271a7df.jpg"},
+    {"g": "rocks", "c": "yellow", "n": ["Bombardino"], "by": "Back Bar", "u": "", "foam": 1, src:"img/d/bombardino-71f0aaa7.jpg"},
+    {"g": "flute", "c": "red", "n": ["Poinsettia"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/poinsettia-fb785a44.jpg"},
+    {"g": "coupe", "c": "yellow", "n": ["Ritz Cocktail"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/ritz-cocktail-bec83b98.jpg"},
+    {"g": "coupe", "c": "yellow", "n": ["Prince of Wales"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/prince-of-wales-8d168b40.jpg"},
+    {"g": "coupe", "c": "clear", "n": ["Twinkle"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/twinkle-fc302872.jpg"},
+    {"g": "flute", "c": "creamy", "n": ["Sgroppino"], "by": "Back Bar", "u": "", src:"img/d/sgroppino-7ba87e0e.jpg"},
+    {"g": "flute", "c": "brown", "n": ["Black Velvet"], "by": "Back Bar", "u": "", "fizz": 1, "foam": 1, src:"img/d/black-velvet-d4299312.jpg"}
   ];
 </script>
 <script>
@@ -1643,7 +1661,20 @@ var DRINK_PHOTOS = [
     {id:'orange_flower_water', name:'Orange Flower Water', category:'Seasoning', group:'Juice & Mixers'},
     {id:'clamato', name:'Clamato', category:'Juice', group:'Juice & Mixers'},
     {id:'celery_salt', name:'Celery Salt', category:'Seasoning', group:'Juice & Mixers'},
-    {id:'black_pepper', name:'Black Pepper', category:'Seasoning', group:'Juice & Mixers'}
+    {id:'black_pepper', name:'Black Pepper', category:'Seasoning', group:'Juice & Mixers'},
+    {id:'nutmeg', name:'Nutmeg', category:'Seasoning', group:'Juice & Mixers'},
+    {id:'ground_cinnamon', name:'Ground Cinnamon', category:'Seasoning', group:'Juice & Mixers'},
+    {id:'cloves', name:'Cloves', category:'Seasoning', group:'Juice & Mixers'},
+    {id:'sugar', name:'Sugar', category:'Sugar', group:'Syrups'},
+    {id:'whole_egg', name:'Whole Egg', category:'Egg', group:'Juice & Mixers'},
+    {id:'butter', name:'Unsalted Butter', category:'Cream / Dairy', group:'Juice & Mixers'},
+    {id:'evaporated_milk', name:'Evaporated Milk', category:'Cream / Dairy', group:'Juice & Mixers'},
+    {id:'condensed_milk', name:'Sweetened Condensed Milk', category:'Cream / Dairy', group:'Juice & Mixers'},
+    {id:'coconut_water', name:'Coconut Water', category:'Juice', group:'Juice & Mixers'},
+    {id:'advocaat', name:'Advocaat', category:'Egg Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'lemon_sorbet', name:'Lemon Sorbet', category:'Frozen', group:'Juice & Mixers'},
+    {id:'fresh_orange', name:'Fresh Orange', category:'Fresh Fruit', group:'Juice & Mixers'},
+    {id:'fresh_pineapple', name:'Fresh Pineapple', category:'Fresh Fruit', group:'Juice & Mixers'}
   ];
 
   var GROUP_ORDER = ['Spirits','Liqueurs & Fortified Wine','Bitters','Juice & Mixers','Syrups'];
@@ -2717,7 +2748,44 @@ var DRINK_PHOTOS = [
       garnish:"Lemon-peel ring and cherry 'planet'", note:"Blend with crushed ice until smooth and pour into a tall glass. Created in 1967 by J. 'Popo' Galsini, it won that year's International Bartender's Association competition."},
     {name:'Hotel Nacional Special', base:'Rum', glass:'Coupe', method:'Shaken', added:'2026-10-24',
       items:[{id:'rum_any', amt:'1.67 oz', familyOk:true},{id:'apricot_liqueur', amt:'.5 oz'},{id:'pineapple_juice', amt:'.75 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'simple_syrup', amt:'.25 oz'}],
-      garnish:'Pineapple wedge', note:"Shake with ice and fine-strain into a chilled coupe. Named for Havana's grand Hotel Nacional de Cuba in the 1930s."}
+      garnish:'Pineapple wedge', note:"Shake with ice and fine-strain into a chilled coupe. Named for Havana's grand Hotel Nacional de Cuba in the 1930s."},
+    // ---------- Holiday collection, released 2026-10-24 ----------
+    {name:'Tom and Jerry', base:'Brandy', glass:'Mug', method:'Hot', holiday:'christmas',
+      items:[{id:'brandy', amt:'1.5 oz'},{id:'dark_rum', amt:'.5 oz', familyOk:true},{id:'whole_egg', amt:'⅓ (in batter)'},{id:'sugar', amt:'1 barspoon (in batter)'},{id:'ground_cinnamon', amt:'pinch'},{id:'cloves', amt:'pinch, ground'},{id:'nutmeg', amt:'pinch'}],
+      garnish:'Grated nutmeg', note:'Batter (serves 6): beat 2 egg yolks with 6 barspoons sugar, ½ oz Jamaican rum and a pinch each of cinnamon, clove and nutmeg; whisk 2 whites stiff and fold in. Per drink, stir 2 tbsp batter with the brandy and rum in a warmed mug, top with hot (not boiling) water and dust with nutmeg. A 19th-century American Christmas tradition, served from a matching punch bowl and mugs.'},
+    {name:'Mulled Wine', base:'Wine', glass:'Mug', method:'Hot', holiday:'christmas',
+      items:[{id:'red_wine', amt:'1.5 oz'},{id:'port_wine', amt:'1.5 oz'},{id:'grand_marnier', amt:'.5 oz'},{id:'lemon_juice', amt:'.5 oz'},{id:'honey_syrup', amt:'2 barspoons'},{id:'fresh_orange', amt:'1 wedge'},{id:'cloves', amt:'5 whole'},{id:'nutmeg', amt:'pinch'},{id:'ground_cinnamon', amt:'pinch'}],
+      garnish:'Orange wheel studded with cloves, cinnamon stick', note:"Warm everything gently in a pan without boiling (or build in a warmed mug and top with hot water). Europe's classic Christmas-market warmer, known as Glühwein in Germany."},
+    {name:'Hot Buttered Rum', base:'Rum', glass:'Mug', method:'Hot', holiday:'christmas',
+      items:[{id:'dark_rum', amt:'2 oz', familyOk:true},{id:'honey_syrup', amt:'2 barspoons'},{id:'butter', amt:'1 small knob'},{id:'nutmeg', amt:'2 pinches'}],
+      garnish:'Cinnamon stick, lemon slice studded with cloves', note:'Put the honey in a warmed mug, add the rum, butter and nutmeg, top with hot water and stir until the butter and honey melt. A colonial New England winter drink.'},
+    {name:'Coquito', base:'Rum', glass:'Rocks', method:'Blended', holiday:'christmas',
+      items:[{id:'white_rum', amt:'1 oz'},{id:'coconut_water', amt:'1 oz'},{id:'coconut_cream', amt:'1.5 oz'},{id:'condensed_milk', amt:'1.5 oz'},{id:'evaporated_milk', amt:'1 oz'},{id:'ground_cinnamon', amt:'pinch'},{id:'nutmeg', amt:'pinch'}],
+      garnish:'Cinnamon stick, dusting of ground cinnamon', note:"Best made as a batch: simmer the coconut water with cinnamon and nutmeg, cool and strain, then blend with the rest and chill for at least 4 hours. Serve cold, no ice. Puerto Rico's beloved Christmas drink."},
+    {name:'Snowball', base:'Liqueur', glass:'Collins', method:'Built', holiday:'christmas',
+      items:[{id:'advocaat', amt:'2 oz'},{id:'lime_juice', amt:'.75 oz'},{id:'lemon_lime_soda', amt:'3.5 oz'}],
+      garnish:'Lime wheel', note:'Pour the soda and lime over ice, add the advocaat (it sinks) and stir briefly to keep the fizz. A British Christmas favourite.'},
+    {name:'Bombardino', base:'Liqueur', glass:'Mug', method:'Hot', holiday:'christmas',
+      items:[{id:'advocaat', amt:'2 oz'},{id:'brandy', amt:'1 oz'},{id:'cream', amt:'1 oz, whipped'},{id:'ground_cinnamon', amt:'pinch', optional:true}],
+      garnish:'Whipped cream, dusting of cinnamon', note:'Warm the advocaat and brandy together gently (do not boil), pour into a small heatproof glass mug and float softly whipped cream on top. The après-ski drink of the Italian Alps.'},
+    {name:'Poinsettia', base:'Sparkling', glass:'Flute', method:'Built', holiday:'newyear',
+      items:[{id:'triple_sec', amt:'.5 oz', familyOk:true},{id:'cranberry_juice', amt:'2 oz'},{id:'sparkling_wine', amt:'2 oz'}],
+      garnish:'Rosemary sprig', note:"Pour the triple sec and cranberry into a chilled flute, top with sparkling wine and stir briefly. A festive red sparkler for holiday parties and New Year's Eve."},
+    {name:'Ritz Cocktail', base:'Brandy', glass:'Coupe', method:'Shaken', holiday:'newyear',
+      items:[{id:'brandy', amt:'1 oz'},{id:'triple_sec', amt:'.5 oz', familyOk:true},{id:'maraschino_liqueur', amt:'.25 oz'},{id:'lemon_juice', amt:'.25 oz'},{id:'sparkling_wine', amt:'2 oz'}],
+      garnish:'Flamed orange twist', note:'Shake everything but the sparkling wine with ice, strain into a chilled coupe and top with sparkling wine. Created by Dale DeGroff at the Ritz-Carlton in the 1980s.'},
+    {name:'Prince of Wales', base:'Whiskey', glass:'Coupe', method:'Shaken', holiday:'newyear',
+      items:[{id:'fresh_pineapple', amt:'1 cube'},{id:'rye_whiskey', amt:'1.5 oz', familyOk:true},{id:'pineapple_juice', amt:'1 barspoon'},{id:'simple_syrup', amt:'1 barspoon rich (2:1)'},{id:'maraschino_liqueur', amt:'dash'},{id:'angostura_bitters', amt:'1 dash'},{id:'sparkling_wine', amt:'1 oz'}],
+      garnish:'Pineapple cube and cherry on a pick', note:'Muddle the pineapple, add everything but the sparkling wine, shake with ice, fine-strain into a chilled coupe and top with sparkling wine. Attributed to Edward VII when he was Prince of Wales.'},
+    {name:'Twinkle', base:'Vodka', glass:'Coupe', method:'Shaken', holiday:'newyear',
+      items:[{id:'vodka', amt:'2 oz'},{id:'elderflower_liqueur', amt:'.5 oz'},{id:'sparkling_wine', amt:'2 oz'}],
+      garnish:'Lemon twist', note:'Shake the vodka and elderflower liqueur with ice, fine-strain into a chilled coupe and top with sparkling wine. A modern London classic from 2002.'},
+    {name:'Sgroppino', base:'Vodka', glass:'Flute', method:'Blended', holiday:'newyear',
+      items:[{id:'vodka', amt:'.67 oz'},{id:'cream', amt:'.5 oz'},{id:'sparkling_wine', amt:'2 oz'},{id:'lemon_sorbet', amt:'2½ scoops'}],
+      garnish:'Grated lemon zest', note:"Blend everything without ice on a slow setting until smooth and pour into a chilled flute. A Venetian after-dinner palate cleanser, perfect after a New Year's feast."},
+    {name:'Black Velvet', base:'Sparkling', glass:'Flute', method:'Built', holiday:'newyear',
+      items:[{id:'stout_beer', amt:'2.5 oz'},{id:'sparkling_wine', amt:'2.5 oz'}],
+      garnish:'—', note:"Pour the sparkling wine into a chilled flute, then slowly add the stout. First served in London in 1861, it became a favourite toast for New Year's."}
   ];
 
   var STARTER = ['gin','vodka','dry_vermouth','sweet_vermouth','campari','triple_sec','lime_juice','lemon_juice','simple_syrup','soda_water','angostura_bitters','bourbon'];
@@ -2749,6 +2817,10 @@ var DRINK_PHOTOS = [
   var activeShelf = 0;
   var editingShelf = null; // index of the shelf whose name is being renamed right now, or null
   var filter = 'all';
+  var HOLIDAY_ON = (function(){
+    var d = new Date(), m = d.getMonth(), day = d.getDate();
+    return (m === 10 && day >= 20) || m === 11 || (m === 0 && day <= 7) || location.hash === '#holidays';
+  })();
   var spiritFilter = '', sortMode = 'ready', unitMode = 'oz';
   var query = '';
   var lastAdded = null;
@@ -3643,7 +3715,7 @@ var DRINK_PHOTOS = [
       '<div class="card-body">' +
         '<div class="card-head">' +
           '<div class="card-title" role="button" tabindex="0" aria-expanded="' + isOpen + '" aria-label="' + r.name + ', ' + pillText + '. Show recipe">' +
-            '<h3>' + r.name + '</h3>' +
+            '<h3>' + r.name + (HOLIDAY_ON && r.holiday ? '<span class="hol-tag" title="' + (r.holiday === 'christmas' ? 'Christmas' : 'New Year\'s') + '">' + (r.holiday === 'christmas' ? '❄️' : '🥂') + '</span>' : '') + '</h3>' +
             '<p class="card-meta">' + glassIconSvg(r.glass) + r.base + '<span class="meta-more"> · ' + r.glass + ' · ' + r.method + '</span></p>' +
             '<span class="pill ' + pillClass + '">' + pillText + '</span>' +
           '</div>' +
@@ -3685,6 +3757,7 @@ var DRINK_PHOTOS = [
       if(filter === 'favorites' && !favorites.has(s.recipe.name)) return false;
       if(filter === 'made' && !made[s.recipe.name]) return false;
       if(filter === 'mocktails' && s.recipe.base !== 'Mocktail') return false;
+      if(filter === 'holidays' && !s.recipe.holiday) return false;
       if(filter === 'new' && newRecipes.indexOf(s.recipe) === -1) return false;
       if(filter === 'next' && queue.indexOf(s.recipe.name) === -1) return false;
       if(spiritFilter && s.recipe.base !== spiritFilter) return false;
@@ -4198,6 +4271,17 @@ var DRINK_PHOTOS = [
   applyShelfCollapsed(loadShelfCollapsed());
   applyShelfListOpen(loadShelfListOpen());
   loadMade();
+  // ---------- Holidays ----------
+  // Christmas and New Year's drinks carry holiday:'christmas' or 'newyear'.
+  // They're always in All; the Holidays chip and the ❄️/🥂 tags only show
+  // from Nov 20 to Jan 7, or any time the page is opened with #holidays.
+  (function(){
+    var seg = document.getElementById('filterSeg');
+    var chip = seg && seg.querySelector('[data-filter="holidays"]');
+    if(!chip) return;
+    if(HOLIDAY_ON) seg.classList.add('has-season');
+    else chip.parentNode.removeChild(chip);
+  })();
   (function(){
     var saved = readPref('backbar.filter.v1', '');
     var btns = Array.from(document.querySelectorAll('#filterSeg button'));
@@ -4243,7 +4327,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-25T02:20:59Z";
+  var CURRENT_VERSION = "2026-10-25T02:47:56Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');

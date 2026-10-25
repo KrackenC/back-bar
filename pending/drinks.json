@@ -1593,13 +1593,14 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "holiday",
+   "status": "released",
    "collection": "holiday",
    "occasion": "Christmas",
    "photo": true,
    "look": "white ceramic Tom and Jerry mug with a plain thin gold rim, pale creamy-beige drink with a thick frothy cream-colored head dusted with grated nutmeg, a faint wisp of steam",
    "scene": "a cozy Victorian parlour at Christmas, a decorated tree with glowing candles and a crackling fireplace softly blurred behind",
-   "photoFile": "photos/tom-and-jerry.jpg"
+   "photoFile": "photos/tom-and-jerry.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Mulled Wine",
@@ -1651,13 +1652,14 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "holiday",
+   "status": "released",
    "collection": "holiday",
    "occasion": "Christmas",
    "photo": true,
    "look": "clear glass mug with a handle, deep ruby-red hot spiced wine, a clove-studded orange wheel and a cinnamon stick, a faint wisp of steam",
    "scene": "a snowy German Christmas market at dusk, wooden stalls strung with warm fairy lights softly blurred behind",
-   "photoFile": "photos/mulled-wine.jpg"
+   "photoFile": "photos/mulled-wine.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Hot Buttered Rum",
@@ -1690,13 +1692,14 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "holiday",
+   "status": "released",
    "collection": "holiday",
    "occasion": "Christmas",
    "photo": true,
    "look": "glass toddy mug of warm golden-amber with a thin glossy sheen of melted butter on top, a cinnamon stick and a clove-studded lemon slice, a faint wisp of steam",
    "scene": "a snowed-in New England log cabin, a woollen blanket, snow piled on the window sill and a woodstove glow softly blurred behind",
-   "photoFile": "photos/hot-buttered-rum.jpg"
+   "photoFile": "photos/hot-buttered-rum.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Coquito",
@@ -1740,13 +1743,14 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "holiday",
+   "status": "released",
    "collection": "holiday",
    "occasion": "Christmas",
    "photo": true,
    "look": "small rocks glass without ice, smooth creamy ivory-white coconut drink, a dusting of ground cinnamon on top and a cinnamon stick",
    "scene": "a festive Puerto Rican home at Christmas, colourful parranda string lights, a guitar and poinsettias softly blurred behind",
-   "photoFile": "photos/coquito.jpg"
+   "photoFile": "photos/coquito.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Snowball",
@@ -1774,7 +1778,7 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "holiday",
+   "status": "released",
    "collection": "holiday",
    "occasion": "Christmas",
    "photo": true,
@@ -1782,7 +1786,8 @@
    "reason": "First image showed pebbled dots over the glass and liquid and crackled ice",
    "scene": "a retro 1970s British living room at Christmas, tinsel garlands, a glowing television and paper chains softly blurred behind",
    "fizzy": true,
-   "photoFile": "photos/snowball.jpg"
+   "photoFile": "photos/snowball.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Bombardino",
@@ -1815,13 +1820,14 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "holiday",
+   "status": "released",
    "collection": "holiday",
    "occasion": "Christmas",
    "photo": true,
    "look": "small heatproof glass mug of warm golden-yellow egg liqueur topped with a generous swirl of whipped cream dusted with cinnamon",
    "scene": "an Italian Alpine ski lodge terrace, snowy Dolomite peaks, wooden skis against the wall and late-afternoon sun",
-   "photoFile": "photos/bombardino.jpg"
+   "photoFile": "photos/bombardino.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Poinsettia",
@@ -1850,14 +1856,15 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "holiday",
+   "status": "released",
    "collection": "holiday",
    "occasion": "New Year's",
    "photo": true,
    "look": "champagne flute of bright cranberry-red sparkling wine with fine rising bubbles, a small rosemary sprig",
    "scene": "an elegant holiday cocktail party, a grand staircase wrapped in garland and red ribbon, warm golden bokeh behind",
    "fizzy": true,
-   "photoFile": "photos/poinsettia.jpg"
+   "photoFile": "photos/poinsettia.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Ritz Cocktail",
@@ -1894,14 +1901,15 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "holiday",
+   "status": "released",
    "collection": "holiday",
    "occasion": "New Year's",
    "photo": true,
    "look": "chilled coupe of pale golden-amber sparkling cocktail with fine bubbles, an orange twist",
    "scene": "a grand hotel ballroom on New Year's Eve, crystal chandeliers and gold balloons softly blurred behind",
    "fizzy": true,
-   "photoFile": "photos/ritz-cocktail.jpg"
+   "photoFile": "photos/ritz-cocktail.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Prince of Wales",
@@ -1946,14 +1954,15 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "holiday",
+   "status": "released",
    "collection": "holiday",
    "occasion": "New Year's",
    "photo": true,
    "look": "chilled coupe of pale golden sparkling cocktail with fine bubbles, a pineapple cube and a dark cherry on a gold pick",
    "scene": "a regal Edwardian gentlemen's club on New Year's Eve, dark panelling, a mantel clock near midnight and candlelight",
    "fizzy": true,
-   "photoFile": "photos/prince-of-wales.jpg"
+   "photoFile": "photos/prince-of-wales.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Twinkle",
@@ -1981,14 +1990,15 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "holiday",
+   "status": "released",
    "collection": "holiday",
    "occasion": "New Year's",
    "photo": true,
    "look": "chilled coupe of crystal-clear pale sparkling cocktail with fine bubbles, a long lemon twist",
    "scene": "a London rooftop on New Year's Eve, fireworks bursting over the city skyline and the river at night",
    "fizzy": true,
-   "photoFile": "photos/twinkle.jpg"
+   "photoFile": "photos/twinkle.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Sgroppino",
@@ -2020,13 +2030,14 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "holiday",
+   "status": "released",
    "collection": "holiday",
    "occasion": "New Year's",
    "photo": true,
    "look": "champagne flute of smooth, frothy pale lemon-white frozen sorbet cocktail, grated lemon zest on top",
    "scene": "a Venetian palazzo dining room at the end of a New Year's feast, candlelit table, Murano glass chandelier and a canal view through arched windows",
-   "photoFile": "photos/sgroppino.jpg"
+   "photoFile": "photos/sgroppino.jpg",
+   "released": "2026-10-24"
   },
   {
    "name": "Black Velvet",
@@ -2050,14 +2061,15 @@
     "url": ""
    },
    "collected": "2026-10-24",
-   "status": "holiday",
+   "status": "released",
    "collection": "holiday",
    "occasion": "New Year's",
    "photo": true,
    "look": "champagne flute of deep near-black stout and sparkling wine with a creamy tan head and fine rising bubbles",
    "scene": "a Dublin hotel bar on New Year's Eve, dark wood, brass rails, a stained-glass window and festive candlelight",
    "fizzy": true,
-   "photoFile": "photos/black-velvet.jpg"
+   "photoFile": "photos/black-velvet.jpg",
+   "released": "2026-10-24"
   }
  ]
 }
