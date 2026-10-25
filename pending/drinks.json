@@ -650,9 +650,10 @@
    },
    "collected": "2026-10-24",
    "status": "collected",
-   "photo": false,
+   "photo": true,
    "look": "chilled coupe of deep jewel-toned amber-red, clear and glossy, a skewered dark cherry",
-   "scene": "a Belle Époque jeweller's salon, velvet display trays and soft gaslight glow blurred behind"
+   "scene": "a Belle Époque jeweller's salon, velvet display trays and soft gaslight glow blurred behind",
+   "photoFile": "photos/bijou.jpg"
   },
   {
    "name": "Brooklyn",
@@ -686,9 +687,10 @@
    },
    "collected": "2026-10-24",
    "status": "collected",
-   "photo": false,
+   "photo": true,
    "look": "chilled coupe of pale golden amber, clear and glossy, a skewered dark cherry",
-   "scene": "a 1900s Brooklyn brownstone parlour with the Brooklyn Bridge glowing through a tall window at dusk"
+   "scene": "a 1900s Brooklyn brownstone parlour with the Brooklyn Bridge glowing through a tall window at dusk",
+   "photoFile": "photos/brooklyn.jpg"
   },
   {
    "name": "Jack Rose",
@@ -733,9 +735,10 @@
    },
    "collected": "2026-10-24",
    "status": "collected",
-   "photo": false,
+   "photo": true,
    "look": "chilled coupe of soft rose-pink, clear and glossy, a lemon twist",
-   "scene": "a New England apple orchard at golden hour, rustic wooden crates of red apples blurred behind"
+   "scene": "a New England apple orchard at golden hour, rustic wooden crates of red apples blurred behind",
+   "photoFile": "photos/jack-rose.jpg"
   },
   {
    "name": "Pegu Club",
