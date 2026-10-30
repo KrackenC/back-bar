@@ -2070,6 +2070,162 @@
    "fizzy": true,
    "photoFile": "photos/black-velvet.jpg",
    "released": "2026-10-24"
+  },
+  {
+   "name": "Bamboo Cocktail",
+   "base": "Sherry",
+   "glass": "Coupe",
+   "method": "Stirred",
+   "items": [
+    {
+     "id": "sherry",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "dry_vermouth",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "orange_bitters",
+     "amt": "2 dashes"
+    }
+   ],
+   "garnish": "Orange twist",
+   "note": "A 19th-century stirred cocktail of equal parts dry sherry and dry vermouth, long associated with Japanese bartending before its craft-cocktail revival.",
+   "source": {
+    "site": "Difford's Guide",
+    "url": "https://www.diffordsguide.com/cocktails/recipe/18976/bamboo-diffords-classic-recipe"
+   },
+   "collected": "2026-10-30",
+   "status": "collected",
+   "photo": false,
+   "look": "coupe without ice, pale amber-gold and clear, an orange twist",
+   "scene": "a dim Tokyo hotel bar counter, dark wood and brass fittings, soft amber lamplight"
+  },
+  {
+   "name": "Painkiller",
+   "base": "Rum",
+   "glass": "Hurricane",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "dark_rum",
+     "amt": "2 oz",
+     "familyOk": true
+    },
+    {
+     "id": "pineapple_juice",
+     "amt": "4 oz"
+    },
+    {
+     "id": "orange_juice",
+     "amt": "1 oz"
+    },
+    {
+     "id": "coconut_cream",
+     "amt": "1 oz"
+    }
+   ],
+   "garnish": "Grated nutmeg",
+   "note": "Created in the 1970s at the Soggy Dollar Bar on Jost Van Dyke in the British Virgin Islands; the name was later trademarked by Pusser's Rum.",
+   "source": {
+    "site": "Difford's Guide",
+    "url": "https://www.diffordsguide.com/cocktails/recipe/8856/painkiller"
+   },
+   "collected": "2026-10-30",
+   "status": "collected",
+   "photo": false,
+   "look": "hurricane glass with crushed ice, creamy pale orange and opaque, a dusting of grated nutmeg on top",
+   "scene": "a weathered beach shack bar on a Caribbean island, driftwood counter, turquoise water and palm shade in the background"
+  },
+  {
+   "name": "Batanga",
+   "base": "Tequila",
+   "glass": "Highball",
+   "method": "Built",
+   "items": [
+    {
+     "id": "tequila",
+     "amt": "2 oz"
+    },
+    {
+     "id": "lime_juice",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "cola",
+     "amt": "top"
+    }
+   ],
+   "garnish": "Lime wheel, salt rim",
+   "note": "Created in 1961 by bartender Don Javier Delgado Corona at La Capilla in the town of Tequila, Mexico, traditionally stirred table-side with a long bar knife.",
+   "source": {
+    "site": "Difford's Guide",
+    "url": "https://www.diffordsguide.com/cocktails/recipe/540/batanga"
+   },
+   "collected": "2026-10-30",
+   "status": "collected",
+   "photo": false,
+   "look": "highball glass with ice and a salted rim, dark cola-brown and sparkling, a lime wheel",
+   "scene": "a sun-bleached cantina patio in the town of Tequila, blue agave fields in the distance, weathered wood tables under harsh midday light"
+  },
+  {
+   "name": "Kalimotxo",
+   "base": "Wine",
+   "glass": "Wine",
+   "method": "Built",
+   "items": [
+    {
+     "id": "red_wine",
+     "amt": "4 oz"
+    },
+    {
+     "id": "cola",
+     "amt": "4 oz"
+    }
+   ],
+   "garnish": "—",
+   "note": "A Basque highball from 1970s Getxo that stretches cheap red wine with equal parts cola over ice.",
+   "source": {
+    "site": "Punch",
+    "url": "https://punchdrink.com/articles/modern-kalimotxo-cocktail-recipes/"
+   },
+   "collected": "2026-10-30",
+   "status": "collected",
+   "photo": false,
+   "look": "wine glass with ice, deep purple-red and sparkling",
+   "scene": "a lively outdoor festival table in Basque Country, string lights over a worn stone wall, cool evening light"
+  },
+  {
+   "name": "Batida de Maracujá",
+   "base": "Cachaça",
+   "glass": "Collins",
+   "method": "Blended",
+   "items": [
+    {
+     "id": "cachaca",
+     "amt": "2 oz"
+    },
+    {
+     "id": "passion_fruit_syrup",
+     "amt": "1 oz"
+    },
+    {
+     "id": "condensed_milk",
+     "amt": "1 oz"
+    }
+   ],
+   "garnish": "—",
+   "note": "A Brazilian blended batida pairing cachaça with passion fruit and sweetened condensed milk.",
+   "source": {
+    "site": "Difford's Guide",
+    "url": "https://www.diffordsguide.com/cocktails/recipe/17190/batida-de-maracuja-passion-fruit"
+   },
+   "collected": "2026-10-30",
+   "status": "collected",
+   "photo": false,
+   "look": "collins glass with crushed ice, pale creamy peach-orange and opaque",
+   "scene": "a shaded beachfront kiosk in Rio de Janeiro, a striped umbrella overhead, white sand and turquoise sea beyond, a rattan chair in the foreground"
   }
  ]
 }
