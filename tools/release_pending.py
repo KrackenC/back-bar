@@ -14,6 +14,11 @@ recipes get holiday:'christmas' or 'newyear' (from "occasion") and no added:
 date, so they show under the seasonal Holidays chip and not under Just added.
 Pass both copies (the artifact source and the mirror's index.html) so they
 stay identical.
+House style (applied on every release): items are re-sorted into Back Bar's
+own order — spirits, liqueurs and fortified wine, juices and mixers, syrups,
+bitters, then toppers ("top"), then optional extras — and each released
+drink's "source" is deleted from the JSON so the public holding list keeps
+no trail back to where the recipe was checked.
 """
 import json, re, sys, datetime
 
@@ -57,6 +62,16 @@ def recipe_js(d):
             '      garnish:' + js(d.get('garnish') or '—') + ', note:' + js(d.get('note', '')) + '}')
 
 
+ORDER = ['Spirits', 'Liqueurs & Fortified Wine', 'Juice & Mixers', 'Syrups', 'Bitters']
+
+
+def house_order(items, groups):
+    def key(it):
+        g = groups.get(it['id'], 'Juice & Mixers')
+        return (bool(it.get('optional')), 'top' in it['amt'].lower(), ORDER.index(g) if g in ORDER else 2)
+    return sorted(items, key=key)  # stable, so ties keep their order
+
+
 def ing_js(g):
     keys = ['id', 'name', 'category', 'group'] + [k for k in ('family', 'substitutesFor') if g.get(k)]
     return '    {' + ', '.join(k + ':' + js(g[k]) for k in keys) + '}'
@@ -75,6 +90,10 @@ for path in apps:
         if d['name'].lower() in names:
             sys.exit(f'{path}: {d["name"]} is already in RECIPES')
     known = set(re.findall(r"\{id:\s*'([^']+)'", s))
+    groups = dict(re.findall(r"\{id:\s*'([^']+)'[^}]*?group:\s*'([^']+)'", s))
+    groups.update({g['id']: g['group'] for g in data.get('newIngredients', [])})
+    for d in batch:
+        d['items'] = house_order(d['items'], groups)
     for d in batch:
         for it in d['items']:
             if it['id'] not in known and it['id'] not in {g['id'] for g in data.get('newIngredients', [])}:
@@ -97,5 +116,8 @@ for path in apps:
 if not dry:
     for d in batch:
         d['status'] = 'released'; d['released'] = date
+    for d in data['drinks']:
+        if d.get('status') not in ('collected', 'holiday'):  # already in the app
+            d.pop('source', None)
     json.dump(data, open(pending_path, 'w'), indent=1, ensure_ascii=False)
 print('released:', ', '.join(d['name'] for d in batch))
