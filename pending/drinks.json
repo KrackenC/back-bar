@@ -2011,9 +2011,10 @@
    },
    "collected": "2026-10-30",
    "status": "collected",
-   "photo": false,
+   "photo": true,
    "look": "wine glass with ice, deep purple-red and sparkling",
-   "scene": "a lively outdoor festival table in Basque Country, string lights over a worn stone wall, cool evening light"
+   "scene": "a lively outdoor festival table in Basque Country, string lights over a worn stone wall, cool evening light",
+   "photoFile": "photos/kalimotxo.jpg"
   },
   {
    "name": "Batida de Maracujá",
@@ -2042,9 +2043,10 @@
    },
    "collected": "2026-10-30",
    "status": "collected",
-   "photo": false,
+   "photo": true,
    "look": "collins glass with crushed ice, pale creamy peach-orange and opaque",
-   "scene": "a shaded beachfront kiosk in Rio de Janeiro, a striped umbrella overhead, white sand and turquoise sea beyond, a rattan chair in the foreground"
+   "scene": "a shaded beachfront kiosk in Rio de Janeiro, a striped umbrella overhead, white sand and turquoise sea beyond, a rattan chair in the foreground",
+   "photoFile": "photos/batida-de-maracuja.jpg"
   },
   {
    "name": "Spiced Hot Chocolate",
