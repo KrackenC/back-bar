@@ -3402,9 +3402,10 @@
    "collected": "2026-11-01",
    "status": "collected",
    "collection": "iba-classics",
-   "photo": false,
+   "photo": true,
    "look": "rocks glass with ice, clear deep reddish-amber, an orange twist",
-   "scene": "a São Paulo neighborhood boteco, tiled walls, a beer-crate stool, warm evening light"
+   "scene": "a São Paulo neighborhood boteco, tiled walls, a beer-crate stool, warm evening light",
+   "photoFile": "photos/rabo-de-galo.jpg"
   },
   {
    "name": "Spicy Fifty",
@@ -3446,9 +3447,10 @@
    "collected": "2026-11-01",
    "status": "collected",
    "collection": "iba-classics",
-   "photo": false,
+   "photo": true,
    "look": "chilled coupe without ice, pale cloudy greenish-straw, one thin red chili laid on the rim",
-   "scene": "a modern London bar counter in green marble, brass details, a scatter of red chilies, soft evening light"
+   "scene": "a modern London bar counter in green marble, brass details, a scatter of red chilies, soft evening light",
+   "photoFile": "photos/spicy-fifty.jpg"
   },
   {
    "name": "Three Dots and a Dash",
@@ -3495,9 +3497,10 @@
    "collected": "2026-11-01",
    "status": "collected",
    "collection": "iba-classics",
-   "photo": false,
+   "photo": true,
    "look": "footed goblet with crushed ice, hazy golden-amber, three cherries on a pick and a rectangular pineapple chunk",
-   "scene": "a 1940s tiki bar with a nautical theme, ship's wheel and rope netting, warm lantern light"
+   "scene": "a 1940s tiki bar with a nautical theme, ship's wheel and rope netting, warm lantern light",
+   "photoFile": "photos/three-dots-and-a-dash.jpg"
   },
   {
    "name": "Ve.N.To",
