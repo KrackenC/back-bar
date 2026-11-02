@@ -12,6 +12,9 @@ updated. Then the JSON is rewritten with status "released" and the date.
 With --status holiday the held Holiday collection is released instead: those
 recipes get holiday:'christmas' or 'newyear' (from "occasion") and no added:
 date, so they show under the seasonal Holidays chip and not under Just added.
+With --status dryjan the Dry January module is released: recipes get
+dryJan:<day> (1-31) and no added: date, sorted by day; drinks already in the
+app listed in "dryJanuaryExisting" {name: day} get dryJan:<day> added in place.
 Pass both copies (the artifact source and the mirror's index.html) so they
 stay identical.
 House style (applied on every release): items are re-sorted into Back Bar's
@@ -40,6 +43,9 @@ batch = [d for d in data['drinks'] if d.get('status') == status]
 if not batch:
     sys.exit('nothing with status ' + status + ' to release')
 HOLIDAY = status == 'holiday'
+DRYJAN = status == 'dryjan'
+if DRYJAN:
+    batch.sort(key=lambda d: d['day'])
 
 
 def js(v):
@@ -57,7 +63,7 @@ def recipe_js(d):
                      (', optional:true' if it.get('optional') else '') + '}' for it in d['items'])
     return ('    {name:' + js(d['name']) + ', base:' + js(d['base']) + ', glass:' + js(d['glass']) +
             ', method:' + js(d['method']) +
-            (", holiday:'" + ('christmas' if d.get('occasion') == 'Christmas' else 'newyear') + "'" if HOLIDAY else ", added:'" + date + "'") + ',\n'
+            (", holiday:'" + ('christmas' if d.get('occasion') == 'Christmas' else 'newyear') + "'" if HOLIDAY else ', dryJan:%d' % d['day'] if DRYJAN else ", added:'" + date + "'") + ',\n'
             '      items:[' + items + '],\n'
             '      garnish:' + js(d.get('garnish') or '—') + ', note:' + js(d.get('note', '')) + '}')
 
@@ -104,8 +110,15 @@ for path in apps:
         var = 'BRAND_INGREDIENTS' if g.get('substitutesFor') else 'INGREDIENTS'
         at = close_array(s, var)
         s = s[:at] + ',\n' + ing_js(g) + s[at:]
+    if DRYJAN:
+        for name, day in data.get('dryJanuaryExisting', {}).items():
+            m = re.search(r"\{name:\s*(?:'%s'|\"%s\")[^\n]*?method:'[^']*'" % (re.escape(name.replace("'", "\\'")), re.escape(name)), s)
+            if not m:
+                sys.exit(f'{path}: existing Dry January drink {name} not found')
+            if 'dryJan:' not in m.group(0):
+                s = s[:m.end()] + ', dryJan:%d' % day + s[m.end():]
     at = close_array(s, 'RECIPES')
-    block = ',\n    // ---------- ' + ('Holiday collection, released ' if HOLIDAY else 'Release ') + date + ' ----------\n' + ',\n'.join(recipe_js(d) for d in batch)
+    block = ',\n    // ---------- ' + ('Holiday collection, released ' if HOLIDAY else 'Dry January module, released ' if DRYJAN else 'Release ') + date + ' ----------\n' + ',\n'.join(recipe_js(d) for d in batch)
     s = s[:at] + block + s[at:]
     total = len(re.findall(r"\{name:\s*['\"]", s[s.index('var RECIPES = ['):close_array(s, 'RECIPES')]))
     s, n = re.subn(r'(\. )\d+( recipes[.,])', r'\g<1>' + str(total) + r'\2', s)

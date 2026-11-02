@@ -935,6 +935,15 @@
   .recipes-controls #filterSeg .season-chip:not(.active){ color:#F3E3C3; border-color:#8C6A3A; background:linear-gradient(180deg, #23443A 0%, #172E2A 100%); }
   @media (max-width:640px){ .recipes-controls #filterSeg.has-season{ grid-template-rows:repeat(5, auto); } }
   .hol-tag{ font-size:.8em; margin-left:.35em; vertical-align:.08em; }
+  .recipes-controls #filterSeg .dj-chip:not(.active){ color:#E3F1DA; border-color:#5E8A57; background:linear-gradient(180deg, #2C4A2E 0%, #1B301E 100%); }
+  /* Holidays and Dry January overlap from Dec 26 to Jan 7: the two chips share the top row */
+  .recipes-controls #filterSeg.two-seasons [data-filter="holidays"]{ grid-column:1 / span 4; }
+  .recipes-controls #filterSeg.two-seasons [data-filter="dryjan"]{ grid-column:5 / span 4; }
+  @media (max-width:1000px){ .recipes-controls #filterSeg.two-seasons [data-filter="holidays"]{ grid-column:1 / span 2; } .recipes-controls #filterSeg.two-seasons [data-filter="dryjan"]{ grid-column:3 / span 2; } }
+  @media (max-width:640px){ .recipes-controls #filterSeg.two-seasons [data-filter="holidays"]{ grid-column:1; } .recipes-controls #filterSeg.two-seasons [data-filter="dryjan"]{ grid-column:2; } }
+  .dj-day{ display:inline-block; font-family:Archivo, system-ui, sans-serif; font-size:.6em; font-weight:600; letter-spacing:.08em; text-transform:uppercase; padding:.2em .6em; margin-right:.5em; border-radius:999px; border:1px solid #5E8A57; color:#BFE3B4; vertical-align:.2em; white-space:nowrap; }
+  .dj-day.today{ background:#5E8A57; color:#0F1A10; border-color:#7FB477; }
+  .card.dj-today{ box-shadow:0 0 0 2px #7FB477, 0 8px 24px rgba(0,0,0,.35); }
 </style>
 </head>
 <body>
@@ -1013,6 +1022,7 @@
           <div class="search"><input type="text" id="searchInput" placeholder="Search recipes…"></div>
           <div class="segmented" id="filterSeg">
             <button data-filter="holidays" class="season-chip" type="button">❄️ Holidays 🥂</button>
+            <button data-filter="dryjan" class="season-chip dj-chip" type="button">🌿 Dry January</button>
             <button data-filter="all" class="active" type="button">All</button>
             <button data-filter="ready" type="button">Ready</button>
             <button data-filter="almost" type="button">Almost</button>
@@ -1056,7 +1066,7 @@
         <li><div><h4>See what you can make</h4>
           <p><b>What You Can Make</b> lists every recipe. A green <b>Ready to pour</b> tag means you have everything. <b>Missing:</b> names the one thing you still need, and <b>Missing 3</b> means three things. The <b>Ready</b> and <b>Almost</b> counts in the header appear once your shelf has bottles. Back Bar counts close substitutes, so Cointreau covers triple sec, and any whiskey covers a recipe that just says whiskey.</p></div></li>
         <li><div><h4>Find the right drink</h4>
-          <p>Search by name or ingredient, or tap a filter: <b>All</b>, <b>Ready</b>, <b>Almost</b>, <b>Favorites</b>, <b>Made before</b>, <b>Just added</b>, <b>Up next</b> or <b>Mocktails</b>. From late November to early January a <b>Holidays</b> chip at the top gathers the Christmas and New Year's drinks. Holiday drinks are marked with a ❄️ all year. Tap <b>Refine</b> to narrow by <b>Spirit</b>, change the <b>Sort</b> order, or switch measures between <b>oz</b> and <b>ml</b>. <b>Best next bottle</b> shows which one bottle would unlock the most drinks; tap <b>Add</b> to put it on your shelf. Back Bar remembers the filter you used last.</p></div></li>
+          <p>Search by name or ingredient, or tap a filter: <b>All</b>, <b>Ready</b>, <b>Almost</b>, <b>Favorites</b>, <b>Made before</b>, <b>Just added</b>, <b>Up next</b> or <b>Mocktails</b>. From late November to early January a <b>Holidays</b> chip at the top gathers the Christmas and New Year's drinks. Holiday drinks are marked with a ❄️ all year. From December 26 through January a <b>Dry January</b> chip lists 31 alcohol-free drinks, one for each day of the month, with today's drink highlighted; they wear a 🌿 all year. Tap <b>Refine</b> to narrow by <b>Spirit</b>, change the <b>Sort</b> order, or switch measures between <b>oz</b> and <b>ml</b>. <b>Best next bottle</b> shows which one bottle would unlock the most drinks; tap <b>Add</b> to put it on your shelf. Back Bar remembers the filter you used last.</p></div></li>
         <li><div><h4>Open a recipe</h4>
           <p>Tap any drink to open its full recipe: exact measures, the garnish, a note on technique and the bar tools you'll need. Tap it again to fold it away.</p></div></li>
         <li><div><h4>Plan your next round</h4>
@@ -1200,7 +1210,7 @@
   </dialog>
 
   <div class="undo-toast" id="undoToast" role="status" aria-live="polite"><span class="undo-msg"></span><button type="button">Undo</button></div>
-  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 312 recipes. Brand names are trademarks of their owners; Back Bar isn't affiliated with or endorsed by them.
+  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 335 recipes. Brand names are trademarks of their owners; Back Bar isn't affiliated with or endorsed by them.
     <div class="footer-actions"><button class="help-link" id="backupBtn" type="button" aria-haspopup="dialog">Back up or move your bar</button> <span style="margin:0 .5rem;color:var(--line)">·</span> <button class="reset-all-btn" id="resetAllBtn" type="button">Reset everything</button> <span style="margin-left:.4rem">Clears both shelves, favorites, Up Next and your Made history.</span></div>
     <p class="drink-responsibly">Please drink responsibly. Enjoy only if you're of legal drinking age, know your limits, and never drink and drive.</p>
   </footer>
@@ -1520,7 +1530,30 @@ var DRINK_PHOTOS = [
     {"g": "coupe", "c": "yellow", "n": ["Prince of Wales"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/prince-of-wales-8d168b40.jpg"},
     {"g": "coupe", "c": "clear", "n": ["Twinkle"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/twinkle-fc302872.jpg"},
     {"g": "flute", "c": "creamy", "n": ["Sgroppino"], "by": "Back Bar", "u": "", src:"img/d/sgroppino-7ba87e0e.jpg"},
-    {"g": "flute", "c": "brown", "n": ["Black Velvet"], "by": "Back Bar", "u": "", "fizz": 1, "foam": 1, src:"img/d/black-velvet-d4299312.jpg"}
+    {"g": "flute", "c": "brown", "n": ["Black Velvet"], "by": "Back Bar", "u": "", "fizz": 1, "foam": 1, src:"img/d/black-velvet-d4299312.jpg"},
+    {"g": "hot", "c": "brown", "n": ["Spiced Hot Chocolate"], "by": "Back Bar", "u": "", "foam": 1, src:"img/d/spiced-hot-chocolate-cfca8592.jpg"},
+    {"g": "tall", "c": "clear", "n": ["Cucumber Tonic"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/cucumber-tonic-53b9b55f.jpg"},
+    {"g": "wine", "c": "red", "n": ["Pomegranate Lime Spritz"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/pomegranate-lime-spritz-94fe7093.jpg"},
+    {"g": "tall", "c": "amber", "n": ["Maple Ginger Switchel"], "by": "Back Bar", "u": "", src:"img/d/maple-ginger-switchel-cecccad7.jpg"},
+    {"g": "tall", "c": "pink", "n": ["Virgin Paloma"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/virgin-paloma-867f356b.jpg"},
+    {"g": "hot", "c": "amber", "n": ["Mulled Apple Cider"], "by": "Back Bar", "u": "", src:"img/d/mulled-apple-cider-6de8752d.jpg"},
+    {"g": "tall", "c": "coffee", "n": ["Espresso Tonic"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/espresso-tonic-853e3650.jpg"},
+    {"g": "wine", "c": "pink", "n": ["Grapefruit Basil Spritz"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/grapefruit-basil-spritz-40531420.jpg"},
+    {"g": "coupe", "c": "orange", "n": ["Pussyfoot"], "by": "Back Bar", "u": "", "foam": 1, src:"img/d/pussyfoot-d217df75.jpg"},
+    {"g": "hot", "c": "amber", "n": ["Hot Honey Ginger Tea"], "by": "Back Bar", "u": "", src:"img/d/hot-honey-ginger-tea-c02ab872.jpg"},
+    {"g": "tall", "c": "pink", "n": ["Strawberry Shrub Soda"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/strawberry-shrub-soda-d5cd82c6.jpg"},
+    {"g": "tall", "c": "brown", "n": ["New York Egg Cream"], "by": "Back Bar", "u": "", "foam": 1, src:"img/d/new-york-egg-cream-c24c06bc.jpg"},
+    {"g": "wine", "c": "red", "n": ["Tart Cherry Spritz"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/tart-cherry-spritz-7d6fae51.jpg"},
+    {"g": "tall", "c": "coffee", "n": ["Coffee Lemonade"], "by": "Back Bar", "u": "", src:"img/d/coffee-lemonade-1c62bd1e.jpg"},
+    {"g": "tall", "c": "clear", "n": ["Coconut Lime Cooler"], "by": "Back Bar", "u": "", src:"img/d/coconut-lime-cooler-30ecc5fb.jpg"},
+    {"g": "tall", "c": "pink", "n": ["Italian Cream Soda"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/italian-cream-soda-d754e90d.jpg"},
+    {"g": "rocks", "c": "yellow", "n": ["Jalapeño Pineapple Cooler"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/jalape-o-pineapple-cooler-32ea7f70.jpg"},
+    {"g": "tall", "c": "amber", "n": ["Peach Mint Iced Tea"], "by": "Back Bar", "u": "", src:"img/d/peach-mint-iced-tea-8aa057c5.jpg"},
+    {"g": "coupe", "c": "yellow", "n": ["Zero-Proof Sour"], "by": "Back Bar", "u": "", "foam": 1, src:"img/d/zero-proof-sour-789f1059.jpg"},
+    {"g": "tall", "c": "red", "n": ["Blood Orange Tonic"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/blood-orange-tonic-73fc6e4a.jpg"},
+    {"g": "tall", "c": "red", "n": ["Raspberry Lime Rickey"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/raspberry-lime-rickey-a79cc567.jpg"},
+    {"g": "flute", "c": "pink", "n": ["Strawberry Basil Lemonade"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/strawberry-basil-lemonade-152a2afa.jpg"},
+    {"g": "tall", "c": "creamy", "n": ["Orange Blossom Fizz"], "by": "Back Bar", "u": "", "foam": 1, src:"img/d/orange-blossom-fizz-fd80a535.jpg"}
   ];
 </script>
 <script>
@@ -1674,7 +1707,9 @@ var DRINK_PHOTOS = [
     {id:'advocaat', name:'Advocaat', category:'Egg Liqueur', group:'Liqueurs & Fortified Wine'},
     {id:'lemon_sorbet', name:'Lemon Sorbet', category:'Frozen', group:'Juice & Mixers'},
     {id:'fresh_orange', name:'Fresh Orange', category:'Fresh Fruit', group:'Juice & Mixers'},
-    {id:'fresh_pineapple', name:'Fresh Pineapple', category:'Fresh Fruit', group:'Juice & Mixers'}
+    {id:'fresh_pineapple', name:'Fresh Pineapple', category:'Fresh Fruit', group:'Juice & Mixers'},
+    {id:'apple_cider_vinegar', name:'Apple Cider Vinegar', category:'Vinegar', group:'Juice & Mixers'},
+    {id:'apple_juice', name:'Apple Juice', category:'Juice', group:'Juice & Mixers'}
   ];
 
   var GROUP_ORDER = ['Spirits','Liqueurs & Fortified Wine','Bitters','Juice & Mixers','Syrups'];
@@ -2645,31 +2680,31 @@ var DRINK_PHOTOS = [
       garnish:'—', note:'Shake with ice and strain into a rocks glass over fresh ice; the pineapple and lime soften Fernet-Branca\'s bitter edge.'},
 
     // ---------- Mocktails (alcohol-free) ----------
-    {name:'Shirley Temple', base:'Mocktail', glass:'Collins', method:'Built', added:'2026-10-07',
+    {name:'Shirley Temple', base:'Mocktail', glass:'Collins', method:'Built', dryJan:8, added:'2026-10-07',
       items:[{id:'grenadine', amt:'.25 oz'},{id:'lemon_juice', amt:'.33 oz'},{id:'ginger_ale', amt:'5.5 oz'}],
       garnish:'Lemon wheel, cherry', note:"Pour into a chilled glass and fill with ice; credited to Chasen's restaurant in Beverly Hills, named for the child star Shirley Temple."},
-    {name:'Roy Rogers', base:'Mocktail', glass:'Collins', method:'Built', added:'2026-10-07',
+    {name:'Roy Rogers', base:'Mocktail', glass:'Collins', method:'Built', dryJan:25, added:'2026-10-07',
       items:[{id:'grenadine', amt:'.25 oz'},{id:'cola', amt:'top'}],
       garnish:'Lime wedge', note:'Pour the grenadine over ice, top with cola, and stir; cola sweetened with grenadine.'},
-    {name:'Ginger No-jito', base:'Mocktail', glass:'Collins', method:'Built', added:'2026-10-07',
+    {name:'Ginger No-jito', base:'Mocktail', glass:'Collins', method:'Built', dryJan:12, added:'2026-10-07',
       items:[{id:'lime_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'mint_leaves', amt:'12 leaves'},{id:'ginger_beer', amt:'3.5 oz'}],
       garnish:'Mint sprigs', note:'Churn the lime, syrup, and mint with crushed ice, then top with ginger beer: an alcohol-free Mojito with a ginger kick.'},
-    {name:'Virgin Mary', base:'Mocktail', glass:'Collins', method:'Rolled', added:'2026-10-07',
+    {name:'Virgin Mary', base:'Mocktail', glass:'Collins', method:'Rolled', dryJan:1, added:'2026-10-07',
       items:[{id:'tomato_juice', amt:'5 oz'},{id:'lemon_juice', amt:'.5 oz'},{id:'hot_sauce', amt:'8 drops'},{id:'worcestershire', amt:'4 dashes'}],
       garnish:'Celery stick', note:'Roll with ice along with a little horseradish, celery salt, and black pepper, then strain over fresh ice: a Bloody Mary without the vodka.'},
-    {name:'Arnold Palmer', base:'Mocktail', glass:'Collins', method:'Shaken, topped', added:'2026-10-07',
+    {name:'Arnold Palmer', base:'Mocktail', glass:'Collins', method:'Shaken, topped', dryJan:5, added:'2026-10-07',
       items:[{id:'black_tea', amt:'2 oz'},{id:'lemon_juice', amt:'1.25 oz'},{id:'simple_syrup', amt:'1 oz'},{id:'soda_water', amt:'1 oz'}],
       garnish:'Lemon wheel', note:'Shake the tea, lemon, and syrup with ice and strain over fresh ice with a splash of soda; named for the golfer Arnold Palmer.'},
     {name:'Cinderella', base:'Mocktail', glass:'Collins', method:'Shaken, topped', added:'2026-10-07',
       items:[{id:'orange_juice', amt:'2 oz'},{id:'pineapple_juice', amt:'1.5 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'grenadine', amt:'.17 oz'},{id:'angostura_bitters', amt:'3 dashes'},{id:'soda_water', amt:'top'}],
       garnish:'Lemon wheel', note:'Shake everything but the soda with ice, strain over fresh ice, and top with soda water.'},
-    {name:'Temperance Piña Colada', base:'Mocktail', glass:'Hurricane', method:'Blended', added:'2026-10-07',
+    {name:'Temperance Piña Colada', base:'Mocktail', glass:'Hurricane', method:'Blended', dryJan:30, added:'2026-10-07',
       items:[{id:'pineapple_juice', amt:'4 oz'},{id:'coconut_cream', amt:'1.5 oz'},{id:'cream', amt:'.75 oz'},{id:'milk', amt:'.75 oz'}],
       garnish:'Pineapple wedge, cherry', note:'Blend with crushed ice until smooth and pour into a chilled glass: the Piña Colada without the rum.'},
-    {name:'Mock Margarita', base:'Mocktail', glass:'Rocks', method:'Shaken', added:'2026-10-09',
+    {name:'Mock Margarita', base:'Mocktail', glass:'Rocks', method:'Shaken', dryJan:19, added:'2026-10-09',
       items:[{id:'lime_juice', amt:'1 oz'},{id:'lemon_juice', amt:'.5 oz'},{id:'agave_syrup', amt:'1 oz'},{id:'ginger_beer', amt:'1.33 oz'}],
       garnish:'Salt rim, lime wheel', note:'Shaken with ice and strained over fresh ice in a salt-rimmed glass; adapted from a 2010 recipe by Cheri Loughlin, swapping the tequila and triple sec of a Margarita for ginger beer and agave.'},
-    {name:'Gentle Breeze', base:'Mocktail', glass:'Collins', method:'Built', added:'2026-10-16',
+    {name:'Gentle Breeze', base:'Mocktail', glass:'Collins', method:'Built', dryJan:22, added:'2026-10-16',
       items:[{id:'cranberry_juice', amt:'4 oz'},{id:'grapefruit_juice', amt:'2 oz'}],
       garnish:'Lime wedge', note:'Pour over ice and stir: a Sea Breeze without the vodka.'},
     // ---------- Release 2026-10-24 ----------
@@ -2785,7 +2820,77 @@ var DRINK_PHOTOS = [
       garnish:'Grated lemon zest', note:"Blend everything without ice on a slow setting until smooth and pour into a chilled flute. A Venetian after-dinner palate cleanser, perfect after a New Year's feast."},
     {name:'Black Velvet', base:'Sparkling', glass:'Flute', method:'Built', holiday:'newyear',
       items:[{id:'stout_beer', amt:'2.5 oz'},{id:'sparkling_wine', amt:'2.5 oz'}],
-      garnish:'—', note:"Pour the sparkling wine into a chilled flute, then slowly add the stout. First served in London in 1861, it became a favourite toast for New Year's."}
+      garnish:'—', note:"Pour the sparkling wine into a chilled flute, then slowly add the stout. First served in London in 1861, it became a favourite toast for New Year's."},
+    // ---------- Dry January module, released 2026-11-01 ----------
+    {name:'Spiced Hot Chocolate', base:'Mocktail', glass:'Mug', method:'Hot', dryJan:2,
+      items:[{id:'milk', amt:'6 oz'},{id:'ground_cinnamon', amt:'1 pinch'},{id:'chocolate_syrup', amt:'1 oz'},{id:'cream', amt:'1 oz', optional:true}],
+      garnish:'Cinnamon dusting', note:'Warm the milk until steaming, whisk in the chocolate and cinnamon, and pour into a warmed mug; float a little lightly whipped cream if you like.'},
+    {name:'Cucumber Tonic', base:'Mocktail', glass:'Highball', method:'Built', dryJan:3,
+      items:[{id:'lime_juice', amt:'.5 oz'},{id:'cucumber', amt:'4 slices'},{id:'simple_syrup', amt:'.25 oz'},{id:'tonic_water', amt:'top'},{id:'mint_leaves', amt:'1 sprig', optional:true}],
+      garnish:'Cucumber ribbon, mint sprig', note:'Muddle the cucumber with the lime and syrup, fill with ice and top with tonic; a crisp, bitter-edged start to the month.'},
+    {name:'Pomegranate Lime Spritz', base:'Mocktail', glass:'Wine', method:'Built', dryJan:4,
+      items:[{id:'pomegranate_juice', amt:'2 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'simple_syrup', amt:'.25 oz'},{id:'soda_water', amt:'top'}],
+      garnish:'Pomegranate seeds, lime wheel', note:'Build over ice in a wine glass, top with soda and give one gentle stir.'},
+    {name:'Maple Ginger Switchel', base:'Mocktail', glass:'Mason jar', method:'Shaken', dryJan:6,
+      items:[{id:'apple_cider_vinegar', amt:'.5 oz'},{id:'lemon_juice', amt:'.5 oz'},{id:'fresh_ginger', amt:'3 slices'},{id:'soda_water', amt:'4 oz'},{id:'maple_syrup', amt:'.75 oz'}],
+      garnish:'Lemon wheel', note:"Shake everything but the water hard with ice, strain over fresh ice and lengthen with cold water or soda; the old haymakers' thirst-quencher of rural New England."},
+    {name:'Virgin Paloma', base:'Mocktail', glass:'Highball', method:'Built', dryJan:7,
+      items:[{id:'grapefruit_juice', amt:'2 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'agave_syrup', amt:'.5 oz'},{id:'soda_water', amt:'top'}],
+      garnish:'Salt rim, grapefruit wedge', note:"Salt half the rim, build over ice and top with soda; Mexico's favorite highball with the tequila left out."},
+    {name:'Mulled Apple Cider', base:'Mocktail', glass:'Mug', method:'Hot', dryJan:9,
+      items:[{id:'apple_juice', amt:'6 oz'},{id:'cloves', amt:'3'},{id:'ground_cinnamon', amt:'1 pinch'},{id:'orange_peel', amt:'1 strip'},{id:'maple_syrup', amt:'.25 oz'}],
+      garnish:'Orange peel, grated nutmeg', note:'Simmer gently for ten minutes, strain into a warmed mug and grate a little nutmeg over the top.'},
+    {name:'Espresso Tonic', base:'Mocktail', glass:'Highball', method:'Built', dryJan:10,
+      items:[{id:'espresso', amt:'1.5 oz'},{id:'tonic_water', amt:'4 oz'}],
+      garnish:'Orange peel', note:'Fill with ice and tonic first, then slowly pour the espresso over the back of a spoon so it floats; a Scandinavian coffee-bar favorite.'},
+    {name:'Grapefruit Basil Spritz', base:'Mocktail', glass:'Wine', method:'Built', dryJan:11,
+      items:[{id:'grapefruit_juice', amt:'2 oz'},{id:'basil', amt:'4 leaves'},{id:'honey_syrup', amt:'.5 oz'},{id:'soda_water', amt:'top'}],
+      garnish:'Basil sprig, grapefruit slice', note:'Gently press the basil with the honey syrup, add the juice and ice, and top with soda.'},
+    {name:'Pussyfoot', base:'Mocktail', glass:'Coupe', method:'Shaken', dryJan:13,
+      items:[{id:'orange_juice', amt:'3 oz'},{id:'lemon_juice', amt:'.5 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'whole_egg', amt:'1 yolk'},{id:'grenadine', amt:'.25 oz'}],
+      garnish:'Orange zest', note:'Shake very hard with ice and strain into a chilled coupe for a silky, sunrise-colored glass; a 1920s temperance classic.'},
+    {name:'Hot Honey Ginger Tea', base:'Mocktail', glass:'Mug', method:'Hot', dryJan:14,
+      items:[{id:'black_tea', amt:'6 oz'},{id:'lemon_juice', amt:'.5 oz'},{id:'ginger_honey_syrup', amt:'.75 oz'},{id:'cloves', amt:'2', optional:true}],
+      garnish:'Lemon wheel studded with cloves', note:'Brew the tea strong, stir in the lemon and ginger-honey syrup, and serve in a warmed mug; everything a toddy offers, minus the whiskey.'},
+    {name:'Strawberry Shrub Soda', base:'Mocktail', glass:'Collins', method:'Built', dryJan:15,
+      items:[{id:'fresh_strawberries', amt:'3'},{id:'apple_cider_vinegar', amt:'.5 oz'},{id:'sugar', amt:'2 barspoons'},{id:'soda_water', amt:'top'}],
+      garnish:'Strawberry half', note:'Muddle the strawberries with the sugar and vinegar, let it sit a minute, fill with ice and top with soda; tart, bright and old-fashioned.'},
+    {name:'Orange Blossom Fizz', base:'Mocktail', glass:'Collins', method:'Shaken, topped', dryJan:16,
+      items:[{id:'orange_juice', amt:'1.5 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'orange_flower_water', amt:'3 drops'},{id:'egg_white', amt:'1'},{id:'honey_syrup', amt:'.75 oz'},{id:'soda_water', amt:'top'}],
+      garnish:'Orange zest', note:'Dry-shake without ice, shake again hard with ice, strain into a chilled glass and top slowly with soda so the foam rises above the rim.'},
+    {name:'New York Egg Cream', base:'Mocktail', glass:'Collins', method:'Built', dryJan:17,
+      items:[{id:'milk', amt:'2 oz'},{id:'chocolate_syrup', amt:'1 oz'},{id:'soda_water', amt:'top'}],
+      garnish:'—', note:'Pour the syrup and cold milk into the glass, then a hard stream of soda while stirring fast to raise a tall white head; a Brooklyn soda-fountain classic with neither egg nor cream.'},
+    {name:'Tart Cherry Spritz', base:'Mocktail', glass:'Wine', method:'Built', dryJan:18,
+      items:[{id:'tart_cherry_juice', amt:'2 oz'},{id:'lemon_juice', amt:'.5 oz'},{id:'honey_syrup', amt:'.25 oz'},{id:'soda_water', amt:'top'}],
+      garnish:'Cherries', note:'Build over ice and top with soda; an easy evening glass.'},
+    {name:'Coffee Lemonade', base:'Mocktail', glass:'Highball', method:'Built', dryJan:20,
+      items:[{id:'espresso', amt:'1.5 oz'},{id:'lemonade', amt:'4 oz'}],
+      garnish:'Lemon wheel', note:'Pour the lemonade over ice, then float the espresso on top and stir just before drinking; a Swedish café surprise.'},
+    {name:'Coconut Lime Cooler', base:'Mocktail', glass:'Highball', method:'Built', dryJan:21,
+      items:[{id:'coconut_water', amt:'5 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'mint_leaves', amt:'6 leaves'},{id:'simple_syrup', amt:'.25 oz'}],
+      garnish:'Mint sprig, lime wheel', note:'Lightly press the mint with the lime and syrup, fill with ice and top with coconut water.'},
+    {name:'Italian Cream Soda', base:'Mocktail', glass:'Collins', method:'Built', dryJan:23,
+      items:[{id:'soda_water', amt:'6 oz'},{id:'cream', amt:'1 oz'},{id:'raspberry_syrup', amt:'1 oz'}],
+      garnish:'Raspberries', note:'Build the syrup and soda over ice, then float the cream so it drifts down in swirls.'},
+    {name:'Jalapeño Pineapple Cooler', base:'Mocktail', glass:'Rocks', method:'Shaken', dryJan:24,
+      items:[{id:'pineapple_juice', amt:'2 oz'},{id:'lime_juice', amt:'.75 oz'},{id:'jalapeno', amt:'2 slices'},{id:'agave_syrup', amt:'.5 oz'},{id:'soda_water', amt:'top'}],
+      garnish:'Jalapeño slice', note:'Shake the juice, lime, agave and jalapeño hard with ice, strain over fresh ice and top with a splash of soda; sweet heat.'},
+    {name:'Peach Mint Iced Tea', base:'Mocktail', glass:'Mason jar', method:'Shaken', dryJan:26,
+      items:[{id:'black_tea', amt:'4 oz'},{id:'peach_puree', amt:'1 oz'},{id:'lemon_juice', amt:'.5 oz'},{id:'mint_leaves', amt:'6 leaves'},{id:'simple_syrup', amt:'.25 oz'}],
+      garnish:'Mint sprig, peach slice', note:'Shake with ice and pour unstrained into the jar.'},
+    {name:'Zero-Proof Sour', base:'Mocktail', glass:'Coupe', method:'Shaken, dry-shaken', dryJan:27,
+      items:[{id:'lemon_juice', amt:'1 oz'},{id:'egg_white', amt:'1'},{id:'orgeat_syrup', amt:'.75 oz'}],
+      garnish:'Lemon twist', note:'Dry-shake without ice to build the foam, then shake hard with ice and double-strain into a chilled coupe.'},
+    {name:'Blood Orange Tonic', base:'Mocktail', glass:'Highball', method:'Built', dryJan:28,
+      items:[{id:'blood_orange_juice', amt:'2 oz'},{id:'orange_syrup', amt:'.25 oz'},{id:'tonic_water', amt:'top'}],
+      garnish:'Blood orange wheel', note:'Build over ice, pouring the tonic slowly so the color fades from crimson to pale.'},
+    {name:'Raspberry Lime Rickey', base:'Mocktail', glass:'Collins', method:'Built', dryJan:29,
+      items:[{id:'lime_juice', amt:'1 oz'},{id:'fresh_raspberries', amt:'4'},{id:'raspberry_syrup', amt:'.75 oz'},{id:'soda_water', amt:'top'}],
+      garnish:'Raspberries, lime wedge', note:'Lightly crush the raspberries with the lime and syrup, fill with ice and top with soda; a Boston soda-fountain staple.'},
+    {name:'Strawberry Basil Lemonade', base:'Mocktail', glass:'Flute', method:'Built', dryJan:31,
+      items:[{id:'fresh_strawberries', amt:'2'},{id:'basil', amt:'3 leaves'},{id:'lemonade', amt:'4 oz'}],
+      garnish:'Strawberry, basil leaf', note:'Muddle the strawberries and basil, add the lemonade and ice, stir and strain into a flute to toast the finish line.'}
   ];
 
   var STARTER = ['gin','vodka','dry_vermouth','sweet_vermouth','campari','triple_sec','lime_juice','lemon_juice','simple_syrup','soda_water','angostura_bitters','bourbon'];
@@ -2821,6 +2926,14 @@ var DRINK_PHOTOS = [
     var d = new Date(), m = d.getMonth(), day = d.getDate();
     return (m === 10 && day >= 20) || m === 11 || (m === 0 && day <= 7) || location.hash === '#holidays';
   })();
+  // Dry January: 31 alcohol-free drinks carry dryJan:<day>. The chip shows from
+  // Dec 26 to Jan 31, or any time with #dryjanuary; in January the day's drink
+  // is marked Today.
+  var DRYJAN_ON = (function(){
+    var d = new Date(), m = d.getMonth(), day = d.getDate();
+    return (m === 11 && day >= 26) || m === 0 || location.hash === '#dryjanuary';
+  })();
+  var DRYJAN_TODAY = new Date().getMonth() === 0 ? new Date().getDate() : 0;
   var spiritFilter = '', sortMode = 'ready', unitMode = 'oz';
   var query = '';
   var lastAdded = null;
@@ -3138,7 +3251,8 @@ var DRINK_PHOTOS = [
     'Mug': '<path d="M4.3 4h6.4v7.3a1 1 0 0 1-1 1H5.3a1 1 0 0 1-1-1V4z"/><path d="M10.7 5.4h1a1.6 1.6 0 0 1 0 3.2h-1"/>',
     'Copper mug': '<path d="M4.3 4h6.4v7.3a1 1 0 0 1-1 1H5.3a1 1 0 0 1-1-1V4z"/><path d="M10.7 5.4h1a1.6 1.6 0 0 1 0 3.2h-1"/>',
     'Julep tin': '<path d="M4.8 4h6.4l-.9 7.6a1 1 0 0 1-1 .9H6.7a1 1 0 0 1-1-.9L4.8 4z"/>',
-    'Shot': '<path d="M6 5.3h4l-.5 5.4a1 1 0 0 1-1 .9h-1a1 1 0 0 1-1-.9L6 5.3z"/>'
+    'Shot': '<path d="M6 5.3h4l-.5 5.4a1 1 0 0 1-1 .9h-1a1 1 0 0 1-1-.9L6 5.3z"/>',
+    'Mason jar': '<path d="M5.4 2.2h5.2M5.6 2.2v1.6M10.4 2.2v1.6M5.6 3.8c-.9.5-1.3 1.3-1.3 2.3v6a1 1 0 0 0 1 1h5.4a1 1 0 0 0 1-1v-6c0-1-.4-1.8-1.3-2.3z"/>'
   };
   function glassIconSvg(glass){
     var d = GLASS_ICON_PATHS[glass] || GLASS_ICON_PATHS.Rocks;
@@ -3586,7 +3700,7 @@ var DRINK_PHOTOS = [
 
   var GLASS_FAMILY = { 'Rocks':'rocks', 'Highball':'tall', 'Collins':'tall', 'Copper mug':'mule', 'Coupe':'coupe',
     'Flute':'flute', 'Wine':'wine', 'Wine glass':'wine', 'Goblet':'wine', 'Hurricane':'tiki', 'Mug':'hot',
-    'Julep tin':'julep', 'Shot':'shot' };
+    'Julep tin':'julep', 'Shot':'shot', 'Mason jar':'tall' };
   // how well a photo's glass stands in for the recipe's glass, 0..10
   var GLASS_NEAR = { 'tall|tiki':6, 'tiki|tall':6, 'rocks|tall':3, 'tall|rocks':3, 'mule|tall':4, 'tall|mule':2,
     'julep|rocks':4, 'rocks|julep':2, 'coupe|flute':3, 'flute|coupe':2, 'wine|flute':4, 'flute|wine':4,
@@ -3721,7 +3835,8 @@ var DRINK_PHOTOS = [
       '<div class="card-body">' +
         '<div class="card-head">' +
           '<div class="card-title" role="button" tabindex="0" aria-expanded="' + isOpen + '" aria-label="' + r.name + ', ' + pillText + '. Show recipe">' +
-            '<h3>' + r.name + (r.holiday ? '<span class="hol-tag" title="Holiday drink' + (r.holiday === 'christmas' ? ' · Christmas' : ' · New Year\'s') + '">❄️</span>' : '') + '</h3>' +
+            '<h3>' + (filter === 'dryjan' && r.dryJan ? '<span class="dj-day' + (r.dryJan === DRYJAN_TODAY ? ' today">Today · ' : '">') + 'Day ' + r.dryJan + '</span>' : '') + r.name +
+              (r.dryJan ? '<span class="hol-tag" title="Dry January · Day ' + r.dryJan + '">🌿</span>' : '') + (r.holiday ? '<span class="hol-tag" title="Holiday drink' + (r.holiday === 'christmas' ? ' · Christmas' : ' · New Year\'s') + '">❄️</span>' : '') + '</h3>' +
             '<p class="card-meta">' + glassIconSvg(r.glass) + r.base + '<span class="meta-more"> · ' + r.glass + ' · ' + r.method + '</span></p>' +
             '<span class="pill ' + pillClass + '">' + pillText + '</span>' +
           '</div>' +
@@ -3764,6 +3879,7 @@ var DRINK_PHOTOS = [
       if(filter === 'made' && !made[s.recipe.name]) return false;
       if(filter === 'mocktails' && s.recipe.base !== 'Mocktail') return false;
       if(filter === 'holidays' && !s.recipe.holiday) return false;
+      if(filter === 'dryjan' && !s.recipe.dryJan) return false;
       if(filter === 'new' && newRecipes.indexOf(s.recipe) === -1) return false;
       if(filter === 'next' && queue.indexOf(s.recipe.name) === -1) return false;
       if(spiritFilter && s.recipe.base !== spiritFilter) return false;
@@ -3782,6 +3898,7 @@ var DRINK_PHOTOS = [
     var order = {ready:0, almost:1, more:2};
     visible.sort(function(a,b){
       if(filter === 'next') return queue.indexOf(a.recipe.name) - queue.indexOf(b.recipe.name);
+      if(filter === 'dryjan') return a.recipe.dryJan - b.recipe.dryJan;
       if(sortMode === 'az') return a.recipe.name.localeCompare(b.recipe.name);
       if(sortMode === 'fewest'){ var d = a.recipe.items.length - b.recipe.items.length; if(d) return d; return a.recipe.name.localeCompare(b.recipe.name); }
       if(sortMode === 'made'){ var ma = made[a.recipe.name] ? made[a.recipe.name].count : 0, mb = made[b.recipe.name] ? made[b.recipe.name].count : 0; if(ma !== mb) return mb - ma; }
@@ -3821,7 +3938,7 @@ var DRINK_PHOTOS = [
     visible.forEach(function(s, idx){
       var r = s.recipe, st = s.status;
       var card = document.createElement('article');
-      card.className = 'card row-card pending-reveal' + (openCards.has(r.name) ? ' open' : '');
+      card.className = 'card row-card pending-reveal' + (openCards.has(r.name) ? ' open' : '') + (filter === 'dryjan' && DRYJAN_TODAY && r.dryJan === DRYJAN_TODAY ? ' dj-today' : '');
       card.setAttribute('data-name', r.name);
       card.style.transitionDelay = ((idx % 8) * 45) + 'ms';
       if(canTilt) attachTilt(card);
@@ -4284,10 +4401,16 @@ var DRINK_PHOTOS = [
   // opened with #holidays.
   (function(){
     var seg = document.getElementById('filterSeg');
-    var chip = seg && seg.querySelector('[data-filter="holidays"]');
-    if(!chip) return;
-    if(HOLIDAY_ON) seg.classList.add('has-season');
-    else chip.parentNode.removeChild(chip);
+    if(!seg) return;
+    var on = 0;
+    [['holidays', HOLIDAY_ON], ['dryjan', DRYJAN_ON]].forEach(function(p){
+      var chip = seg.querySelector('[data-filter="' + p[0] + '"]');
+      if(!chip) return;
+      if(p[1]) on++;
+      else chip.parentNode.removeChild(chip);
+    });
+    if(on) seg.classList.add('has-season');
+    if(on > 1) seg.classList.add('two-seasons');
   })();
   (function(){
     var saved = readPref('backbar.filter.v1', '');
@@ -4334,7 +4457,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-10-31T21:40:18Z";
+  var CURRENT_VERSION = "2026-11-02T03:30:49Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');

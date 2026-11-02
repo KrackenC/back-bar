@@ -2059,12 +2059,12 @@
      "amt": "6 oz"
     },
     {
-     "id": "chocolate_syrup",
-     "amt": "1 oz"
-    },
-    {
      "id": "ground_cinnamon",
      "amt": "1 pinch"
+    },
+    {
+     "id": "chocolate_syrup",
+     "amt": "1 oz"
     },
     {
      "id": "cream",
@@ -2075,14 +2075,15 @@
    "garnish": "Cinnamon dusting",
    "note": "Warm the milk until steaming, whisk in the chocolate and cinnamon, and pour into a warmed mug; float a little lightly whipped cream if you like.",
    "collected": "2026-11-01",
-   "status": "dryjan",
+   "status": "released",
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 2,
    "photo": true,
    "look": "chunky stoneware mug, rich dark-brown hot chocolate with a soft cream float, a dusting of cinnamon, a faint wisp of steam",
    "scene": "a snowy mountain cabin window seat, frosted pane, wool blanket and a few cinnamon sticks on a wooden sill, soft grey winter light",
-   "photoFile": "photos/spiced-hot-chocolate.jpg"
+   "photoFile": "photos/spiced-hot-chocolate.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Cucumber Tonic",
@@ -2095,12 +2096,12 @@
      "amt": ".5 oz"
     },
     {
-     "id": "simple_syrup",
-     "amt": ".25 oz"
-    },
-    {
      "id": "cucumber",
      "amt": "4 slices"
+    },
+    {
+     "id": "simple_syrup",
+     "amt": ".25 oz"
     },
     {
      "id": "tonic_water",
@@ -2115,14 +2116,15 @@
    "garnish": "Cucumber ribbon, mint sprig",
    "note": "Muddle the cucumber with the lime and syrup, fill with ice and top with tonic; a crisp, bitter-edged start to the month.",
    "collected": "2026-11-01",
-   "status": "dryjan",
+   "status": "released",
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 3,
    "photo": true,
    "look": "tall highball glass with ice, clear and sparkling with a pale green tint, a long cucumber ribbon curled inside the glass and a mint sprig",
    "scene": "a bright Scandinavian kitchen counter of white marble, morning daylight, a whole cucumber on a linen towel",
-   "photoFile": "photos/cucumber-tonic.jpg"
+   "photoFile": "photos/cucumber-tonic.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Pomegranate Lime Spritz",
@@ -2150,14 +2152,15 @@
    "garnish": "Pomegranate seeds, lime wheel",
    "note": "Build over ice in a wine glass, top with soda and give one gentle stir.",
    "collected": "2026-11-01",
-   "status": "dryjan",
+   "status": "released",
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 4,
    "photo": true,
    "look": "large wine glass with ice, deep ruby-red and sparkling, scattered pomegranate seeds and a lime wheel",
    "scene": "a Persian tiled courtyard table in turquoise and cobalt, low winter sun, a split pomegranate in a brass bowl",
-   "photoFile": "photos/pomegranate-lime-spritz.jpg"
+   "photoFile": "photos/pomegranate-lime-spritz.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Maple Ginger Switchel",
@@ -2174,29 +2177,30 @@
      "amt": ".5 oz"
     },
     {
-     "id": "maple_syrup",
-     "amt": ".75 oz"
-    },
-    {
      "id": "fresh_ginger",
      "amt": "3 slices"
     },
     {
      "id": "soda_water",
      "amt": "4 oz"
+    },
+    {
+     "id": "maple_syrup",
+     "amt": ".75 oz"
     }
    ],
    "garnish": "Lemon wheel",
    "note": "Shake everything but the water hard with ice, strain over fresh ice and lengthen with cold water or soda; the old haymakers' thirst-quencher of rural New England.",
    "collected": "2026-11-01",
-   "status": "dryjan",
+   "status": "released",
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 6,
    "photo": true,
    "look": "glass mason jar with ice, hazy pale golden-amber, a lemon wheel",
    "scene": "a rustic Vermont barn workbench, weathered planks, a tin maple-sap bucket and fresh ginger root, soft winter daylight through a barn door",
-   "photoFile": "photos/maple-ginger-switchel.jpg"
+   "photoFile": "photos/maple-ginger-switchel.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Virgin Paloma",
@@ -2224,14 +2228,15 @@
    "garnish": "Salt rim, grapefruit wedge",
    "note": "Salt half the rim, build over ice and top with soda; Mexico's favorite highball with the tequila left out.",
    "collected": "2026-11-01",
-   "status": "dryjan",
+   "status": "released",
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 7,
    "photo": true,
    "look": "highball glass with ice and a salted rim, pale blush-pink and sparkling, a grapefruit wedge",
    "scene": "a sun-washed Mexican cantina bar of hand-painted talavera tiles, warm afternoon light, a halved pink grapefruit",
-   "photoFile": "photos/virgin-paloma.jpg"
+   "photoFile": "photos/virgin-paloma.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Mulled Apple Cider",
@@ -2244,10 +2249,6 @@
      "amt": "6 oz"
     },
     {
-     "id": "maple_syrup",
-     "amt": ".25 oz"
-    },
-    {
      "id": "cloves",
      "amt": "3"
     },
@@ -2258,19 +2259,24 @@
     {
      "id": "orange_peel",
      "amt": "1 strip"
+    },
+    {
+     "id": "maple_syrup",
+     "amt": ".25 oz"
     }
    ],
    "garnish": "Orange peel, grated nutmeg",
    "note": "Simmer gently for ten minutes, strain into a warmed mug and grate a little nutmeg over the top.",
    "collected": "2026-11-01",
-   "status": "dryjan",
+   "status": "released",
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 9,
    "photo": true,
    "look": "clear glass toddy mug with a handle, warm cloudy amber cider, an orange peel and a dusting of nutmeg, a wisp of steam",
    "scene": "an autumn orchard farmhouse porch in winter, a plaid blanket, a basket of red apples, soft late-afternoon glow",
-   "photoFile": "photos/mulled-apple-cider.jpg"
+   "photoFile": "photos/mulled-apple-cider.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Espresso Tonic",
@@ -2290,14 +2296,15 @@
    "garnish": "Orange peel",
    "note": "Fill with ice and tonic first, then slowly pour the espresso over the back of a spoon so it floats; a Scandinavian coffee-bar favorite.",
    "collected": "2026-11-01",
-   "status": "dryjan",
+   "status": "released",
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 10,
    "photo": true,
    "look": "highball glass with ice, clear sparkling tonic below and a dark espresso layer floating on top, an orange peel",
    "scene": "a minimalist Copenhagen coffee bar, pale ash wood counter, a ceramic espresso cup, cool north light",
-   "photoFile": "photos/espresso-tonic.jpg"
+   "photoFile": "photos/espresso-tonic.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Grapefruit Basil Spritz",
@@ -2310,12 +2317,12 @@
      "amt": "2 oz"
     },
     {
-     "id": "honey_syrup",
-     "amt": ".5 oz"
-    },
-    {
      "id": "basil",
      "amt": "4 leaves"
+    },
+    {
+     "id": "honey_syrup",
+     "amt": ".5 oz"
     },
     {
      "id": "soda_water",
@@ -2325,14 +2332,15 @@
    "garnish": "Basil sprig, grapefruit slice",
    "note": "Gently press the basil with the honey syrup, add the juice and ice, and top with soda.",
    "collected": "2026-11-01",
-   "status": "dryjan",
+   "status": "released",
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 11,
    "photo": true,
    "look": "large wine glass with ice, pale pink-gold and sparkling, a fresh basil sprig",
    "scene": "a Ligurian garden terrace, terracotta pots of basil, whitewashed wall, bright Mediterranean light",
-   "photoFile": "photos/grapefruit-basil-spritz.jpg"
+   "photoFile": "photos/grapefruit-basil-spritz.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Pussyfoot",
@@ -2353,25 +2361,26 @@
      "amt": ".5 oz"
     },
     {
-     "id": "grenadine",
-     "amt": ".25 oz"
-    },
-    {
      "id": "whole_egg",
      "amt": "1 yolk"
+    },
+    {
+     "id": "grenadine",
+     "amt": ".25 oz"
     }
    ],
    "garnish": "Orange zest",
    "note": "Shake very hard with ice and strain into a chilled coupe for a silky, sunrise-colored glass; a 1920s temperance classic.",
    "collected": "2026-11-01",
-   "status": "dryjan",
+   "status": "released",
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 13,
    "photo": true,
    "look": "chilled coupe without ice, opaque silky sunset-orange with a soft frothy top, a twist of orange zest",
    "scene": "a 1920s Parisian hotel bar, mahogany and mirrored glass, soft amber sconce light, a silver shaker",
-   "photoFile": "photos/pussyfoot.jpg"
+   "photoFile": "photos/pussyfoot.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Hot Honey Ginger Tea",
@@ -2400,14 +2409,15 @@
    "garnish": "Lemon wheel studded with cloves",
    "note": "Brew the tea strong, stir in the lemon and ginger-honey syrup, and serve in a warmed mug; everything a toddy offers, minus the whiskey.",
    "collected": "2026-11-01",
-   "status": "dryjan",
+   "status": "released",
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 14,
    "photo": true,
    "look": "clear glass mug with a handle, warm translucent amber tea, a lemon wheel studded with cloves, a wisp of steam",
    "scene": "a Scottish highland lodge fireside, tartan armchair, stone hearth, a honey pot, warm firelight",
-   "photoFile": "photos/hot-honey-ginger-tea.jpg"
+   "photoFile": "photos/hot-honey-ginger-tea.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Strawberry Shrub Soda",
@@ -2435,14 +2445,15 @@
    "garnish": "Strawberry half",
    "note": "Muddle the strawberries with the sugar and vinegar, let it sit a minute, fill with ice and top with soda; tart, bright and old-fashioned.",
    "collected": "2026-11-01",
-   "status": "dryjan",
+   "status": "released",
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 15,
    "photo": true,
    "look": "tall collins glass with ice, translucent strawberry-pink and sparkling, a strawberry half on the rim",
    "scene": "an old-fashioned farmhouse pantry shelf, rows of preserving jars, a gingham cloth, soft window light",
-   "photoFile": "photos/strawberry-shrub-soda.jpg"
+   "photoFile": "photos/strawberry-shrub-soda.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "New York Egg Cream",
@@ -2466,14 +2477,15 @@
    "garnish": "—",
    "note": "Pour the syrup and cold milk into the glass, then a hard stream of soda while stirring fast to raise a tall white head; a Brooklyn soda-fountain classic with neither egg nor cream.",
    "collected": "2026-11-01",
-   "status": "dryjan",
+   "status": "released",
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 17,
    "photo": true,
    "look": "tall soda-fountain glass without ice, chocolate-brown below and a tall white foamy head on top",
    "scene": "a vintage Brooklyn soda fountain counter, chrome and red stools, black-and-white checker tiles, warm diner light",
-   "photoFile": "photos/new-york-egg-cream.jpg"
+   "photoFile": "photos/new-york-egg-cream.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Tart Cherry Spritz",
@@ -2501,14 +2513,15 @@
    "garnish": "Cherries",
    "note": "Build over ice and top with soda; an easy evening glass.",
    "collected": "2026-11-01",
-   "status": "dryjan",
+   "status": "released",
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 18,
    "photo": true,
    "look": "large wine glass with ice, deep cherry-red and sparkling, two cherries",
    "scene": "a Michigan lakeside cottage at dusk, a painted wooden table, a bowl of dark cherries, blue evening light",
-   "photoFile": "photos/tart-cherry-spritz.jpg"
+   "photoFile": "photos/tart-cherry-spritz.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Coffee Lemonade",
@@ -2528,14 +2541,15 @@
    "garnish": "Lemon wheel",
    "note": "Pour the lemonade over ice, then float the espresso on top and stir just before drinking; a Swedish café surprise.",
    "collected": "2026-11-01",
-   "status": "dryjan",
+   "status": "released",
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 20,
    "photo": true,
    "look": "highball glass with ice, pale cloudy lemon-yellow below with a dark coffee layer floating on top, a lemon wheel",
    "scene": "a sunny Stockholm café window, pastel facades outside, a white cup and saucer, crisp winter sunshine",
-   "photoFile": "photos/coffee-lemonade.jpg"
+   "photoFile": "photos/coffee-lemonade.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Coconut Lime Cooler",
@@ -2552,25 +2566,26 @@
      "amt": ".5 oz"
     },
     {
-     "id": "simple_syrup",
-     "amt": ".25 oz"
-    },
-    {
      "id": "mint_leaves",
      "amt": "6 leaves"
+    },
+    {
+     "id": "simple_syrup",
+     "amt": ".25 oz"
     }
    ],
    "garnish": "Mint sprig, lime wheel",
    "note": "Lightly press the mint with the lime and syrup, fill with ice and top with coconut water.",
    "collected": "2026-11-01",
-   "status": "dryjan",
+   "status": "released",
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 21,
    "photo": true,
    "look": "highball glass with ice, nearly clear with a faint cloudy tint, a mint sprig and a lime wheel",
    "scene": "a palm-shaded Thai beach shack counter, bamboo slats, a green coconut, bright tropical light",
-   "photoFile": "photos/coconut-lime-cooler.jpg"
+   "photoFile": "photos/coconut-lime-cooler.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Italian Cream Soda",
@@ -2579,29 +2594,30 @@
    "method": "Built",
    "items": [
     {
-     "id": "raspberry_syrup",
-     "amt": "1 oz"
-    },
-    {
      "id": "soda_water",
      "amt": "6 oz"
     },
     {
      "id": "cream",
      "amt": "1 oz"
+    },
+    {
+     "id": "raspberry_syrup",
+     "amt": "1 oz"
     }
    ],
    "garnish": "Raspberries",
    "note": "Build the syrup and soda over ice, then float the cream so it drifts down in swirls.",
    "collected": "2026-11-01",
-   "status": "dryjan",
+   "status": "released",
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 23,
    "photo": true,
    "look": "tall collins glass with ice, raspberry-pink and sparkling with soft white cream swirls drifting through it, raspberries on top",
    "scene": "a retro Italian-American soda bar, mint-green counter, glass syrup bottles without labels, warm nostalgic light",
-   "photoFile": "photos/italian-cream-soda.jpg"
+   "photoFile": "photos/italian-cream-soda.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Jalapeño Pineapple Cooler",
@@ -2618,12 +2634,12 @@
      "amt": ".75 oz"
     },
     {
-     "id": "agave_syrup",
-     "amt": ".5 oz"
-    },
-    {
      "id": "jalapeno",
      "amt": "2 slices"
+    },
+    {
+     "id": "agave_syrup",
+     "amt": ".5 oz"
     },
     {
      "id": "soda_water",
@@ -2633,14 +2649,15 @@
    "garnish": "Jalapeño slice",
    "note": "Shake the juice, lime, agave and jalapeño hard with ice, strain over fresh ice and top with a splash of soda; sweet heat.",
    "collected": "2026-11-01",
-   "status": "dryjan",
+   "status": "released",
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 24,
    "photo": true,
    "look": "rocks glass with ice, hazy golden-yellow and lightly sparkling, a thin green jalapeño slice",
    "scene": "a colorful Oaxacan market stall, woven textiles, a pile of green chiles, vivid midday light",
-   "photoFile": "photos/jalapeno-pineapple-cooler.jpg"
+   "photoFile": "photos/jalapeno-pineapple-cooler.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Peach Mint Iced Tea",
@@ -2661,25 +2678,26 @@
      "amt": ".5 oz"
     },
     {
-     "id": "simple_syrup",
-     "amt": ".25 oz"
-    },
-    {
      "id": "mint_leaves",
      "amt": "6 leaves"
+    },
+    {
+     "id": "simple_syrup",
+     "amt": ".25 oz"
     }
    ],
    "garnish": "Mint sprig, peach slice",
    "note": "Shake with ice and pour unstrained into the jar.",
    "collected": "2026-11-01",
-   "status": "dryjan",
+   "status": "released",
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 26,
    "photo": true,
    "look": "glass mason jar with ice, hazy peach-amber, a mint sprig and a peach slice",
    "scene": "a Georgia front porch, white rocking chair, a basket of peaches, warm golden late light",
-   "photoFile": "photos/peach-mint-iced-tea.jpg"
+   "photoFile": "photos/peach-mint-iced-tea.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Zero-Proof Sour",
@@ -2692,25 +2710,26 @@
      "amt": "1 oz"
     },
     {
-     "id": "orgeat_syrup",
-     "amt": ".75 oz"
-    },
-    {
      "id": "egg_white",
      "amt": "1"
+    },
+    {
+     "id": "orgeat_syrup",
+     "amt": ".75 oz"
     }
    ],
    "garnish": "Lemon twist",
    "note": "Dry-shake without ice to build the foam, then shake hard with ice and double-strain into a chilled coupe.",
    "collected": "2026-11-01",
-   "status": "dryjan",
+   "status": "released",
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 27,
    "photo": true,
    "look": "chilled coupe without ice, pale cloudy lemon-cream with a thick smooth white foam top, a lemon twist",
    "scene": "a dim art-deco cocktail lounge, brass bar rail, velvet banquette, soft amber light",
-   "photoFile": "photos/zero-proof-sour.jpg"
+   "photoFile": "photos/zero-proof-sour.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Blood Orange Tonic",
@@ -2734,14 +2753,15 @@
    "garnish": "Blood orange wheel",
    "note": "Build over ice, pouring the tonic slowly so the color fades from crimson to pale.",
    "collected": "2026-11-01",
-   "status": "dryjan",
+   "status": "released",
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 28,
    "photo": true,
    "look": "highball glass with ice, crimson at the bottom fading up to pale sparkling tonic, a blood orange wheel",
    "scene": "a Sicilian citrus grove at dusk, a stone wall, a crate of blood oranges, warm rosy light",
-   "photoFile": "photos/blood-orange-tonic.jpg"
+   "photoFile": "photos/blood-orange-tonic.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Raspberry Lime Rickey",
@@ -2754,12 +2774,12 @@
      "amt": "1 oz"
     },
     {
-     "id": "raspberry_syrup",
-     "amt": ".75 oz"
-    },
-    {
      "id": "fresh_raspberries",
      "amt": "4"
+    },
+    {
+     "id": "raspberry_syrup",
+     "amt": ".75 oz"
     },
     {
      "id": "soda_water",
@@ -2769,14 +2789,15 @@
    "garnish": "Raspberries, lime wedge",
    "note": "Lightly crush the raspberries with the lime and syrup, fill with ice and top with soda; a Boston soda-fountain staple.",
    "collected": "2026-11-01",
-   "status": "dryjan",
+   "status": "released",
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 29,
    "photo": true,
    "look": "tall collins glass with ice, bright raspberry-red and sparkling, raspberries and a lime wedge",
    "scene": "a New England seaside soda shop, white beadboard walls, a striped awning visible outside, crisp bright light",
-   "photoFile": "photos/raspberry-lime-rickey.jpg"
+   "photoFile": "photos/raspberry-lime-rickey.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Strawberry Basil Lemonade",
@@ -2800,13 +2821,15 @@
    "garnish": "Strawberry, basil leaf",
    "note": "Muddle the strawberries and basil, add the lemonade and ice, stir and strain into a flute to toast the finish line.",
    "collected": "2026-11-01",
-   "status": "dryjan",
+   "status": "released",
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 31,
-   "photo": false,
+   "photo": true,
    "look": "champagne flute without ice, translucent strawberry-pink lemonade with tiny bubbles, a strawberry on the rim and a basil leaf",
-   "scene": "a festive rooftop at night with soft string lights and a city skyline blurred behind, a celebratory mood"
+   "scene": "a festive rooftop at night with soft string lights and a city skyline blurred behind, a celebratory mood",
+   "photoFile": "photos/strawberry-basil-lemonade.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Orange Blossom Fizz",
@@ -2827,12 +2850,12 @@
      "amt": "3 drops"
     },
     {
-     "id": "honey_syrup",
-     "amt": ".75 oz"
-    },
-    {
      "id": "egg_white",
      "amt": "1"
+    },
+    {
+     "id": "honey_syrup",
+     "amt": ".75 oz"
     },
     {
      "id": "soda_water",
@@ -2842,14 +2865,16 @@
    "garnish": "Orange zest",
    "note": "Dry-shake without ice, shake again hard with ice, strain into a chilled glass and top slowly with soda so the foam rises above the rim.",
    "collected": "2026-11-01",
-   "status": "dryjan",
+   "status": "released",
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 16,
    "seq": 32,
-   "photo": false,
+   "photo": true,
    "look": "tall collins glass without ice, pale cloudy orange-cream with a tall smooth white foam head rising just above the rim, a twist of orange zest",
-   "scene": "a Moroccan riad courtyard, carved plaster arches, a small tiled fountain, orange blossoms on a brass tray, soft morning light"
+   "scene": "a Moroccan riad courtyard, carved plaster arches, a small tiled fountain, orange blossoms on a brass tray, soft morning light",
+   "photoFile": "photos/orange-blossom-fizz.jpg",
+   "released": "2026-11-01"
   }
  ],
  "dryJanuaryExisting": {
