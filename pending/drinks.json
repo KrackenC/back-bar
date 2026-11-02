@@ -202,7 +202,7 @@
     }
    ],
    "garnish": "Lime wedge",
-   "note": "",
+   "note": "Pour Fernet-Branca over ice in a double old-fashioned glass, top with cola, and stir gently; Argentina's everyday bar order.",
    "collected": "2026-10-16",
    "status": "released",
    "released": "2026-10-16",
@@ -748,7 +748,7 @@
     }
    ],
    "garnish": "Lemon twist",
-   "note": "Shake with ice and fine-strain into a chilled glass. An apple-brandy sour dating to 1908; David Embury counted it among his six basic cocktails.",
+   "note": "Shake with ice and fine-strain into a chilled glass. An apple-brandy sour dating to 1908 and one of the founding drinks of the sour family.",
    "collected": "2026-10-24",
    "status": "released",
    "photo": true,
@@ -2879,12 +2879,12 @@
  ],
  "dryJanuaryExisting": {
   "Virgin Mary": 1,
-  "Arnold Palmer": 5,
   "Shirley Temple": 8,
   "Ginger No-jito": 12,
   "Mock Margarita": 19,
   "Gentle Breeze": 22,
   "Roy Rogers": 25,
-  "Temperance Piña Colada": 30
+  "Temperance Piña Colada": 30,
+  "Half & Half": 5
  }
 }
