@@ -2193,9 +2193,10 @@
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 6,
-   "photo": false,
+   "photo": true,
    "look": "glass mason jar with ice, hazy pale golden-amber, a lemon wheel",
-   "scene": "a rustic Vermont barn workbench, weathered planks, a tin maple-sap bucket and fresh ginger root, soft winter daylight through a barn door"
+   "scene": "a rustic Vermont barn workbench, weathered planks, a tin maple-sap bucket and fresh ginger root, soft winter daylight through a barn door",
+   "photoFile": "photos/maple-ginger-switchel.jpg"
   },
   {
    "name": "Virgin Paloma",
@@ -2227,9 +2228,10 @@
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 7,
-   "photo": false,
+   "photo": true,
    "look": "highball glass with ice and a salted rim, pale blush-pink and sparkling, a grapefruit wedge",
-   "scene": "a sun-washed Mexican cantina bar of hand-painted talavera tiles, warm afternoon light, a halved pink grapefruit"
+   "scene": "a sun-washed Mexican cantina bar of hand-painted talavera tiles, warm afternoon light, a halved pink grapefruit",
+   "photoFile": "photos/virgin-paloma.jpg"
   },
   {
    "name": "Mulled Apple Cider",
@@ -2265,9 +2267,10 @@
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 9,
-   "photo": false,
+   "photo": true,
    "look": "clear glass toddy mug with a handle, warm cloudy amber cider, an orange peel and a dusting of nutmeg, a wisp of steam",
-   "scene": "an autumn orchard farmhouse porch in winter, a plaid blanket, a basket of red apples, soft late-afternoon glow"
+   "scene": "an autumn orchard farmhouse porch in winter, a plaid blanket, a basket of red apples, soft late-afternoon glow",
+   "photoFile": "photos/mulled-apple-cider.jpg"
   },
   {
    "name": "Espresso Tonic",
