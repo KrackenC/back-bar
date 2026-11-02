@@ -2079,9 +2079,10 @@
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 2,
-   "photo": false,
+   "photo": true,
    "look": "chunky stoneware mug, rich dark-brown hot chocolate with a soft cream float, a dusting of cinnamon, a faint wisp of steam",
-   "scene": "a snowy mountain cabin window seat, frosted pane, wool blanket and a few cinnamon sticks on a wooden sill, soft grey winter light"
+   "scene": "a snowy mountain cabin window seat, frosted pane, wool blanket and a few cinnamon sticks on a wooden sill, soft grey winter light",
+   "photoFile": "photos/spiced-hot-chocolate.jpg"
   },
   {
    "name": "Cucumber Tonic",
@@ -2118,9 +2119,10 @@
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 3,
-   "photo": false,
+   "photo": true,
    "look": "tall highball glass with ice, clear and sparkling with a pale green tint, a long cucumber ribbon curled inside the glass and a mint sprig",
-   "scene": "a bright Scandinavian kitchen counter of white marble, morning daylight, a whole cucumber on a linen towel"
+   "scene": "a bright Scandinavian kitchen counter of white marble, morning daylight, a whole cucumber on a linen towel",
+   "photoFile": "photos/cucumber-tonic.jpg"
   },
   {
    "name": "Pomegranate Lime Spritz",
@@ -2152,9 +2154,10 @@
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 4,
-   "photo": false,
+   "photo": true,
    "look": "large wine glass with ice, deep ruby-red and sparkling, scattered pomegranate seeds and a lime wheel",
-   "scene": "a Persian tiled courtyard table in turquoise and cobalt, low winter sun, a split pomegranate in a brass bowl"
+   "scene": "a Persian tiled courtyard table in turquoise and cobalt, low winter sun, a split pomegranate in a brass bowl",
+   "photoFile": "photos/pomegranate-lime-spritz.jpg"
   },
   {
    "name": "Maple Ginger Switchel",
