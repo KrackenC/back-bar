@@ -2781,6 +2781,49 @@
    "photo": false,
    "look": "champagne flute without ice, translucent strawberry-pink lemonade with tiny bubbles, a strawberry on the rim and a basil leaf",
    "scene": "a festive rooftop at night with soft string lights and a city skyline blurred behind, a celebratory mood"
+  },
+  {
+   "name": "Orange Blossom Fizz",
+   "base": "Mocktail",
+   "glass": "Collins",
+   "method": "Shaken, topped",
+   "items": [
+    {
+     "id": "orange_juice",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "lemon_juice",
+     "amt": ".75 oz"
+    },
+    {
+     "id": "orange_flower_water",
+     "amt": "3 drops"
+    },
+    {
+     "id": "honey_syrup",
+     "amt": ".75 oz"
+    },
+    {
+     "id": "egg_white",
+     "amt": "1"
+    },
+    {
+     "id": "soda_water",
+     "amt": "top"
+    }
+   ],
+   "garnish": "Orange zest",
+   "note": "Dry-shake without ice, shake again hard with ice, strain into a chilled glass and top slowly with soda so the foam rises above the rim.",
+   "collected": "2026-11-01",
+   "status": "dryjan",
+   "collection": "dryjan",
+   "occasion": "Dry January",
+   "day": 16,
+   "seq": 32,
+   "photo": false,
+   "look": "tall collins glass without ice, pale cloudy orange-cream with a tall smooth white foam head rising just above the rim, a twist of orange zest",
+   "scene": "a Moroccan riad courtyard, carved plaster arches, a small tiled fountain, orange blossoms on a brass tray, soft morning light"
   }
  ],
  "dryJanuaryExisting": {
@@ -2788,7 +2831,6 @@
   "Arnold Palmer": 5,
   "Shirley Temple": 8,
   "Ginger No-jito": 12,
-  "Cinderella": 16,
   "Mock Margarita": 19,
   "Gentle Breeze": 22,
   "Roy Rogers": 25,

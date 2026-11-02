@@ -97,7 +97,7 @@ fetch('drinks.json?_=' + Date.now()).then(function(r){ return r.json(); }).then(
   var all = data.drinks || [];
   var waiting = all.filter(function(d){ return d.status === 'collected'; });
   var holiday = all.filter(function(d){ return d.status === 'holiday'; });
-  var dryjan = all.filter(function(d){ return d.status === 'dryjan'; }).sort(function(a, b){ return a.day - b.day; });
+  var dryjan = all.filter(function(d){ return d.status === 'dryjan'; }).sort(function(a, b){ return (a.seq || a.day) - (b.seq || b.day); }); // seq: a later swap-in goes last so earlier images keep their groups
   var needPhoto = all.filter(function(d){ return !d.photo; });
   document.getElementById('summary').textContent = waiting.length + ' collected and waiting for release · ' + holiday.length + ' in the holiday collection · ' + dryjan.length + ' new for Dry January · ' + needPhoto.length + ' need a photo';
   // Holiday drinks get their own images so they never share a panel with a regular drink.
@@ -136,7 +136,7 @@ fetch('drinks.json?_=' + Date.now()).then(function(r){ return r.json(); }).then(
   Object.keys(inApp).forEach(function(n){ byDay[inApp[n]] = {name:n, inApp:true}; });
   var cal = '';
   for(var day = 1; day <= 31; day++){ var x = byDay[day]; cal += '<li><b>Day ' + day + '</b> ' + (x ? esc(x.name) + (x.inApp ? ' <span class="tag live">In the app</span>' : '') : '<i>open</i>') + '</li>'; }
-  document.getElementById('dryjan').innerHTML = '<ol class="cal" style="list-style:none;padding:0;columns:2 16rem">' + cal + '</ol>' + dryjan.map(recipe).join('');
+  document.getElementById('dryjan').innerHTML = '<ol class="cal" style="list-style:none;padding:0;columns:2 16rem">' + cal + '</ol>' + dryjan.slice().sort(function(a, b){ return a.day - b.day; }).map(recipe).join('');
   var live = all.filter(function(d){ return d.status !== 'collected' && d.status !== 'holiday' && d.status !== 'dryjan' && !d.photo; });
   document.getElementById('live').innerHTML = live.length ? live.map(recipe).join('') : '<p class="empty">None.</p>';
 }).catch(function(){ document.getElementById('summary').textContent = 'Could not load drinks.json.'; });
