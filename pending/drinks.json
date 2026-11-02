@@ -3476,6 +3476,35 @@
    "scene": "a Venetian canal-side bar, weathered pastel walls, a gondola mooring post, soft hazy morning light",
    "photoFile": "photos/ve-n-to.jpg",
    "released": "2026-11-01"
+  },
+  {
+   "name": "Grand Margarita",
+   "base": "Tequila",
+   "glass": "Rocks",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "tequila",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "grand_marnier",
+     "amt": "1 oz"
+    },
+    {
+     "id": "lime_juice",
+     "amt": ".5 oz"
+    }
+   ],
+   "garnish": "Sea-salt rim, lime slice",
+   "note": "Rim a rocks glass with sea salt and fill it with ice. Shake everything hard with ice for about 10 seconds and strain into the glass. A richer, orange-forward Margarita made with 100% agave tequila and Grand Marnier.",
+   "collected": "2026-11-02",
+   "status": "collected",
+   "collection": "iba-classics",
+   "photo": false,
+   "look": "rocks glass over ice with a coarse sea-salt rim, clear pale amber-gold, one lime slice on the rim",
+   "scene": "a Mexican hacienda courtyard at dusk, terracotta tiles and a carved wooden bar top, a bowl of limes, warm lantern light",
+   "source": "https://iba-world.com/iba-cocktail/grand-margarita/"
   }
  ],
  "dryJanuaryExisting": {
