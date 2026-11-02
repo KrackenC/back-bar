@@ -1210,7 +1210,7 @@
   </dialog>
 
   <div class="undo-toast" id="undoToast" role="status" aria-live="polite"><span class="undo-msg"></span><button type="button">Undo</button></div>
-  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 356 recipes. Brand names are trademarks of their owners; Back Bar isn't affiliated with or endorsed by them.
+  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 357 recipes. Brand names are trademarks of their owners; Back Bar isn't affiliated with or endorsed by them.
     <div class="footer-actions"><button class="help-link" id="backupBtn" type="button" aria-haspopup="dialog">Back up or move your bar</button> <span style="margin:0 .5rem;color:var(--line)">·</span> <button class="reset-all-btn" id="resetAllBtn" type="button">Reset everything</button> <span style="margin-left:.4rem">Clears both shelves, favorites, Up Next and your Made history.</span></div>
     <p class="drink-responsibly">Please drink responsibly. Enjoy only if you're of legal drinking age, know your limits, and never drink and drive.</p>
   </footer>
@@ -1574,7 +1574,8 @@ var DRINK_PHOTOS = [
     {"g": "rocks", "c": "red", "n": ["Rabo de Galo"], "by": "Back Bar", "u": "", src:"img/d/rabo-de-galo-28bf391a.jpg"},
     {"g": "coupe", "c": "yellow", "n": ["Spicy Fifty"], "by": "Back Bar", "u": "", src:"img/d/spicy-fifty-99323915.jpg"},
     {"g": "wine", "c": "amber", "n": ["Three Dots and a Dash"], "by": "Back Bar", "u": "", src:"img/d/three-dots-and-a-dash-a990465c.jpg"},
-    {"g": "rocks", "c": "yellow", "n": ["Ve.N.To"], "by": "Back Bar", "u": "", src:"img/d/ve-n-to-fad4fca7.jpg"}
+    {"g": "rocks", "c": "yellow", "n": ["Ve.N.To"], "by": "Back Bar", "u": "", src:"img/d/ve-n-to-fad4fca7.jpg"},
+    {"g": "rocks", "c": "yellow", "n": ["Grand Margarita"], "by": "Back Bar", "u": "", src:"img/d/grand-margarita-4a9f9bf7.jpg"}
   ];
 </script>
 <script>
@@ -2980,7 +2981,11 @@ var DRINK_PHOTOS = [
       garnish:'Three cherries and a pineapple chunk', note:"Flash-blend with crushed ice and pour into a footed glass, topped with more ice; best with aged rhum agricole and a splash of aged rum. Named for Morse code's V for victory, 1940s."},
     {name:'Ve.N.To', base:'Brandy', glass:'Rocks', method:'Shaken', added:'2026-11-01',
       items:[{id:'grappa', amt:'1.5 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'honey_syrup', amt:'.75 oz'},{id:'egg_white', amt:'few drops', optional:true}],
-      garnish:'Lemon zest, white grapes', note:'Shake hard with ice and strain over fresh ice; for the full effect make the honey syrup with chamomile tea instead of water. A modern Venetian grappa sour.'}
+      garnish:'Lemon zest, white grapes', note:'Shake hard with ice and strain over fresh ice; for the full effect make the honey syrup with chamomile tea instead of water. A modern Venetian grappa sour.'},
+    // ---------- Release 2026-11-01 ----------
+    {name:'Grand Margarita', base:'Tequila', glass:'Rocks', method:'Shaken', added:'2026-11-01',
+      items:[{id:'tequila', amt:'1.5 oz'},{id:'grand_marnier', amt:'1 oz'},{id:'lime_juice', amt:'.5 oz'}],
+      garnish:'Sea-salt rim, lime slice', note:'Rim a rocks glass with sea salt and fill it with ice. Shake everything hard with ice for about 10 seconds and strain into the glass. A richer, orange-forward Margarita made with 100% agave tequila and Grand Marnier.'}
   ];
 
   var STARTER = ['gin','vodka','dry_vermouth','sweet_vermouth','campari','triple_sec','lime_juice','lemon_juice','simple_syrup','soda_water','angostura_bitters','bourbon'];
@@ -4547,7 +4552,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-11-02T04:06:09Z";
+  var CURRENT_VERSION = "2026-11-02T04:30:31Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');

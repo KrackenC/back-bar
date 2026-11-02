@@ -3499,12 +3499,13 @@
    "garnish": "Sea-salt rim, lime slice",
    "note": "Rim a rocks glass with sea salt and fill it with ice. Shake everything hard with ice for about 10 seconds and strain into the glass. A richer, orange-forward Margarita made with 100% agave tequila and Grand Marnier.",
    "collected": "2026-11-02",
-   "status": "collected",
+   "status": "released",
    "collection": "iba-classics",
-   "photo": false,
+   "photo": true,
    "look": "rocks glass over ice with a coarse sea-salt rim, clear pale amber-gold, one lime slice on the rim",
    "scene": "a Mexican hacienda courtyard at dusk, terracotta tiles and a carved wooden bar top, a bowl of limes, warm lantern light",
-   "source": "https://iba-world.com/iba-cocktail/grand-margarita/"
+   "photoFile": "photos/grand-margarita.jpg",
+   "released": "2026-11-01"
   }
  ],
  "dryJanuaryExisting": {
