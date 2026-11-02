@@ -3535,9 +3535,10 @@
    "collected": "2026-11-01",
    "status": "collected",
    "collection": "iba-classics",
-   "photo": false,
+   "photo": true,
    "look": "small rocks tumbler with ice, pale cloudy straw-yellow, a lemon zest and a small cluster of white grapes",
-   "scene": "a Venetian canal-side bar, weathered pastel walls, a gondola mooring post, soft hazy morning light"
+   "scene": "a Venetian canal-side bar, weathered pastel walls, a gondola mooring post, soft hazy morning light",
+   "photoFile": "photos/ve-n-to.jpg"
   }
  ],
  "dryJanuaryExisting": {
