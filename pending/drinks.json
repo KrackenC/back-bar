@@ -3046,9 +3046,10 @@
    "collected": "2026-11-01",
    "status": "collected",
    "collection": "iba-classics",
-   "photo": false,
+   "photo": true,
    "look": "footed goblet with crushed ice, hazy golden-yellow, half a passion fruit on the rim",
-   "scene": "a 1930s Hollywood tiki bar, bamboo walls, glowing puffer-fish lamps, warm amber light"
+   "scene": "a 1930s Hollywood tiki bar, bamboo walls, glowing puffer-fish lamps, warm amber light",
+   "photoFile": "photos/don-s-special-daiquiri.jpg"
   },
   {
    "name": "Horse's Neck",
@@ -3079,9 +3080,10 @@
    "collected": "2026-11-01",
    "status": "collected",
    "collection": "iba-classics",
-   "photo": false,
+   "photo": true,
    "look": "tall highball glass with ice, pale amber and sparkling, one very long lemon peel spiral coiling from the rim down inside the glass",
-   "scene": "an English country pub by a stable yard, worn oak bar, a horseshoe on the wall, soft golden light"
+   "scene": "an English country pub by a stable yard, worn oak bar, a horseshoe on the wall, soft golden light",
+   "photoFile": "photos/horse-s-neck.jpg"
   },
   {
    "name": "Passion Ginger Tiki",
@@ -3135,9 +3137,10 @@
    "collected": "2026-11-01",
    "status": "collected",
    "collection": "iba-classics",
-   "photo": false,
+   "photo": true,
    "look": "tall curvy hurricane glass with pebbled ice, opaque sunny golden-orange, a dried pineapple slice and a citrus wheel",
-   "scene": "a lush Polynesian garden lounge at night, carved wooden tiki posts, torches glowing, palm leaves"
+   "scene": "a lush Polynesian garden lounge at night, carved wooden tiki posts, torches glowing, palm leaves",
+   "photoFile": "photos/passion-ginger-tiki.jpg"
   },
   {
    "name": "Illegal",
