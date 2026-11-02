@@ -2294,9 +2294,10 @@
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 10,
-   "photo": false,
+   "photo": true,
    "look": "highball glass with ice, clear sparkling tonic below and a dark espresso layer floating on top, an orange peel",
-   "scene": "a minimalist Copenhagen coffee bar, pale ash wood counter, a ceramic espresso cup, cool north light"
+   "scene": "a minimalist Copenhagen coffee bar, pale ash wood counter, a ceramic espresso cup, cool north light",
+   "photoFile": "photos/espresso-tonic.jpg"
   },
   {
    "name": "Grapefruit Basil Spritz",
@@ -2321,16 +2322,17 @@
      "amt": "top"
     }
    ],
-   "garnish": "Basil sprig",
+   "garnish": "Basil sprig, grapefruit slice",
    "note": "Gently press the basil with the honey syrup, add the juice and ice, and top with soda.",
    "collected": "2026-11-01",
    "status": "dryjan",
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 11,
-   "photo": false,
+   "photo": true,
    "look": "large wine glass with ice, pale pink-gold and sparkling, a fresh basil sprig",
-   "scene": "a Ligurian garden terrace, terracotta pots of basil, whitewashed wall, bright Mediterranean light"
+   "scene": "a Ligurian garden terrace, terracotta pots of basil, whitewashed wall, bright Mediterranean light",
+   "photoFile": "photos/grapefruit-basil-spritz.jpg"
   },
   {
    "name": "Pussyfoot",
@@ -2366,9 +2368,10 @@
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 13,
-   "photo": false,
+   "photo": true,
    "look": "chilled coupe without ice, opaque silky sunset-orange with a soft frothy top, a twist of orange zest",
-   "scene": "a 1920s Parisian hotel bar, mahogany and mirrored glass, soft amber sconce light, a silver shaker"
+   "scene": "a 1920s Parisian hotel bar, mahogany and mirrored glass, soft amber sconce light, a silver shaker",
+   "photoFile": "photos/pussyfoot.jpg"
   },
   {
    "name": "Hot Honey Ginger Tea",
