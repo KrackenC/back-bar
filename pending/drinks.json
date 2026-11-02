@@ -150,6 +150,36 @@
    "name": "Apple Juice",
    "category": "Juice",
    "group": "Juice & Mixers"
+  },
+  {
+   "id": "vanilla_syrup",
+   "name": "Vanilla Syrup",
+   "category": "Syrup",
+   "group": "Syrups"
+  },
+  {
+   "id": "passion_fruit_liqueur",
+   "name": "Passion Fruit Liqueur",
+   "category": "Passion Fruit Liqueur",
+   "group": "Liqueurs & Fortified Wine"
+  },
+  {
+   "id": "elderflower_cordial",
+   "name": "Elderflower Cordial",
+   "category": "Syrup",
+   "group": "Syrups"
+  },
+  {
+   "id": "grappa",
+   "name": "Grappa",
+   "category": "Brandy",
+   "group": "Spirits"
+  },
+  {
+   "id": "allspice_dram",
+   "name": "Allspice Dram",
+   "category": "Allspice Liqueur",
+   "group": "Liqueurs & Fortified Wine"
   }
  ],
  "drinks": [
@@ -2875,6 +2905,624 @@
    "scene": "a Moroccan riad courtyard, carved plaster arches, a small tiled fountain, orange blossoms on a brass tray, soft morning light",
    "photoFile": "photos/orange-blossom-fizz.jpg",
    "released": "2026-11-01"
+  },
+  {
+   "name": "Angel Face",
+   "base": "Gin",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "gin",
+     "amt": "1 oz"
+    },
+    {
+     "id": "apple_brandy",
+     "amt": "1 oz"
+    },
+    {
+     "id": "apricot_liqueur",
+     "amt": "1 oz"
+    }
+   ],
+   "garnish": "—",
+   "note": "Shake hard with ice and strain into a chilled coupe; equal parts, bone-dry and fruity, from London's 1930s hotel bars.",
+   "source": {
+    "site": "IBA",
+    "url": "https://iba-world.com/iba-cocktail/angel-face/"
+   },
+   "collected": "2026-11-01",
+   "status": "collected",
+   "collection": "iba-classics",
+   "photo": false,
+   "look": "chilled coupe without ice, clear warm golden-amber",
+   "scene": "a pale art-deco London hotel bar, cream walls and brass, soft morning light through tall windows, a bowl of apricots"
+  },
+  {
+   "name": "Canchanchara",
+   "base": "Rum",
+   "glass": "Rocks",
+   "method": "Built",
+   "items": [
+    {
+     "id": "white_rum",
+     "amt": "2 oz",
+     "familyOk": true
+    },
+    {
+     "id": "lime_juice",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "honey_syrup",
+     "amt": ".75 oz"
+    }
+   ],
+   "garnish": "Lime wedge",
+   "note": "Stir the honey syrup and lime in the cup, add cracked ice and the rum, then stir hard from the bottom up; Cuba's earliest rum mix, from Trinidad.",
+   "source": {
+    "site": "IBA",
+    "url": "https://iba-world.com/iba-cocktail/canchanchara/"
+   },
+   "collected": "2026-11-01",
+   "status": "collected",
+   "collection": "iba-classics",
+   "photo": false,
+   "look": "rustic unglazed terracotta clay cup with cracked ice, pale cloudy straw-gold, a lime wedge",
+   "scene": "a colonial Trinidad, Cuba street café, pastel walls and cobblestones, warm afternoon sun, a honey jar"
+  },
+  {
+   "name": "Chartreuse Swizzle",
+   "base": "Liqueur",
+   "glass": "Collins",
+   "method": "Built",
+   "items": [
+    {
+     "id": "green_chartreuse",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "falernum",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "pineapple_juice",
+     "amt": "1 oz"
+    },
+    {
+     "id": "lime_juice",
+     "amt": ".75 oz"
+    }
+   ],
+   "garnish": "Mint sprig, grated nutmeg",
+   "note": "Swizzle with crushed ice until the glass frosts, top with more crushed ice and finish with mint and nutmeg; a San Francisco modern classic.",
+   "source": {
+    "site": "IBA",
+    "url": "https://iba-world.com/iba-cocktail/chartreuse-swizzle/"
+   },
+   "collected": "2026-11-01",
+   "status": "collected",
+   "collection": "iba-classics",
+   "photo": false,
+   "look": "tall collins glass packed with crushed ice, frosted outside, pale vivid green-gold, a mint sprig and grated nutmeg on top",
+   "scene": "a foggy San Francisco bar window at dusk, cable-car city lights blurred outside, dark wood counter"
+  },
+  {
+   "name": "Don's Special Daiquiri",
+   "base": "Rum",
+   "glass": "Goblet",
+   "method": "Blended",
+   "items": [
+    {
+     "id": "dark_rum",
+     "amt": "1 oz"
+    },
+    {
+     "id": "white_rum",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "lime_juice",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "passion_fruit_syrup",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "honey_syrup",
+     "amt": ".5 oz"
+    }
+   ],
+   "garnish": "Half a passion fruit",
+   "note": "Flash-blend with crushed ice, pour into a footed glass and crown with more crushed ice; a 1930s Hollywood tiki original.",
+   "source": {
+    "site": "IBA",
+    "url": "https://iba-world.com/iba-cocktail/dons-special-daiquiri/"
+   },
+   "collected": "2026-11-01",
+   "status": "collected",
+   "collection": "iba-classics",
+   "photo": false,
+   "look": "footed goblet with crushed ice, hazy golden-yellow, half a passion fruit on the rim",
+   "scene": "a 1930s Hollywood tiki bar, bamboo walls, glowing puffer-fish lamps, warm amber light"
+  },
+  {
+   "name": "Horse's Neck",
+   "base": "Brandy",
+   "glass": "Highball",
+   "method": "Built",
+   "items": [
+    {
+     "id": "brandy",
+     "amt": "1.25 oz"
+    },
+    {
+     "id": "ginger_ale",
+     "amt": "4 oz"
+    },
+    {
+     "id": "angostura_bitters",
+     "amt": "2 dashes",
+     "optional": true
+    }
+   ],
+   "garnish": "Long lemon peel spiral",
+   "note": "Hang a long spiral of lemon peel inside the glass, fill with ice, add the brandy and top with ginger ale.",
+   "source": {
+    "site": "IBA",
+    "url": "https://iba-world.com/iba-cocktail/horses-neck/"
+   },
+   "collected": "2026-11-01",
+   "status": "collected",
+   "collection": "iba-classics",
+   "photo": false,
+   "look": "tall highball glass with ice, pale amber and sparkling, one very long lemon peel spiral coiling from the rim down inside the glass",
+   "scene": "an English country pub by a stable yard, worn oak bar, a horseshoe on the wall, soft golden light"
+  },
+  {
+   "name": "Passion Ginger Tiki",
+   "base": "Rum",
+   "glass": "Hurricane",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "dark_rum",
+     "amt": "1 oz"
+    },
+    {
+     "id": "white_rum",
+     "amt": "1 oz"
+    },
+    {
+     "id": "amaretto",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "frangelico",
+     "amt": "1 barspoon"
+    },
+    {
+     "id": "maraschino_liqueur",
+     "amt": "5 drops"
+    },
+    {
+     "id": "pineapple_juice",
+     "amt": "3 oz"
+    },
+    {
+     "id": "lime_juice",
+     "amt": "1 oz"
+    },
+    {
+     "id": "passion_fruit_syrup",
+     "amt": "1 oz"
+    },
+    {
+     "id": "fresh_ginger",
+     "amt": "1 slice"
+    }
+   ],
+   "garnish": "Pineapple slice, citrus wheel",
+   "note": "Muddle the ginger in the shaker, add everything else, shake hard with ice and strain over pebbled ice; a modern tiki build with a nutty edge.",
+   "source": {
+    "site": "IBA",
+    "url": "https://iba-world.com/iba-cocktail/iba-tiki/"
+   },
+   "collected": "2026-11-01",
+   "status": "collected",
+   "collection": "iba-classics",
+   "photo": false,
+   "look": "tall curvy hurricane glass with pebbled ice, opaque sunny golden-orange, a dried pineapple slice and a citrus wheel",
+   "scene": "a lush Polynesian garden lounge at night, carved wooden tiki posts, torches glowing, palm leaves"
+  },
+  {
+   "name": "Illegal",
+   "base": "Mezcal",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "mezcal",
+     "amt": "1 oz"
+    },
+    {
+     "id": "white_rum",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "falernum",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "maraschino_liqueur",
+     "amt": "1 barspoon"
+    },
+    {
+     "id": "lime_juice",
+     "amt": ".75 oz"
+    },
+    {
+     "id": "simple_syrup",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "egg_white",
+     "amt": "few drops",
+     "optional": true
+    }
+   ],
+   "garnish": "—",
+   "note": "Shake hard with ice and strain into a chilled coupe, or over ice in a clay cup; smoky, bright and a little funky.",
+   "source": {
+    "site": "IBA",
+    "url": "https://iba-world.com/iba-cocktail/illegal/"
+   },
+   "collected": "2026-11-01",
+   "status": "collected",
+   "collection": "iba-classics",
+   "photo": false,
+   "look": "chilled coupe without ice, pale cloudy lime-straw with a fine thin foam",
+   "scene": "a dim Oaxacan mezcaleria, adobe wall, candlelight, clay copitas on a wooden shelf"
+  },
+  {
+   "name": "Kir",
+   "base": "Wine",
+   "glass": "Wine",
+   "method": "Built",
+   "items": [
+    {
+     "id": "white_wine",
+     "amt": "3 oz"
+    },
+    {
+     "id": "creme_de_cassis",
+     "amt": ".25 oz"
+    }
+   ],
+   "garnish": "—",
+   "note": "Pour the cassis into a chilled glass and top with cold dry white wine; the Burgundy aperitif named for a mayor of Dijon.",
+   "source": {
+    "site": "IBA",
+    "url": "https://iba-world.com/iba-cocktail/kir/"
+   },
+   "collected": "2026-11-01",
+   "status": "collected",
+   "collection": "iba-classics",
+   "photo": false,
+   "look": "chilled white wine glass without ice, clear rosy-pink",
+   "scene": "a Burgundy village café terrace, stone wall with vines, late-afternoon sun, a small dish of blackcurrants"
+  },
+  {
+   "name": "Missionary's Downfall",
+   "base": "Rum",
+   "glass": "Goblet",
+   "method": "Blended",
+   "items": [
+    {
+     "id": "white_rum",
+     "amt": "1 oz"
+    },
+    {
+     "id": "peach_schnapps",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "lime_juice",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "honey_syrup",
+     "amt": "1 oz"
+    },
+    {
+     "id": "mint_leaves",
+     "amt": "10 leaves"
+    },
+    {
+     "id": "fresh_pineapple",
+     "amt": "4 chunks"
+    }
+   ],
+   "garnish": "Mint sprig, pineapple slice",
+   "note": "Blend everything with a half cup of crushed ice until smooth and pour into a large stemmed glass; a frosty, minty 1940s tiki cooler.",
+   "source": {
+    "site": "IBA",
+    "url": "https://iba-world.com/iba-cocktail/missionarys-downfall/"
+   },
+   "collected": "2026-11-01",
+   "status": "collected",
+   "collection": "iba-classics",
+   "photo": false,
+   "look": "large stemmed goblet, frosty opaque pale green-gold slush, a mint sprig and a pineapple slice",
+   "scene": "a breezy veranda of an old Pacific mission, whitewashed arches, palm shade, bright tropical light"
+  },
+  {
+   "name": "Paradise",
+   "base": "Gin",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "gin",
+     "amt": "1.25 oz"
+    },
+    {
+     "id": "apricot_liqueur",
+     "amt": ".75 oz"
+    },
+    {
+     "id": "orange_juice",
+     "amt": ".5 oz"
+    }
+   ],
+   "garnish": "—",
+   "note": "Shake with ice and strain into a chilled coupe; a soft, sunny 1920s gin sour without the sour.",
+   "source": {
+    "site": "IBA",
+    "url": "https://iba-world.com/iba-cocktail/paradise/"
+   },
+   "collected": "2026-11-01",
+   "status": "collected",
+   "collection": "iba-classics",
+   "photo": false,
+   "look": "chilled coupe without ice, hazy soft apricot-orange",
+   "scene": "a sunlit 1920s orangery, white wrought iron, potted citrus trees, warm hazy glow"
+  },
+  {
+   "name": "Pornstar Martini",
+   "base": "Vodka",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "vodka",
+     "amt": "1.75 oz"
+    },
+    {
+     "id": "passion_fruit_liqueur",
+     "amt": ".75 oz"
+    },
+    {
+     "id": "passion_fruit_syrup",
+     "amt": "1 oz"
+    },
+    {
+     "id": "vanilla_syrup",
+     "amt": ".25 oz"
+    }
+   ],
+   "garnish": "Half a passion fruit; sparkling wine on the side",
+   "note": "Shake hard with ice, double-strain into a chilled coupe, float half a passion fruit and serve a small glass of sparkling wine alongside; a 2000s London favourite.",
+   "source": {
+    "site": "IBA",
+    "url": "https://iba-world.com/iba-cocktail/porn-star-martini/"
+   },
+   "collected": "2026-11-01",
+   "status": "collected",
+   "collection": "iba-classics",
+   "photo": false,
+   "look": "large chilled coupe without ice, opaque golden-yellow with a light froth, half a passion fruit floating, a small shot glass of sparkling wine beside it",
+   "scene": "a sleek London cocktail lounge, dark velvet and gold, moody low light, city lights in a window"
+  },
+  {
+   "name": "Porto Flip",
+   "base": "Brandy",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "brandy",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "port_wine",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "whole_egg",
+     "amt": "1 yolk"
+    }
+   ],
+   "garnish": "Grated nutmeg",
+   "note": "Shake very hard with ice and strain into a small chilled coupe; finish with fresh nutmeg.",
+   "source": {
+    "site": "IBA",
+    "url": "https://iba-world.com/iba-cocktail/porto-flip/"
+   },
+   "collected": "2026-11-01",
+   "status": "collected",
+   "collection": "iba-classics",
+   "photo": false,
+   "look": "small chilled coupe without ice, silky opaque ruby-rose with a dusting of nutmeg",
+   "scene": "a Porto wine lodge cellar, barrels stacked behind, candlelight on stone, the Douro at night"
+  },
+  {
+   "name": "Rabo de Galo",
+   "base": "Cachaça",
+   "glass": "Rocks",
+   "method": "Built",
+   "items": [
+    {
+     "id": "cachaca",
+     "amt": "2 oz"
+    },
+    {
+     "id": "sweet_vermouth",
+     "amt": ".75 oz"
+    },
+    {
+     "id": "cynar",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "angostura_bitters",
+     "amt": "2 dashes",
+     "optional": true
+    }
+   ],
+   "garnish": "Orange twist",
+   "note": "Build in a rocks glass, add ice and stir briefly; Brazil's bittersweet answer to the Manhattan.",
+   "source": {
+    "site": "IBA",
+    "url": "https://iba-world.com/iba-cocktail/rabo-de-galo/"
+   },
+   "collected": "2026-11-01",
+   "status": "collected",
+   "collection": "iba-classics",
+   "photo": false,
+   "look": "rocks glass with ice, clear deep reddish-amber, an orange twist",
+   "scene": "a São Paulo neighborhood boteco, tiled walls, a beer-crate stool, warm evening light"
+  },
+  {
+   "name": "Spicy Fifty",
+   "base": "Vodka",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "vodka",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "lime_juice",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "elderflower_cordial",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "honey_syrup",
+     "amt": ".25 oz"
+    },
+    {
+     "id": "vanilla_syrup",
+     "amt": "1 barspoon"
+    },
+    {
+     "id": "jalapeno",
+     "amt": "2 slices"
+    }
+   ],
+   "garnish": "Red chili",
+   "note": "Shake everything with ice and double-strain into a chilled coupe; floral, sweet and gently hot.",
+   "source": {
+    "site": "IBA",
+    "url": "https://iba-world.com/iba-cocktail/spicy-fifty/"
+   },
+   "collected": "2026-11-01",
+   "status": "collected",
+   "collection": "iba-classics",
+   "photo": false,
+   "look": "chilled coupe without ice, pale cloudy greenish-straw, one thin red chili laid on the rim",
+   "scene": "a modern London bar counter in green marble, brass details, a scatter of red chilies, soft evening light"
+  },
+  {
+   "name": "Three Dots and a Dash",
+   "base": "Rum",
+   "glass": "Goblet",
+   "method": "Blended",
+   "items": [
+    {
+     "id": "dark_rum",
+     "amt": "2 oz",
+     "familyOk": true
+    },
+    {
+     "id": "falernum",
+     "amt": ".25 oz"
+    },
+    {
+     "id": "allspice_dram",
+     "amt": ".25 oz"
+    },
+    {
+     "id": "lime_juice",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "orange_juice",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "honey_syrup",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "angostura_bitters",
+     "amt": "2 dashes"
+    }
+   ],
+   "garnish": "Three cherries and a pineapple chunk",
+   "note": "Flash-blend with crushed ice and pour into a footed glass, topped with more ice; best with aged rhum agricole and a splash of aged rum. Named for Morse code's V for victory, 1940s.",
+   "source": {
+    "site": "IBA",
+    "url": "https://iba-world.com/iba-cocktail/three-dots-and-a-dash/"
+   },
+   "collected": "2026-11-01",
+   "status": "collected",
+   "collection": "iba-classics",
+   "photo": false,
+   "look": "footed goblet with crushed ice, hazy golden-amber, three cherries on a pick and a rectangular pineapple chunk",
+   "scene": "a 1940s tiki bar with a nautical theme, ship's wheel and rope netting, warm lantern light"
+  },
+  {
+   "name": "Ve.N.To",
+   "base": "Brandy",
+   "glass": "Rocks",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "grappa",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "lemon_juice",
+     "amt": ".75 oz"
+    },
+    {
+     "id": "honey_syrup",
+     "amt": ".75 oz"
+    },
+    {
+     "id": "egg_white",
+     "amt": "few drops",
+     "optional": true
+    }
+   ],
+   "garnish": "Lemon zest, white grapes",
+   "note": "Shake hard with ice and strain over fresh ice; for the full effect make the honey syrup with chamomile tea instead of water. A modern Venetian grappa sour.",
+   "source": {
+    "site": "IBA",
+    "url": "https://iba-world.com/iba-cocktail/ve-n-to/"
+   },
+   "collected": "2026-11-01",
+   "status": "collected",
+   "collection": "iba-classics",
+   "photo": false,
+   "look": "small rocks tumbler with ice, pale cloudy straw-yellow, a lemon zest and a small cluster of white grapes",
+   "scene": "a Venetian canal-side bar, weathered pastel walls, a gondola mooring post, soft hazy morning light"
   }
  ],
  "dryJanuaryExisting": {
