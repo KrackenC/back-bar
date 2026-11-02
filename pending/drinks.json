@@ -1914,9 +1914,10 @@
    },
    "collected": "2026-10-30",
    "status": "collected",
-   "photo": false,
+   "photo": true,
    "look": "coupe without ice, pale amber-gold and clear, an orange twist",
-   "scene": "a dim Tokyo hotel bar counter, dark wood and brass fittings, soft amber lamplight"
+   "scene": "a dim Tokyo hotel bar counter, dark wood and brass fittings, soft amber lamplight",
+   "photoFile": "photos/bamboo-cocktail.jpg"
   },
   {
    "name": "White Bay Punch",
@@ -1950,9 +1951,10 @@
    },
    "collected": "2026-10-30",
    "status": "collected",
-   "photo": false,
+   "photo": true,
    "look": "hurricane glass with crushed ice, creamy pale orange and opaque, a dusting of grated nutmeg on top",
-   "scene": "a weathered beach shack bar on a Caribbean island, driftwood counter, turquoise water and palm shade in the background"
+   "scene": "a weathered beach shack bar on a Caribbean island, driftwood counter, turquoise water and palm shade in the background",
+   "photoFile": "photos/white-bay-punch.jpg"
   },
   {
    "name": "Batanga",
@@ -1981,9 +1983,10 @@
    },
    "collected": "2026-10-30",
    "status": "collected",
-   "photo": false,
+   "photo": true,
    "look": "highball glass with ice and a salted rim, dark cola-brown and sparkling, a lime wheel",
-   "scene": "a sun-bleached cantina patio in the town of Tequila, blue agave fields in the distance, weathered wood tables under harsh midday light"
+   "scene": "a sun-bleached cantina patio in the town of Tequila, blue agave fields in the distance, weathered wood tables under harsh midday light",
+   "photoFile": "photos/batanga.jpg"
   },
   {
    "name": "Kalimotxo",
