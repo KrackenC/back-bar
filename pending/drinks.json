@@ -2707,9 +2707,10 @@
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 27,
-   "photo": false,
+   "photo": true,
    "look": "chilled coupe without ice, pale cloudy lemon-cream with a thick smooth white foam top, a lemon twist",
-   "scene": "a dim art-deco cocktail lounge, brass bar rail, velvet banquette, soft amber light"
+   "scene": "a dim art-deco cocktail lounge, brass bar rail, velvet banquette, soft amber light",
+   "photoFile": "photos/zero-proof-sour.jpg"
   },
   {
    "name": "Blood Orange Tonic",
@@ -2737,9 +2738,10 @@
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 28,
-   "photo": false,
+   "photo": true,
    "look": "highball glass with ice, crimson at the bottom fading up to pale sparkling tonic, a blood orange wheel",
-   "scene": "a Sicilian citrus grove at dusk, a stone wall, a crate of blood oranges, warm rosy light"
+   "scene": "a Sicilian citrus grove at dusk, a stone wall, a crate of blood oranges, warm rosy light",
+   "photoFile": "photos/blood-orange-tonic.jpg"
   },
   {
    "name": "Raspberry Lime Rickey",
@@ -2771,9 +2773,10 @@
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 29,
-   "photo": false,
+   "photo": true,
    "look": "tall collins glass with ice, bright raspberry-red and sparkling, raspberries and a lime wedge",
-   "scene": "a New England seaside soda shop, white beadboard walls, a striped awning visible outside, crisp bright light"
+   "scene": "a New England seaside soda shop, white beadboard walls, a striped awning visible outside, crisp bright light",
+   "photoFile": "photos/raspberry-lime-rickey.jpg"
   },
   {
    "name": "Strawberry Basil Lemonade",
