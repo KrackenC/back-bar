@@ -3294,9 +3294,10 @@
    "collected": "2026-11-01",
    "status": "collected",
    "collection": "iba-classics",
-   "photo": false,
+   "photo": true,
    "look": "chilled coupe without ice, hazy soft apricot-orange",
-   "scene": "a sunlit 1920s orangery, white wrought iron, potted citrus trees, warm hazy glow"
+   "scene": "a sunlit 1920s orangery, white wrought iron, potted citrus trees, warm hazy glow",
+   "photoFile": "photos/paradise.jpg"
   },
   {
    "name": "Pornstar Martini",
@@ -3330,9 +3331,10 @@
    "collected": "2026-11-01",
    "status": "collected",
    "collection": "iba-classics",
-   "photo": false,
+   "photo": true,
    "look": "large chilled coupe without ice, opaque golden-yellow with a light froth, half a passion fruit floating, a small shot glass of sparkling wine beside it",
-   "scene": "a sleek London cocktail lounge, dark velvet and gold, moody low light, city lights in a window"
+   "scene": "a sleek London cocktail lounge, dark velvet and gold, moody low light, city lights in a window",
+   "photoFile": "photos/pornstar-martini.jpg"
   },
   {
    "name": "Porto Flip",
@@ -3362,9 +3364,10 @@
    "collected": "2026-11-01",
    "status": "collected",
    "collection": "iba-classics",
-   "photo": false,
+   "photo": true,
    "look": "small chilled coupe without ice, silky opaque ruby-rose with a dusting of nutmeg",
-   "scene": "a Porto wine lodge cellar, barrels stacked behind, candlelight on stone, the Douro at night"
+   "scene": "a Porto wine lodge cellar, barrels stacked behind, candlelight on stone, the Douro at night",
+   "photoFile": "photos/porto-flip.jpg"
   },
   {
    "name": "Rabo de Galo",
