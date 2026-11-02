@@ -2598,9 +2598,10 @@
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 23,
-   "photo": false,
+   "photo": true,
    "look": "tall collins glass with ice, raspberry-pink and sparkling with soft white cream swirls drifting through it, raspberries on top",
-   "scene": "a retro Italian-American soda bar, mint-green counter, glass syrup bottles without labels, warm nostalgic light"
+   "scene": "a retro Italian-American soda bar, mint-green counter, glass syrup bottles without labels, warm nostalgic light",
+   "photoFile": "photos/italian-cream-soda.jpg"
   },
   {
    "name": "Jalapeño Pineapple Cooler",
@@ -2636,9 +2637,10 @@
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 24,
-   "photo": false,
+   "photo": true,
    "look": "rocks glass with ice, hazy golden-yellow and lightly sparkling, a thin green jalapeño slice",
-   "scene": "a colorful Oaxacan market stall, woven textiles, a pile of green chiles, vivid midday light"
+   "scene": "a colorful Oaxacan market stall, woven textiles, a pile of green chiles, vivid midday light",
+   "photoFile": "photos/jalapeno-pineapple-cooler.jpg"
   },
   {
    "name": "Peach Mint Iced Tea",
@@ -2674,9 +2676,10 @@
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 26,
-   "photo": false,
+   "photo": true,
    "look": "glass mason jar with ice, hazy peach-amber, a mint sprig and a peach slice",
-   "scene": "a Georgia front porch, white rocking chair, a basket of peaches, warm golden late light"
+   "scene": "a Georgia front porch, white rocking chair, a basket of peaches, warm golden late light",
+   "photoFile": "photos/peach-mint-iced-tea.jpg"
   },
   {
    "name": "Zero-Proof Sour",
