@@ -2404,9 +2404,10 @@
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 14,
-   "photo": false,
+   "photo": true,
    "look": "clear glass mug with a handle, warm translucent amber tea, a lemon wheel studded with cloves, a wisp of steam",
-   "scene": "a Scottish highland lodge fireside, tartan armchair, stone hearth, a honey pot, warm firelight"
+   "scene": "a Scottish highland lodge fireside, tartan armchair, stone hearth, a honey pot, warm firelight",
+   "photoFile": "photos/hot-honey-ginger-tea.jpg"
   },
   {
    "name": "Strawberry Shrub Soda",
@@ -2438,9 +2439,10 @@
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 15,
-   "photo": false,
+   "photo": true,
    "look": "tall collins glass with ice, translucent strawberry-pink and sparkling, a strawberry half on the rim",
-   "scene": "an old-fashioned farmhouse pantry shelf, rows of preserving jars, a gingham cloth, soft window light"
+   "scene": "an old-fashioned farmhouse pantry shelf, rows of preserving jars, a gingham cloth, soft window light",
+   "photoFile": "photos/strawberry-shrub-soda.jpg"
   },
   {
    "name": "New York Egg Cream",
@@ -2468,9 +2470,10 @@
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 17,
-   "photo": false,
+   "photo": true,
    "look": "tall soda-fountain glass without ice, chocolate-brown below and a tall white foamy head on top",
-   "scene": "a vintage Brooklyn soda fountain counter, chrome and red stools, black-and-white checker tiles, warm diner light"
+   "scene": "a vintage Brooklyn soda fountain counter, chrome and red stools, black-and-white checker tiles, warm diner light",
+   "photoFile": "photos/new-york-egg-cream.jpg"
   },
   {
    "name": "Tart Cherry Spritz",
