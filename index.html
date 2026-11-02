@@ -1210,7 +1210,7 @@
   </dialog>
 
   <div class="undo-toast" id="undoToast" role="status" aria-live="polite"><span class="undo-msg"></span><button type="button">Undo</button></div>
-  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 335 recipes. Brand names are trademarks of their owners; Back Bar isn't affiliated with or endorsed by them.
+  <footer>Back Bar keeps your shelf in this browser only — nothing leaves the page. 356 recipes. Brand names are trademarks of their owners; Back Bar isn't affiliated with or endorsed by them.
     <div class="footer-actions"><button class="help-link" id="backupBtn" type="button" aria-haspopup="dialog">Back up or move your bar</button> <span style="margin:0 .5rem;color:var(--line)">·</span> <button class="reset-all-btn" id="resetAllBtn" type="button">Reset everything</button> <span style="margin-left:.4rem">Clears both shelves, favorites, Up Next and your Made history.</span></div>
     <p class="drink-responsibly">Please drink responsibly. Enjoy only if you're of legal drinking age, know your limits, and never drink and drive.</p>
   </footer>
@@ -1553,7 +1553,28 @@ var DRINK_PHOTOS = [
     {"g": "tall", "c": "red", "n": ["Blood Orange Tonic"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/blood-orange-tonic-73fc6e4a.jpg"},
     {"g": "tall", "c": "red", "n": ["Raspberry Lime Rickey"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/raspberry-lime-rickey-a79cc567.jpg"},
     {"g": "flute", "c": "pink", "n": ["Strawberry Basil Lemonade"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/strawberry-basil-lemonade-152a2afa.jpg"},
-    {"g": "tall", "c": "creamy", "n": ["Orange Blossom Fizz"], "by": "Back Bar", "u": "", "foam": 1, src:"img/d/orange-blossom-fizz-fd80a535.jpg"}
+    {"g": "tall", "c": "creamy", "n": ["Orange Blossom Fizz"], "by": "Back Bar", "u": "", "foam": 1, src:"img/d/orange-blossom-fizz-fd80a535.jpg"},
+    {"g": "coupe", "c": "amber", "n": ["Bamboo Cocktail"], "by": "Back Bar", "u": "", src:"img/d/bamboo-cocktail-a7b386a8.jpg"},
+    {"g": "tiki", "c": "orange", "n": ["White Bay Punch"], "by": "Back Bar", "u": "", src:"img/d/white-bay-punch-7b8dba28.jpg"},
+    {"g": "tall", "c": "brown", "n": ["Batanga"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/batanga-7606e7df.jpg"},
+    {"g": "wine", "c": "darkred", "n": ["Kalimotxo"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/kalimotxo-918d6d4a.jpg"},
+    {"g": "tall", "c": "creamy", "n": ["Batida de Maracujá"], "by": "Back Bar", "u": "", src:"img/d/batida-de-maracuj-669e176c.jpg"},
+    {"g": "coupe", "c": "amber", "n": ["Angel Face"], "by": "Back Bar", "u": "", src:"img/d/angel-face-99353ad7.jpg"},
+    {"g": "rocks", "c": "clear", "n": ["Canchanchara"], "by": "Back Bar", "u": "", src:"img/d/canchanchara-74cba542.jpg"},
+    {"g": "tall", "c": "green", "n": ["Chartreuse Swizzle"], "by": "Back Bar", "u": "", src:"img/d/chartreuse-swizzle-e28544cc.jpg"},
+    {"g": "wine", "c": "yellow", "n": ["Don's Special Daiquiri"], "by": "Back Bar", "u": "", src:"img/d/don-s-special-daiquiri-ff6c2452.jpg"},
+    {"g": "tall", "c": "amber", "n": ["Horse's Neck"], "by": "Back Bar", "u": "", "fizz": 1, src:"img/d/horse-s-neck-9f1e149e.jpg"},
+    {"g": "tiki", "c": "orange", "n": ["Passion Ginger Tiki"], "by": "Back Bar", "u": "", src:"img/d/passion-ginger-tiki-8801c987.jpg"},
+    {"g": "coupe", "c": "yellow", "n": ["Illegal"], "by": "Back Bar", "u": "", "foam": 1, src:"img/d/illegal-077685bb.jpg"},
+    {"g": "wine", "c": "pink", "n": ["Kir"], "by": "Back Bar", "u": "", src:"img/d/kir-9c391838.jpg"},
+    {"g": "wine", "c": "green", "n": ["Missionary's Downfall"], "by": "Back Bar", "u": "", src:"img/d/missionary-s-downfall-671f8af1.jpg"},
+    {"g": "coupe", "c": "orange", "n": ["Paradise"], "by": "Back Bar", "u": "", src:"img/d/paradise-3e6c99a5.jpg"},
+    {"g": "coupe", "c": "yellow", "n": ["Pornstar Martini"], "by": "Back Bar", "u": "", "foam": 1, src:"img/d/pornstar-martini-5ef847ec.jpg"},
+    {"g": "coupe", "c": "darkred", "n": ["Porto Flip"], "by": "Back Bar", "u": "", "foam": 1, src:"img/d/porto-flip-3a121ff0.jpg"},
+    {"g": "rocks", "c": "red", "n": ["Rabo de Galo"], "by": "Back Bar", "u": "", src:"img/d/rabo-de-galo-28bf391a.jpg"},
+    {"g": "coupe", "c": "yellow", "n": ["Spicy Fifty"], "by": "Back Bar", "u": "", src:"img/d/spicy-fifty-99323915.jpg"},
+    {"g": "wine", "c": "amber", "n": ["Three Dots and a Dash"], "by": "Back Bar", "u": "", src:"img/d/three-dots-and-a-dash-a990465c.jpg"},
+    {"g": "rocks", "c": "yellow", "n": ["Ve.N.To"], "by": "Back Bar", "u": "", src:"img/d/ve-n-to-fad4fca7.jpg"}
   ];
 </script>
 <script>
@@ -1709,7 +1730,12 @@ var DRINK_PHOTOS = [
     {id:'fresh_orange', name:'Fresh Orange', category:'Fresh Fruit', group:'Juice & Mixers'},
     {id:'fresh_pineapple', name:'Fresh Pineapple', category:'Fresh Fruit', group:'Juice & Mixers'},
     {id:'apple_cider_vinegar', name:'Apple Cider Vinegar', category:'Vinegar', group:'Juice & Mixers'},
-    {id:'apple_juice', name:'Apple Juice', category:'Juice', group:'Juice & Mixers'}
+    {id:'apple_juice', name:'Apple Juice', category:'Juice', group:'Juice & Mixers'},
+    {id:'vanilla_syrup', name:'Vanilla Syrup', category:'Syrup', group:'Syrups'},
+    {id:'passion_fruit_liqueur', name:'Passion Fruit Liqueur', category:'Passion Fruit Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'elderflower_cordial', name:'Elderflower Cordial', category:'Syrup', group:'Syrups'},
+    {id:'grappa', name:'Grappa', category:'Brandy', group:'Spirits'},
+    {id:'allspice_dram', name:'Allspice Dram', category:'Allspice Liqueur', group:'Liqueurs & Fortified Wine'}
   ];
 
   var GROUP_ORDER = ['Spirits','Liqueurs & Fortified Wine','Bitters','Juice & Mixers','Syrups'];
@@ -2890,7 +2916,71 @@ var DRINK_PHOTOS = [
       garnish:'Raspberries, lime wedge', note:'Lightly crush the raspberries with the lime and syrup, fill with ice and top with soda; a Boston soda-fountain staple.'},
     {name:'Strawberry Basil Lemonade', base:'Mocktail', glass:'Flute', method:'Built', dryJan:31,
       items:[{id:'fresh_strawberries', amt:'2'},{id:'basil', amt:'3 leaves'},{id:'lemonade', amt:'4 oz'}],
-      garnish:'Strawberry, basil leaf', note:'Muddle the strawberries and basil, add the lemonade and ice, stir and strain into a flute to toast the finish line.'}
+      garnish:'Strawberry, basil leaf', note:'Muddle the strawberries and basil, add the lemonade and ice, stir and strain into a flute to toast the finish line.'},
+    // ---------- Release 2026-11-01 ----------
+    {name:'Bamboo Cocktail', base:'Sherry', glass:'Coupe', method:'Stirred', added:'2026-11-01',
+      items:[{id:'sherry', amt:'1.5 oz'},{id:'dry_vermouth', amt:'1.5 oz'},{id:'orange_bitters', amt:'2 dashes'}],
+      garnish:'Orange twist', note:'Stir with ice and strain into a chilled coupe; a Gilded Age aperitif made famous at a Yokohama hotel bar in the 1890s.'},
+    {name:'White Bay Punch', base:'Rum', glass:'Hurricane', method:'Shaken', added:'2026-11-01',
+      items:[{id:'dark_rum', amt:'2 oz', familyOk:true},{id:'pineapple_juice', amt:'4 oz'},{id:'orange_juice', amt:'1 oz'},{id:'coconut_cream', amt:'1 oz'}],
+      garnish:'Grated nutmeg', note:'Shake hard with ice, pour over crushed ice and finish with fresh nutmeg; inspired by a 1970s beach bar on Jost Van Dyke in the British Virgin Islands.'},
+    {name:'Batanga', base:'Tequila', glass:'Highball', method:'Built', added:'2026-11-01',
+      items:[{id:'tequila', amt:'2 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'cola', amt:'top'}],
+      garnish:'Salt rim, lime wheel', note:'Salt the rim, build over ice and stir with a knife, as it has been done in the town of Tequila, Mexico, since 1961.'},
+    {name:'Kalimotxo', base:'Wine', glass:'Wine', method:'Built', added:'2026-11-01',
+      items:[{id:'red_wine', amt:'4 oz'},{id:'cola', amt:'4 oz'}],
+      garnish:'—', note:"Pour over ice in equal parts and give one stir; the Basque Country's festival drink since the 1970s."},
+    {name:'Batida de Maracujá', base:'Cachaça', glass:'Collins', method:'Blended', added:'2026-11-01',
+      items:[{id:'cachaca', amt:'2 oz'},{id:'condensed_milk', amt:'1 oz'},{id:'passion_fruit_syrup', amt:'1 oz'}],
+      garnish:'—', note:'Blend with a scoop of ice until smooth and frothy; a Brazilian beach-kiosk favorite.'},
+    {name:'Angel Face', base:'Gin', glass:'Coupe', method:'Shaken', added:'2026-11-01',
+      items:[{id:'gin', amt:'1 oz'},{id:'apple_brandy', amt:'1 oz'},{id:'apricot_liqueur', amt:'1 oz'}],
+      garnish:'—', note:"Shake hard with ice and strain into a chilled coupe; equal parts, bone-dry and fruity, from London's 1930s hotel bars."},
+    {name:'Canchanchara', base:'Rum', glass:'Rocks', method:'Built', added:'2026-11-01',
+      items:[{id:'white_rum', amt:'2 oz', familyOk:true},{id:'lime_juice', amt:'.5 oz'},{id:'honey_syrup', amt:'.75 oz'}],
+      garnish:'Lime wedge', note:"Stir the honey syrup and lime in the cup, add cracked ice and the rum, then stir hard from the bottom up; Cuba's earliest rum mix, from Trinidad."},
+    {name:'Chartreuse Swizzle', base:'Liqueur', glass:'Collins', method:'Built', added:'2026-11-01',
+      items:[{id:'green_chartreuse', amt:'1.5 oz'},{id:'falernum', amt:'.5 oz'},{id:'pineapple_juice', amt:'1 oz'},{id:'lime_juice', amt:'.75 oz'}],
+      garnish:'Mint sprig, grated nutmeg', note:'Swizzle with crushed ice until the glass frosts, top with more crushed ice and finish with mint and nutmeg; a San Francisco modern classic.'},
+    {name:"Don's Special Daiquiri", base:'Rum', glass:'Goblet', method:'Blended', added:'2026-11-01',
+      items:[{id:'dark_rum', amt:'1 oz'},{id:'white_rum', amt:'.5 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'passion_fruit_syrup', amt:'.5 oz'},{id:'honey_syrup', amt:'.5 oz'}],
+      garnish:'Half a passion fruit', note:'Flash-blend with crushed ice, pour into a footed glass and crown with more crushed ice; a 1930s Hollywood tiki original.'},
+    {name:"Horse's Neck", base:'Brandy', glass:'Highball', method:'Built', added:'2026-11-01',
+      items:[{id:'brandy', amt:'1.25 oz'},{id:'ginger_ale', amt:'4 oz'},{id:'angostura_bitters', amt:'2 dashes', optional:true}],
+      garnish:'Long lemon peel spiral', note:'Hang a long spiral of lemon peel inside the glass, fill with ice, add the brandy and top with ginger ale.'},
+    {name:'Passion Ginger Tiki', base:'Rum', glass:'Hurricane', method:'Shaken', added:'2026-11-01',
+      items:[{id:'dark_rum', amt:'1 oz'},{id:'white_rum', amt:'1 oz'},{id:'amaretto', amt:'.5 oz'},{id:'frangelico', amt:'1 barspoon'},{id:'maraschino_liqueur', amt:'5 drops'},{id:'pineapple_juice', amt:'3 oz'},{id:'lime_juice', amt:'1 oz'},{id:'fresh_ginger', amt:'1 slice'},{id:'passion_fruit_syrup', amt:'1 oz'}],
+      garnish:'Pineapple slice, citrus wheel', note:'Muddle the ginger in the shaker, add everything else, shake hard with ice and strain over pebbled ice; a modern tiki build with a nutty edge.'},
+    {name:'Illegal', base:'Mezcal', glass:'Coupe', method:'Shaken', added:'2026-11-01',
+      items:[{id:'mezcal', amt:'1 oz'},{id:'white_rum', amt:'.5 oz'},{id:'falernum', amt:'.5 oz'},{id:'maraschino_liqueur', amt:'1 barspoon'},{id:'lime_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'egg_white', amt:'few drops', optional:true}],
+      garnish:'—', note:'Shake hard with ice and strain into a chilled coupe, or over ice in a clay cup; smoky, bright and a little funky.'},
+    {name:'Kir', base:'Wine', glass:'Wine', method:'Built', added:'2026-11-01',
+      items:[{id:'white_wine', amt:'3 oz'},{id:'creme_de_cassis', amt:'.25 oz'}],
+      garnish:'—', note:'Pour the cassis into a chilled glass and top with cold dry white wine; the Burgundy aperitif named for a mayor of Dijon.'},
+    {name:"Missionary's Downfall", base:'Rum', glass:'Goblet', method:'Blended', added:'2026-11-01',
+      items:[{id:'white_rum', amt:'1 oz'},{id:'peach_schnapps', amt:'.5 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'mint_leaves', amt:'10 leaves'},{id:'fresh_pineapple', amt:'4 chunks'},{id:'honey_syrup', amt:'1 oz'}],
+      garnish:'Mint sprig, pineapple slice', note:'Blend everything with a half cup of crushed ice until smooth and pour into a large stemmed glass; a frosty, minty 1940s tiki cooler.'},
+    {name:'Paradise', base:'Gin', glass:'Coupe', method:'Shaken', added:'2026-11-01',
+      items:[{id:'gin', amt:'1.25 oz'},{id:'apricot_liqueur', amt:'.75 oz'},{id:'orange_juice', amt:'.5 oz'}],
+      garnish:'—', note:'Shake with ice and strain into a chilled coupe; a soft, sunny 1920s gin sour without the sour.'},
+    {name:'Pornstar Martini', base:'Vodka', glass:'Coupe', method:'Shaken', added:'2026-11-01',
+      items:[{id:'vodka', amt:'1.75 oz'},{id:'passion_fruit_liqueur', amt:'.75 oz'},{id:'passion_fruit_syrup', amt:'1 oz'},{id:'vanilla_syrup', amt:'.25 oz'}],
+      garnish:'Half a passion fruit; sparkling wine on the side', note:'Shake hard with ice, double-strain into a chilled coupe, float half a passion fruit and serve a small glass of sparkling wine alongside; a 2000s London favourite.'},
+    {name:'Porto Flip', base:'Brandy', glass:'Coupe', method:'Shaken', added:'2026-11-01',
+      items:[{id:'brandy', amt:'.5 oz'},{id:'port_wine', amt:'1.5 oz'},{id:'whole_egg', amt:'1 yolk'}],
+      garnish:'Grated nutmeg', note:'Shake very hard with ice and strain into a small chilled coupe; finish with fresh nutmeg.'},
+    {name:'Rabo de Galo', base:'Cachaça', glass:'Rocks', method:'Built', added:'2026-11-01',
+      items:[{id:'cachaca', amt:'2 oz'},{id:'sweet_vermouth', amt:'.75 oz'},{id:'cynar', amt:'.5 oz'},{id:'angostura_bitters', amt:'2 dashes', optional:true}],
+      garnish:'Orange twist', note:"Build in a rocks glass, add ice and stir briefly; Brazil's bittersweet answer to the Manhattan."},
+    {name:'Spicy Fifty', base:'Vodka', glass:'Coupe', method:'Shaken', added:'2026-11-01',
+      items:[{id:'vodka', amt:'1.5 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'jalapeno', amt:'2 slices'},{id:'elderflower_cordial', amt:'.5 oz'},{id:'honey_syrup', amt:'.25 oz'},{id:'vanilla_syrup', amt:'1 barspoon'}],
+      garnish:'Red chili', note:'Shake everything with ice and double-strain into a chilled coupe; floral, sweet and gently hot.'},
+    {name:'Three Dots and a Dash', base:'Rum', glass:'Goblet', method:'Blended', added:'2026-11-01',
+      items:[{id:'dark_rum', amt:'2 oz', familyOk:true},{id:'falernum', amt:'.25 oz'},{id:'allspice_dram', amt:'.25 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'orange_juice', amt:'.5 oz'},{id:'honey_syrup', amt:'.5 oz'},{id:'angostura_bitters', amt:'2 dashes'}],
+      garnish:'Three cherries and a pineapple chunk', note:"Flash-blend with crushed ice and pour into a footed glass, topped with more ice; best with aged rhum agricole and a splash of aged rum. Named for Morse code's V for victory, 1940s."},
+    {name:'Ve.N.To', base:'Brandy', glass:'Rocks', method:'Shaken', added:'2026-11-01',
+      items:[{id:'grappa', amt:'1.5 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'honey_syrup', amt:'.75 oz'},{id:'egg_white', amt:'few drops', optional:true}],
+      garnish:'Lemon zest, white grapes', note:'Shake hard with ice and strain over fresh ice; for the full effect make the honey syrup with chamomile tea instead of water. A modern Venetian grappa sour.'}
   ];
 
   var STARTER = ['gin','vodka','dry_vermouth','sweet_vermouth','campari','triple_sec','lime_juice','lemon_juice','simple_syrup','soda_water','angostura_bitters','bourbon'];
@@ -4457,7 +4547,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-11-02T03:47:12Z";
+  var CURRENT_VERSION = "2026-11-02T04:06:09Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');

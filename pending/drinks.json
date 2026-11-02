@@ -1938,16 +1938,13 @@
    ],
    "garnish": "Orange twist",
    "note": "Stir with ice and strain into a chilled coupe; a Gilded Age aperitif made famous at a Yokohama hotel bar in the 1890s.",
-   "source": {
-    "site": "Difford's Guide",
-    "url": "https://www.diffordsguide.com/cocktails/recipe/18976/bamboo-diffords-classic-recipe"
-   },
    "collected": "2026-10-30",
-   "status": "collected",
+   "status": "released",
    "photo": true,
    "look": "coupe without ice, pale amber-gold and clear, an orange twist",
    "scene": "a dim Tokyo hotel bar counter, dark wood and brass fittings, soft amber lamplight",
-   "photoFile": "photos/bamboo-cocktail.jpg"
+   "photoFile": "photos/bamboo-cocktail.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "White Bay Punch",
@@ -1975,16 +1972,13 @@
    ],
    "garnish": "Grated nutmeg",
    "note": "Shake hard with ice, pour over crushed ice and finish with fresh nutmeg; inspired by a 1970s beach bar on Jost Van Dyke in the British Virgin Islands.",
-   "source": {
-    "site": "Difford's Guide",
-    "url": "https://www.diffordsguide.com/cocktails/recipe/8856/painkiller"
-   },
    "collected": "2026-10-30",
-   "status": "collected",
+   "status": "released",
    "photo": true,
    "look": "hurricane glass with crushed ice, creamy pale orange and opaque, a dusting of grated nutmeg on top",
    "scene": "a weathered beach shack bar on a Caribbean island, driftwood counter, turquoise water and palm shade in the background",
-   "photoFile": "photos/white-bay-punch.jpg"
+   "photoFile": "photos/white-bay-punch.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Batanga",
@@ -2007,16 +2001,13 @@
    ],
    "garnish": "Salt rim, lime wheel",
    "note": "Salt the rim, build over ice and stir with a knife, as it has been done in the town of Tequila, Mexico, since 1961.",
-   "source": {
-    "site": "Difford's Guide",
-    "url": "https://www.diffordsguide.com/cocktails/recipe/540/batanga"
-   },
    "collected": "2026-10-30",
-   "status": "collected",
+   "status": "released",
    "photo": true,
    "look": "highball glass with ice and a salted rim, dark cola-brown and sparkling, a lime wheel",
    "scene": "a sun-bleached cantina patio in the town of Tequila, blue agave fields in the distance, weathered wood tables under harsh midday light",
-   "photoFile": "photos/batanga.jpg"
+   "photoFile": "photos/batanga.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Kalimotxo",
@@ -2035,16 +2026,13 @@
    ],
    "garnish": "—",
    "note": "Pour over ice in equal parts and give one stir; the Basque Country's festival drink since the 1970s.",
-   "source": {
-    "site": "Punch",
-    "url": "https://punchdrink.com/articles/modern-kalimotxo-cocktail-recipes/"
-   },
    "collected": "2026-10-30",
-   "status": "collected",
+   "status": "released",
    "photo": true,
    "look": "wine glass with ice, deep purple-red and sparkling",
    "scene": "a lively outdoor festival table in Basque Country, string lights over a worn stone wall, cool evening light",
-   "photoFile": "photos/kalimotxo.jpg"
+   "photoFile": "photos/kalimotxo.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Batida de Maracujá",
@@ -2057,26 +2045,23 @@
      "amt": "2 oz"
     },
     {
-     "id": "passion_fruit_syrup",
+     "id": "condensed_milk",
      "amt": "1 oz"
     },
     {
-     "id": "condensed_milk",
+     "id": "passion_fruit_syrup",
      "amt": "1 oz"
     }
    ],
    "garnish": "—",
    "note": "Blend with a scoop of ice until smooth and frothy; a Brazilian beach-kiosk favorite.",
-   "source": {
-    "site": "Difford's Guide",
-    "url": "https://www.diffordsguide.com/cocktails/recipe/17190/batida-de-maracuja-passion-fruit"
-   },
    "collected": "2026-10-30",
-   "status": "collected",
+   "status": "released",
    "photo": true,
    "look": "collins glass with crushed ice, pale creamy peach-orange and opaque",
    "scene": "a shaded beachfront kiosk in Rio de Janeiro, a striped umbrella overhead, white sand and turquoise sea beyond, a rattan chair in the foreground",
-   "photoFile": "photos/batida-de-maracuja.jpg"
+   "photoFile": "photos/batida-de-maracuja.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Spiced Hot Chocolate",
@@ -2927,17 +2912,14 @@
    ],
    "garnish": "—",
    "note": "Shake hard with ice and strain into a chilled coupe; equal parts, bone-dry and fruity, from London's 1930s hotel bars.",
-   "source": {
-    "site": "IBA",
-    "url": "https://iba-world.com/iba-cocktail/angel-face/"
-   },
    "collected": "2026-11-01",
-   "status": "collected",
+   "status": "released",
    "collection": "iba-classics",
    "photo": true,
    "look": "chilled coupe without ice, clear warm golden-amber",
    "scene": "a pale art-deco London hotel bar, cream walls and brass, soft morning light through tall windows, a bowl of apricots",
-   "photoFile": "photos/angel-face.jpg"
+   "photoFile": "photos/angel-face.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Canchanchara",
@@ -2961,17 +2943,14 @@
    ],
    "garnish": "Lime wedge",
    "note": "Stir the honey syrup and lime in the cup, add cracked ice and the rum, then stir hard from the bottom up; Cuba's earliest rum mix, from Trinidad.",
-   "source": {
-    "site": "IBA",
-    "url": "https://iba-world.com/iba-cocktail/canchanchara/"
-   },
    "collected": "2026-11-01",
-   "status": "collected",
+   "status": "released",
    "collection": "iba-classics",
    "photo": true,
    "look": "rustic unglazed terracotta clay cup with cracked ice, pale cloudy straw-gold, a lime wedge",
    "scene": "a colonial Trinidad, Cuba street café, pastel walls and cobblestones, warm afternoon sun, a honey jar",
-   "photoFile": "photos/canchanchara.jpg"
+   "photoFile": "photos/canchanchara.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Chartreuse Swizzle",
@@ -2998,17 +2977,14 @@
    ],
    "garnish": "Mint sprig, grated nutmeg",
    "note": "Swizzle with crushed ice until the glass frosts, top with more crushed ice and finish with mint and nutmeg; a San Francisco modern classic.",
-   "source": {
-    "site": "IBA",
-    "url": "https://iba-world.com/iba-cocktail/chartreuse-swizzle/"
-   },
    "collected": "2026-11-01",
-   "status": "collected",
+   "status": "released",
    "collection": "iba-classics",
    "photo": true,
    "look": "tall collins glass packed with crushed ice, frosted outside, pale vivid green-gold, a mint sprig and grated nutmeg on top",
    "scene": "a foggy San Francisco bar window at dusk, cable-car city lights blurred outside, dark wood counter",
-   "photoFile": "photos/chartreuse-swizzle.jpg"
+   "photoFile": "photos/chartreuse-swizzle.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Don's Special Daiquiri",
@@ -3039,17 +3015,14 @@
    ],
    "garnish": "Half a passion fruit",
    "note": "Flash-blend with crushed ice, pour into a footed glass and crown with more crushed ice; a 1930s Hollywood tiki original.",
-   "source": {
-    "site": "IBA",
-    "url": "https://iba-world.com/iba-cocktail/dons-special-daiquiri/"
-   },
    "collected": "2026-11-01",
-   "status": "collected",
+   "status": "released",
    "collection": "iba-classics",
    "photo": true,
    "look": "footed goblet with crushed ice, hazy golden-yellow, half a passion fruit on the rim",
    "scene": "a 1930s Hollywood tiki bar, bamboo walls, glowing puffer-fish lamps, warm amber light",
-   "photoFile": "photos/don-s-special-daiquiri.jpg"
+   "photoFile": "photos/don-s-special-daiquiri.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Horse's Neck",
@@ -3073,17 +3046,14 @@
    ],
    "garnish": "Long lemon peel spiral",
    "note": "Hang a long spiral of lemon peel inside the glass, fill with ice, add the brandy and top with ginger ale.",
-   "source": {
-    "site": "IBA",
-    "url": "https://iba-world.com/iba-cocktail/horses-neck/"
-   },
    "collected": "2026-11-01",
-   "status": "collected",
+   "status": "released",
    "collection": "iba-classics",
    "photo": true,
    "look": "tall highball glass with ice, pale amber and sparkling, one very long lemon peel spiral coiling from the rim down inside the glass",
    "scene": "an English country pub by a stable yard, worn oak bar, a horseshoe on the wall, soft golden light",
-   "photoFile": "photos/horse-s-neck.jpg"
+   "photoFile": "photos/horse-s-neck.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Passion Ginger Tiki",
@@ -3120,27 +3090,24 @@
      "amt": "1 oz"
     },
     {
-     "id": "passion_fruit_syrup",
-     "amt": "1 oz"
-    },
-    {
      "id": "fresh_ginger",
      "amt": "1 slice"
+    },
+    {
+     "id": "passion_fruit_syrup",
+     "amt": "1 oz"
     }
    ],
    "garnish": "Pineapple slice, citrus wheel",
    "note": "Muddle the ginger in the shaker, add everything else, shake hard with ice and strain over pebbled ice; a modern tiki build with a nutty edge.",
-   "source": {
-    "site": "IBA",
-    "url": "https://iba-world.com/iba-cocktail/iba-tiki/"
-   },
    "collected": "2026-11-01",
-   "status": "collected",
+   "status": "released",
    "collection": "iba-classics",
    "photo": true,
    "look": "tall curvy hurricane glass with pebbled ice, opaque sunny golden-orange, a dried pineapple slice and a citrus wheel",
    "scene": "a lush Polynesian garden lounge at night, carved wooden tiki posts, torches glowing, palm leaves",
-   "photoFile": "photos/passion-ginger-tiki.jpg"
+   "photoFile": "photos/passion-ginger-tiki.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Illegal",
@@ -3180,17 +3147,14 @@
    ],
    "garnish": "—",
    "note": "Shake hard with ice and strain into a chilled coupe, or over ice in a clay cup; smoky, bright and a little funky.",
-   "source": {
-    "site": "IBA",
-    "url": "https://iba-world.com/iba-cocktail/illegal/"
-   },
    "collected": "2026-11-01",
-   "status": "collected",
+   "status": "released",
    "collection": "iba-classics",
    "photo": true,
    "look": "chilled coupe without ice, pale cloudy lime-straw with a fine thin foam",
    "scene": "a dim Oaxacan mezcaleria, adobe wall, candlelight, clay copitas on a wooden shelf",
-   "photoFile": "photos/illegal.jpg"
+   "photoFile": "photos/illegal.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Kir",
@@ -3209,17 +3173,14 @@
    ],
    "garnish": "—",
    "note": "Pour the cassis into a chilled glass and top with cold dry white wine; the Burgundy aperitif named for a mayor of Dijon.",
-   "source": {
-    "site": "IBA",
-    "url": "https://iba-world.com/iba-cocktail/kir/"
-   },
    "collected": "2026-11-01",
-   "status": "collected",
+   "status": "released",
    "collection": "iba-classics",
    "photo": true,
    "look": "chilled white wine glass without ice, clear rosy-pink",
    "scene": "a Burgundy village café terrace, stone wall with vines, late-afternoon sun, a small dish of blackcurrants",
-   "photoFile": "photos/kir.jpg"
+   "photoFile": "photos/kir.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Missionary's Downfall",
@@ -3240,31 +3201,28 @@
      "amt": ".5 oz"
     },
     {
-     "id": "honey_syrup",
-     "amt": "1 oz"
-    },
-    {
      "id": "mint_leaves",
      "amt": "10 leaves"
     },
     {
      "id": "fresh_pineapple",
      "amt": "4 chunks"
+    },
+    {
+     "id": "honey_syrup",
+     "amt": "1 oz"
     }
    ],
    "garnish": "Mint sprig, pineapple slice",
    "note": "Blend everything with a half cup of crushed ice until smooth and pour into a large stemmed glass; a frosty, minty 1940s tiki cooler.",
-   "source": {
-    "site": "IBA",
-    "url": "https://iba-world.com/iba-cocktail/missionarys-downfall/"
-   },
    "collected": "2026-11-01",
-   "status": "collected",
+   "status": "released",
    "collection": "iba-classics",
    "photo": true,
    "look": "large stemmed goblet, frosty opaque pale green-gold slush, a mint sprig and a pineapple slice",
    "scene": "a breezy veranda of an old Pacific mission, whitewashed arches, palm shade, bright tropical light",
-   "photoFile": "photos/missionary-s-downfall.jpg"
+   "photoFile": "photos/missionary-s-downfall.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Paradise",
@@ -3287,17 +3245,14 @@
    ],
    "garnish": "—",
    "note": "Shake with ice and strain into a chilled coupe; a soft, sunny 1920s gin sour without the sour.",
-   "source": {
-    "site": "IBA",
-    "url": "https://iba-world.com/iba-cocktail/paradise/"
-   },
    "collected": "2026-11-01",
-   "status": "collected",
+   "status": "released",
    "collection": "iba-classics",
    "photo": true,
    "look": "chilled coupe without ice, hazy soft apricot-orange",
    "scene": "a sunlit 1920s orangery, white wrought iron, potted citrus trees, warm hazy glow",
-   "photoFile": "photos/paradise.jpg"
+   "photoFile": "photos/paradise.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Pornstar Martini",
@@ -3324,17 +3279,14 @@
    ],
    "garnish": "Half a passion fruit; sparkling wine on the side",
    "note": "Shake hard with ice, double-strain into a chilled coupe, float half a passion fruit and serve a small glass of sparkling wine alongside; a 2000s London favourite.",
-   "source": {
-    "site": "IBA",
-    "url": "https://iba-world.com/iba-cocktail/porn-star-martini/"
-   },
    "collected": "2026-11-01",
-   "status": "collected",
+   "status": "released",
    "collection": "iba-classics",
    "photo": true,
    "look": "large chilled coupe without ice, opaque golden-yellow with a light froth, half a passion fruit floating, a small shot glass of sparkling wine beside it",
    "scene": "a sleek London cocktail lounge, dark velvet and gold, moody low light, city lights in a window",
-   "photoFile": "photos/pornstar-martini.jpg"
+   "photoFile": "photos/pornstar-martini.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Porto Flip",
@@ -3357,17 +3309,14 @@
    ],
    "garnish": "Grated nutmeg",
    "note": "Shake very hard with ice and strain into a small chilled coupe; finish with fresh nutmeg.",
-   "source": {
-    "site": "IBA",
-    "url": "https://iba-world.com/iba-cocktail/porto-flip/"
-   },
    "collected": "2026-11-01",
-   "status": "collected",
+   "status": "released",
    "collection": "iba-classics",
    "photo": true,
    "look": "small chilled coupe without ice, silky opaque ruby-rose with a dusting of nutmeg",
    "scene": "a Porto wine lodge cellar, barrels stacked behind, candlelight on stone, the Douro at night",
-   "photoFile": "photos/porto-flip.jpg"
+   "photoFile": "photos/porto-flip.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Rabo de Galo",
@@ -3395,17 +3344,14 @@
    ],
    "garnish": "Orange twist",
    "note": "Build in a rocks glass, add ice and stir briefly; Brazil's bittersweet answer to the Manhattan.",
-   "source": {
-    "site": "IBA",
-    "url": "https://iba-world.com/iba-cocktail/rabo-de-galo/"
-   },
    "collected": "2026-11-01",
-   "status": "collected",
+   "status": "released",
    "collection": "iba-classics",
    "photo": true,
    "look": "rocks glass with ice, clear deep reddish-amber, an orange twist",
    "scene": "a São Paulo neighborhood boteco, tiled walls, a beer-crate stool, warm evening light",
-   "photoFile": "photos/rabo-de-galo.jpg"
+   "photoFile": "photos/rabo-de-galo.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Spicy Fifty",
@@ -3422,6 +3368,10 @@
      "amt": ".5 oz"
     },
     {
+     "id": "jalapeno",
+     "amt": "2 slices"
+    },
+    {
      "id": "elderflower_cordial",
      "amt": ".5 oz"
     },
@@ -3432,25 +3382,18 @@
     {
      "id": "vanilla_syrup",
      "amt": "1 barspoon"
-    },
-    {
-     "id": "jalapeno",
-     "amt": "2 slices"
     }
    ],
    "garnish": "Red chili",
    "note": "Shake everything with ice and double-strain into a chilled coupe; floral, sweet and gently hot.",
-   "source": {
-    "site": "IBA",
-    "url": "https://iba-world.com/iba-cocktail/spicy-fifty/"
-   },
    "collected": "2026-11-01",
-   "status": "collected",
+   "status": "released",
    "collection": "iba-classics",
    "photo": true,
    "look": "chilled coupe without ice, pale cloudy greenish-straw, one thin red chili laid on the rim",
    "scene": "a modern London bar counter in green marble, brass details, a scatter of red chilies, soft evening light",
-   "photoFile": "photos/spicy-fifty.jpg"
+   "photoFile": "photos/spicy-fifty.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Three Dots and a Dash",
@@ -3490,17 +3433,14 @@
    ],
    "garnish": "Three cherries and a pineapple chunk",
    "note": "Flash-blend with crushed ice and pour into a footed glass, topped with more ice; best with aged rhum agricole and a splash of aged rum. Named for Morse code's V for victory, 1940s.",
-   "source": {
-    "site": "IBA",
-    "url": "https://iba-world.com/iba-cocktail/three-dots-and-a-dash/"
-   },
    "collected": "2026-11-01",
-   "status": "collected",
+   "status": "released",
    "collection": "iba-classics",
    "photo": true,
    "look": "footed goblet with crushed ice, hazy golden-amber, three cherries on a pick and a rectangular pineapple chunk",
    "scene": "a 1940s tiki bar with a nautical theme, ship's wheel and rope netting, warm lantern light",
-   "photoFile": "photos/three-dots-and-a-dash.jpg"
+   "photoFile": "photos/three-dots-and-a-dash.jpg",
+   "released": "2026-11-01"
   },
   {
    "name": "Ve.N.To",
@@ -3528,17 +3468,14 @@
    ],
    "garnish": "Lemon zest, white grapes",
    "note": "Shake hard with ice and strain over fresh ice; for the full effect make the honey syrup with chamomile tea instead of water. A modern Venetian grappa sour.",
-   "source": {
-    "site": "IBA",
-    "url": "https://iba-world.com/iba-cocktail/ve-n-to/"
-   },
    "collected": "2026-11-01",
-   "status": "collected",
+   "status": "released",
    "collection": "iba-classics",
    "photo": true,
    "look": "small rocks tumbler with ice, pale cloudy straw-yellow, a lemon zest and a small cluster of white grapes",
    "scene": "a Venetian canal-side bar, weathered pastel walls, a gondola mooring post, soft hazy morning light",
-   "photoFile": "photos/ve-n-to.jpg"
+   "photoFile": "photos/ve-n-to.jpg",
+   "released": "2026-11-01"
   }
  ],
  "dryJanuaryExisting": {
