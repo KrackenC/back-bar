@@ -3187,9 +3187,10 @@
    "collected": "2026-11-01",
    "status": "collected",
    "collection": "iba-classics",
-   "photo": false,
+   "photo": true,
    "look": "chilled coupe without ice, pale cloudy lime-straw with a fine thin foam",
-   "scene": "a dim Oaxacan mezcaleria, adobe wall, candlelight, clay copitas on a wooden shelf"
+   "scene": "a dim Oaxacan mezcaleria, adobe wall, candlelight, clay copitas on a wooden shelf",
+   "photoFile": "photos/illegal.jpg"
   },
   {
    "name": "Kir",
@@ -3215,9 +3216,10 @@
    "collected": "2026-11-01",
    "status": "collected",
    "collection": "iba-classics",
-   "photo": false,
+   "photo": true,
    "look": "chilled white wine glass without ice, clear rosy-pink",
-   "scene": "a Burgundy village café terrace, stone wall with vines, late-afternoon sun, a small dish of blackcurrants"
+   "scene": "a Burgundy village café terrace, stone wall with vines, late-afternoon sun, a small dish of blackcurrants",
+   "photoFile": "photos/kir.jpg"
   },
   {
    "name": "Missionary's Downfall",
@@ -3259,9 +3261,10 @@
    "collected": "2026-11-01",
    "status": "collected",
    "collection": "iba-classics",
-   "photo": false,
+   "photo": true,
    "look": "large stemmed goblet, frosty opaque pale green-gold slush, a mint sprig and a pineapple slice",
-   "scene": "a breezy veranda of an old Pacific mission, whitewashed arches, palm shade, bright tropical light"
+   "scene": "a breezy veranda of an old Pacific mission, whitewashed arches, palm shade, bright tropical light",
+   "photoFile": "photos/missionary-s-downfall.jpg"
   },
   {
    "name": "Paradise",
