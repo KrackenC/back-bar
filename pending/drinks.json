@@ -2505,9 +2505,10 @@
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 18,
-   "photo": false,
+   "photo": true,
    "look": "large wine glass with ice, deep cherry-red and sparkling, two cherries",
-   "scene": "a Michigan lakeside cottage at dusk, a painted wooden table, a bowl of dark cherries, blue evening light"
+   "scene": "a Michigan lakeside cottage at dusk, a painted wooden table, a bowl of dark cherries, blue evening light",
+   "photoFile": "photos/tart-cherry-spritz.jpg"
   },
   {
    "name": "Coffee Lemonade",
@@ -2531,9 +2532,10 @@
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 20,
-   "photo": false,
+   "photo": true,
    "look": "highball glass with ice, pale cloudy lemon-yellow below with a dark coffee layer floating on top, a lemon wheel",
-   "scene": "a sunny Stockholm café window, pastel facades outside, a white cup and saucer, crisp winter sunshine"
+   "scene": "a sunny Stockholm café window, pastel facades outside, a white cup and saucer, crisp winter sunshine",
+   "photoFile": "photos/coffee-lemonade.jpg"
   },
   {
    "name": "Coconut Lime Cooler",
@@ -2565,9 +2567,10 @@
    "collection": "dryjan",
    "occasion": "Dry January",
    "day": 21,
-   "photo": false,
+   "photo": true,
    "look": "highball glass with ice, nearly clear with a faint cloudy tint, a mint sprig and a lime wheel",
-   "scene": "a palm-shaded Thai beach shack counter, bamboo slats, a green coconut, bright tropical light"
+   "scene": "a palm-shaded Thai beach shack counter, bamboo slats, a green coconut, bright tropical light",
+   "photoFile": "photos/coconut-lime-cooler.jpg"
   },
   {
    "name": "Italian Cream Soda",
