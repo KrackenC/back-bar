@@ -2934,9 +2934,10 @@
    "collected": "2026-11-01",
    "status": "collected",
    "collection": "iba-classics",
-   "photo": false,
+   "photo": true,
    "look": "chilled coupe without ice, clear warm golden-amber",
-   "scene": "a pale art-deco London hotel bar, cream walls and brass, soft morning light through tall windows, a bowl of apricots"
+   "scene": "a pale art-deco London hotel bar, cream walls and brass, soft morning light through tall windows, a bowl of apricots",
+   "photoFile": "photos/angel-face.jpg"
   },
   {
    "name": "Canchanchara",
@@ -2967,9 +2968,10 @@
    "collected": "2026-11-01",
    "status": "collected",
    "collection": "iba-classics",
-   "photo": false,
+   "photo": true,
    "look": "rustic unglazed terracotta clay cup with cracked ice, pale cloudy straw-gold, a lime wedge",
-   "scene": "a colonial Trinidad, Cuba street café, pastel walls and cobblestones, warm afternoon sun, a honey jar"
+   "scene": "a colonial Trinidad, Cuba street café, pastel walls and cobblestones, warm afternoon sun, a honey jar",
+   "photoFile": "photos/canchanchara.jpg"
   },
   {
    "name": "Chartreuse Swizzle",
@@ -3003,9 +3005,10 @@
    "collected": "2026-11-01",
    "status": "collected",
    "collection": "iba-classics",
-   "photo": false,
+   "photo": true,
    "look": "tall collins glass packed with crushed ice, frosted outside, pale vivid green-gold, a mint sprig and grated nutmeg on top",
-   "scene": "a foggy San Francisco bar window at dusk, cable-car city lights blurred outside, dark wood counter"
+   "scene": "a foggy San Francisco bar window at dusk, cable-car city lights blurred outside, dark wood counter",
+   "photoFile": "photos/chartreuse-swizzle.jpg"
   },
   {
    "name": "Don's Special Daiquiri",
