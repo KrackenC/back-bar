@@ -3506,6 +3506,170 @@
    "scene": "a Mexican hacienda courtyard at dusk, terracotta tiles and a carved wooden bar top, a bowl of limes, warm lantern light",
    "photoFile": "photos/grand-margarita.jpg",
    "released": "2026-11-01"
+  },
+  {
+   "name": "Picon Punch",
+   "base": "Liqueur",
+   "glass": "Highball",
+   "method": "Built",
+   "items": [
+    {
+     "id": "amer_picon",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "grenadine",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "soda_water",
+     "amt": "top"
+    },
+    {
+     "id": "brandy",
+     "amt": ".5 oz",
+     "optional": true
+    }
+   ],
+   "garnish": "Lemon twist",
+   "note": "Build Amer Picon and grenadine over ice in a highball, top with soda, and float the brandy on top; a Basque sheepherders' saloon drink that became Nevada's unofficial cocktail.",
+   "source": {
+    "site": "Difford's Guide",
+    "url": "https://www.diffordsguide.com/cocktails/recipe/4825/picon-punch"
+   },
+   "collected": "2026-11-06",
+   "status": "collected",
+   "photo": false,
+   "look": "highball glass with ice, bright orange-amber and sparkling, a lemon twist",
+   "scene": "a worn wooden bar top in a small Basque-American restaurant, string lights and old black-and-white photos on the wall, a quiet high-desert evening outside the window"
+  },
+  {
+   "name": "Bicicletta",
+   "base": "Wine",
+   "glass": "Wine",
+   "method": "Built",
+   "items": [
+    {
+     "id": "white_wine",
+     "amt": "2 oz"
+    },
+    {
+     "id": "campari",
+     "amt": "2 oz"
+    },
+    {
+     "id": "soda_water",
+     "amt": "top"
+    }
+   ],
+   "garnish": "Orange wheel",
+   "note": "Build chilled dry white wine and Campari over ice in a wine glass, then top with a splash of soda; a low-proof Milanese spritz mild enough to drink before the bike ride home.",
+   "source": {
+    "site": "Punch",
+    "url": "https://punchdrink.com/recipes/bicicletta/"
+   },
+   "collected": "2026-11-06",
+   "status": "collected",
+   "photo": false,
+   "look": "wine glass with ice, bright reddish-orange and sparkling, an orange wheel",
+   "scene": "a small marble café table on a narrow Milan side street, striped awning shade, a bicycle leaning against the wall nearby"
+  },
+  {
+   "name": "Siesta",
+   "base": "Tequila",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "tequila",
+     "amt": "2 oz"
+    },
+    {
+     "id": "campari",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "grapefruit_juice",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "lime_juice",
+     "amt": ".75 oz"
+    },
+    {
+     "id": "simple_syrup",
+     "amt": ".5 oz"
+    }
+   ],
+   "garnish": "Grapefruit twist",
+   "note": "Shake tequila, Campari, grapefruit and lime juices, and syrup hard with ice; strain into a chilled coupe. A bitter-citrus riff on the Hemingway Daiquiri's sour template, built around agave instead of rum.",
+   "source": {
+    "site": "Difford's Guide",
+    "url": "https://www.diffordsguide.com/cocktails/recipe/5086/siesta"
+   },
+   "collected": "2026-11-06",
+   "status": "collected",
+   "photo": false,
+   "look": "chilled coupe of pale rose-pink, a grapefruit twist",
+   "scene": "a sun-bleached poolside lounge chair on red clay tile, bright midday light, a halved grapefruit resting on the table"
+  },
+  {
+   "name": "Alaska",
+   "base": "Gin",
+   "glass": "Coupe",
+   "method": "Stirred",
+   "items": [
+    {
+     "id": "gin",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "yellow_chartreuse",
+     "amt": ".5 oz"
+    }
+   ],
+   "garnish": "Lemon twist",
+   "note": "Stir gin and Yellow Chartreuse with ice; strain into a chilled coupe. A Prohibition-era Savoy creation that swaps a Martini's vermouth for an herbal French liqueur.",
+   "source": {
+    "site": "Difford's Guide",
+    "url": "https://www.diffordsguide.com/cocktails/recipe/33/alaska-1-savoy-recipe"
+   },
+   "collected": "2026-11-06",
+   "status": "collected",
+   "photo": false,
+   "look": "chilled coupe of pale chartreuse-yellow, clear, a lemon twist",
+   "scene": "a snow-dusted cabin windowsill at dusk, warm lamplight glowing inside, pine boughs and frost on the glass"
+  },
+  {
+   "name": "Royal Bermuda Yacht Club",
+   "base": "Rum",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "dark_rum",
+     "amt": "2 oz"
+    },
+    {
+     "id": "falernum",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "triple_sec",
+     "amt": ".25 oz"
+    }
+   ],
+   "garnish": "—",
+   "note": "Shake gold rum with falernum and dry curaçao; strain into a chilled coupe. Trader Vic's entry in the daiquiri family, first poured for members of Bermuda's yacht club.",
+   "source": {
+    "site": "Difford's Guide",
+    "url": "https://www.diffordsguide.com/cocktails/recipe/1701/royal-bermuda-yacht-club"
+   },
+   "collected": "2026-11-06",
+   "status": "collected",
+   "photo": false,
+   "look": "chilled coupe of warm amber-gold, clear",
+   "scene": "a weathered dock at a yacht club marina, white sails and blue water in soft afternoon light, coiled rope on a piling"
   }
  ],
  "dryJanuaryExisting": {
