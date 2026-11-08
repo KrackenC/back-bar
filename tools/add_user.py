@@ -6,7 +6,7 @@ for i,sp in enumerate(specs):
     p=sp.split('|'); n,g,c=p[:3]; fl=p[3].split(',') if len(p)>3 and p[3] else []
     b=base64.b64encode(open(f'{d}/p{i}.jpg','rb').read()).decode()
     extra=''.join(f', "{f}": 1' for f in fl)
-    add+=',\n    {"g": %s, "c": %s, "n": [%s], "by": "Back Bar", "u": ""%s, b64:"%s"}'%(json.dumps(g),json.dumps(c),json.dumps(n,ensure_ascii=False),extra,b)
+    add+=',\n    {"g": %s, "c": %s, "n": [%s], "by": "Shelf & Shaker", "u": ""%s, b64:"%s"}'%(json.dumps(g),json.dumps(c),json.dumps(n,ensure_ascii=False),extra,b)
 for f in files:
     s=open(f).read()
     import re
