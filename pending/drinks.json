@@ -180,6 +180,36 @@
    "name": "Allspice Dram",
    "category": "Allspice Liqueur",
    "group": "Liqueurs & Fortified Wine"
+  },
+  {
+   "id": "mexican_lager",
+   "name": "Mexican Lager",
+   "category": "Beer",
+   "group": "Juice & Mixers"
+  },
+  {
+   "id": "rhum_agricole",
+   "name": "Rhum Agricole",
+   "category": "Rum",
+   "group": "Spirits"
+  },
+  {
+   "id": "cane_syrup",
+   "name": "Cane Syrup",
+   "category": "Syrup",
+   "group": "Syrups"
+  },
+  {
+   "id": "genever",
+   "name": "Genever",
+   "category": "Genever",
+   "group": "Spirits"
+  },
+  {
+   "id": "brewed_coffee",
+   "name": "Brewed Coffee",
+   "category": "Coffee",
+   "group": "Juice & Mixers"
   }
  ],
  "drinks": [
@@ -3532,7 +3562,7 @@
     }
    ],
    "garnish": "Lemon twist",
-   "note": "Build Amer Picon and grenadine over ice in a highball, top with soda, and float the brandy on top; a Basque sheepherders' saloon drink that became Nevada's unofficial cocktail.",
+   "note": "Build the amer and grenadine over ice, top with soda, then float the brandy over the top. A bittersweet orange highball still poured as the house drink in Nevada's Basque restaurants.",
    "source": {
     "site": "Difford's Guide",
     "url": "https://www.diffordsguide.com/cocktails/recipe/4825/picon-punch"
@@ -3541,7 +3571,8 @@
    "status": "collected",
    "photo": false,
    "look": "highball glass with ice, bright orange-amber and sparkling, a lemon twist",
-   "scene": "a worn wooden bar top in a small Basque-American restaurant, string lights and old black-and-white photos on the wall, a quiet high-desert evening outside the window"
+   "scene": "a worn wooden bar top in a small Basque-American restaurant, string lights and old black-and-white photos on the wall, a quiet high-desert evening outside the window",
+   "collection": "premiere-2026-11"
   },
   {
    "name": "Bicicletta",
@@ -3569,10 +3600,11 @@
     "url": "https://punchdrink.com/recipes/bicicletta/"
    },
    "collected": "2026-11-06",
-   "status": "collected",
+   "status": "reserve",
    "photo": false,
    "look": "wine glass with ice, bright reddish-orange and sparkling, an orange wheel",
-   "scene": "a small marble café table on a narrow Milan side street, striped awning shade, a bicycle leaning against the wall nearby"
+   "scene": "a small marble café table on a narrow Milan side street, striped awning shade, a bicycle leaning against the wall nearby",
+   "reserveReason": "variation of drinks already in the catalog"
   },
   {
    "name": "Siesta",
@@ -3608,10 +3640,11 @@
     "url": "https://www.diffordsguide.com/cocktails/recipe/5086/siesta"
    },
    "collected": "2026-11-06",
-   "status": "collected",
+   "status": "reserve",
    "photo": false,
    "look": "chilled coupe of pale rose-pink, a grapefruit twist",
-   "scene": "a sun-bleached poolside lounge chair on red clay tile, bright midday light, a halved grapefruit resting on the table"
+   "scene": "a sun-bleached poolside lounge chair on red clay tile, bright midday light, a halved grapefruit resting on the table",
+   "reserveReason": "variation of drinks already in the catalog"
   },
   {
    "name": "Alaska",
@@ -3635,10 +3668,11 @@
     "url": "https://www.diffordsguide.com/cocktails/recipe/33/alaska-1-savoy-recipe"
    },
    "collected": "2026-11-06",
-   "status": "collected",
+   "status": "reserve",
    "photo": false,
    "look": "chilled coupe of pale chartreuse-yellow, clear, a lemon twist",
-   "scene": "a snow-dusted cabin windowsill at dusk, warm lamplight glowing inside, pine boughs and frost on the glass"
+   "scene": "a snow-dusted cabin windowsill at dusk, warm lamplight glowing inside, pine boughs and frost on the glass",
+   "reserveReason": "variation of drinks already in the catalog"
   },
   {
    "name": "Royal Bermuda Yacht Club",
@@ -3666,10 +3700,334 @@
     "url": "https://www.diffordsguide.com/cocktails/recipe/1701/royal-bermuda-yacht-club"
    },
    "collected": "2026-11-06",
-   "status": "collected",
+   "status": "reserve",
    "photo": false,
    "look": "chilled coupe of warm amber-gold, clear",
-   "scene": "a weathered dock at a yacht club marina, white sails and blue water in soft afternoon light, coiled rope on a piling"
+   "scene": "a weathered dock at a yacht club marina, white sails and blue water in soft afternoon light, coiled rope on a piling",
+   "reserveReason": "variation of drinks already in the catalog"
+  },
+  {
+   "name": "Michelada",
+   "base": "Beer",
+   "glass": "Collins",
+   "method": "Built",
+   "items": [
+    {
+     "id": "mexican_lager",
+     "amt": "12 oz"
+    },
+    {
+     "id": "lime_juice",
+     "amt": "1 oz"
+    },
+    {
+     "id": "hot_sauce",
+     "amt": "3 dashes"
+    },
+    {
+     "id": "worcestershire",
+     "amt": "2 dashes"
+    }
+   ],
+   "garnish": "Salt rim, lime wedge",
+   "note": "Rub the rim with lime and dip it in coarse salt, fill the glass with ice, add the lime and both sauces, then pour in ice-cold lager and stir once. Mexico's savory beer cooler; add a splash of tomato juice if you like it redder.",
+   "source": {
+    "url": "https://www.diffordsguide.com/cocktails/recipe/1313/michelada"
+   },
+   "collected": "2026-11-08",
+   "status": "collected",
+   "collection": "premiere-2026-11",
+   "photo": false,
+   "look": "tall collins glass with ice and a thick coarse-salt rim, hazy golden lager with a light head, a lime wedge on the rim, a bottle of red hot sauce beside it",
+   "scene": "a sunny Mexico City street-side cantina, painted tile counter, papel picado flags overhead, bright midday light"
+  },
+  {
+   "name": "Ti' Punch",
+   "base": "Rum",
+   "glass": "Rocks",
+   "method": "Built",
+   "items": [
+    {
+     "id": "rhum_agricole",
+     "amt": "2 oz"
+    },
+    {
+     "id": "cane_syrup",
+     "amt": "1 barspoon"
+    }
+   ],
+   "garnish": "Lime coin",
+   "note": "Squeeze a coin of lime peel, with a little flesh on it, into a small glass, add the cane syrup and rhum and stir until the syrup disappears. Ice is optional. Martinique's everyday aperitif, made to your own taste.",
+   "source": {
+    "url": "https://punchdrink.com/recipes/ti-punch/"
+   },
+   "collected": "2026-11-08",
+   "status": "collected",
+   "collection": "premiere-2026-11",
+   "photo": false,
+   "look": "small heavy rocks glass with one or two ice cubes, crystal-clear pale straw, a round coin of lime peel resting in the drink, a small wooden swizzle stick beside it",
+   "scene": "a Martinique veranda at golden hour, sugar-cane fields and a rum distillery chimney in the distance, louvered shutters, warm light"
+  },
+  {
+   "name": "Carajillo",
+   "base": "Liqueur",
+   "glass": "Rocks",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "licor_43",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "espresso",
+     "amt": "1.5 oz"
+    }
+   ],
+   "garnish": "Three coffee beans",
+   "note": "Shake the liqueur and a fresh hot espresso hard with ice until a thick foam forms, then strain over fresh ice. Spain's after-dinner coffee, now the drink of choice in Mexico City.",
+   "source": {
+    "url": "https://www.foodrepublic.com/1391476/carajillo-espresso-martini-cocktail-alternative"
+   },
+   "collected": "2026-11-08",
+   "status": "collected",
+   "collection": "premiere-2026-11",
+   "photo": false,
+   "look": "rocks glass with ice, layered look: deep coffee-brown below a creamy tan foam, three coffee beans on the foam",
+   "scene": "a late-night Madrid tapas bar, zinc counter, hanging jamón and tiled walls, warm low light, an espresso machine behind"
+  },
+  {
+   "name": "Improved Holland Gin Cocktail",
+   "base": "Gin",
+   "glass": "Rocks",
+   "method": "Stirred",
+   "items": [
+    {
+     "id": "genever",
+     "amt": "2 oz"
+    },
+    {
+     "id": "maraschino_liqueur",
+     "amt": "1 barspoon"
+    },
+    {
+     "id": "simple_syrup",
+     "amt": "1 barspoon"
+    },
+    {
+     "id": "angostura_bitters",
+     "amt": "2 dashes"
+    },
+    {
+     "id": "absinthe",
+     "amt": "1 dash"
+    }
+   ],
+   "garnish": "Lemon twist",
+   "note": "Stir with ice and strain over a large cube, then express a lemon twist over the top. Malty genever with a whisper of cherry and anise; an 1870s 'improved' cocktail.",
+   "source": {
+    "url": "https://www.diffordsguide.com/cocktails/recipe/23193/improved-gin-cocktail"
+   },
+   "collected": "2026-11-08",
+   "status": "collected",
+   "collection": "premiere-2026-11",
+   "photo": false,
+   "look": "small cut-crystal rocks glass with one large clear cube, clear pale-gold, a lemon twist",
+   "scene": "a Victorian American saloon, dark mahogany back bar, gaslight glow, a stoneware genever crock on the counter"
+  },
+  {
+   "name": "English Milk Punch",
+   "base": "Brandy",
+   "glass": "Rocks",
+   "method": "Stirred",
+   "items": [
+    {
+     "id": "brandy",
+     "amt": "1 oz"
+    },
+    {
+     "id": "dark_rum",
+     "amt": "1 oz"
+    },
+    {
+     "id": "black_tea",
+     "amt": "1 oz"
+    },
+    {
+     "id": "lemon_juice",
+     "amt": ".75 oz"
+    },
+    {
+     "id": "pineapple_juice",
+     "amt": ".75 oz"
+    },
+    {
+     "id": "simple_syrup",
+     "amt": ".75 oz"
+    },
+    {
+     "id": "milk",
+     "amt": "1 oz"
+    }
+   ],
+   "garnish": "Lemon twist",
+   "note": "Make it ahead by the batch: mix everything except the milk, pour it into cold milk and let it curdle for an hour, then strain it slowly through a coffee filter until crystal clear. Serve over a large cube. Clarified punch keeps for weeks; the English were making it by 1711.",
+   "source": {
+    "url": "https://imbibemagazine.com/clarified-milk-punch/"
+   },
+   "collected": "2026-11-08",
+   "status": "collected",
+   "collection": "premiere-2026-11",
+   "photo": false,
+   "look": "rocks glass with one large clear cube, perfectly crystal-clear pale-amber liquid, a lemon twist",
+   "scene": "an 18th-century English tavern, dark oak beams, a silver punch bowl and pewter on the table, candlelight"
+  },
+  {
+   "name": "Absinthe Drip",
+   "base": "Liqueur",
+   "glass": "Goblet",
+   "method": "Built",
+   "items": [
+    {
+     "id": "absinthe",
+     "amt": "1 oz"
+    },
+    {
+     "id": "sugar",
+     "amt": "1 cube"
+    }
+   ],
+   "garnish": "—",
+   "note": "Pour the absinthe into the glass, rest a slotted spoon with a sugar cube across the rim and drip about 4 oz of ice-cold water over the sugar until the drink turns milky, then stir. The 19th-century Paris ritual.",
+   "source": {
+    "url": "https://www.diffordsguide.com/cocktails/recipe/507/absinthe-drip-cocktail-french-method"
+   },
+   "collected": "2026-11-08",
+   "status": "collected",
+   "collection": "premiere-2026-11",
+   "photo": false,
+   "look": "stemmed reservoir absinthe glass, opalescent cloudy pale green, a slotted silver absinthe spoon with a half-melted sugar cube across the rim, water dripping",
+   "scene": "a Belle Époque Paris café, marble table, a glass absinthe water fountain beside the glass, gaslit evening"
+  },
+  {
+   "name": "Sangria",
+   "base": "Wine",
+   "glass": "Wine glass",
+   "method": "Built",
+   "items": [
+    {
+     "id": "brandy",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "triple_sec",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "red_wine",
+     "amt": "4 oz"
+    },
+    {
+     "id": "fresh_orange",
+     "amt": "2 slices"
+    },
+    {
+     "id": "simple_syrup",
+     "amt": ".25 oz"
+    },
+    {
+     "id": "soda_water",
+     "amt": "top"
+    }
+   ],
+   "garnish": "Orange and lemon slices",
+   "note": "Best by the pitcher: mix the wine, brandy, orange liqueur and syrup with sliced orange, lemon and apple, and chill for two to four hours. Pour over ice and top each glass with soda. Spain's summer punch.",
+   "source": {
+    "url": "https://spanishsabores.com/?p=24640"
+   },
+   "collected": "2026-11-08",
+   "status": "collected",
+   "collection": "premiere-2026-11",
+   "photo": false,
+   "look": "large stemmed wine glass with ice, deep ruby-red, slices of orange, lemon and apple in the glass, a clay pitcher of sangria beside it",
+   "scene": "a sunny Andalusian courtyard, whitewashed walls, potted geraniums, a tiled table, dappled shade"
+  },
+  {
+   "name": "Rebujito",
+   "base": "Sherry",
+   "glass": "Highball",
+   "method": "Built",
+   "items": [
+    {
+     "id": "sherry",
+     "amt": "2 oz"
+    },
+    {
+     "id": "mint_leaves",
+     "amt": "6 leaves"
+    },
+    {
+     "id": "lemon_lime_soda",
+     "amt": "top"
+    }
+   ],
+   "garnish": "Mint sprig",
+   "note": "Fill a tall glass with ice and a few mint leaves, pour in chilled dry fino or manzanilla sherry and top with lemon-lime soda. Andalusia's festival cooler.",
+   "source": {
+    "url": "https://www.carolinescooking.com/rebujito-sherry-cocktail/"
+   },
+   "collected": "2026-11-08",
+   "status": "collected",
+   "collection": "premiere-2026-11",
+   "photo": false,
+   "look": "tall highball glass with ice, pale sparkling straw-gold, mint leaves inside and a mint sprig on top",
+   "scene": "a festive Seville fair tent, striped red-and-white awning, paper lanterns, flamenco dresses blurred in the background, evening light"
+  },
+  {
+   "name": "Café Brûlot",
+   "base": "Brandy",
+   "glass": "Mug",
+   "method": "Hot",
+   "items": [
+    {
+     "id": "brandy",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "triple_sec",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "brewed_coffee",
+     "amt": "4 oz"
+    },
+    {
+     "id": "sugar",
+     "amt": "1 tsp"
+    },
+    {
+     "id": "cloves",
+     "amt": "3"
+    },
+    {
+     "id": "ground_cinnamon",
+     "amt": "1 pinch"
+    },
+    {
+     "id": "orange_peel",
+     "amt": "1 long spiral"
+    }
+   ],
+   "garnish": "Clove-studded orange peel",
+   "note": "Warm the cognac, orange liqueur, sugar, cloves, cinnamon and orange peel in a heatproof bowl, light it with care and stir until the sugar melts, then pour in hot strong coffee to put out the flame and ladle into cups. New Orleans' flaming tableside finale. Use a long-handled ladle and keep the flame clear of anything that can catch.",
+   "source": {
+    "url": "https://talesofthecocktail.org/how-make-arnauds-cafe-brulot/"
+   },
+   "collected": "2026-11-08",
+   "status": "collected",
+   "collection": "premiere-2026-11",
+   "photo": false,
+   "look": "clear heatproof glass coffee cup on a saucer, glossy dark-brown coffee, a long clove-studded orange peel spiral curling over the rim, a silver brûlot bowl with soft blue flames softly blurred behind it",
+   "scene": "an old New Orleans dining room, white tablecloths, dark wood panelling and brass, dim romantic light"
   }
  ],
  "dryJanuaryExisting": {

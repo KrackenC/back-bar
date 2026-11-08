@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Back Bar Collection</title>
+<title>Shelf &amp; Shaker Collection</title>
 <meta name="robots" content="noindex">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap">
 <style>
@@ -40,7 +40,7 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>Back Bar · Collection</h1>
+  <h1>Shelf &amp; Shaker · Collection</h1>
   <p class="lede">New drinks are collected here each week and added to the app in a monthly or quarterly release. Every drink without a photo gets a ChatGPT image prompt below, three drinks per image, each in its own scene.</p>
   <p class="meta" id="summary">Loading…</p>
 
@@ -48,6 +48,10 @@
   <p class="meta" id="promptMeta"></p>
   <div class="bar"><i id="barFill"></i></div>
   <div id="prompts" style="margin-top:1rem"></div>
+
+  <h2>Dry January</h2>
+  <p class="meta">A 31-day mocktail module, one drink per day of January, released separately. Drinks already in the app are marked.</p>
+  <div id="dryjan"></div>
 
   <h2>Holiday collection</h2>
   <p class="meta">Held for a special holiday section in the app, released separately from the regular batches.</p>
@@ -83,7 +87,7 @@ function promptFor(g){
 }
 function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
 function recipe(d){
-  return '<div class="drink"><b>' + esc(d.name) + '</b><span class="tag ' + (d.status === 'collected' ? 'wait">Waiting' : d.status === 'holiday' ? 'wait">' + (d.occasion === 'Christmas' ? '❄️ Christmas' : '🥂 New Year\'s') : d.status === 'reshoot' ? 'live">Re-shoot' : 'live">In the app') + '</span>' +
+  return '<div class="drink"><b>' + esc(d.name) + '</b><span class="tag ' + (d.status === 'collected' ? 'wait">Waiting' : d.status === 'holiday' ? 'wait">' + (d.occasion === 'Christmas' ? '❄️ Christmas' : '🥂 New Year\'s') : d.status === 'dryjan' ? 'wait">🌿 Day ' + d.day : d.status === 'reshoot' ? 'live">Re-shoot' : d.status === 'reserve' ? 'wait">Reserve' : 'live">In the app') + '</span>' +
     '<div class="sub">' + esc(d.base) + ' · ' + esc(d.glass) + ' · ' + esc(d.method) + (d.collected ? ' · collected ' + esc(d.collected) : '') + (d.reason ? '<br>Why: ' + esc(d.reason) : '') +
     '</div>' +
     '<ul>' + d.items.map(function(it){ return '<li>' + esc(it.amt) + ' ' + esc(it.label || it.id.replace(/_/g, ' ')) + (it.optional ? ' (optional)' : '') + '</li>'; }).join('') + '</ul>' +
@@ -93,13 +97,14 @@ fetch('drinks.json?_=' + Date.now()).then(function(r){ return r.json(); }).then(
   var all = data.drinks || [];
   var waiting = all.filter(function(d){ return d.status === 'collected'; });
   var holiday = all.filter(function(d){ return d.status === 'holiday'; });
-  var needPhoto = all.filter(function(d){ return !d.photo; });
-  document.getElementById('summary').textContent = waiting.length + ' collected and waiting for release · ' + holiday.length + ' in the holiday collection · ' + needPhoto.length + ' need a photo';
+  var dryjan = all.filter(function(d){ return d.status === 'dryjan'; }).sort(function(a, b){ return (a.seq || a.day) - (b.seq || b.day); }); // seq: a later swap-in goes last so earlier images keep their groups
+  var needPhoto = all.filter(function(d){ return !d.photo && d.status !== 'reserve'; });
+  document.getElementById('summary').textContent = waiting.length + ' collected and waiting for release · ' + holiday.length + ' in the holiday collection · ' + dryjan.length + ' new for Dry January · ' + needPhoto.length + ' need a photo';
   // Holiday drinks get their own images so they never share a panel with a regular drink.
   var groups = [];
   // A drink sent back for a re-shoot goes last, so the other prompts keep their groups.
   function byRetake(list){ return list.filter(function(d){ return !d.reason; }).concat(list.filter(function(d){ return !!d.reason; })); }
-  [byRetake(needPhoto.filter(function(d){ return d.status !== 'holiday'; })), byRetake(needPhoto.filter(function(d){ return d.status === 'holiday'; }))].forEach(function(list){
+  [byRetake(needPhoto.filter(function(d){ return d.status !== 'holiday' && d.status !== 'dryjan' && d.status !== 'reserve'; })), byRetake(needPhoto.filter(function(d){ return d.status === 'holiday'; })), byRetake(dryjan.filter(function(d){ return !d.photo; }))].forEach(function(list){
     for(var i = 0; i < list.length; i += 3) groups.push(list.slice(i, i + 3));
   });
   var done = load(), box = document.getElementById('prompts');
@@ -114,7 +119,7 @@ fetch('drinks.json?_=' + Date.now()).then(function(r){ return r.json(); }).then(
     var id = g.map(function(d){ return d.name; }).join(' · '), text = promptFor(g);
     var el = document.createElement('article');
     el.className = 'prompt' + (done[id] ? ' done' : '');
-    el.innerHTML = '<header><label><input type="checkbox"' + (done[id] ? ' checked' : '') + '> Image ' + (k + 1) + (g[0].status === 'holiday' ? ' · Holiday' : '') + '</label><h3>' + esc(id) + '</h3><button class="copy" type="button">Copy</button></header><pre>' + esc(text) + '</pre>';
+    el.innerHTML = '<header><label><input type="checkbox"' + (done[id] ? ' checked' : '') + '> Image ' + (k + 1) + (g[0].status === 'holiday' ? ' · Holiday' : g[0].status === 'dryjan' ? ' · Dry January' : '') + '</label><h3>' + esc(id) + '</h3><button class="copy" type="button">Copy</button></header><pre>' + esc(text) + '</pre>';
     el.querySelector('input').addEventListener('change', function(e){ if(e.target.checked) done[id] = 1; else delete done[id]; save(done); el.classList.toggle('done', e.target.checked); refresh(); });
     el.querySelector('.copy').addEventListener('click', function(){
       var b = this, pre = el.querySelector('pre');
@@ -126,7 +131,14 @@ fetch('drinks.json?_=' + Date.now()).then(function(r){ return r.json(); }).then(
   refresh();
   document.getElementById('waiting').innerHTML = waiting.length ? waiting.slice().reverse().map(recipe).join('') : '<p class="empty">Nothing waiting yet. The first weekly collection runs on Friday.</p>';
   document.getElementById('holiday').innerHTML = holiday.length ? holiday.map(recipe).join('') : '<p class="empty">None yet.</p>';
-  var live = all.filter(function(d){ return d.status !== 'collected' && d.status !== 'holiday' && !d.photo; });
+  var inApp = data.dryJanuaryExisting || {}, byDay = {};
+  dryjan.forEach(function(d){ byDay[d.day] = d; });
+  all.forEach(function(d){ if(d.status === 'released' && d.day && !byDay[d.day]) byDay[d.day] = {name: d.name, inApp: true}; });
+  Object.keys(inApp).forEach(function(n){ byDay[inApp[n]] = {name:n, inApp:true}; });
+  var cal = '';
+  for(var day = 1; day <= 31; day++){ var x = byDay[day]; cal += '<li><b>Day ' + day + '</b> ' + (x ? esc(x.name) + (x.inApp ? ' <span class="tag live">In the app</span>' : '') : '<i>open</i>') + '</li>'; }
+  document.getElementById('dryjan').innerHTML = '<ol class="cal" style="list-style:none;padding:0;columns:2 16rem">' + cal + '</ol>' + dryjan.slice().sort(function(a, b){ return a.day - b.day; }).map(recipe).join('');
+  var live = all.filter(function(d){ return d.status !== 'collected' && d.status !== 'holiday' && d.status !== 'dryjan' && d.status !== 'reserve' && !d.photo; });
   document.getElementById('live').innerHTML = live.length ? live.map(recipe).join('') : '<p class="empty">None.</p>';
 }).catch(function(){ document.getElementById('summary').textContent = 'Could not load drinks.json.'; });
 </script>
