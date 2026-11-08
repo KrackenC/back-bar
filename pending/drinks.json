@@ -4249,9 +4249,10 @@
    "status": "collected",
    "collection": "premiere-2026-12",
    "holdUntil": "2027-01-01",
-   "photo": false,
+   "photo": true,
    "look": "wine glass without ice, ice-cold milky coffee-tan and smooth, a cinnamon stick standing in the glass",
-   "scene": "a Santiago summer Christmas evening on a garden terrace, a white lace tablecloth, a slice of pan de pascua fruit cake on a plate, warm string lights"
+   "scene": "a Santiago summer Christmas evening on a garden terrace, a white lace tablecloth, a slice of pan de pascua fruit cake on a plate, warm string lights",
+   "photoFile": "photos/cola-de-mono.jpg"
   },
   {
    "name": "Quentão",
@@ -4295,9 +4296,10 @@
    "status": "collected",
    "collection": "premiere-2026-12",
    "holdUntil": "2027-01-01",
-   "photo": false,
+   "photo": true,
    "look": "clear heatproof glass mug, hot, glowing deep amber with fine slices of ginger visible, an orange peel strip",
-   "scene": "a Brazilian Festa Junina night, a rustic wooden table with a small bonfire glow behind, colorful paper bandeirinha flags strung overhead, a knob of fresh ginger"
+   "scene": "a Brazilian Festa Junina night, a rustic wooden table with a small bonfire glow behind, colorful paper bandeirinha flags strung overhead, a knob of fresh ginger",
+   "photoFile": "photos/quentao.jpg"
   },
   {
    "name": "Tequila with Sangrita",
@@ -4337,9 +4339,10 @@
    "status": "collected",
    "collection": "premiere-2026-12",
    "holdUntil": "2027-01-01",
-   "photo": false,
+   "photo": true,
    "look": "two tall shot glasses side by side without ice, one of clear tequila, one of bright red-orange sangrita, a lime wedge and a pinch of chile salt beside them",
-   "scene": "an agave field cantina in Jalisco at noon, a weathered turquoise wooden table, blue agave spikes in the background, a small dish of chile salt"
+   "scene": "an agave field cantina in Jalisco at noon, a weathered turquoise wooden table, blue agave spikes in the background, a small dish of chile salt",
+   "photoFile": "photos/tequila-with-sangrita.jpg"
   },
   {
    "name": "Szarlotka",
