@@ -240,6 +240,24 @@
    "name": "Bison grass vodka",
    "category": "Vodka",
    "group": "Spirits"
+  },
+  {
+   "id": "sekanjabin_syrup",
+   "name": "Sekanjabin (Mint-Vinegar Syrup)",
+   "category": "Syrup",
+   "group": "Syrups"
+  },
+  {
+   "id": "white_port",
+   "name": "White Port",
+   "category": "Fortified Wine",
+   "group": "Liqueurs & Fortified Wine"
+  },
+  {
+   "id": "green_ginger_wine",
+   "name": "Green Ginger Wine",
+   "category": "Fortified Wine",
+   "group": "Liqueurs & Fortified Wine"
   }
  ],
  "drinks": [
@@ -4052,13 +4070,14 @@
    "note": "Warm the cognac, orange liqueur, sugar, cloves, cinnamon and orange peel in a heatproof bowl, light it with care and stir until the sugar melts, then pour in hot strong coffee to put out the flame and ladle into cups. New Orleans' flaming tableside finale. Use a long-handled ladle and keep the flame clear of anything that can catch.",
    "collected": "2026-11-08",
    "status": "released",
-   "collection": "premiere-2026-11",
+   "collection": "holiday-2026",
    "photo": true,
    "look": "clear heatproof glass coffee cup on a saucer, glossy dark-brown coffee, a long clove-studded orange peel spiral curling over the rim, a silver brûlot bowl with soft blue flames softly blurred behind it",
    "scene": "an old New Orleans dining room, white tablecloths, dark wood panelling and brass, dim romantic light",
    "photoFile": "photos/cafe-brulot.jpg",
    "holiday": "christmas",
-   "released": "2026-11-08"
+   "released": "2026-11-08",
+   "movedFrom": "premiere"
   },
   {
    "name": "Algarrobina",
@@ -4137,13 +4156,14 @@
    "distinct": "Scottish oat-infused whisky drink; oats as a cocktail ingredient, made for Hogmanay",
    "collected": "2026-11-08",
    "status": "released",
-   "collection": "premiere-2026-12",
+   "collection": "holiday-2026",
    "photo": true,
    "look": "chilled coupe without ice, creamy pale oat-gold with a soft silky top, a fine grating of nutmeg",
    "scene": "a Highland stone cottage at Hogmanay, a scrubbed oak table by a peat fire glow, a small wooden bowl of steel-cut oats and a sprig of heather",
    "photoFile": "photos/atholl-brose.jpg",
    "holiday": "newyear",
-   "released": "2026-11-08"
+   "released": "2026-11-08",
+   "movedFrom": "premiere"
   },
   {
    "name": "Tamagozake",
@@ -4220,13 +4240,14 @@
    "distinct": "Chilean Christmas spiced coffee-milk punch, served ice cold",
    "collected": "2026-11-08",
    "status": "released",
-   "collection": "premiere-2026-12",
+   "collection": "holiday-2026",
    "photo": true,
    "look": "wine glass without ice, ice-cold milky coffee-tan and smooth, a cinnamon stick standing in the glass",
    "scene": "a Santiago summer Christmas evening on a garden terrace, a white lace tablecloth, a slice of pan de pascua fruit cake on a plate, warm string lights",
    "photoFile": "photos/cola-de-mono.jpg",
    "holiday": "christmas",
-   "released": "2026-11-08"
+   "released": "2026-11-08",
+   "movedFrom": "premiere"
   },
   {
    "name": "Quentão",
@@ -4517,6 +4538,107 @@
    "look": "wide rocks glass with a tall cone of packed white shaved ice rising above the rim and a straw through it, pale golden and lightly sparkling around the cone",
    "scene": "a 1940s Hollywood tiki bar, bamboo walls and a carved wooden tiki, a pufferfish lamp glowing amber, a weathered ship's rope on the bar",
    "photoFile": "photos/navy-grog.jpg"
+  },
+  {
+   "name": "Sekanjabin",
+   "base": "Mocktail",
+   "glass": "Collins",
+   "method": "Built",
+   "items": [
+    {
+     "id": "apple_cider_vinegar",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "sekanjabin_syrup",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "cucumber",
+     "amt": "2 tbsp grated"
+    },
+    {
+     "id": "mint_leaves",
+     "amt": "4 leaves"
+    },
+    {
+     "id": "soda_water",
+     "amt": "top",
+     "optional": true
+    }
+   ],
+   "garnish": "Mint sprig, cucumber ribbon",
+   "note": "Make the syrup ahead: simmer 2 parts sugar with 1 part water until dissolved, add 1 part vinegar, simmer 20 minutes, then steep a handful of mint as it cools. Spoon grated cucumber into a tall glass of ice, add the syrup, a splash of vinegar and cold water (or soda), stir and serve. One of the oldest drinks still made in Iran, sipped through summer.",
+   "distinct": "Persian mint-vinegar syrup drink; the catalog's first Iranian drink and first sweet-and-sour vinegar cooler",
+   "source": {
+    "url": "https://en.wikipedia.org/wiki/Sekanjabin"
+   },
+   "collection": "premiere-2026-11",
+   "holdUntil": "2026-12-01",
+   "look": "tall collins glass with ice, pale translucent green-gold with flecks of grated cucumber, sparkling lightly, a mint sprig and a cucumber ribbon",
+   "scene": "a shaded Persian courtyard, a turquoise tiled fountain behind, a low carpet-draped bench in dappled afternoon light, a bowl of cucumbers and a bunch of fresh mint",
+   "collected": "2026-11-08",
+   "status": "collected",
+   "photo": false
+  },
+  {
+   "name": "Port & Tonic",
+   "base": "Wine",
+   "glass": "Wine glass",
+   "method": "Built",
+   "items": [
+    {
+     "id": "white_port",
+     "amt": "2 oz"
+    },
+    {
+     "id": "tonic_water",
+     "amt": "4 oz"
+    }
+   ],
+   "garnish": "Orange slice, mint sprig",
+   "note": "Fill a large wine glass with ice, pour in the white port, top with tonic and stir once; tuck in the orange slice and mint. Porto's own aperitivo, poured along the Douro riverfront on warm evenings.",
+   "distinct": "First white port in the catalog; Portugal's low-proof fortified-wine aperitif highball",
+   "source": {
+    "url": "https://www.tastingtable.com/687215/how-to-make-white-port-and-tonic-low-alcohol-cocktail/"
+   },
+   "collection": "premiere-2026-12",
+   "holdUntil": "2027-01-01",
+   "look": "large wine glass with ice, pale straw-gold and sparkling, an orange slice and a mint sprig",
+   "scene": "a stone terrace above the Douro river in Porto at golden hour, terracotta rooftops and an iron bridge in the soft distance, a weathered granite ledge, a small bowl of salted almonds",
+   "collected": "2026-11-08",
+   "status": "collected",
+   "photo": false
+  },
+  {
+   "name": "Whisky Mac",
+   "base": "Whiskey",
+   "glass": "Rocks",
+   "method": "Built",
+   "items": [
+    {
+     "id": "scotch_whisky",
+     "amt": "1.5 oz",
+     "familyOk": true
+    },
+    {
+     "id": "green_ginger_wine",
+     "amt": "1 oz"
+    }
+   ],
+   "garnish": "None",
+   "note": "Pour the scotch and green ginger wine into a rocks glass, with or without one ice cube, and stir briefly. A Scottish fireside warmer named for a British Army officer of the Raj era.",
+   "distinct": "Introduces green ginger wine, a fortified ginger wine the catalog lacks; Scotland's two-ingredient fireside dram",
+   "source": {
+    "url": "https://en.wikipedia.org/wiki/Whisky_Mac"
+   },
+   "collection": "premiere-2026-12",
+   "holdUntil": "2027-01-01",
+   "look": "rocks glass with one large clear ice cube, deep glowing amber-gold and clear, no garnish",
+   "scene": "a tartan blanket draped over the arm of a leather chair beside a stone fireplace in a Highland lodge, warm firelight, a stag-horn handle on a fire iron and a sprig of heather on the mantel",
+   "collected": "2026-11-08",
+   "status": "collected",
+   "photo": false
   }
  ],
  "dryJanuaryExisting": {
