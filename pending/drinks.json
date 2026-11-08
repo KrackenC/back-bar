@@ -4120,9 +4120,10 @@
    "status": "collected",
    "collection": "premiere-2026-11",
    "holdUntil": "2026-12-01",
-   "photo": false,
+   "photo": true,
    "look": "stemmed goblet without ice, creamy pale caramel-tan and frothy, a dusting of ground cinnamon on the foam",
-   "scene": "a colonial Lima balcony of carved dark wood at golden hour, a terracotta tile ledge, a small clay jug of dark syrup and a few carob pods"
+   "scene": "a colonial Lima balcony of carved dark wood at golden hour, a terracotta tile ledge, a small clay jug of dark syrup and a few carob pods",
+   "photoFile": "photos/algarrobina.jpg"
   },
   {
    "name": "Atholl Brose",
@@ -4163,9 +4164,10 @@
    "status": "collected",
    "collection": "premiere-2026-12",
    "holdUntil": "2027-01-01",
-   "photo": false,
+   "photo": true,
    "look": "chilled coupe without ice, creamy pale oat-gold with a soft silky top, a fine grating of nutmeg",
-   "scene": "a Highland stone cottage at Hogmanay, a scrubbed oak table by a peat fire glow, a small wooden bowl of steel-cut oats and a sprig of heather"
+   "scene": "a Highland stone cottage at Hogmanay, a scrubbed oak table by a peat fire glow, a small wooden bowl of steel-cut oats and a sprig of heather",
+   "photoFile": "photos/atholl-brose.jpg"
   },
   {
    "name": "Tamagozake",
@@ -4196,9 +4198,10 @@
    "status": "collected",
    "collection": "premiere-2026-12",
    "holdUntil": "2027-01-01",
-   "photo": false,
+   "photo": true,
    "look": "clear heatproof glass mug, hot, pale creamy custard-yellow with a light froth on top, no garnish",
-   "scene": "a Japanese ryokan room at night, a low hinoki-wood table on tatami, warm paper-lantern light, a ceramic sake flask and a falling-snow view through a shoji window"
+   "scene": "a Japanese ryokan room at night, a low hinoki-wood table on tatami, warm paper-lantern light, a ceramic sake flask and a falling-snow view through a shoji window",
+   "photoFile": "photos/tamagozake.jpg"
   },
   {
    "name": "Cola de Mono",
