@@ -3910,9 +3910,10 @@
    "collected": "2026-11-08",
    "status": "collected",
    "collection": "premiere-2026-11",
-   "photo": false,
+   "photo": true,
    "look": "stemmed reservoir absinthe glass, opalescent cloudy pale green, a slotted silver absinthe spoon with a half-melted sugar cube across the rim, water dripping",
-   "scene": "a Belle Époque Paris café, marble table, a glass absinthe water fountain beside the glass, gaslit evening"
+   "scene": "a Belle Époque Paris café, marble table, a glass absinthe water fountain beside the glass, gaslit evening",
+   "photoFile": "photos/absinthe-drip.jpg"
   },
   {
    "name": "Sangria",
@@ -3953,9 +3954,10 @@
    "collected": "2026-11-08",
    "status": "collected",
    "collection": "premiere-2026-11",
-   "photo": false,
+   "photo": true,
    "look": "large stemmed wine glass with ice, deep ruby-red, slices of orange, lemon and apple in the glass, a clay pitcher of sangria beside it",
-   "scene": "a sunny Andalusian courtyard, whitewashed walls, potted geraniums, a tiled table, dappled shade"
+   "scene": "a sunny Andalusian courtyard, whitewashed walls, potted geraniums, a tiled table, dappled shade",
+   "photoFile": "photos/sangria.jpg"
   },
   {
    "name": "Rebujito",
@@ -3984,9 +3986,10 @@
    "collected": "2026-11-08",
    "status": "collected",
    "collection": "premiere-2026-11",
-   "photo": false,
+   "photo": true,
    "look": "tall highball glass with ice, pale sparkling straw-gold, mint leaves inside and a mint sprig on top",
-   "scene": "a festive Seville fair tent, striped red-and-white awning, paper lanterns, flamenco dresses blurred in the background, evening light"
+   "scene": "a festive Seville fair tent, striped red-and-white awning, paper lanterns, flamenco dresses blurred in the background, evening light",
+   "photoFile": "photos/rebujito.jpg"
   },
   {
    "name": "Café Brûlot",
