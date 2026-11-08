@@ -87,7 +87,7 @@ function promptFor(g){
 }
 function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
 function recipe(d){
-  return '<div class="drink"><b>' + esc(d.name) + '</b><span class="tag ' + (d.status === 'collected' ? 'wait">Waiting' : d.status === 'holiday' ? 'wait">' + (d.occasion === 'Christmas' ? '❄️ Christmas' : '🥂 New Year\'s') : d.status === 'dryjan' ? 'wait">🌿 Day ' + d.day : d.status === 'reshoot' ? 'live">Re-shoot' : d.status === 'reserve' ? 'wait">Reserve' : 'live">In the app') + '</span>' +
+  return '<div class="drink"><b>' + esc(d.name) + '</b><span class="tag ' + (d.status === 'collected' ? 'wait">Waiting' : d.status === 'holiday' ? 'wait">' + '❄️ Holiday' : d.status === 'dryjan' ? 'wait">🌿 Day ' + d.day : d.status === 'reshoot' ? 'live">Re-shoot' : d.status === 'reserve' ? 'wait">Reserve' : 'live">In the app') + '</span>' +
     '<div class="sub">' + esc(d.base) + ' · ' + esc(d.glass) + ' · ' + esc(d.method) + (d.collected ? ' · collected ' + esc(d.collected) : '') + (d.reason ? '<br>Why: ' + esc(d.reason) : '') +
     '</div>' +
     '<ul>' + d.items.map(function(it){ return '<li>' + esc(it.amt) + ' ' + esc(it.label || it.id.replace(/_/g, ' ')) + (it.optional ? ' (optional)' : '') + '</li>'; }).join('') + '</ul>' +

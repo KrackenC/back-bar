@@ -3627,10 +3627,6 @@
    ],
    "garnish": "Orange wheel",
    "note": "Build chilled dry white wine and Campari over ice in a wine glass, then top with a splash of soda; a low-proof Milanese spritz mild enough to drink before the bike ride home.",
-   "source": {
-    "site": "Punch",
-    "url": "https://punchdrink.com/recipes/bicicletta/"
-   },
    "collected": "2026-11-06",
    "status": "reserve",
    "photo": false,
@@ -3667,10 +3663,6 @@
    ],
    "garnish": "Grapefruit twist",
    "note": "Shake tequila, Campari, grapefruit and lime juices, and syrup hard with ice; strain into a chilled coupe. A bitter-citrus riff on the Hemingway Daiquiri's sour template, built around agave instead of rum.",
-   "source": {
-    "site": "Difford's Guide",
-    "url": "https://www.diffordsguide.com/cocktails/recipe/5086/siesta"
-   },
    "collected": "2026-11-06",
    "status": "reserve",
    "photo": false,
@@ -3695,10 +3687,6 @@
    ],
    "garnish": "Lemon twist",
    "note": "Stir gin and Yellow Chartreuse with ice; strain into a chilled coupe. A Prohibition-era Savoy creation that swaps a Martini's vermouth for an herbal French liqueur.",
-   "source": {
-    "site": "Difford's Guide",
-    "url": "https://www.diffordsguide.com/cocktails/recipe/33/alaska-1-savoy-recipe"
-   },
    "collected": "2026-11-06",
    "status": "reserve",
    "photo": false,
@@ -3727,10 +3715,6 @@
    ],
    "garnish": "—",
    "note": "Shake gold rum with falernum and dry curaçao; strain into a chilled coupe. Trader Vic's entry in the daiquiri family, first poured for members of Bermuda's yacht club.",
-   "source": {
-    "site": "Difford's Guide",
-    "url": "https://www.diffordsguide.com/cocktails/recipe/1701/royal-bermuda-yacht-club"
-   },
    "collected": "2026-11-06",
    "status": "reserve",
    "photo": false,
@@ -3792,9 +3776,6 @@
    ],
    "garnish": "Lime coin",
    "note": "Squeeze a coin of lime peel, with a little flesh on it, into a small glass, add the cane syrup and rhum and stir until the syrup disappears. Ice is optional. Martinique's everyday aperitif, made to your own taste.",
-   "source": {
-    "url": "https://punchdrink.com/recipes/ti-punch/"
-   },
    "collected": "2026-11-08",
    "status": "reshoot",
    "collection": "premiere-2026-11",
@@ -3802,7 +3783,6 @@
    "look": "small heavy rocks glass with one or two ice cubes, crystal-clear pale straw, a round coin of lime peel resting in the drink, a small wooden swizzle stick beside it",
    "scene": "a Martinique veranda at golden hour, sugar-cane fields and a rum distillery chimney in the distance, louvered shutters, warm light",
    "photoFile": "photos/ti-punch.jpg",
-   "holdUntil": "2026-12-01",
    "replaces": "Ti Punch",
    "recipeUpdate": true,
    "reshootReason": "Ti Punch is already in the app with a white-rum spec; at the Dec 1 release, replace its recipe with this authentic rhum agricole + cane syrup spec and swap in this photo. Not one of the 10 new drinks."
@@ -4157,17 +4137,15 @@
    "garnish": "Grated nutmeg",
    "note": "Soak steel-cut oats in water overnight and strain off the milky oat water; shake it hard with the scotch, cream and honey syrup and strain into a chilled coupe. A Highland drink poured at Hogmanay.",
    "distinct": "Scottish oat-infused whisky drink; oats as a cocktail ingredient, made for Hogmanay",
-   "source": {
-    "url": "https://www.atlasobscura.com/articles/atholl-brose-signature-cocktails-amanda-schuster"
-   },
    "collected": "2026-11-08",
-   "status": "collected",
+   "status": "released",
    "collection": "premiere-2026-12",
-   "holdUntil": "2027-01-01",
    "photo": true,
    "look": "chilled coupe without ice, creamy pale oat-gold with a soft silky top, a fine grating of nutmeg",
    "scene": "a Highland stone cottage at Hogmanay, a scrubbed oak table by a peat fire glow, a small wooden bowl of steel-cut oats and a sprig of heather",
-   "photoFile": "photos/atholl-brose.jpg"
+   "photoFile": "photos/atholl-brose.jpg",
+   "holiday": "newyear",
+   "released": "2026-11-08"
   },
   {
    "name": "Tamagozake",
@@ -4223,16 +4201,16 @@
      "amt": "1 oz"
     },
     {
-     "id": "sugar",
-     "amt": "1 tsp"
-    },
-    {
      "id": "cinnamon_sticks",
      "amt": "1"
     },
     {
      "id": "cloves",
      "amt": "2"
+    },
+    {
+     "id": "sugar",
+     "amt": "1 tsp"
     },
     {
      "id": "vanilla_syrup",
@@ -4242,17 +4220,15 @@
    "garnish": "Cinnamon stick",
    "note": "Warm the milk with the sugar, cinnamon and cloves, stir in the coffee and vanilla, cool, then add the pisco and chill hard; serve very cold, no ice. Chile's Christmas punch, traditionally made with aguardiente.",
    "distinct": "Chilean Christmas spiced coffee-milk punch, served ice cold",
-   "source": {
-    "url": "https://www.southamericatotheworld.com/cola-de-mono-a-chilean-christmas-drink/"
-   },
    "collected": "2026-11-08",
-   "status": "collected",
+   "status": "released",
    "collection": "premiere-2026-12",
-   "holdUntil": "2027-01-01",
    "photo": true,
    "look": "wine glass without ice, ice-cold milky coffee-tan and smooth, a cinnamon stick standing in the glass",
    "scene": "a Santiago summer Christmas evening on a garden terrace, a white lace tablecloth, a slice of pan de pascua fruit cake on a plate, warm string lights",
-   "photoFile": "photos/cola-de-mono.jpg"
+   "photoFile": "photos/cola-de-mono.jpg",
+   "holiday": "christmas",
+   "released": "2026-11-08"
   },
   {
    "name": "Quentão",

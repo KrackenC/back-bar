@@ -1066,7 +1066,7 @@
         <li><div><h4>See what you can make</h4>
           <p><b>What You Can Make</b> lists every recipe. A green <b>Ready to pour</b> tag means you have everything. <b>Missing:</b> names the one thing you still need, and <b>Missing 3</b> means three things. The <b>Ready</b> and <b>Almost</b> counts in the header appear once your shelf has bottles. Shelf &amp; Shaker counts close substitutes, so Cointreau covers triple sec, and any whiskey covers a recipe that just says whiskey.</p></div></li>
         <li><div><h4>Find the right drink</h4>
-          <p>Search by name or ingredient, or tap a filter: <b>All</b>, <b>Ready</b>, <b>Almost</b>, <b>Favorites</b>, <b>Made before</b>, <b>Just added</b>, <b>Up next</b> or <b>Mocktails</b>. From late November to early January a <b>Holidays</b> chip at the top gathers the Christmas and New Year's drinks. Holiday drinks are marked with a ❄️ all year. From December 26 through January a <b>Dry January</b> chip lists 31 alcohol-free drinks, one for each day of the month, with today's drink highlighted; they wear a 🌿 all year. Tap <b>Refine</b> to narrow by <b>Spirit</b>, change the <b>Sort</b> order, or switch measures between <b>oz</b> and <b>ml</b>. <b>Best next bottle</b> shows which one bottle would unlock the most drinks; tap <b>Add</b> to put it on your shelf. Shelf &amp; Shaker remembers the filter you used last.</p></div></li>
+          <p>Search by name or ingredient, or tap a filter: <b>All</b>, <b>Ready</b>, <b>Almost</b>, <b>Favorites</b>, <b>Made before</b>, <b>Just added</b>, <b>Up next</b> or <b>Mocktails</b>. From late November to early January a <b>Holidays</b> chip at the top gathers the season's holiday drinks, through New Year's. Holiday drinks are marked with a ❄️ all year. From December 26 through January a <b>Dry January</b> chip lists 31 alcohol-free drinks, one for each day of the month, with today's drink highlighted; they wear a 🌿 all year. Tap <b>Refine</b> to narrow by <b>Spirit</b>, change the <b>Sort</b> order, or switch measures between <b>oz</b> and <b>ml</b>. <b>Best next bottle</b> shows which one bottle would unlock the most drinks; tap <b>Add</b> to put it on your shelf. Shelf &amp; Shaker remembers the filter you used last.</p></div></li>
         <li><div><h4>Open a recipe</h4>
           <p>Tap any drink to open its full recipe: exact measures, the garnish, a note on technique and the bar tools you'll need. Tap it again to fold it away.</p></div></li>
         <li><div><h4>Plan your next round</h4>
@@ -1210,7 +1210,7 @@
   </dialog>
 
   <div class="undo-toast" id="undoToast" role="status" aria-live="polite"><span class="undo-msg"></span><button type="button">Undo</button></div>
-  <footer>Shelf &amp; Shaker keeps your shelf in this browser only — nothing leaves the page. 357 recipes. Brand names are trademarks of their owners; Shelf &amp; Shaker isn't affiliated with or endorsed by them.
+  <footer>Shelf &amp; Shaker keeps your shelf in this browser only — nothing leaves the page. 359 recipes. Brand names are trademarks of their owners; Shelf &amp; Shaker isn't affiliated with or endorsed by them.
     <div class="footer-actions"><button class="help-link" id="backupBtn" type="button" aria-haspopup="dialog">Back up or move your bar</button> <span style="margin:0 .5rem;color:var(--line)">·</span> <button class="reset-all-btn" id="resetAllBtn" type="button">Reset everything</button> <span style="margin-left:.4rem">Clears both shelves, favorites, Up Next and your Made history.</span></div>
     <p class="drink-responsibly">Please drink responsibly. Enjoy only if you're of legal drinking age, know your limits, and never drink and drive.</p>
   </footer>
@@ -1575,7 +1575,9 @@ var DRINK_PHOTOS = [
     {"g": "coupe", "c": "yellow", "n": ["Spicy Fifty"], "by": "Shelf & Shaker", "u": "", src:"img/d/spicy-fifty-99323915.jpg"},
     {"g": "wine", "c": "amber", "n": ["Three Dots and a Dash"], "by": "Shelf & Shaker", "u": "", src:"img/d/three-dots-and-a-dash-a990465c.jpg"},
     {"g": "rocks", "c": "yellow", "n": ["Ve.N.To"], "by": "Shelf & Shaker", "u": "", src:"img/d/ve-n-to-fad4fca7.jpg"},
-    {"g": "rocks", "c": "yellow", "n": ["Grand Margarita"], "by": "Shelf & Shaker", "u": "", src:"img/d/grand-margarita-4a9f9bf7.jpg"}
+    {"g": "rocks", "c": "yellow", "n": ["Grand Margarita"], "by": "Shelf & Shaker", "u": "", src:"img/d/grand-margarita-4a9f9bf7.jpg"},
+    {"g": "coupe", "c": "creamy", "n": ["Atholl Brose"], "by": "Shelf & Shaker", "u": "", src:"img/d/atholl-brose-a1773b37.jpg"},
+    {"g": "wine", "c": "creamy", "n": ["Cola de Mono"], "by": "Shelf & Shaker", "u": "", src:"img/d/cola-de-mono-72f4de72.jpg"}
   ];
 </script>
 <script>
@@ -1736,7 +1738,10 @@ var DRINK_PHOTOS = [
     {id:'passion_fruit_liqueur', name:'Passion Fruit Liqueur', category:'Passion Fruit Liqueur', group:'Liqueurs & Fortified Wine'},
     {id:'elderflower_cordial', name:'Elderflower Cordial', category:'Syrup', group:'Syrups'},
     {id:'grappa', name:'Grappa', category:'Brandy', group:'Spirits'},
-    {id:'allspice_dram', name:'Allspice Dram', category:'Allspice Liqueur', group:'Liqueurs & Fortified Wine'}
+    {id:'allspice_dram', name:'Allspice Dram', category:'Allspice Liqueur', group:'Liqueurs & Fortified Wine'},
+    {id:'brewed_coffee', name:'Brewed Coffee', category:'Coffee', group:'Juice & Mixers'},
+    {id:'oat_water', name:'Oat water (brose)', category:'Mixer', group:'Juice & Mixers'},
+    {id:'cinnamon_sticks', name:'Cinnamon sticks', category:'Spice', group:'Juice & Mixers'}
   ];
 
   var GROUP_ORDER = ['Spirits','Liqueurs & Fortified Wine','Bitters','Juice & Mixers','Syrups'];
@@ -2985,7 +2990,14 @@ var DRINK_PHOTOS = [
     // ---------- Release 2026-11-01 ----------
     {name:'Grand Margarita', base:'Tequila', glass:'Rocks', method:'Shaken', added:'2026-11-01',
       items:[{id:'tequila', amt:'1.5 oz'},{id:'grand_marnier', amt:'1 oz'},{id:'lime_juice', amt:'.5 oz'}],
-      garnish:'Sea-salt rim, lime slice', note:'Rim a rocks glass with sea salt and fill it with ice. Shake everything hard with ice for about 10 seconds and strain into the glass. A richer, orange-forward Margarita made with 100% agave tequila and Grand Marnier.'}
+      garnish:'Sea-salt rim, lime slice', note:'Rim a rocks glass with sea salt and fill it with ice. Shake everything hard with ice for about 10 seconds and strain into the glass. A richer, orange-forward Margarita made with 100% agave tequila and Grand Marnier.'},
+    // ---------- Release 2026-11-08 ----------
+    {name:'Atholl Brose', base:'Whiskey', glass:'Coupe', method:'Shaken', added:'2026-11-08', holiday:'newyear',
+      items:[{id:'scotch_whisky', amt:'2 oz', familyOk:true},{id:'oat_water', amt:'1.5 oz'},{id:'cream', amt:'1 oz'},{id:'honey_syrup', amt:'.75 oz'},{id:'nutmeg', amt:'1 grate', optional:true}],
+      garnish:'Grated nutmeg', note:'Soak steel-cut oats in water overnight and strain off the milky oat water; shake it hard with the scotch, cream and honey syrup and strain into a chilled coupe. A Highland drink poured at Hogmanay.'},
+    {name:'Cola de Mono', base:'Pisco', glass:'Wine glass', method:'Stirred', added:'2026-11-08', holiday:'christmas',
+      items:[{id:'pisco', amt:'1.5 oz', familyOk:true},{id:'milk', amt:'3 oz'},{id:'brewed_coffee', amt:'1 oz'},{id:'cinnamon_sticks', amt:'1'},{id:'cloves', amt:'2'},{id:'sugar', amt:'1 tsp'},{id:'vanilla_syrup', amt:'.25 oz'}],
+      garnish:'Cinnamon stick', note:"Warm the milk with the sugar, cinnamon and cloves, stir in the coffee and vanilla, cool, then add the pisco and chill hard; serve very cold, no ice. Chile's Christmas punch, traditionally made with aguardiente."}
   ];
 
   var STARTER = ['gin','vodka','dry_vermouth','sweet_vermouth','campari','triple_sec','lime_juice','lemon_juice','simple_syrup','soda_water','angostura_bitters','bourbon'];
@@ -3931,7 +3943,7 @@ var DRINK_PHOTOS = [
         '<div class="card-head">' +
           '<div class="card-title" role="button" tabindex="0" aria-expanded="' + isOpen + '" aria-label="' + r.name + ', ' + pillText + '. Show recipe">' +
             '<h3>' + (filter === 'dryjan' && r.dryJan ? '<span class="dj-day' + (r.dryJan === DRYJAN_TODAY ? ' today">Today · ' : '">') + 'Day ' + r.dryJan + '</span>' : '') + r.name +
-              (r.dryJan ? '<span class="hol-tag" title="Dry January · Day ' + r.dryJan + '">🌿</span>' : '') + (r.holiday ? '<span class="hol-tag" title="Holiday drink' + (r.holiday === 'christmas' ? ' · Christmas' : ' · New Year\'s') + '">❄️</span>' : '') + '</h3>' +
+              (r.dryJan ? '<span class="hol-tag" title="Dry January · Day ' + r.dryJan + '">🌿</span>' : '') + (r.holiday ? '<span class="hol-tag" title="Holiday drink">❄️</span>' : '') + '</h3>' +
             '<p class="card-meta">' + glassIconSvg(r.glass) + r.base + '<span class="meta-more"> · ' + r.glass + ' · ' + r.method + '</span></p>' +
             '<span class="pill ' + pillClass + '">' + pillText + '</span>' +
           '</div>' +
@@ -4490,7 +4502,7 @@ var DRINK_PHOTOS = [
   applyShelfListOpen(loadShelfListOpen());
   loadMade();
   // ---------- Holidays ----------
-  // Christmas and New Year's drinks carry holiday:'christmas' or 'newyear'.
+  // Holiday drinks carry holiday:'christmas' or 'newyear' (internal values; the UI just says Holiday).
   // They're always in All and always wear a ❄️ next to their name; the
   // Holidays chip only shows from Nov 20 to Jan 7, or any time the page is
   // opened with #holidays.
@@ -4552,7 +4564,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-11-08T19:21:42Z";
+  var CURRENT_VERSION = "2026-11-08T20:41:24Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
