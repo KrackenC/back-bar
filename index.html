@@ -1210,7 +1210,7 @@
   </dialog>
 
   <div class="undo-toast" id="undoToast" role="status" aria-live="polite"><span class="undo-msg"></span><button type="button">Undo</button></div>
-  <footer>Shelf &amp; Shaker keeps your shelf in this browser only — nothing leaves the page. 359 recipes. Brand names are trademarks of their owners; Shelf &amp; Shaker isn't affiliated with or endorsed by them.
+  <footer>Shelf &amp; Shaker keeps your shelf in this browser only — nothing leaves the page. 360 recipes. Brand names are trademarks of their owners; Shelf &amp; Shaker isn't affiliated with or endorsed by them.
     <div class="footer-actions"><button class="help-link" id="backupBtn" type="button" aria-haspopup="dialog">Back up or move your bar</button> <span style="margin:0 .5rem;color:var(--line)">·</span> <button class="reset-all-btn" id="resetAllBtn" type="button">Reset everything</button> <span style="margin-left:.4rem">Clears both shelves, favorites, Up Next and your Made history.</span></div>
     <p class="drink-responsibly">Please drink responsibly. Enjoy only if you're of legal drinking age, know your limits, and never drink and drive.</p>
   </footer>
@@ -1577,7 +1577,8 @@ var DRINK_PHOTOS = [
     {"g": "rocks", "c": "yellow", "n": ["Ve.N.To"], "by": "Shelf & Shaker", "u": "", src:"img/d/ve-n-to-fad4fca7.jpg"},
     {"g": "rocks", "c": "yellow", "n": ["Grand Margarita"], "by": "Shelf & Shaker", "u": "", src:"img/d/grand-margarita-4a9f9bf7.jpg"},
     {"g": "coupe", "c": "creamy", "n": ["Atholl Brose"], "by": "Shelf & Shaker", "u": "", src:"img/d/atholl-brose-a1773b37.jpg"},
-    {"g": "wine", "c": "creamy", "n": ["Cola de Mono"], "by": "Shelf & Shaker", "u": "", src:"img/d/cola-de-mono-72f4de72.jpg"}
+    {"g": "wine", "c": "creamy", "n": ["Cola de Mono"], "by": "Shelf & Shaker", "u": "", src:"img/d/cola-de-mono-72f4de72.jpg"},
+    {"g": "hot", "c": "coffee", "n": ["Café Brûlot"], "by": "Shelf & Shaker", "u": "", src:"img/d/caf-br-lot-0bad6617.jpg"}
   ];
 </script>
 <script>
@@ -2997,7 +2998,11 @@ var DRINK_PHOTOS = [
       garnish:'Grated nutmeg', note:'Soak steel-cut oats in water overnight and strain off the milky oat water; shake it hard with the scotch, cream and honey syrup and strain into a chilled coupe. A Highland drink poured at Hogmanay.'},
     {name:'Cola de Mono', base:'Pisco', glass:'Wine glass', method:'Stirred', added:'2026-11-08', holiday:'christmas',
       items:[{id:'pisco', amt:'1.5 oz', familyOk:true},{id:'milk', amt:'3 oz'},{id:'brewed_coffee', amt:'1 oz'},{id:'cinnamon_sticks', amt:'1'},{id:'cloves', amt:'2'},{id:'sugar', amt:'1 tsp'},{id:'vanilla_syrup', amt:'.25 oz'}],
-      garnish:'Cinnamon stick', note:"Warm the milk with the sugar, cinnamon and cloves, stir in the coffee and vanilla, cool, then add the pisco and chill hard; serve very cold, no ice. Chile's Christmas punch, traditionally made with aguardiente."}
+      garnish:'Cinnamon stick', note:"Warm the milk with the sugar, cinnamon and cloves, stir in the coffee and vanilla, cool, then add the pisco and chill hard; serve very cold, no ice. Chile's Christmas punch, traditionally made with aguardiente."},
+    // ---------- Release 2026-11-08 ----------
+    {name:'Café Brûlot', base:'Brandy', glass:'Mug', method:'Hot', added:'2026-11-08', holiday:'christmas',
+      items:[{id:'brandy', amt:'1.5 oz'},{id:'triple_sec', amt:'.5 oz'},{id:'brewed_coffee', amt:'4 oz'},{id:'cloves', amt:'3'},{id:'ground_cinnamon', amt:'1 pinch'},{id:'orange_peel', amt:'1 long spiral'},{id:'sugar', amt:'1 tsp'}],
+      garnish:'Clove-studded orange peel', note:"Warm the cognac, orange liqueur, sugar, cloves, cinnamon and orange peel in a heatproof bowl, light it with care and stir until the sugar melts, then pour in hot strong coffee to put out the flame and ladle into cups. New Orleans' flaming tableside finale. Use a long-handled ladle and keep the flame clear of anything that can catch."}
   ];
 
   var STARTER = ['gin','vodka','dry_vermouth','sweet_vermouth','campari','triple_sec','lime_juice','lemon_juice','simple_syrup','soda_water','angostura_bitters','bourbon'];
@@ -4564,7 +4569,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-11-08T20:41:24Z";
+  var CURRENT_VERSION = "2026-11-08T20:46:01Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');

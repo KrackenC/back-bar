@@ -4032,10 +4032,6 @@
      "amt": "4 oz"
     },
     {
-     "id": "sugar",
-     "amt": "1 tsp"
-    },
-    {
      "id": "cloves",
      "amt": "3"
     },
@@ -4046,21 +4042,23 @@
     {
      "id": "orange_peel",
      "amt": "1 long spiral"
+    },
+    {
+     "id": "sugar",
+     "amt": "1 tsp"
     }
    ],
    "garnish": "Clove-studded orange peel",
    "note": "Warm the cognac, orange liqueur, sugar, cloves, cinnamon and orange peel in a heatproof bowl, light it with care and stir until the sugar melts, then pour in hot strong coffee to put out the flame and ladle into cups. New Orleans' flaming tableside finale. Use a long-handled ladle and keep the flame clear of anything that can catch.",
-   "source": {
-    "url": "https://talesofthecocktail.org/how-make-arnauds-cafe-brulot/"
-   },
    "collected": "2026-11-08",
-   "status": "collected",
+   "status": "released",
    "collection": "premiere-2026-11",
    "photo": true,
    "look": "clear heatproof glass coffee cup on a saucer, glossy dark-brown coffee, a long clove-studded orange peel spiral curling over the rim, a silver brûlot bowl with soft blue flames softly blurred behind it",
    "scene": "an old New Orleans dining room, white tablecloths, dark wood panelling and brass, dim romantic light",
    "photoFile": "photos/cafe-brulot.jpg",
-   "holdUntil": "2026-12-01"
+   "holiday": "christmas",
+   "released": "2026-11-08"
   },
   {
    "name": "Algarrobina",

@@ -10,7 +10,7 @@ s=open('back-bar-site/index.html').read()
 for i,m in enumerate(re.findall(r'<script>(.*?)</script>',s,re.S)):
     open('chk_s.js','w').write(m); r=subprocess.run(['node','--check','chk_s.js'],capture_output=True,text=True)
     if r.returncode: sys.exit('syntax '+r.stderr[:300])
-p='''<script>setTimeout(function(){var c=document.querySelectorAll('#grid .card');var st=document.querySelectorAll('#grid figcaption').length;var want=%s;var ok=[];c.forEach(function(k){var n=k.querySelector('h3').textContent.replace(/[\u2744\uFE0F\uD83C\uDF3F]/g,'').trim();if(want.indexOf(n)>=0&&!k.querySelector('.stand-in'))ok.push(n)});document.body.setAttribute('data-probe',JSON.stringify({cards:c.length,exact:c.length-st,ok:ok}))},1500)</script></body>'''%json.dumps(want)
+p='''<script>setTimeout(function(){var c=document.querySelectorAll('#grid .card');var st=document.querySelectorAll('#grid figcaption').length;var want=%s;var ok=[];c.forEach(function(k){var n=k.querySelector('h3').textContent.replace(/[\\u2744\\uFE0F\\uD83C\\uDF3F]/g,'').trim();if(want.indexOf(n)>=0&&!k.querySelector('.stand-in'))ok.push(n)});document.body.setAttribute('data-probe',JSON.stringify({cards:c.length,exact:c.length-st,ok:ok}))},1500)</script></body>'''%json.dumps(want)
 open(f'p{n}.html','w').write(s.replace('</body>',p,1))
 P
 perl -e 'alarm 60; exec @ARGV' "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --disable-gpu --virtual-time-budget=4000 --dump-dom file://$PWD/p$N.html 2>/dev/null | grep -o 'data-probe="[^"]*' | sed 's/&quot;/"/g'
