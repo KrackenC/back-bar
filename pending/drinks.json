@@ -210,6 +210,36 @@
    "name": "Brewed Coffee",
    "category": "Coffee",
    "group": "Juice & Mixers"
+  },
+  {
+   "id": "carob_syrup",
+   "name": "Algarrobina (carob syrup)",
+   "category": "Syrup",
+   "group": "Syrups"
+  },
+  {
+   "id": "oat_water",
+   "name": "Oat water (brose)",
+   "category": "Mixer",
+   "group": "Juice & Mixers"
+  },
+  {
+   "id": "sake",
+   "name": "Sake",
+   "category": "Sake",
+   "group": "Liqueurs & Fortified Wine"
+  },
+  {
+   "id": "cinnamon_sticks",
+   "name": "Cinnamon sticks",
+   "category": "Spice",
+   "group": "Juice & Mixers"
+  },
+  {
+   "id": "bison_grass_vodka",
+   "name": "Bison grass vodka",
+   "category": "Vodka",
+   "group": "Spirits"
   }
  ],
  "drinks": [
@@ -3766,13 +3796,16 @@
     "url": "https://punchdrink.com/recipes/ti-punch/"
    },
    "collected": "2026-11-08",
-   "status": "collected",
+   "status": "reshoot",
    "collection": "premiere-2026-11",
    "photo": true,
    "look": "small heavy rocks glass with one or two ice cubes, crystal-clear pale straw, a round coin of lime peel resting in the drink, a small wooden swizzle stick beside it",
    "scene": "a Martinique veranda at golden hour, sugar-cane fields and a rum distillery chimney in the distance, louvered shutters, warm light",
    "photoFile": "photos/ti-punch.jpg",
-   "holdUntil": "2026-12-01"
+   "holdUntil": "2026-12-01",
+   "replaces": "Ti Punch",
+   "recipeUpdate": true,
+   "reshootReason": "Ti Punch is already in the app with a white-rum spec; at the Dec 1 release, replace its recipe with this authentic rhum agricole + cane syrup spec and swap in this photo. Not one of the 10 new drinks."
   },
   {
    "name": "Carajillo",
@@ -4048,6 +4081,457 @@
    "scene": "an old New Orleans dining room, white tablecloths, dark wood panelling and brass, dim romantic light",
    "photoFile": "photos/cafe-brulot.jpg",
    "holdUntil": "2026-12-01"
+  },
+  {
+   "name": "Algarrobina",
+   "base": "Pisco",
+   "glass": "Goblet",
+   "method": "Blended",
+   "items": [
+    {
+     "id": "pisco",
+     "amt": "2 oz",
+     "familyOk": true
+    },
+    {
+     "id": "evaporated_milk",
+     "amt": "2 oz"
+    },
+    {
+     "id": "carob_syrup",
+     "amt": ".75 oz"
+    },
+    {
+     "id": "whole_egg",
+     "amt": "1 yolk"
+    },
+    {
+     "id": "ground_cinnamon",
+     "amt": "1 pinch"
+    }
+   ],
+   "garnish": "Dusting of cinnamon",
+   "note": "Blend everything but the cinnamon with a handful of ice until smooth and frothy; pour into a goblet and dust with cinnamon. Peru's holiday flip, sweetened with syrup from the algarrobo tree.",
+   "distinct": "Peruvian carob-syrup flip; the first drink built on algarrobina",
+   "source": {
+    "url": "https://punchdrink.com/recipes/coctel-de-algarrobina/"
+   },
+   "collected": "2026-11-08",
+   "status": "collected",
+   "collection": "premiere-2026-11",
+   "holdUntil": "2026-12-01",
+   "photo": false,
+   "look": "stemmed goblet without ice, creamy pale caramel-tan and frothy, a dusting of ground cinnamon on the foam",
+   "scene": "a colonial Lima balcony of carved dark wood at golden hour, a terracotta tile ledge, a small clay jug of dark syrup and a few carob pods"
+  },
+  {
+   "name": "Atholl Brose",
+   "base": "Whiskey",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "scotch_whisky",
+     "amt": "2 oz",
+     "familyOk": true
+    },
+    {
+     "id": "oat_water",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "cream",
+     "amt": "1 oz"
+    },
+    {
+     "id": "honey_syrup",
+     "amt": ".75 oz"
+    },
+    {
+     "id": "nutmeg",
+     "amt": "1 grate",
+     "optional": true
+    }
+   ],
+   "garnish": "Grated nutmeg",
+   "note": "Soak steel-cut oats in water overnight and strain off the milky oat water; shake it hard with the scotch, cream and honey syrup and strain into a chilled coupe. A Highland drink poured at Hogmanay.",
+   "distinct": "Scottish oat-infused whisky drink; oats as a cocktail ingredient, made for Hogmanay",
+   "source": {
+    "url": "https://www.atlasobscura.com/articles/atholl-brose-signature-cocktails-amanda-schuster"
+   },
+   "collected": "2026-11-08",
+   "status": "collected",
+   "collection": "premiere-2026-12",
+   "holdUntil": "2027-01-01",
+   "photo": false,
+   "look": "chilled coupe without ice, creamy pale oat-gold with a soft silky top, a fine grating of nutmeg",
+   "scene": "a Highland stone cottage at Hogmanay, a scrubbed oak table by a peat fire glow, a small wooden bowl of steel-cut oats and a sprig of heather"
+  },
+  {
+   "name": "Tamagozake",
+   "base": "Sake",
+   "glass": "Mug",
+   "method": "Hot",
+   "items": [
+    {
+     "id": "sake",
+     "amt": "5 oz"
+    },
+    {
+     "id": "whole_egg",
+     "amt": "1"
+    },
+    {
+     "id": "honey_syrup",
+     "amt": ".5 oz"
+    }
+   ],
+   "garnish": "—",
+   "note": "Whisk the egg with the honey syrup, then pour in hot (not boiling) sake slowly while whisking so the egg thickens without scrambling. Japan's winter remedy for a cold.",
+   "distinct": "First sake drink; hot egg-thickened Japanese winter cup",
+   "source": {
+    "url": "https://en.wikipedia.org/wiki/Tamagozake"
+   },
+   "collected": "2026-11-08",
+   "status": "collected",
+   "collection": "premiere-2026-12",
+   "holdUntil": "2027-01-01",
+   "photo": false,
+   "look": "clear heatproof glass mug, hot, pale creamy custard-yellow with a light froth on top, no garnish",
+   "scene": "a Japanese ryokan room at night, a low hinoki-wood table on tatami, warm paper-lantern light, a ceramic sake flask and a falling-snow view through a shoji window"
+  },
+  {
+   "name": "Cola de Mono",
+   "base": "Pisco",
+   "glass": "Wine glass",
+   "method": "Stirred",
+   "items": [
+    {
+     "id": "pisco",
+     "amt": "1.5 oz",
+     "familyOk": true
+    },
+    {
+     "id": "milk",
+     "amt": "3 oz"
+    },
+    {
+     "id": "brewed_coffee",
+     "amt": "1 oz"
+    },
+    {
+     "id": "sugar",
+     "amt": "1 tsp"
+    },
+    {
+     "id": "cinnamon_sticks",
+     "amt": "1"
+    },
+    {
+     "id": "cloves",
+     "amt": "2"
+    },
+    {
+     "id": "vanilla_syrup",
+     "amt": ".25 oz"
+    }
+   ],
+   "garnish": "Cinnamon stick",
+   "note": "Warm the milk with the sugar, cinnamon and cloves, stir in the coffee and vanilla, cool, then add the pisco and chill hard; serve very cold, no ice. Chile's Christmas punch, traditionally made with aguardiente.",
+   "distinct": "Chilean Christmas spiced coffee-milk punch, served ice cold",
+   "source": {
+    "url": "https://www.southamericatotheworld.com/cola-de-mono-a-chilean-christmas-drink/"
+   },
+   "collected": "2026-11-08",
+   "status": "collected",
+   "collection": "premiere-2026-12",
+   "holdUntil": "2027-01-01",
+   "photo": false,
+   "look": "wine glass without ice, ice-cold milky coffee-tan and smooth, a cinnamon stick standing in the glass",
+   "scene": "a Santiago summer Christmas evening on a garden terrace, a white lace tablecloth, a slice of pan de pascua fruit cake on a plate, warm string lights"
+  },
+  {
+   "name": "Quentão",
+   "base": "Cachaça",
+   "glass": "Mug",
+   "method": "Hot",
+   "items": [
+    {
+     "id": "cachaca",
+     "amt": "1.5 oz",
+     "familyOk": true
+    },
+    {
+     "id": "fresh_ginger",
+     "amt": "3 slices"
+    },
+    {
+     "id": "sugar",
+     "amt": "1 tbsp"
+    },
+    {
+     "id": "cinnamon_sticks",
+     "amt": "1"
+    },
+    {
+     "id": "cloves",
+     "amt": "3"
+    },
+    {
+     "id": "orange_peel",
+     "amt": "1 strip"
+    }
+   ],
+   "garnish": "Orange peel",
+   "note": "Melt the sugar in a pan until amber, add the ginger, spices, peel and 3 oz water and simmer, then add the cachaça and heat gently without boiling; strain into a mug. Brazil's bonfire drink for the June festas.",
+   "distinct": "Brazilian caramelized-sugar ginger infusion; first hot cachaça drink",
+   "source": {
+    "url": "https://camilamade.com/quentao/"
+   },
+   "collected": "2026-11-08",
+   "status": "collected",
+   "collection": "premiere-2026-12",
+   "holdUntil": "2027-01-01",
+   "photo": false,
+   "look": "clear heatproof glass mug, hot, glowing deep amber with fine slices of ginger visible, an orange peel strip",
+   "scene": "a Brazilian Festa Junina night, a rustic wooden table with a small bonfire glow behind, colorful paper bandeirinha flags strung overhead, a knob of fresh ginger"
+  },
+  {
+   "name": "Tequila with Sangrita",
+   "base": "Tequila",
+   "glass": "Shot",
+   "method": "Built",
+   "items": [
+    {
+     "id": "tequila",
+     "amt": "1.5 oz",
+     "familyOk": true
+    },
+    {
+     "id": "orange_juice",
+     "amt": "1 oz"
+    },
+    {
+     "id": "pomegranate_juice",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "lime_juice",
+     "amt": ".5 oz"
+    },
+    {
+     "id": "hot_sauce",
+     "amt": "2 dashes"
+    }
+   ],
+   "garnish": "Lime wedge, chile-salt",
+   "note": "Pour the tequila into one caballito; stir the orange, pomegranate, lime and hot sauce into a second. Sip them in turn, never mixed. The Jalisco way to drink blanco tequila.",
+   "distinct": "Mexican sipping ritual: tequila with a separate citrus-chile chaser",
+   "source": {
+    "url": "https://jeffreymorgenthaler.com/how-to-make-sangrita/"
+   },
+   "collected": "2026-11-08",
+   "status": "collected",
+   "collection": "premiere-2026-12",
+   "holdUntil": "2027-01-01",
+   "photo": false,
+   "look": "two tall shot glasses side by side without ice, one of clear tequila, one of bright red-orange sangrita, a lime wedge and a pinch of chile salt beside them",
+   "scene": "an agave field cantina in Jalisco at noon, a weathered turquoise wooden table, blue agave spikes in the background, a small dish of chile salt"
+  },
+  {
+   "name": "Szarlotka",
+   "base": "Vodka",
+   "glass": "Highball",
+   "method": "Built",
+   "items": [
+    {
+     "id": "bison_grass_vodka",
+     "amt": "1.5 oz"
+    },
+    {
+     "id": "apple_juice",
+     "amt": "3 oz"
+    },
+    {
+     "id": "ground_cinnamon",
+     "amt": "1 pinch",
+     "optional": true
+    }
+   ],
+   "garnish": "Pinch of cinnamon",
+   "note": "Build the bison grass vodka and cloudy apple juice over ice and stir; dust with cinnamon. Named for Polish apple cake, which it tastes like.",
+   "distinct": "Polish bison grass vodka; a vanilla-hay spirit category the catalog lacks",
+   "source": {
+    "url": "https://www.saveur.com/article/Recipes/Szarlotka-Polish-Apple-Pie-Cocktail/"
+   },
+   "collected": "2026-11-08",
+   "status": "collected",
+   "collection": "premiere-2026-12",
+   "holdUntil": "2027-01-01",
+   "photo": false,
+   "look": "highball glass with ice, cloudy pale apple-gold, a blade of bison grass and a dusting of cinnamon",
+   "scene": "a Kraków market square café in early winter dusk, a dark wood table by a frosted window, a slice of apple cake on a plate and red apples in a bowl"
+  },
+  {
+   "name": "Sujeonggwa",
+   "base": "Mocktail",
+   "glass": "Rocks",
+   "method": "Steeped",
+   "items": [
+    {
+     "id": "cinnamon_sticks",
+     "amt": "2"
+    },
+    {
+     "id": "fresh_ginger",
+     "amt": "4 slices"
+    },
+    {
+     "id": "sugar",
+     "amt": "1 tbsp"
+    }
+   ],
+   "garnish": "Dried persimmon, pine nuts",
+   "note": "Simmer the ginger and the cinnamon separately in water, combine, sweeten with sugar and chill; float a softened dried persimmon and a few pine nuts. Korea's cold cinnamon punch for the Lunar New Year.",
+   "distinct": "Korean spice decoction served cold; first East Asian non-alcoholic drink",
+   "source": {
+    "url": "https://www.beyondkimchee.com/korean-cinnamon-ginger-punch-sujeonggwa/"
+   },
+   "collected": "2026-11-08",
+   "status": "collected",
+   "collection": "premiere-2026-12",
+   "holdUntil": "2027-01-01",
+   "photo": false,
+   "look": "rocks glass without ice, clear deep reddish-amber, a small dried persimmon floating with a few pine nuts on the surface",
+   "scene": "a Korean hanok courtyard in winter, a low lacquered tray on a wooden maru floor, soft snow on tiled eaves, a bowl of dried persimmons"
+  },
+  {
+   "name": "Pink Gin",
+   "base": "Gin",
+   "glass": "Coupe",
+   "method": "Stirred",
+   "items": [
+    {
+     "id": "gin",
+     "amt": "2 oz",
+     "familyOk": true
+    },
+    {
+     "id": "angostura_bitters",
+     "amt": "3 dashes"
+    }
+   ],
+   "garnish": "Lemon twist",
+   "note": "Stir the gin and bitters with ice until very cold and well diluted; strain into a chilled coupe. The Royal Navy's officers' drink, born from bitters taken against seasickness.",
+   "distinct": "Royal Navy two-ingredient gin and bitters; bitters as the only modifier",
+   "source": {
+    "url": "https://punchdrink.com/recipes/pink-gin/"
+   },
+   "collected": "2026-11-08",
+   "status": "collected",
+   "collection": "premiere-2026-12",
+   "holdUntil": "2027-01-01",
+   "photo": false,
+   "look": "chilled coupe without ice, crystal-clear pale rose-pink, a lemon twist",
+   "scene": "a Royal Navy wardroom aboard an old ship, polished brass portholes and a mahogany table, a ship's lantern glow, a nautical chart and brass dividers"
+  },
+  {
+   "name": "Pousse Café",
+   "base": "Liqueur",
+   "glass": "Shot",
+   "method": "Layered",
+   "items": [
+    {
+     "id": "grenadine",
+     "amt": ".25 oz"
+    },
+    {
+     "id": "yellow_chartreuse",
+     "amt": ".25 oz"
+    },
+    {
+     "id": "creme_de_cassis",
+     "amt": ".25 oz"
+    },
+    {
+     "id": "creme_de_menthe",
+     "amt": ".25 oz"
+    },
+    {
+     "id": "green_chartreuse",
+     "amt": ".25 oz"
+    },
+    {
+     "id": "brandy",
+     "amt": ".25 oz",
+     "familyOk": true
+    }
+   ],
+   "garnish": "—",
+   "note": "Pour each in order over the back of a barspoon so it floats on the one below, heaviest first, grenadine to brandy. Densities vary by bottle, so test-pour first. The 19th-century ancestor of every layered drink.",
+   "distinct": "The original multi-layer pousse café; six visible bands",
+   "source": {
+    "url": "https://en.wikipedia.org/wiki/Layered_drink"
+   },
+   "collected": "2026-11-08",
+   "status": "collected",
+   "collection": "premiere-2026-12",
+   "holdUntil": "2027-01-01",
+   "photo": false,
+   "look": "tall narrow cordial glass without ice, six sharp horizontal layers from the bottom up: ruby red, pale gold, deep purple, clear, emerald green, amber, no garnish",
+   "scene": "a belle-époque Paris café after dinner, a white marble table, gilded mirrors and warm gaslight, a demitasse of espresso beside it"
+  },
+  {
+   "name": "Navy Grog",
+   "base": "Rum",
+   "glass": "Rocks",
+   "method": "Shaken",
+   "items": [
+    {
+     "id": "white_rum",
+     "amt": "1 oz",
+     "familyOk": true
+    },
+    {
+     "id": "dark_rum",
+     "amt": "1 oz",
+     "familyOk": true
+    },
+    {
+     "id": "rum_any",
+     "amt": "1 oz",
+     "familyOk": true
+    },
+    {
+     "id": "grapefruit_juice",
+     "amt": ".75 oz"
+    },
+    {
+     "id": "lime_juice",
+     "amt": ".75 oz"
+    },
+    {
+     "id": "honey_syrup",
+     "amt": ".75 oz"
+    },
+    {
+     "id": "soda_water",
+     "amt": ".75 oz"
+    }
+   ],
+   "garnish": "Shaved-ice cone with a straw",
+   "note": "Shake the three rums, grapefruit, lime and honey syrup with ice, add the soda and pour over a cone of packed shaved ice with a straw through it. Don the Beachcomber's honey-and-grapefruit tiki classic.",
+   "distinct": "Don the Beachcomber tiki classic with the shaved-ice cone serve; three-rum honey-grapefruit",
+   "source": {
+    "url": "https://www.diffordsguide.com/cocktails/recipe/4866/navy-grog"
+   },
+   "collected": "2026-11-08",
+   "status": "collected",
+   "collection": "premiere-2026-12",
+   "holdUntil": "2027-01-01",
+   "photo": false,
+   "look": "wide rocks glass with a tall cone of packed white shaved ice rising above the rim and a straw through it, pale golden and lightly sparkling around the cone",
+   "scene": "a 1940s Hollywood tiki bar, bamboo walls and a carved wooden tiki, a pufferfish lamp glowing amber, a weathered ship's rope on the bar"
   }
  ],
  "dryJanuaryExisting": {
