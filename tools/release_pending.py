@@ -9,6 +9,9 @@ the app's "Just added" filter shows the batch. New ingredients listed in
 newIngredients are appended to INGREDIENTS (or BRAND_INGREDIENTS when they
 have substitutesFor) if not already present. The footer recipe count is
 updated. Then the JSON is rewritten with status "released" and the date.
+At most 10 drinks are released per calendar month (counted from "released"
+dates); extra drinks stay queued, oldest first, for the next month. Drinks
+with a future "holdUntil" are skipped unless --early is passed.
 With --status holiday the held Holiday collection is released instead: those
 recipes get holiday:'christmas' or 'newyear' (from "occasion") and no added:
 date, so they show under the seasonal Holidays chip and not under Just added.
@@ -42,12 +45,24 @@ if len(args) < 2:
     sys.exit(__doc__)
 pending_path, apps = args[0], args[1:]
 data = json.load(open(pending_path))
-batch = [d for d in data['drinks'] if d.get('status') == status]
-held = [d['name'] for d in batch if d.get('holdUntil', '') > datetime.date.today().isoformat()]
+MONTHLY_CAP = 10   # user rule 2026-11-08: at most 10 drinks reach the app per month
+cand = [d for d in data['drinks'] if d.get('status') == status]
+today = datetime.date.today().isoformat()
+held = [d for d in cand if d.get('holdUntil', '') > today]
 if held and not early:
-    sys.exit('held until ' + max(d.get('holdUntil', '') for d in batch) + ': ' + ', '.join(held) + ' (pass --early to override)')
+    print('held (holdUntil): ' + ', '.join(d['name'] + ' until ' + d['holdUntil'] for d in held))
+    cand = [d for d in cand if d not in held]
+month = date[:7]
+already = sum(1 for d in data['drinks'] if d.get('status') == 'released' and str(d.get('released', '')).startswith(month))
+room = max(0, MONTHLY_CAP - already)
+# oldest first: by collected date, then queue order
+order = sorted(range(len(cand)), key=lambda i: (cand[i].get('collected', ''), i))
+batch = [cand[i] for i in order[:room]]
+waiting = [cand[i] for i in order[room:]]
+if waiting:
+    print(f'monthly cap {MONTHLY_CAP}: {already} already released in {month}; holding for next month: ' + ', '.join(d['name'] for d in waiting))
 if not batch:
-    sys.exit('nothing with status ' + status + ' to release')
+    sys.exit('nothing to release with status ' + status + (' this month (cap reached)' if cand and not room else ''))
 HOLIDAY = status == 'holiday'
 DRYJAN = status == 'dryjan'
 if DRYJAN:
