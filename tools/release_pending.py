@@ -35,11 +35,17 @@ if '--status' in args:
     i = args.index('--status'); status = args[i + 1]; del args[i:i + 2]
 if '--dry-run' in args:
     args.remove('--dry-run'); dry = True
+early = '--early' in args   # release drinks whose holdUntil is still in the future
+if early:
+    args.remove('--early')
 if len(args) < 2:
     sys.exit(__doc__)
 pending_path, apps = args[0], args[1:]
 data = json.load(open(pending_path))
 batch = [d for d in data['drinks'] if d.get('status') == status]
+held = [d['name'] for d in batch if d.get('holdUntil', '') > datetime.date.today().isoformat()]
+if held and not early:
+    sys.exit('held until ' + max(d.get('holdUntil', '') for d in batch) + ': ' + ', '.join(held) + ' (pass --early to override)')
 if not batch:
     sys.exit('nothing with status ' + status + ' to release')
 HOLIDAY = status == 'holiday'
@@ -131,6 +137,6 @@ if not dry:
         d['status'] = 'released'; d['released'] = date
     for d in data['drinks']:
         if d.get('status') not in ('collected', 'holiday'):  # already in the app
-            d.pop('source', None)
+            d.pop('source', None); d.pop('holdUntil', None)
     json.dump(data, open(pending_path, 'w'), indent=1, ensure_ascii=False)
 print('released:', ', '.join(d['name'] for d in batch))
