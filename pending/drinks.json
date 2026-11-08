@@ -3573,7 +3573,8 @@
    "look": "highball glass with ice, bright orange-amber and sparkling, a lemon twist",
    "scene": "a worn wooden bar top in a small Basque-American restaurant, string lights and old black-and-white photos on the wall, a quiet high-desert evening outside the window",
    "collection": "premiere-2026-11",
-   "photoFile": "photos/picon-punch.jpg"
+   "photoFile": "photos/picon-punch.jpg",
+   "holdUntil": "2026-12-01"
   },
   {
    "name": "Bicicletta",
@@ -3741,7 +3742,8 @@
    "photo": true,
    "look": "tall collins glass with ice and a thick coarse-salt rim, hazy golden lager with a light head, a lime wedge on the rim, a bottle of red hot sauce beside it",
    "scene": "a sunny Mexico City street-side cantina, painted tile counter, papel picado flags overhead, bright midday light",
-   "photoFile": "photos/michelada.jpg"
+   "photoFile": "photos/michelada.jpg",
+   "holdUntil": "2026-12-01"
   },
   {
    "name": "Ti' Punch",
@@ -3769,7 +3771,8 @@
    "photo": true,
    "look": "small heavy rocks glass with one or two ice cubes, crystal-clear pale straw, a round coin of lime peel resting in the drink, a small wooden swizzle stick beside it",
    "scene": "a Martinique veranda at golden hour, sugar-cane fields and a rum distillery chimney in the distance, louvered shutters, warm light",
-   "photoFile": "photos/ti-punch.jpg"
+   "photoFile": "photos/ti-punch.jpg",
+   "holdUntil": "2026-12-01"
   },
   {
    "name": "Carajillo",
@@ -3797,7 +3800,8 @@
    "photo": true,
    "look": "rocks glass with ice, layered look: deep coffee-brown below a creamy tan foam, three coffee beans on the foam",
    "scene": "a late-night Madrid tapas bar, zinc counter, hanging jamón and tiled walls, warm low light, an espresso machine behind",
-   "photoFile": "photos/carajillo.jpg"
+   "photoFile": "photos/carajillo.jpg",
+   "holdUntil": "2026-12-01"
   },
   {
    "name": "Improved Holland Gin Cocktail",
@@ -3837,7 +3841,8 @@
    "photo": true,
    "look": "small cut-crystal rocks glass with one large clear cube, clear pale-gold, a lemon twist",
    "scene": "a Victorian American saloon, dark mahogany back bar, gaslight glow, a stoneware genever crock on the counter",
-   "photoFile": "photos/improved-holland-gin-cocktail.jpg"
+   "photoFile": "photos/improved-holland-gin-cocktail.jpg",
+   "holdUntil": "2026-12-01"
   },
   {
    "name": "English Milk Punch",
@@ -3885,7 +3890,8 @@
    "photo": true,
    "look": "rocks glass with one large clear cube, perfectly crystal-clear pale-amber liquid, a lemon twist",
    "scene": "an 18th-century English tavern, dark oak beams, a silver punch bowl and pewter on the table, candlelight",
-   "photoFile": "photos/english-milk-punch.jpg"
+   "photoFile": "photos/english-milk-punch.jpg",
+   "holdUntil": "2026-12-01"
   },
   {
    "name": "Absinthe Drip",
@@ -3913,7 +3919,8 @@
    "photo": true,
    "look": "stemmed reservoir absinthe glass, opalescent cloudy pale green, a slotted silver absinthe spoon with a half-melted sugar cube across the rim, water dripping",
    "scene": "a Belle Époque Paris café, marble table, a glass absinthe water fountain beside the glass, gaslit evening",
-   "photoFile": "photos/absinthe-drip.jpg"
+   "photoFile": "photos/absinthe-drip.jpg",
+   "holdUntil": "2026-12-01"
   },
   {
    "name": "Sangria",
@@ -3957,7 +3964,8 @@
    "photo": true,
    "look": "large stemmed wine glass with ice, deep ruby-red, slices of orange, lemon and apple in the glass, a clay pitcher of sangria beside it",
    "scene": "a sunny Andalusian courtyard, whitewashed walls, potted geraniums, a tiled table, dappled shade",
-   "photoFile": "photos/sangria.jpg"
+   "photoFile": "photos/sangria.jpg",
+   "holdUntil": "2026-12-01"
   },
   {
    "name": "Rebujito",
@@ -3989,7 +3997,8 @@
    "photo": true,
    "look": "tall highball glass with ice, pale sparkling straw-gold, mint leaves inside and a mint sprig on top",
    "scene": "a festive Seville fair tent, striped red-and-white awning, paper lanterns, flamenco dresses blurred in the background, evening light",
-   "photoFile": "photos/rebujito.jpg"
+   "photoFile": "photos/rebujito.jpg",
+   "holdUntil": "2026-12-01"
   },
   {
    "name": "Café Brûlot",
@@ -4037,7 +4046,8 @@
    "photo": true,
    "look": "clear heatproof glass coffee cup on a saucer, glossy dark-brown coffee, a long clove-studded orange peel spiral curling over the rim, a silver brûlot bowl with soft blue flames softly blurred behind it",
    "scene": "an old New Orleans dining room, white tablecloths, dark wood panelling and brass, dim romantic light",
-   "photoFile": "photos/cafe-brulot.jpg"
+   "photoFile": "photos/cafe-brulot.jpg",
+   "holdUntil": "2026-12-01"
   }
  ],
  "dryJanuaryExisting": {
