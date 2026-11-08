@@ -4447,7 +4447,7 @@
   {
    "name": "Pousse Café",
    "base": "Liqueur",
-   "glass": "Shot",
+   "glass": "Flute",
    "method": "Layered",
    "items": [
     {
@@ -4486,9 +4486,10 @@
    "status": "collected",
    "collection": "premiere-2026-12",
    "holdUntil": "2027-01-01",
-   "photo": false,
-   "look": "tall narrow cordial glass without ice, six sharp horizontal layers from the bottom up: ruby red, pale gold, deep purple, clear, emerald green, amber, no garnish",
-   "scene": "a belle-époque Paris café after dinner, a white marble table, gilded mirrors and warm gaslight, a demitasse of espresso beside it"
+   "photo": true,
+   "look": "tall narrow stemmed cordial glass without ice, six sharp horizontal layers from the bottom up: ruby red, pale gold, deep purple, clear, emerald green, amber, no garnish",
+   "scene": "a belle-époque Paris café after dinner, a white marble table, gilded mirrors and warm gaslight, a demitasse of espresso beside it",
+   "photoFile": "photos/pousse-cafe.jpg"
   },
   {
    "name": "Navy Grog",
@@ -4538,9 +4539,10 @@
    "status": "collected",
    "collection": "premiere-2026-12",
    "holdUntil": "2027-01-01",
-   "photo": false,
+   "photo": true,
    "look": "wide rocks glass with a tall cone of packed white shaved ice rising above the rim and a straw through it, pale golden and lightly sparkling around the cone",
-   "scene": "a 1940s Hollywood tiki bar, bamboo walls and a carved wooden tiki, a pufferfish lamp glowing amber, a weathered ship's rope on the bar"
+   "scene": "a 1940s Hollywood tiki bar, bamboo walls and a carved wooden tiki, a pufferfish lamp glowing amber, a weathered ship's rope on the bar",
+   "photoFile": "photos/navy-grog.jpg"
   }
  ],
  "dryJanuaryExisting": {
