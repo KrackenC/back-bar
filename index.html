@@ -1927,7 +1927,7 @@ var DRINK_PHOTOS = [
     {name:'Clover Club', base:'Gin', glass:'Coupe', method:'Shaken',
       items:[{id:'gin', amt:'1.5 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'raspberry_syrup', amt:'.5 oz'},{id:'egg_white', amt:'1', optional:true}],
       garnish:'Raspberries', note:'Shake hard with ice; strain into a chilled coupe.'},
-    {name:'French 75', base:'Gin', glass:'Flute', method:'Shaken, topped',
+    {name:'French 75', base:'Gin', glass:'Flute', method:'Shaken, topped', holiday:'newyear',
       items:[{id:'gin', amt:'1 oz'},{id:'lemon_juice', amt:'.5 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'sparkling_wine', amt:'top'}],
       garnish:'Lemon twist', note:'Shake gin, lemon, and syrup with ice; strain into a flute and top with sparkling wine.'},
     {name:'Corpse Reviver No. 2', base:'Gin', glass:'Coupe', method:'Shaken',
@@ -1987,7 +1987,7 @@ var DRINK_PHOTOS = [
     {name:'Amaretto Sour', base:'Liqueur', glass:'Rocks', method:'Shaken',
       items:[{id:'amaretto', amt:'2 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.25 oz'},{id:'egg_white', amt:'1', optional:true}],
       garnish:'Cherry', note:'Shake hard with ice; strain over ice.'},
-    {name:'Grasshopper', base:'Liqueur', glass:'Coupe', method:'Shaken',
+    {name:'Grasshopper', base:'Liqueur', glass:'Coupe', method:'Shaken', holiday:'christmas',
       items:[{id:'creme_de_menthe', amt:'1 oz'},{id:'creme_de_cacao', amt:'1 oz'},{id:'cream', amt:'1 oz'}],
       garnish:'—', note:'Shake with ice; strain into a chilled coupe.'},
     {name:'Godfather', base:'Whiskey', glass:'Rocks', method:'Built',
@@ -1996,7 +1996,7 @@ var DRINK_PHOTOS = [
     {name:'Aperol Spritz', base:'Sparkling', glass:'Wine glass', method:'Built',
       items:[{id:'sparkling_wine', amt:'3 oz'},{id:'aperol', amt:'2 oz'},{id:'soda_water', amt:'1 oz'}],
       garnish:'Orange wheel', note:'Build in a wine glass over ice: sparkling wine, then Aperol, then a splash of soda.'},
-    {name:'Kir Royale', base:'Sparkling', glass:'Flute', method:'Built',
+    {name:'Kir Royale', base:'Sparkling', glass:'Flute', method:'Built', holiday:'newyear',
       items:[{id:'sparkling_wine', amt:'top'},{id:'creme_de_cassis', amt:'.5 oz'}],
       garnish:'—', note:'Pour the cassis into a flute and top with chilled sparkling wine.'},
     {name:'Gin and Tonic', base:'Gin', glass:'Highball', method:'Built',
@@ -2029,10 +2029,10 @@ var DRINK_PHOTOS = [
     {name:'Negroni Sbagliato', base:'Sparkling', glass:'Rocks', method:'Built',
       items:[{id:'campari', amt:'1 oz'},{id:'sweet_vermouth', amt:'1 oz'},{id:'sparkling_wine', amt:'2 oz'}],
       garnish:'Orange peel', note:'Build over ice — sparkling wine in for the gin.'},
-    {name:'Irish Coffee', base:'Whiskey', glass:'Mug', method:'Built',
+    {name:'Irish Coffee', base:'Whiskey', glass:'Mug', method:'Built', holiday:'christmas',
       items:[{id:'whiskey_any', amt:'1.5 oz', familyOk:true},{id:'espresso', amt:'4 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'cream', amt:'float'}],
       garnish:'—', note:'Stir whiskey, hot coffee, and syrup; float lightly whipped cream on top.'},
-    {name:'Hot Toddy', base:'Whiskey', glass:'Mug', method:'Built',
+    {name:'Hot Toddy', base:'Whiskey', glass:'Mug', method:'Built', holiday:'christmas',
       items:[{id:'bourbon', amt:'2 oz', familyOk:true},{id:'honey_syrup', amt:'.75 oz'},{id:'lemon_juice', amt:'.5 oz'}],
       garnish:'Lemon wheel, clove', note:'Stir with hot water; serve steaming.'},
     {name:'Mudslide', base:'Vodka', glass:'Rocks', method:'Shaken',
@@ -2083,7 +2083,7 @@ var DRINK_PHOTOS = [
     {name:'Between the Sheets', base:'Rum', glass:'Coupe', method:'Shaken',
       items:[{id:'white_rum', amt:'.75 oz'},{id:'brandy', amt:'.75 oz'},{id:'triple_sec', amt:'.75 oz', familyOk:true},{id:'lemon_juice', amt:'.75 oz'}],
       garnish:'Lemon twist', note:'Shake with ice; strain into a chilled coupe.'},
-    {name:'Alexander', base:'Brandy', glass:'Coupe', method:'Shaken',
+    {name:'Alexander', base:'Brandy', glass:'Coupe', method:'Shaken', holiday:'christmas',
       items:[{id:'brandy', amt:'1.5 oz'},{id:'creme_de_cacao', amt:'1 oz'},{id:'cream', amt:'1 oz'}],
       garnish:'Grated nutmeg', note:'Shake with ice; strain into a chilled coupe.'},
     {name:'Brandy Crusta', base:'Brandy', glass:'Coupe', method:'Shaken',
@@ -2131,7 +2131,7 @@ var DRINK_PHOTOS = [
     {name:'Cardinale', base:'Gin', glass:'Rocks', method:'Stirred',
       items:[{id:'gin', amt:'1.5 oz'},{id:'campari', amt:'1 oz'},{id:'dry_vermouth', amt:'.5 oz'}],
       garnish:'Lemon twist', note:'Stir with ice; strain over ice — a drier Negroni.'},
-    {name:'Champagne Cocktail', base:'Sparkling', glass:'Flute', method:'Built',
+    {name:'Champagne Cocktail', base:'Sparkling', glass:'Flute', method:'Built', holiday:'newyear',
       items:[{id:'sparkling_wine', amt:'5 oz'},{id:'angostura_bitters', amt:'2 dashes'},{id:'simple_syrup', amt:'.25 oz'}],
       garnish:'Lemon twist', note:'Soak the sugar with bitters in the glass, then top slowly with chilled sparkling wine.'},
     {name:'Garibaldi', base:'Sparkling', glass:'Rocks', method:'Built',
@@ -2164,7 +2164,7 @@ var DRINK_PHOTOS = [
     {name:'Paper Plane', base:'Whiskey', glass:'Coupe', method:'Shaken',
       items:[{id:'bourbon', amt:'.75 oz'},{id:'aperol', amt:'.75 oz'},{id:'amaro_nonino', amt:'.75 oz'},{id:'lemon_juice', amt:'.75 oz'}],
       garnish:'—', note:'Shake equal parts hard with ice; strain into a chilled coupe.'},
-    {name:'Russian Spring Punch', base:'Vodka', glass:'Highball', method:'Shaken, topped',
+    {name:'Russian Spring Punch', base:'Vodka', glass:'Highball', method:'Shaken, topped', holiday:'newyear',
       items:[{id:'vodka', amt:'1.5 oz'},{id:'creme_de_cassis', amt:'.5 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'sparkling_wine', amt:'top'}],
       garnish:'Berries', note:'Shake vodka, cassis, lemon, and syrup with ice; strain over ice and top with sparkling wine.'},
     {name:'Sherry Cobbler', base:'Sherry', glass:'Goblet', method:'Shaken',
@@ -2353,7 +2353,7 @@ var DRINK_PHOTOS = [
     {name:'Chicago Fizz', base:'Rum', glass:'Highball', method:'Shaken, topped',
       items:[{id:'dark_rum', amt:'1 oz'},{id:'port_wine', amt:'1 oz'},{id:'lemon_juice', amt:'.75 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'egg_white', amt:'1'},{id:'soda_water', amt:'top'}],
       garnish:'—', note:'Shake hard with ice; strain over ice and top with soda.'},
-    {name:'Milk Punch', base:'Rum', glass:'Rocks', method:'Shaken',
+    {name:'Milk Punch', base:'Rum', glass:'Rocks', method:'Shaken', holiday:'christmas',
       items:[{id:'dark_rum', amt:'2 oz'},{id:'milk', amt:'3 oz'},{id:'simple_syrup', amt:'.5 oz'}],
       garnish:'Grated nutmeg', note:'Shake with ice; strain over ice.'},
     {name:'Alexandra', base:'Rum', glass:'Coupe', method:'Shaken',
@@ -2371,7 +2371,7 @@ var DRINK_PHOTOS = [
     {name:'Bermuda Rum Swizzle', base:'Rum', glass:'Highball', method:'Built',
       items:[{id:'dark_rum', amt:'1 oz'},{id:'white_rum', amt:'1 oz'},{id:'orange_juice', amt:'1 oz'},{id:'pineapple_juice', amt:'1 oz'},{id:'lime_juice', amt:'.5 oz'},{id:'grenadine', amt:'.25 oz'}],
       garnish:'Mint sprig', note:"Build over crushed ice and swizzle — Bermuda's national drink."},
-    {name:'Baltimore Eggnog', base:'Rum', glass:'Rocks', method:'Shaken',
+    {name:'Baltimore Eggnog', base:'Rum', glass:'Rocks', method:'Shaken', holiday:'christmas',
       items:[{id:'dark_rum', amt:'1 oz'},{id:'brandy', amt:'1 oz'},{id:'milk', amt:'3 oz'},{id:'simple_syrup', amt:'.5 oz'},{id:'egg_white', amt:'1'}],
       garnish:'Grated nutmeg', note:'Shake hard with ice; strain over ice.'},
     {name:'Black Rumhattan', base:'Rum', glass:'Coupe', method:'Stirred',
@@ -2388,7 +2388,7 @@ var DRINK_PHOTOS = [
     {name:'Orange Liqueur Fizz', base:'Liqueur', glass:'Highball', method:'Built',
       items:[{id:'cointreau', amt:'2 oz'},{id:'lime_juice', amt:'1 oz'},{id:'soda_water', amt:'3 oz'}],
       garnish:'Lime wheel, orange twist', note:'Build over ice and stir.'},
-    {name:'Orange Royale', base:'Sparkling', glass:'Flute', method:'Built',
+    {name:'Orange Royale', base:'Sparkling', glass:'Flute', method:'Built', holiday:'newyear',
       items:[{id:'cointreau', amt:'1 oz'},{id:'sparkling_wine', amt:'3 oz'}],
       garnish:'Orange twist', note:'Pour Cointreau into a chilled flute and top with sparkling wine.'},
     {name:'Orange Liqueur Sour', base:'Liqueur', glass:'Coupe', method:'Shaken',
@@ -2573,7 +2573,7 @@ var DRINK_PHOTOS = [
       garnish:'Cucumber slices', note:'Shake everything but the soda with ice; strain over fresh ice and top with grapefruit soda.'},
 
     // ---------- Raspberry liqueur ----------
-    {name:'Raspberry Royale', base:'Sparkling', glass:'Coupe', method:'Built',
+    {name:'Raspberry Royale', base:'Sparkling', glass:'Coupe', method:'Built', holiday:'newyear',
       items:[{id:'sparkling_wine', amt:'4 oz'},{id:'creme_de_framboise', amt:'.5 oz'}],
       garnish:'Raspberry', note:'Pour the sparkling wine into a chilled coupe and add the raspberry liqueur.'},
     {name:'Raspberry Margarita', base:'Tequila', glass:'Rocks', method:'Shaken',
@@ -4569,7 +4569,7 @@ var DRINK_PHOTOS = [
    Home Screen app a fresh, empty storage container). Only a page that really is the announced
    version is used, and the browser's stored copy is refreshed so the next launch opens it too. */
 (function () {
-  var CURRENT_VERSION = "2026-11-08T20:46:01Z";
+  var CURRENT_VERSION = "2026-11-08T20:54:27Z";
   /* compat: CURRENT_VERSION = "2026-10-07T17:36:30Z" — lets copies of the 2026-10-07T17:36:30Z build (whose update check looked for that literal) accept this page */
   var VERSION_KEY = "v";
   var banner = document.getElementById('__update-banner');
