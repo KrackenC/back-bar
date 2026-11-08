@@ -4374,9 +4374,10 @@
    "status": "collected",
    "collection": "premiere-2026-12",
    "holdUntil": "2027-01-01",
-   "photo": false,
+   "photo": true,
    "look": "highball glass with ice, cloudy pale apple-gold, a blade of bison grass and a dusting of cinnamon",
-   "scene": "a Kraków market square café in early winter dusk, a dark wood table by a frosted window, a slice of apple cake on a plate and red apples in a bowl"
+   "scene": "a Kraków market square café in early winter dusk, a dark wood table by a frosted window, a slice of apple cake on a plate and red apples in a bowl",
+   "photoFile": "photos/szarlotka.jpg"
   },
   {
    "name": "Sujeonggwa",
@@ -4407,9 +4408,10 @@
    "status": "collected",
    "collection": "premiere-2026-12",
    "holdUntil": "2027-01-01",
-   "photo": false,
+   "photo": true,
    "look": "rocks glass without ice, clear deep reddish-amber, a small dried persimmon floating with a few pine nuts on the surface",
-   "scene": "a Korean hanok courtyard in winter, a low lacquered tray on a wooden maru floor, soft snow on tiled eaves, a bowl of dried persimmons"
+   "scene": "a Korean hanok courtyard in winter, a low lacquered tray on a wooden maru floor, soft snow on tiled eaves, a bowl of dried persimmons",
+   "photoFile": "photos/sujeonggwa.jpg"
   },
   {
    "name": "Pink Gin",
@@ -4437,9 +4439,10 @@
    "status": "collected",
    "collection": "premiere-2026-12",
    "holdUntil": "2027-01-01",
-   "photo": false,
+   "photo": true,
    "look": "chilled coupe without ice, crystal-clear pale rose-pink, a lemon twist",
-   "scene": "a Royal Navy wardroom aboard an old ship, polished brass portholes and a mahogany table, a ship's lantern glow, a nautical chart and brass dividers"
+   "scene": "a Royal Navy wardroom aboard an old ship, polished brass portholes and a mahogany table, a ship's lantern glow, a nautical chart and brass dividers",
+   "photoFile": "photos/pink-gin.jpg"
   },
   {
    "name": "Pousse Café",
