@@ -4579,7 +4579,8 @@
    "scene": "a shaded Persian courtyard, a turquoise tiled fountain behind, a low carpet-draped bench in dappled afternoon light, a bowl of cucumbers and a bunch of fresh mint",
    "collected": "2026-11-08",
    "status": "collected",
-   "photo": false
+   "photo": true,
+   "photoFile": "photos/sekanjabin.jpg"
   },
   {
    "name": "Port & Tonic",
@@ -4608,7 +4609,8 @@
    "scene": "a stone terrace above the Douro river in Porto at golden hour, terracotta rooftops and an iron bridge in the soft distance, a weathered granite ledge, a small bowl of salted almonds",
    "collected": "2026-11-08",
    "status": "collected",
-   "photo": false
+   "photo": true,
+   "photoFile": "photos/port-tonic.jpg"
   },
   {
    "name": "Whisky Mac",
@@ -4638,7 +4640,8 @@
    "scene": "a tartan blanket draped over the arm of a leather chair beside a stone fireplace in a Highland lodge, warm firelight, a stag-horn handle on a fire iron and a sprig of heather on the mantel",
    "collected": "2026-11-08",
    "status": "collected",
-   "photo": false
+   "photo": true,
+   "photoFile": "photos/whisky-mac.jpg"
   }
  ],
  "dryJanuaryExisting": {
