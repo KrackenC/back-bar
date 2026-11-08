@@ -3794,9 +3794,10 @@
    "collected": "2026-11-08",
    "status": "collected",
    "collection": "premiere-2026-11",
-   "photo": false,
+   "photo": true,
    "look": "rocks glass with ice, layered look: deep coffee-brown below a creamy tan foam, three coffee beans on the foam",
-   "scene": "a late-night Madrid tapas bar, zinc counter, hanging jamón and tiled walls, warm low light, an espresso machine behind"
+   "scene": "a late-night Madrid tapas bar, zinc counter, hanging jamón and tiled walls, warm low light, an espresso machine behind",
+   "photoFile": "photos/carajillo.jpg"
   },
   {
    "name": "Improved Holland Gin Cocktail",
@@ -3833,9 +3834,10 @@
    "collected": "2026-11-08",
    "status": "collected",
    "collection": "premiere-2026-11",
-   "photo": false,
+   "photo": true,
    "look": "small cut-crystal rocks glass with one large clear cube, clear pale-gold, a lemon twist",
-   "scene": "a Victorian American saloon, dark mahogany back bar, gaslight glow, a stoneware genever crock on the counter"
+   "scene": "a Victorian American saloon, dark mahogany back bar, gaslight glow, a stoneware genever crock on the counter",
+   "photoFile": "photos/improved-holland-gin-cocktail.jpg"
   },
   {
    "name": "English Milk Punch",
@@ -3880,9 +3882,10 @@
    "collected": "2026-11-08",
    "status": "collected",
    "collection": "premiere-2026-11",
-   "photo": false,
+   "photo": true,
    "look": "rocks glass with one large clear cube, perfectly crystal-clear pale-amber liquid, a lemon twist",
-   "scene": "an 18th-century English tavern, dark oak beams, a silver punch bowl and pewter on the table, candlelight"
+   "scene": "an 18th-century English tavern, dark oak beams, a silver punch bowl and pewter on the table, candlelight",
+   "photoFile": "photos/english-milk-punch.jpg"
   },
   {
    "name": "Absinthe Drip",
