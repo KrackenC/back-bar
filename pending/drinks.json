@@ -4034,9 +4034,10 @@
    "collected": "2026-11-08",
    "status": "collected",
    "collection": "premiere-2026-11",
-   "photo": false,
+   "photo": true,
    "look": "clear heatproof glass coffee cup on a saucer, glossy dark-brown coffee, a long clove-studded orange peel spiral curling over the rim, a silver brûlot bowl with soft blue flames softly blurred behind it",
-   "scene": "an old New Orleans dining room, white tablecloths, dark wood panelling and brass, dim romantic light"
+   "scene": "an old New Orleans dining room, white tablecloths, dark wood panelling and brass, dim romantic light",
+   "photoFile": "photos/cafe-brulot.jpg"
   }
  ],
  "dryJanuaryExisting": {
